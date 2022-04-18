@@ -164,7 +164,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void update(UserEntity entity) {
+    public void update(Long id, UserEntity entity) {
         int affectedRows = jdbcTemplate.update(UPDATE_USER_BY_ID_QUERY, new MapSqlParameterSource()
                 .addValue("id", entity.getId())
                 .addValue("email", entity.getEmail())
