@@ -42,7 +42,6 @@ public class UsersController {
     @PostMapping(path = {"registerUser", "registerUser{role}"})
     public ResponseEntity<String> regNewUser(@RequestBody Users user,
     @RequestParam(required = false) long roleId) {
-
         return userService.addNewUser(user,roleId);
     }
 

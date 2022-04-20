@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean());
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(POST,"api/users/registerUser").permitAll();
+        http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(), UsernamePasswordAuthenticationFilter.class);
