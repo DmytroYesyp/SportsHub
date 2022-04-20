@@ -1,4 +1,4 @@
-package com.sportshub.controllers;
+package com.sportshub.services;
 
 import com.sportshub.security.entities.Roles;
 import com.sportshub.security.entities.Users;
@@ -57,9 +57,6 @@ public class UsersService implements UserDetailsService {
         if (!exists) {
             return ResponseEntity.notFound().build();
         }
-
-
-
         return ResponseEntity.ok(userRepository.findById(userId).get().getRoles().getId());
     }
 
@@ -80,7 +77,6 @@ public class UsersService implements UserDetailsService {
 
     public ResponseEntity updateUser(long userId, Users upd_user) {
 
-        boolean trigger;
 
 
         if (userRepository.findById(userId).isEmpty())

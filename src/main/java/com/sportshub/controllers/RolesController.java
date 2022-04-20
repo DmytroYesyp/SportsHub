@@ -1,7 +1,7 @@
 package com.sportshub.controllers;
 
 import com.sportshub.security.entities.Roles;
-import com.sportshub.security.entities.Users;
+import com.sportshub.services.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +34,7 @@ public class RolesController {
     }
 
     @PostMapping(path = "addNewRole")
-    public ResponseEntity<String> regNewUser(@RequestBody Roles role) {
+    public ResponseEntity<Roles> regNewUser(@RequestBody Roles role) {
 
         return rolesService.addNewRole(role);
 

@@ -1,4 +1,4 @@
-package com.sportshub.controllers;
+package com.sportshub.services;
 import com.google.gson.Gson;
 import com.sportshub.security.entities.Roles;
 import com.sportshub.security.entities.repositories.RoleRepository;
@@ -17,9 +17,9 @@ public class RolesService {
         this.roleRepository = roleRepository;
     }
 
-    public ResponseEntity<String> addNewRole(Roles role) {
+    public ResponseEntity<Roles> addNewRole(Roles role) {
         roleRepository.save(role);
-        return ResponseEntity.ok(new Gson().toJson(role));
+        return ResponseEntity.ok(role);
     }
 
     public List<Roles> GetRoles() {
