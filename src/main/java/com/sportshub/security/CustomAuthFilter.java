@@ -24,9 +24,9 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 public class CustomAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (request.getServletPath().equals("/login")) {
-            filterChain.doFilter(request, response);
-        } else {
+       //if (request.getServletPath().equals("/login")) {
+       //    filterChain.doFilter(request, response);
+       //} else {
             String autorizationHeader = request.getHeader(AUTHORIZATION);
             if (autorizationHeader != null && autorizationHeader.startsWith("Bearer ")) {
                 try {
@@ -47,6 +47,6 @@ public class CustomAuthFilter extends OncePerRequestFilter {
                 }
             }else filterChain.doFilter(request, response);
 
-        }
+        //}
     }
 }

@@ -1,10 +1,12 @@
 package com.sportshub.controllers;
+import com.sportshub.security.entities.Roles;
 import com.sportshub.security.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "api/users/")
@@ -23,7 +25,7 @@ public class UsersController {
 
 
     @GetMapping(path = "usersRole{userId}")
-    public ResponseEntity<Long> getUserRole(@RequestParam long userId) {
+    public ResponseEntity<Set<Roles>> getUserRole(@RequestParam long userId) {
         return userService.getUserRole(userId);
     }
 
@@ -38,11 +40,17 @@ public class UsersController {
         return userService.deleteUser(userId);
     }
 
-    @PostMapping(path = {"registerUser", "registerUser{role}"})
-    public ResponseEntity<String> regNewUser(@RequestBody Users user,
-    @RequestParam(required = false) long roleId) {
 
-        return userService.addNewUser(user,roleId);
+    @PostMapping(path = "setRole{userId}{roleId}")
+    public ResponseEntity<String> setRole(@RequestParam long userId,@RequestParam long roleId){
+
+        return userService.setRole(userId,roleId);
+    }
+
+    @PostMapping(path = {"registerUser"})
+    public ResponseEntity<String> regNewUser(@RequestBody Users user) {
+
+        return userService.addNewUser(user);
     }
 
     @PutMapping(path = "users{userId}")

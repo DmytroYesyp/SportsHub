@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -18,9 +19,9 @@ public class Roles {
     private String name;
 
 
-    @OneToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private Set<Users> users;
+    private Set<Users> users = new HashSet<>();
 
     public Roles() {
     }
