@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+
+<div class="header">
+  <a href="" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="text">Don't have an account?</div>
+  <a href="/register" class="btn">
+    <div class="btn_txt">Get started</div>
+  </a>
+</div>
+
+
+<div class="container">
+  <h1>Log in to sports hub</h1>
+  <!--  <div class="t1">Create Account</div>-->
+  <!--  <div class="t2">-->
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-google"></a>
+  <!--  </div>-->
+
+  <!--  <div class="t3">Or use your email for registration:</div>-->
+
+
+  <form [formGroup]="form" (change)="onFormChange()" (ngSubmit)="onSubmit()">
+    <h4>Email</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email">
+      <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
+    </mat-form-field>
+<!--    {{formGroup.value | json}}-->
+    <h4>Password</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <!--      <input matInput [type]="hide ? 'password' : 'text'">-->
+      <!--      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+      <!--        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+      <!--      </button>-->
+      <input matInput placeholder="" formControlName="password">
+      <mat-error *ngIf="form.hasError('required','password')">Not valid</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Log in</button>
+
+  </form>
+
+
+
+
+
+
+  <h1></h1>
+  <!--  <a href="" class="btn2">-->
+  <!--    <div class="btn2_txt">Sign Up</div>-->
+  <!--  </a>-->
+
+
+<!--  <button mat-raised-button class="save-button" [disabled]="form.invalid || !!formError">Log in</button>-->
+  <!--  <mat-error *ngIf="formError">{{formError}}</mat-error>-->
+
+</div>
+
+
+<div class="photo"></div>
+</body>
+
+

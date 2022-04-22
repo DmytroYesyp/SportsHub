@@ -1,4 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+  background-color: white;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.header{
+  overflow: hidden;
+  width: 100%;
+  height: 83px;
+}
+
+.header a{
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  /*padding: 14px 16px;*/
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.logo{
+  position: absolute;
+
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  max-width: 253px;
+  max-height: 83px;
+  z-index: 100;
+  background: #D72130;
+  display: block;
+  text-decoration: none;
+}
+
+.logo_txt {
+  position: absolute;
+  text-align: center;
+  left: 26.88%;
+  right: 26.09%;
+  top: 31.33%;
+  bottom: 34.94%;
+  /*z-index: 100;*/
+
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 28px;
+  /* identical to box height, or 127% */
+
+
+  color: #FFFBFB;
+
+}
+
+.row {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  display: table-cell;
+  float: left;
+  width: 220px;
+  vertical-align: middle;
+  border-right: 10px;
+  border-left: 10px;
+  /*padding: 10px 10px;*/
+
+}
+
+

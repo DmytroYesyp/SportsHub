@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+
+<div class="header">
+  <a href="" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="text">Already have an account?</div>
+  <a href="/login" class="btn">
+    <div class="btn_txt">Log In</div>
+  </a>
+</div>
+
+
+<div class="container">
+  <h1>Create Account</h1>
+
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-google"></a>
+
+  <h3>Or use your email for registration:</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" (change)="onFormChange()">
+    <div class="row">
+      <div class="column">
+        <h4>First name</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your first name</mat-label>
+          <input matInput type="text" id="firstName" placeholder="Levi" formControlName="firstName">
+          <mat-error *ngIf="form.hasError('required','firstName')">Can't be empty</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="column">
+        <h4>Last name</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your last name</mat-label>
+          <input type="text" matInput placeholder="Ackerman" formControlName="lastName">
+          <mat-error *ngIf="form.hasError('required','lastName')">Can't be empty</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="column">
+        <h4>Email</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input type="email" matInput placeholder="pat@example.com" formControlName="email">
+          <mat-error *ngIf="form.hasError('required','email')">Must be email (@)</mat-error>
+        </mat-form-field>
+        </div>
+        <div class="column">
+        <h4>Password</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="some pass" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>
+        </mat-form-field>
+      </div>
+      </div>
+
+      <h1></h1>
+      <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Sign up</button>
+    </div>
+  </form>
+
+
+  <!--  <form [formGroup]="form" (ngSubmit)="onSubmit()">-->
+
+  <!--    <h1>FN</h1>-->
+  <!--    <input formControlName="firstName" id="firstName" type="text">-->
+  <!--    <h1>LN</h1>-->
+  <!--    <input formControlName="lastName" id="lastName" type="text">-->
+  <!--    <h1>EM</h1>-->
+  <!--    <input formControlName="email" id="email" type="email">-->
+  <!--    <h1>PS</h1>-->
+  <!--    <input formControlName="password" id="password" type="text">-->
+
+  <!--    <button type="submit">Sign</button>-->
+  <!--  </form>-->
+
+  <!--  <form>-->
+  <!--    <h1>Sign up</h1>-->
+  <!--    <ul id="form-messages"></ul>-->
+  <!--    <input type="text" placeholder="First Name" id="firstName" name="firstName" [(ngModel)]="firstName"/>-->
+  <!--    <input type="text" placeholder="Last Name" id="lastName" name="lastName"  [(ngModel)]="lastName"/>-->
+  <!--    <input type="text" placeholder="Password" id="password" name="password" [(ngModel)]="password"/>-->
+  <!--    <input type="email" placeholder="Email" id="email" name="email" [(ngModel)]="email"/>-->
+  <!--    <button type="submit" id="btn-submit" class="btn2" (click)="submit()">Sign Up</button>-->
+  <!--  </form>-->
+
+</div>
+<div class="photo"></div>
+</body>
+
+

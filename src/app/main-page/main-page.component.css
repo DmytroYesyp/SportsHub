@@ -1,0 +1,74 @@
+/*input[type=text] {*/
+/*  height: 83px;*/
+/*  width: 500px;*/
+/*  font-size: 22px;*/
+/*  border: none;*/
+/*  background: white;*/
+/*}*/
+/*.search-container {*/
+/*  float: left;*/
+/*  margin-left: 280px;*/
+/*  border-right: 1px solid #EDEDED;*/
+/*}*/
+/*.search-container button {*/
+/*  height: 83px;*/
+/*  color: black;*/
+/*  float: right;*/
+/*  background: white;*/
+/*  font-size: 22px;*/
+/*  border: none;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.search-container button:hover {*/
+/*  background: white;*/
+/*}*/
+
+.searchbar{
+  margin-left:252px;
+  height: 83px;
+}
+
+.container{
+  position: absolute;
+  width: 500px;
+  margin: 0 auto;
+  max-height: 450px;
+  right: 400px;
+  top: 300px;
+  box-sizing: border-box;
+}
+
+.btn{
+  position: absolute;
+  right: 60px;
+  top: 23px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid #D72130;
+  box-sizing: border-box;
+  color: #D72130;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn_txt{
+  position: absolute;
+  text-align: center;
+  left: 26.88%;
+  right: 26.09%;
+  top: 25.33%;
+  bottom: 34.94%;
+  /*z-index: 100;*/
+
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height, or 127% */
+
+
+  color: #D72130;
+
+}
