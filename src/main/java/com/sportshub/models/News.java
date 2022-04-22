@@ -1,15 +1,17 @@
 package com.sportshub.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.sql.Timestamp;
-import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public
-class News {
+public class News {
 
     private @Id
     @GeneratedValue
@@ -20,22 +22,49 @@ class News {
     private String image;
     Long league_id;
 
+    @ManyToMany(mappedBy = "news")
+    @JsonIgnoreProperties("news")
+    Set<Kinds_of_sport> kinds_of_sport;
+
+    @ManyToMany(mappedBy = "news")
+    @JsonIgnoreProperties("news")
+    Set<Team> team;
+
+    public News(Long id, String title, String description, Timestamp publication_date, String image, Long league_id, Set<Kinds_of_sport> kinds_of_sport, Set<Team> team) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.publication_date = publication_date;
+        this.image = image;
+        this.league_id = league_id;
+        this.kinds_of_sport = kinds_of_sport;
+        this.team = team;
+    }
+
+    public News() {}
+
+    public Set<Kinds_of_sport> getKinds_of_sport() {
+        return kinds_of_sport;
+    }
+
+    public Set<Team> getTeam() {
+        return team;
+    }
+
+    public void setTeam(Set<Team> team) {
+        this.team = team;
+    }
+
+    public void setKinds_of_sport(Set<Kinds_of_sport> kinds_of_sports) {
+        this.kinds_of_sport = kinds_of_sports;
+    }
+
     public Timestamp getPublication_date() {
         return publication_date;
     }
 
     public void setPublication_date(Timestamp publication_date) {
         this.publication_date = publication_date;
-    }
-
-    News(String name, String description) {
-
-        this.title = name;
-        this.description = description;
-    }
-
-    public News() {
-
     }
 
     public Long getId() {

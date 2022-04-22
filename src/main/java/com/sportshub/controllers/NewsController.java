@@ -29,20 +29,20 @@ class NewsController {
     }
 
     @PostMapping("/news")
-    News newEmployee(@RequestBody News newNews) {
+    public News newNews(@RequestBody News newNews) {
         return repository.save(newNews);
     }
 
 
     @GetMapping("/news/{id}")
-    Optional<News> one(@PathVariable Long id) {
+    public Optional<News> one(@PathVariable Long id) {
 
         return repository.findById(id);
 
     }
 
     @PutMapping("/news/{id}")
-    News replaceEmployee(@RequestBody News newNews, @PathVariable Long id) {
+    public News replaceNews(@RequestBody News newNews, @PathVariable Long id) {
 
         return repository.findById(id)
                 .map(news -> {
@@ -59,7 +59,7 @@ class NewsController {
     }
 
     @DeleteMapping("/news/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    public void deleteNews(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }
