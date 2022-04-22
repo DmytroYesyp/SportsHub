@@ -4,8 +4,10 @@ import com.sportshub.dto.user.UserCreateDto;
 import com.sportshub.dto.user.UserDto;
 import com.sportshub.dto.user.UserUpdateDto;
 import com.sportshub.entity.user.UserEntity;
+import com.sportshub.exception.BadRequestException;
 import com.sportshub.exception.ConflictException;
 import com.sportshub.mapper.user.UserMapper;
+import com.sportshub.patch.UserPatch;
 import com.sportshub.repository.user.UserRepository;
 import com.sportshub.service.user.UserService;
 import lombok.AllArgsConstructor;
@@ -55,7 +57,14 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userMapper.toEntity(userDto);
         userRepository.update(id, userEntity);
     }
+    @Override
+    public void patch(Long id, UserPatch userPatch) {
+        if (userPatch.isEmpty()) {
+            throw new BadRequestException("User patch is empty!");
+        }
 
+        userRepository.patch(id, userPatch);
+    }
     @Override
     @Transactional
     public void delete(Long id) {

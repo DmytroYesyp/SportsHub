@@ -10,7 +10,7 @@ public interface UserRepository {
     List<UserEntity> findAll();
     UserEntity find(Long id);
     void update(Long id, UserEntity entity);
-    void patch(Long id, UserPatch UserPatch);
+    void patch(Long id, UserPatch userPatch);
     void delete(Long id);
 }
 
