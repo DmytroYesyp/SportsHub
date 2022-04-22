@@ -7,17 +7,26 @@ import lombok.Setter;
 
 @Data
 public class UserPatch {
+    private String email;
+    private String password;
     private String firstName;
     private String middleName;
     private String lastName;
     private String phone;
     private String state;
-    private String email;
     private String info;
 
     @JsonIgnore
     @Setter(AccessLevel.NONE)
     private boolean empty = true;
+
+    @JsonIgnore
+    @Setter(AccessLevel.NONE)
+    private boolean emailUpdated;
+
+    @JsonIgnore
+    @Setter(AccessLevel.NONE)
+    private boolean passwordUpdated;
 
     @JsonIgnore
     @Setter(AccessLevel.NONE)
@@ -41,10 +50,6 @@ public class UserPatch {
 
     @JsonIgnore
     @Setter(AccessLevel.NONE)
-    private boolean emailUpdated;
-
-    @JsonIgnore
-    @Setter(AccessLevel.NONE)
     private boolean infoUpdated;
 
     public void setEmail(String email) {
@@ -52,6 +57,13 @@ public class UserPatch {
         emailUpdated = true;
 
         this.email = email;
+    }
+
+    public void setPassword(String password) {
+        empty = false;
+        passwordUpdated = true;
+
+        this.password = password;
     }
 
     public void setFirstName(String firstName) {

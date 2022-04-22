@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
@@ -77,7 +78,7 @@ public class UserRepositoryImpl implements UserRepository {
             """;
 
     private static final String UPDATE_USER_BY_ID_QUERY = """
-            UPDATE customers SET
+            UPDATE users SET
                 email = :email,
                 first_name = :firstName,
                 middle_name = :middleName,
@@ -113,6 +114,7 @@ public class UserRepositoryImpl implements UserRepository {
     };
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserEntity create(UserEntity userEntity) {
@@ -166,7 +168,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void update(Long id, UserEntity entity) {
         int affectedRows = jdbcTemplate.update(UPDATE_USER_BY_ID_QUERY, new MapSqlParameterSource()
-                .addValue("id", entity.getId())
+                .addValue("id", id)
                 .addValue("email", entity.getEmail())
                 .addValue("passwordHash", entity.getPasswordHash())
                 .addValue("firstName", entity.getFirstName())
@@ -182,54 +184,54 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void patch(Long id, UserPatch customerPatch) {
-        List<String> assigments = new ArrayList<>(6);
+    public void patch(Long id, UserPatch userPatch) {
+        List<String> assigments = new ArrayList<>(7);
         MapSqlParameterSource parameters = new MapSqlParameterSource("id", id);
 
-        if (customerPatch.isEmailUpdated()) {
-            String email = customerPatch.getEmail();
+        if (userPatch.isEmailUpdated()) {
+            String email = userPatch.getEmail();
 
             assigments.add("email = :email");
             parameters.addValue("email", email);
         }
 
-        if (customerPatch.isFirstNameUpdated()) {
-            String firstName = customerPatch.getFirstName();
+        if (userPatch.isPasswordUpdated()) {
+            String passwordHash = bCryptPasswordEncoder.encode(userPatch.getPassword());
+
+            assigments.add("password_hash = :passwordHash");
+            parameters.addValue("passwordHash", passwordHash);
+        }
+
+        if (userPatch.isFirstNameUpdated()) {
+            String firstName = userPatch.getFirstName();
 
             assigments.add("first_name = :firstName");
             parameters.addValue("firstName", firstName);
         }
 
-        if (customerPatch.isMiddleNameUpdated()) {
-            String middleName = customerPatch.getMiddleName();
+        if (userPatch.isMiddleNameUpdated()) {
+            String middleName = userPatch.getMiddleName();
 
             assigments.add("middle_name = :middleName");
             parameters.addValue("middleName", middleName);
         }
 
-        if (customerPatch.isLastNameUpdated()) {
-            String lastName = customerPatch.getLastName();
+        if (userPatch.isLastNameUpdated()) {
+            String lastName = userPatch.getLastName();
 
             assigments.add("last_name = :lastName");
             parameters.addValue("lastName", lastName);
         }
 
-        if (customerPatch.isPhoneUpdated()) {
-            String phone = customerPatch.getPhone();
+        if (userPatch.isPhoneUpdated()) {
+            String phone = userPatch.getPhone();
 
             assigments.add("phone = :phone");
             parameters.addValue("phone", phone);
         }
 
-        if (customerPatch.isInfoUpdated()) {
-            String info = customerPatch.getInfo();
-
-            assigments.add("info = :info");
-            parameters.addValue("info", info);
-        }
-
-        if (customerPatch.isInfoUpdated()) {
-            String info = customerPatch.getInfo();
+        if (userPatch.isInfoUpdated()) {
+            String info = userPatch.getInfo();
 
             assigments.add("info = :info");
             parameters.addValue("info", info);

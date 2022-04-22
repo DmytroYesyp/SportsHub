@@ -3,11 +3,13 @@ package com.sportshub.controller.user;
 import com.sportshub.dto.user.UserCreateDto;
 import com.sportshub.dto.user.UserDto;
 import com.sportshub.dto.user.UserUpdateDto;
+import com.sportshub.patch.UserPatch;
 import com.sportshub.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,6 +48,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id, @RequestBody UserUpdateDto userDto) {
         userService.update(id, userDto);
+    }
+
+    @PatchMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Long id, @RequestBody UserPatch userPatch ) {
+        userService.patch(id, userPatch);
     }
 
     @DeleteMapping("{id}")
