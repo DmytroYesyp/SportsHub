@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="\"users\"")
@@ -22,16 +24,20 @@ public class Users {
 
     private String email;
 
-    @ManyToOne()
-    @JoinColumn(name= "role_id", nullable = false)
+    @ManyToMany()
+    @JoinTable(
+            name = "userHasRoles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
     @JsonBackReference
-    private Roles roles;
+    private Set<Roles> roles = new HashSet<>();
 
 
     public Users() {
     }
 
-    public Users(String firstName, String lastName, String password, String email, Roles role) {
+    public Users(String firstName, String lastName, String password, String email, Set<Roles> role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -75,9 +81,6 @@ public class Users {
         this.email = email;
     }
 
-    public Roles getRoles() {
-        return roles;
-    }
 
     @Override
     public String toString() {
@@ -91,7 +94,11 @@ public class Users {
                 '}';
     }
 
-    public void setRoles(Roles roles) {
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
         this.roles = roles;
     }
 }

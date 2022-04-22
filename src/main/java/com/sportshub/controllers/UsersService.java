@@ -33,10 +33,7 @@ public class UsersService implements UserDetailsService {
     }
 
 
-    public ResponseEntity<String> addNewUser(Users user, long roleId) {
-        Roles newRole = roleRepository.getById(roleId);
-        System.out.println(newRole.getName());
-        user.setRoles(roleRepository.getById(roleId));
+    public ResponseEntity<String> addNewUser(Users user) {
         boolean userOptional = userRepository.findUserByEmail(user.getEmail()).isPresent();
         if (userOptional) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -47,20 +44,39 @@ public class UsersService implements UserDetailsService {
         return ResponseEntity.created(uri).build();
     }
 
+    public ResponseEntity<String> setRole(Long userId,Long roleId){
+
+        Users user = userRepository.getById(userId);
+        Roles role = roleRepository.getById(roleId);
+
+
+        role.getUser().add(user);
+
+        role.setUser(role.getUser());
+
+        user.getRoles().add(role);
+
+        user.setRoles(user.getRoles());
+
+
+        roleRepository.save(role);
+        userRepository.save(user);
+
+        return ResponseEntity.ok("User id "+userId.toString() +" Role id "+ roleId.toString());
+    }
+
     public List<Users> GetUsers() {
         return userRepository.findAll();
     }
 
 
-    public ResponseEntity<Long> getUserRole (long userId) {
+    public ResponseEntity<Set<Roles>> getUserRole (long userId) {
         boolean exists = userRepository.existsById(userId);
         if (!exists) {
             return ResponseEntity.notFound().build();
         }
 
-
-
-        return ResponseEntity.ok(userRepository.findById(userId).get().getRoles().getId());
+        return ResponseEntity.ok(userRepository.findById(userId).get().getRoles());
     }
 
 
