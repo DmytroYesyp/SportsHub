@@ -49,12 +49,15 @@ public class UsersService implements UserDetailsService {
         Users user = userRepository.getById(userId);
         Roles role = roleRepository.getById(roleId);
 
-        Set <Roles> r = new HashSet<>();
-        r.add(role);
-        user.setRoles(r);
-        Set <Users> u = new HashSet<>();
-        u.add(user);
-        role.setUser(u);
+
+        role.getUser().add(user);
+
+        role.setUser(role.getUser());
+
+        user.getRoles().add(role);
+
+        user.setRoles(user.getRoles());
+
 
         roleRepository.save(role);
         userRepository.save(user);
