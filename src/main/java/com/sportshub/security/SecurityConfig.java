@@ -1,5 +1,7 @@
 package com.sportshub.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,12 +13,32 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    protected static String key;
+
+    @Service
+    @Component("propertiesConf")
+    public static class PropertiesConf{
+
+        private final String foo;
+
+        @Autowired
+        public PropertiesConf(@Value("${security.cfg.key}") String foo) {
+            this.foo = foo;
+            System.out.println(foo);
+            key = foo;
+        }
+
+    }
+
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -33,13 +55,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
-        JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean());
+        JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean(),key);
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
-        http.addFilterBefore(new CustomAuthFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);
     }
     @Bean
     @Override
