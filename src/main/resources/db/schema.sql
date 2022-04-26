@@ -1,11 +1,5 @@
-DROP TABLE IF EXISTS users_kind_of_sport;
-DROP TABLE IF EXISTS news_kind_of_sport;
-DROP TABLE IF EXISTS kinds_of_sport;
-DROP TABLE IF EXISTS user_roles;
-DROP TABLE IF EXISTS news;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS permissions;
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 CREATE TABLE kinds_of_sport
 (
