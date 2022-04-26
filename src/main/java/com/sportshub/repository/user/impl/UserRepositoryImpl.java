@@ -77,6 +77,15 @@ public class UserRepositoryImpl implements UserRepository {
             WHERE id = :id
             """;
 
+    private static final String SELECT_USER_BY_EMAIL_QUERY = """
+            SELECT
+                id,
+                email,
+                password_hash
+            FROM users
+            WHERE email = :email
+            """;
+
     private static final String UPDATE_USER_BY_ID_QUERY = """
             UPDATE users SET
                 email = :email,
@@ -109,6 +118,16 @@ public class UserRepositoryImpl implements UserRepository {
         entity.setPhone(rs.getString("phone"));
         entity.setState(rs.getString("state"));
         entity.setInfo(rs.getString("info"));
+
+        return entity;
+    };
+
+    private static final RowMapper<UserEntity> USER_AUTH_MAPPER = (rs, rowNum) -> {
+        UserEntity entity = new UserEntity();
+
+        entity.setId(rs.getObject("id", Long.class));
+        entity.setEmail(rs.getString("email"));
+        entity.setPasswordHash(rs.getString("password_hash"));
 
         return entity;
     };
@@ -162,6 +181,16 @@ public class UserRepositoryImpl implements UserRepository {
                     new MapSqlParameterSource("id", id), USER_ROW_MAPPER);
         } catch (EmptyResultDataAccessException e) {
             throw new NotFoundException("User with id " + id + " not found!");
+        }
+    }
+
+    @Override
+    public UserEntity findByEmail(String email) {
+        try {
+            return jdbcTemplate.queryForObject(SELECT_USER_BY_EMAIL_QUERY,
+                    new MapSqlParameterSource("email", email), USER_AUTH_MAPPER);
+        } catch (EmptyResultDataAccessException e) {
+            throw new NotFoundException("User with email " + email + " not found!");
         }
     }
 

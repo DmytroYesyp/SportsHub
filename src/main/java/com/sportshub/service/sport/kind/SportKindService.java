@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface SportKindService {
     SportKindDto create(SportKindCreateDto sportKindDto);
-    List<SportKindDto> findAll(int limit, int offset);
+    List<SportKindDto> findAll(int page, int limit);
     CountDto getCount();
     SportKindDto find(Long id);
     void update(Long id, SportKindUpdateDto sportKindDto);
