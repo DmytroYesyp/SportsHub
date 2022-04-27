@@ -67,19 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-
-        CorsConfigurationSource CorsForSecurity = new CorsConfigurationSource() {
-            @Override
-            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-                return null;
-            }
-        };
-
-        org.springframework.web.filter.CorsFilter corsFilter = new org.springframework.web.filter.CorsFilter(CorsForSecurity);
-
-
         JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean(),key);
-        http.cors().configurationSource(CorsForSecurity).and().csrf().disable()
+        http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
