@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Set;
 
 @Data
 public class UserCreateDto {
@@ -31,4 +32,10 @@ public class UserCreateDto {
     private String state;
 
     private String info;
+
+    private Set<Long> teamIds;
+
+    private Set<Long> leagueIds;
+
+    private Set<Long> surveyIds;
 }

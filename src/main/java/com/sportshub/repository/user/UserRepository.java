@@ -1,17 +1,21 @@
 package com.sportshub.repository.user;
 
 import com.sportshub.entity.user.UserEntity;
-import com.sportshub.patch.UserPatch;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepository {
-    UserEntity create(UserEntity UserEntity);
-    List<UserEntity> findAll();
-    UserEntity find(Long id);
-    UserEntity findByEmail(String email);
-    void update(Long id, UserEntity entity);
-    void patch(Long id, UserPatch userPatch);
-    void delete(Long id);
-}
+public interface UserRepository extends CustomUserRepository, JpaRepository<UserEntity, Long> {
+    @Query("FROM UserEntity")
+    List<UserEntity> findAllUsers(Pageable pageable);
 
+    UserEntity findByEmail(String email);
+
+    @Modifying
+    @Query("DELETE FROM UserEntity WHERE id = :id")
+    int removeById(@Param("id") Long id);
+}
