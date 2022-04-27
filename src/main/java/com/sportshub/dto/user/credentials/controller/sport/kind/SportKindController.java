@@ -1,4 +1,4 @@
-package com.sportshub.controller.sport.kind;
+package com.sportshub.dto.user.credentials.controller.sport.kind;
 
 import com.sportshub.dto.count.CountDto;
 import com.sportshub.dto.sport.kind.SportKindCreateDto;

@@ -1,4 +1,4 @@
-package com.sportshub.controller.user;
+package com.sportshub.dto.user.credentials.controller.user;
 
 import com.sportshub.dto.user.UserCreateDto;
 import com.sportshub.dto.user.UserDto;

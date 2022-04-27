@@ -48,8 +48,6 @@ public class UsersService implements UserDetailsService {
 
         Users user = userRepository.getById(userId);
         Roles role = roleRepository.getById(roleId);
-
-
         role.getUser().add(user);
 
         role.setUser(role.getUser());
