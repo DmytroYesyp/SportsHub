@@ -12,9 +12,12 @@ import {MaterialModule} from "./material/material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
+import {MainKindsComponent} from "./services/main_kinds.component";
+
 
 @NgModule({
   declarations: [
+    MainKindsComponent,
     AppComponent,
     RegistrationComponent,
     MainPageComponent,
