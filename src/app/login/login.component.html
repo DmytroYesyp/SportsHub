@@ -9,7 +9,7 @@
 <body>
 
 <div class="header">
-  <a href="" class="logo">
+  <a href="/main" class="logo">
     <div class="logo_txt">Sports Hub</div>
   </a>
   <div class="text">Don't have an account?</div>
@@ -36,6 +36,8 @@
       <mat-label>Enter your email</mat-label>
       <input matInput placeholder="pat@example.com" formControlName="email">
       <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
+<!--      <span *ngIf="form.get('email').errors['email']">Email can't be empty</span>-->
+
     </mat-form-field>
 <!--    {{formGroup.value | json}}-->
     <h4>Password</h4>
@@ -46,6 +48,7 @@
       <!--        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
       <!--      </button>-->
       <input matInput placeholder="" formControlName="password">
+<!--      <span *ngIf="form.get('password').errors['required']">Email can't be empty</span>-->
       <mat-error *ngIf="form.hasError('required','password')">Not valid</mat-error>
     </mat-form-field>
 

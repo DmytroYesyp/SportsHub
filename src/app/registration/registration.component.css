@@ -6,7 +6,7 @@
 
 .container{
   position: absolute;
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
   max-height: 450px;
   right: 400px;
@@ -20,6 +20,7 @@
   height: 100%;
   left: 0px;
   top: 0px;
+
 
 
   background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);
