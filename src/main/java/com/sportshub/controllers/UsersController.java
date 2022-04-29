@@ -18,7 +18,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "getAllUsers{userId}")
+    @GetMapping(path = "getAllUsers")
     public List<Users> getUsers() {
         return userService.GetUsers();
     }
@@ -47,7 +47,7 @@ public class UsersController {
         return userService.setRole(userId,roleId);
     }
 
-    @CrossOrigin("*")
+//    @CrossOrigin("*")
     @PostMapping(path = {"registerUser"})
     public ResponseEntity<String> regNewUser(@RequestBody Users user) {
 
