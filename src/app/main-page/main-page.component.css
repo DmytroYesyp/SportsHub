@@ -73,6 +73,7 @@ input[type=text] {
   float: right;
   position: absolute;
   margin-left:1400px;
+  z-index: 2;
 }
 
 .back_txt{
