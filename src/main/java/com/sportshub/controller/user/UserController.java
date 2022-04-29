@@ -1,6 +1,5 @@
 package com.sportshub.controller.user;
 
-import com.sportshub.annotation.Auth;
 import com.sportshub.dto.count.CountDto;
 import com.sportshub.dto.user.UserCreateDto;
 import com.sportshub.dto.user.UserDto;
@@ -39,8 +38,6 @@ public class UserController {
     }
 
     @GetMapping
-    @Auth(permission = "GET_USERS_LIST")
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public List<UserDto> findAll(@RequestParam(defaultValue = "1000") int limit,
                                  @RequestParam(defaultValue = "1") Integer page) {
 
@@ -48,39 +45,29 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    @Auth(permission = "GET_USER_BY_ID")
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public UserDto find(@PathVariable Long id) {
         return userService.find(id);
     }
 
     @GetMapping("count")
-    @Auth(permission = "GET_USERS_COUNT")
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public CountDto getCount() {
         return userService.getCount();
     }
 
     @PutMapping("{id}")
-    @Auth(permission = "UPDATE_USER")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public void update(@PathVariable Long id, @RequestBody UserUpdateDto userDto) {
         userService.update(id, userDto);
     }
 
     @PatchMapping("{id}")
-    @Auth(permission = "UPDATE_USER")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public void update(@PathVariable Long id, @RequestBody UserPatch userPatch) {
         userService.patch(id, userPatch);
     }
 
     @DeleteMapping("{id}")
-    @Auth(permission = "DELETE_USER")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     public void delete(@PathVariable Long id) {
         userService.delete(id);
     }

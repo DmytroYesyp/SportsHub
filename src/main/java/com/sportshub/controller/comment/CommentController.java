@@ -1,6 +1,5 @@
 package com.sportshub.controller.comment;
 
-import com.sportshub.annotation.Auth;
 import com.sportshub.dto.comment.CommentCreateDto;
 import com.sportshub.dto.comment.CommentDto;
 import com.sportshub.dto.comment.CommentUpdateDto;
@@ -30,14 +29,12 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    @Auth(permission = "CREATE_COMMENT")
     @ResponseStatus(HttpStatus.CREATED)
     public CommentDto create(@RequestBody @Valid CommentCreateDto commentDto) {
         return commentService.create(commentDto);
     }
 
     @GetMapping
-    @Auth(permission = "GET_COMMENTS_LIST")
     public List<CommentDto> findAll(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "1000") int limit) {
 
@@ -45,26 +42,22 @@ public class CommentController {
     }
 
     @GetMapping("{id}")
-    @Auth(permission = "GET_COMMENT_BY_ID")
     public CommentDto find(@PathVariable Long id) {
         return commentService.find(id);
     }
 
     @GetMapping("count")
-    @Auth(permission = "GET_COMMENTS_COUNT")
     public CountDto getCount() {
         return commentService.getCount();
     }
 
     @PutMapping("{id}")
-    @Auth(permission = "UPDATE_COMMENT")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id, @RequestBody CommentUpdateDto commentDto) {
         commentService.update(id, commentDto);
     }
 
     @DeleteMapping("{id}")
-    @Auth(permission = "DELETE_COMMENT")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         commentService.delete(id);

@@ -1,110 +1,57 @@
 package com.sportshub.service.auth.impl;
 
-
-import com.sportshub.annotation.Auth;
+import com.sportshub.dto.auth.token.AuthTokenDto;
 import com.sportshub.dto.user.credentials.UserCredentials;
+import com.sportshub.dto.user.data.UserData;
 import com.sportshub.entity.user.UserEntity;
 import com.sportshub.exception.UnauthenticatedException;
-import com.sportshub.exception.UnauthorizedException;
-import com.sportshub.repository.permission.PermissionRepository;
+import com.sportshub.repository.role.RoleRepository;
 import com.sportshub.repository.user.UserRepository;
 import com.sportshub.service.auth.AuthService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import com.sportshub.service.jwt.JwtService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.Map;
+
+import java.util.List;
+
+import static com.sportshub.constants.Constants.AUTH_TOKEN_HEADER;
 
 @Service
 public class AuthServiceImpl implements AuthService {
-
-    private static final String AUTH_TOKEN_HEADER = "Authorization";
-    private static final String USER_DATA_CLAIMS = "user";
-    private static final String AUTH_ISSUER = "SportsHub Auth";
-    private static final String TOKEN_PREFIX = "Bearer";
-
-
-    private final HttpServletRequest httpServletRequest;
     private final HttpServletResponse httpServletResponse;
+    private final JwtService jwtService;
     private final UserRepository userRepository;
-    private final PermissionRepository permissionRepository;
+    private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final long authTokenLifetime;
-    private final String jwtSigningKey;
 
-    public AuthServiceImpl(HttpServletRequest httpServletRequest,
-                           HttpServletResponse httpServletResponse,
+    public AuthServiceImpl(HttpServletResponse httpServletResponse,
+                           JwtService jwtService,
                            UserRepository userRepository,
-                           PermissionRepository permissionRepository,
-                           BCryptPasswordEncoder bCryptPasswordEncoder,
-                           @Value("${AUTH_TOKEN_LIFETIME}") long authTokenLifetime,
-                           @Value("${JWT_SIGNING_KEY}") String jwtSigningKey) {
+                           RoleRepository roleRepository,
+                           BCryptPasswordEncoder bCryptPasswordEncoder) {
 
-        this.httpServletRequest = httpServletRequest;
         this.httpServletResponse = httpServletResponse;
+        this.jwtService = jwtService;
         this.userRepository = userRepository;
-        this.permissionRepository = permissionRepository;
+        this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.authTokenLifetime = 1000 * authTokenLifetime;
-        this.jwtSigningKey = jwtSigningKey;
     }
 
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    static class UserData {
-        private Long id;
-    }
-
-
-    public void login(UserCredentials userCredentials) {
+    public AuthTokenDto login(UserCredentials userCredentials) {
         String authToken = generateToken(userCredentials);
 
         httpServletResponse.setHeader(AUTH_TOKEN_HEADER, authToken);
+
+        return new AuthTokenDto(authToken);
     }
 
-    @Override
-    public void verifyAuthority(Auth auth) {
-        String authHeader = httpServletRequest.getHeader(AUTH_TOKEN_HEADER);
-        if (authHeader == null) {
-            throw new UnauthenticatedException("Missed Authorization header!");
-        }
+    public AuthTokenDto getRefreshedToken() {
+        String authToken =  httpServletResponse.getHeader(AUTH_TOKEN_HEADER);
 
-        String[] authHeaderParts = authHeader.trim().split("\\s+");
-        if (authHeaderParts.length != 2 || !TOKEN_PREFIX.equals(authHeaderParts[0])) {
-            throw new UnauthenticatedException("Invalid format of Auth header!");
-        }
-
-        String jwtToken = authHeaderParts[1];
-
-        Map<String, Object> userData;
-        try {
-            Claims claims = Jwts.parser().setSigningKey(jwtSigningKey).parseClaimsJws(jwtToken).getBody();
-            userData = claims.get(USER_DATA_CLAIMS, Map.class);
-        } catch (RuntimeException e) {
-            throw new UnauthenticatedException("Invalid JWT token!");
-        }
-
-        Long userId = (long) (Integer) userData.get("id");
-
-        String permission = auth.permission();
-        if (!permission.isBlank() && !permissionRepository.existPermissionForUser(permission, userId)) {
-            throw new UnauthorizedException("No access rights to call this endpoint!");
-        }
-
-        String refreshedJwtToken = generateToken(new UserData(userId));
-
-        httpServletResponse.setHeader(AUTH_TOKEN_HEADER, refreshedJwtToken);
+        return new AuthTokenDto(authToken);
     }
 
     private String generateToken(UserCredentials userCredentials) {
@@ -121,24 +68,11 @@ public class AuthServiceImpl implements AuthService {
             throw new UnauthenticatedException("Invalid password!");
         }
 
-        UserData userData = new UserData(userAuthData.getId());
+        Long userId = userAuthData.getId();
 
-        return generateToken(userData);
-    }
+        List<String> roles = roleRepository.findUserRoleNames(userId);
+        UserData userData = new UserData(userId, roles);
 
-    private String generateToken(UserData userData) {
-        Claims claims = Jwts.claims();
-        claims.put(USER_DATA_CLAIMS, userData);
-
-        long creationTime = System.currentTimeMillis();
-        long expirationTime = creationTime + authTokenLifetime;
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuer(AUTH_ISSUER)
-                .setIssuedAt(new Date(creationTime))
-                .setExpiration(new Date(expirationTime))
-                .signWith(SignatureAlgorithm.HS256, jwtSigningKey)
-                .compact();
+        return jwtService.generateToken(userData);
     }
 }

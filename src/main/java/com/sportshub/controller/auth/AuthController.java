@@ -1,6 +1,6 @@
 package com.sportshub.controller.auth;
 
-import com.sportshub.annotation.Auth;
+import com.sportshub.dto.auth.token.AuthTokenDto;
 import com.sportshub.dto.user.credentials.UserCredentials;
 import com.sportshub.service.auth.AuthService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,13 +17,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("login")
-    public void login(@RequestBody UserCredentials userCredentials) {
-       authService.login(userCredentials);
+    public AuthTokenDto login(@RequestBody UserCredentials userCredentials) {
+       return authService.login(userCredentials);
     }
 
-    @Auth
-    @ApiImplicitParam(name = "Authorization", value = "JWT Token", required = true, paramType = "header", example = "Bearer access_token")
     @PostMapping("refresh-token")
-    public void refreshToken() {
+    public AuthTokenDto refreshToken() {
+        return authService.getRefreshedToken();
     }
 }
