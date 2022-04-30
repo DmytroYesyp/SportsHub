@@ -7,4 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent {
   search: String = "";
+  foods: any;
 }

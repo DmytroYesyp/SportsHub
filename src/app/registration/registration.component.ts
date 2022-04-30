@@ -7,7 +7,6 @@ import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
 
 
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -47,7 +46,11 @@ export class RegistrationComponent implements OnInit, OnDestroy{
     this.aSub = this.auth.register(this.form.value).subscribe(
       ()=> {
         console.log('Register success')
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login'], {
+          queryParams: {
+            registered: true
+          }
+        })
       },
       error =>{
         console.warn(error)

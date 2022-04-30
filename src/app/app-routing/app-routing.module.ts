@@ -4,12 +4,28 @@ import {CommonModule} from "@angular/common";
 import {RegistrationComponent} from "../registration/registration.component";
 import {MainPageComponent} from "../main-page/main-page.component";
 import {LoginComponent} from "../login/login.component";
+import {ProfileComponent} from "../profile/profile.component";
+import {AuthLayoutComponent} from "../layouts/auth-layout/auth-layout.component";
+import {SiteLayoutComponent} from "../layouts/site-layout/site-layout.component";
+import {AuthGuard} from "../classes/auth.guard";
 
 const routes: Routes = [
-  {path: 'register', component: RegistrationComponent,},
-  {path: '', component: MainPageComponent},
-  {path: 'login', component: LoginComponent}
+  {
+    path: '', component: AuthLayoutComponent, children:[
+      {path: '', redirectTo: '/login', pathMatch: 'full'},
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegistrationComponent}
+    ]
+  },
+  {
+    path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
+      {path: 'profile', component: ProfileComponent},
+      {path: 'main', component: MainPageComponent}
+    ]
+  }
 ];
+
+
 
 @NgModule({
   declarations: [],
