@@ -1,8 +1,11 @@
 package com.sportshub.security;
 
+
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -10,6 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +29,16 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class JWTFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final AuthenticationManager authenticationManager;
 
-    public JWTFilter(AuthenticationManager authenticationManager) {
+    private final AuthenticationManager authenticationManager;
+    private final String key;
+
+    public JWTFilter(AuthenticationManager authenticationManager, String key) {
         this.authenticationManager = authenticationManager;
+        this.key = key;
     }
     @Override
+    @CrossOrigin("*")
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         String username = request.getParameter("email");
         String password = request.getParameter("password");
@@ -41,8 +49,9 @@ public class JWTFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain chain, Authentication authentication) throws IOException {
+
         User user = (User)authentication.getPrincipal();
-        Algorithm algorithm = Algorithm.HMAC256("KeyKey".getBytes());
+        Algorithm algorithm = Algorithm.HMAC256(key.getBytes());
         String token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000))

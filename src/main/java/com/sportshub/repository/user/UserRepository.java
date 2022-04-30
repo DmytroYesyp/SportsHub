@@ -1,16 +1,12 @@
 package com.sportshub.repository.user;
+import com.sportshub.entity.user.Users;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.sportshub.entity.user.UserEntity;
-import com.sportshub.patch.UserPatch;
+import java.util.Optional;
 
-import java.util.List;
-
-public interface UserRepository {
-    UserEntity create(UserEntity UserEntity);
-    List<UserEntity> findAll();
-    UserEntity find(Long id);
-    void update(Long id, UserEntity entity);
-    void patch(Long id, UserPatch userPatch);
-    void delete(Long id);
+@Repository("UserRepository")
+public interface UserRepository extends JpaRepository<Users, Long> {
+    Optional<Users> findUserByEmail(String email);
 }
 

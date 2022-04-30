@@ -35,10 +35,10 @@ public class SportKindController {
     }
 
     @GetMapping
-    public List<SportKindDto> findAll(@RequestParam(defaultValue = "1000") int limit,
-                                      @RequestParam(defaultValue = "1000") int offset) {
+    public List<SportKindDto> findAll(@RequestParam(defaultValue = "1") int page,
+                                      @RequestParam(defaultValue = "1000") int limit) {
 
-        return sportKindService.findAll(limit,offset);
+        return sportKindService.findAll(page, limit);
     }
 
     @GetMapping("{id}")

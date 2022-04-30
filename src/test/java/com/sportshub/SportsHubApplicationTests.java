@@ -9,5 +9,4 @@ class SportsHubApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

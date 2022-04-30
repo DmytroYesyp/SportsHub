@@ -5,18 +5,17 @@ import com.sportshub.dto.sport.kind.SportKindCreateDto;
 import com.sportshub.dto.sport.kind.SportKindDto;
 import com.sportshub.dto.sport.kind.SportKindUpdateDto;
 import com.sportshub.entity.sport.kind.SportKindEntity;
+import com.sportshub.exception.ConflictException;
 import com.sportshub.exception.NotFoundException;
 import com.sportshub.mapper.sport.kind.SportKindMapper;
-import com.sportshub.repository.pagination.OffsetBasedPageRequest;
 import com.sportshub.repository.sport.kind.SportKindRepository;
 import com.sportshub.service.sport.kind.SportKindService;
 import lombok.AllArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 
@@ -30,15 +29,25 @@ public class SportKindServiceImpl implements SportKindService {
     @Override
     public SportKindDto create(SportKindCreateDto sportKindDto) {
         SportKindEntity sportKindEntity = sportKindMapper.toEntity(sportKindDto);
+        try {
+            sportKindEntity = sportKindRepository.save(sportKindEntity);
+        } catch (DataIntegrityViolationException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof ConstraintViolationException) {
+                if ("kinds_of_sport_name_key".equals(((ConstraintViolationException) cause).getConstraintName())) {
+                    String errorMessage = String.format("Sport kind with name '%s' already exists!", sportKindEntity.getName());
+                    throw new ConflictException(errorMessage);
+                }
+            }
 
-        sportKindEntity = sportKindRepository.save(sportKindEntity);
-
+            throw e;
+        }
         return sportKindMapper.toDto(sportKindEntity);
     }
 
     @Override
-    public List<SportKindDto> findAll(int limit, int offset) {
-        List<SportKindEntity> sportKindEntities = sportKindRepository.findAllSportKinds(new OffsetBasedPageRequest(offset, limit));
+    public List<SportKindDto> findAll(int page, int limit) {
+        List<SportKindEntity> sportKindEntities = sportKindRepository.findAllSportKinds(PageRequest.of(page - 1, limit));
         return sportKindMapper.toDtoList(sportKindEntities);
     }
 
@@ -59,9 +68,20 @@ public class SportKindServiceImpl implements SportKindService {
     @Transactional
     public void update(Long id, SportKindUpdateDto sportKindDto) {
         SportKindEntity sportKindEntity = sportKindMapper.toEntity(sportKindDto);
-        int affectedRaws = sportKindRepository.update(id, sportKindEntity);
-        if (affectedRaws == 0) {
-            new NotFoundException("Model not found!");
+        try{
+            int affectedRaws = sportKindRepository.update(id, sportKindEntity);
+            if (affectedRaws == 0) {
+                new NotFoundException("Sport kind not found!");
+            }
+        } catch (DataIntegrityViolationException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof ConstraintViolationException) {
+                if ("kinds_of_sport_name_key".equals(((ConstraintViolationException) cause).getConstraintName())) {
+                    String errorMessage = String.format("Sport kind with name '%s' already exists!", sportKindEntity.getName());
+                    throw new ConflictException(errorMessage);
+                }
+            }
+            throw e;
         }
 
         sportKindRepository.update(id, sportKindEntity);

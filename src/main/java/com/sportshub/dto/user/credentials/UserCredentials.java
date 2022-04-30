@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class UserCredentials {
 
-    @ApiModelProperty(example = "tomboy")
-    private String username;
+    @ApiModelProperty(example = "test1@gmail.com")
+    private String email;
 
-    @ApiModelProperty(example = "pa$$word20!")
+    @ApiModelProperty(example = "password")
     private String password;
 }
