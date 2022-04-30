@@ -1,4 +1,4 @@
-//package com.sportshub.security.entities;
+package com.sportshub.security.entities;//package com.sportshub.security.entities;
 //
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
