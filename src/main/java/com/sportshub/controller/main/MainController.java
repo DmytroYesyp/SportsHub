@@ -1,7 +1,7 @@
-package com.sportshub.controllers;
+package com.sportshub.controller.main;
 
 
-import com.sportshub.security.entities.News;
+import com.sportshub.entity.news.NewsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class MainController {
     }
 
     @GetMapping(path = "getAllNews")
-    public List<News> getNews() {
+    public List<NewsEntity> getNews() {
         return mainService.getNews();
     }
 

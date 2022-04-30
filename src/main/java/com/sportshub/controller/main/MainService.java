@@ -1,8 +1,8 @@
-package com.sportshub.controllers;
+package com.sportshub.controller.main;
 
 
-import com.sportshub.security.entities.News;
-import com.sportshub.security.entities.repositories.NewsRepository;
+import com.sportshub.entity.news.NewsEntity;
+import com.sportshub.repository.news.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class MainService {
         this.newsRepository = newsRepository;
     }
 
-    public List<News> getNews() {
+    public List<NewsEntity> getNews() {
         return newsRepository.findAll();
     }
 }
