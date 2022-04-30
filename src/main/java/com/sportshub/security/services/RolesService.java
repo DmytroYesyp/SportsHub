@@ -1,4 +1,4 @@
-package com.sportshub.controllers;
+package com.sportshub.security.services;
 import com.google.gson.Gson;
 import com.sportshub.security.entities.Roles;
 import com.sportshub.security.entities.repositories.RoleRepository;

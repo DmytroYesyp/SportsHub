@@ -1,4 +1,5 @@
-package com.sportshub.controllers;
+package com.sportshub.security.controller;
+import com.sportshub.security.services.UsersService;
 import com.sportshub.security.entities.Roles;
 import com.sportshub.security.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
