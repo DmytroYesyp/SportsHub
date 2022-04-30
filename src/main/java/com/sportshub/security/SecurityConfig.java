@@ -45,7 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Autowired
         public PropertiesConf(@Value("${security.cfg.key}") String foo) {
             this.foo = foo;
-            System.out.println(foo);
             key = foo;
         }
 

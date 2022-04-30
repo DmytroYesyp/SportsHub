@@ -1,6 +1,7 @@
-package com.sportshub.controllers;
-import com.sportshub.security.entities.Roles;
-import com.sportshub.security.entities.Users;
+package com.sportshub.controller.user;
+import com.sportshub.service.user.UsersService;
+import com.sportshub.entity.role.Roles;
+import com.sportshub.entity.user.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
-package com.sportshub.controllers;
+package com.sportshub.service.user;
 
-import com.sportshub.security.entities.Roles;
-import com.sportshub.security.entities.Users;
-import com.sportshub.security.entities.repositories.RoleRepository;
-import com.sportshub.security.entities.repositories.UserRepository;
+import com.sportshub.entity.role.Roles;
+import com.sportshub.entity.user.Users;
+import com.sportshub.repository.role.RoleRepository;
+import com.sportshub.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

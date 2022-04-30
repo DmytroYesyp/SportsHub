@@ -1,9 +1,8 @@
-package com.sportshub.security.entities;
+package com.sportshub.entity.user;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sportshub.entity.role.Roles;
 
 import javax.persistence.*;
 import java.util.HashSet;
