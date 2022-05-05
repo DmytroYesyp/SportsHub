@@ -86,13 +86,12 @@
   }
 }
 .RowCOl1{
-  width: 13vw;
+  width: 16vw;
   float: left;
 }
 .RowCOl2{
   width: 16vw;
   margin-left: 19.5vw;
-  height: 5vw;
   position: absolute;
 }
 .RowCOl3{
@@ -184,6 +183,20 @@
 }
 ::ng-deep .mat-select-panel:not([class*=mat-elevation-z]) {
   box-shadow: none;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+  color: black;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start, .mat-form-field-appearance-outline .mat-form-field-outline-end{
+  border-radius: 1px 0 0 1px !important;
+
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end{
+  border-radius: 0 1px 1px 0 !important;
 }
 
 
