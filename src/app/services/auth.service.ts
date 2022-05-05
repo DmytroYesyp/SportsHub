@@ -17,6 +17,22 @@ export class AuthService{
     return this.http.post('http://localhost:8080/api/users/registerUser', user)
   }
 
+  forgot_password(param){
+    return this.http.post('http://localhost:8080/forgot_password', null, {params:param})
+  }
+
+  reset_password(params){
+    return this.http.post('http://localhost:8080/reset_password', null, {params:params})
+  }
+
+  parse() {
+    const query = window.location.search.substring(1);
+    const vars = query.split('&');
+    let token = vars[0].split('=')
+    return token[1];
+  }
+
+
 
 
   login(params): Observable<{token:string}> {
@@ -29,7 +45,8 @@ export class AuthService{
       .pipe(
         tap(
           ({token}) =>{
-            localStorage.setItem('auth-token', token)
+            console.log(token)
+            localStorage.setItem('auth-token', "Bearer " + token)
             this.setToken(token)
           }
         )

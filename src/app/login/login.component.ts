@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.form = new FormGroup({
         email: new FormControl('', [Validators.email, Validators.required]),
-        password: new FormControl('', [Validators.required])
+        password: new FormControl('', [Validators.required, Validators.minLength(8)])
       }
     );
 
@@ -54,12 +54,15 @@ export class LoginComponent implements OnInit, OnDestroy{
     // body.set('email', this.form.value.email);
     // body.set('password', this.form.value.password);
 
+
+
     let params = new HttpParams({fromObject:{email:this.form.value.email, password:this.form.value.password}})
 
     //let body = `email=${this.form.value.email}&password=${this.form.value.password}`;
 
 
     // alert(params)
+    this.form.disable()
 
       this.aSub = this.auth.login(params).subscribe(
         () => {

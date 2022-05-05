@@ -17,6 +17,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import {MainKindsComponent} from "./services/main_kinds.component";
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import {MainKindsComponent} from "./services/main_kinds.component";
     ProfileComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    MainKindsComponent
+    MainKindsComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +44,11 @@ import {MainKindsComponent} from "./services/main_kinds.component";
     ReactiveFormsModule
   ],
   providers: [
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true,
-      useClass: TokenInterceptor
     }
   ],
   bootstrap: [AppComponent]

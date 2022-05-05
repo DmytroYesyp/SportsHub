@@ -20,11 +20,11 @@ export class MainKindsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/sport-kinds')
-      .subscribe(Response => {
-        console.log(Response)
-        this.li=Response;
-        this.lis=this.li;
-
-      });
+    // this.http.get('http://localhost:8080/sport-kinds')
+    //   .subscribe(Response => {
+    //     console.log(Response)
+    //     this.li=Response;
+    //     this.lis=this.li;
+    //
+    //   });
   }}
