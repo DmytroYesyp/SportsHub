@@ -77,7 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean(),key);
 
-        http.cors().and().authorizeRequests().antMatchers(POST, "/login").permitAll();
+        http.cors().and().authorizeRequests().antMatchers(POST, "/login", "/forgot_password","/reset_password").permitAll();
 
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

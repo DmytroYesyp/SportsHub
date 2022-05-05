@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -136,5 +137,27 @@ public class UsersService implements UserDetailsService {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("Default_Role"));
         return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), authorities);
+    }
+
+    public void updateResetPasswordToken(String token, String email) {
+        Optional<Users> user = userRepository.findUserByEmail(email);
+        Users new_user = user.get();
+        new_user.setResetPasswordToken(token);
+        userRepository.save(new_user);
+    }
+
+    public Users getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(Users user, String newPassword) {
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//
+//        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(passwordEncoder.encode(newPassword));
+//        user.setPassword(encodedPassword);
+
+        user.setResetPasswordToken(null);
+        userRepository.save(user);
     }
 }

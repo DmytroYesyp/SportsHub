@@ -36,15 +36,10 @@ CREATE TABLE news_kind_of_sport
 CREATE TABLE users
 (
     id            BIGSERIAL PRIMARY KEY,
-    email         VARCHAR(30) UNIQUE NOT NULL,
-    password_hash VARCHAR(128)       NOT NULL,
+    email         VARCHAR(60) UNIQUE NOT NULL,
     first_name    VARCHAR(128)       NOT NULL,
-    middle_name   VARCHAR(128)       ,
     last_name     VARCHAR(128)       NOT NULL,
-    phone         VARCHAR(16)        ,
-    state         VARCHAR(64),
-    info          TEXT,
-    created_at    TIMESTAMP(3)       NOT NULL DEFAULT CURRENT_TIMESTAMP(3)
+    password      VARCHAR(128)       NOT NULL
 );
 
 CREATE TABLE users_kind_of_sport

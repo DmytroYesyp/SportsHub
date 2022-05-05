@@ -118,28 +118,10 @@ VALUES (1, 1),
        (19, 19),
        (20, 20);
 
-INSERT INTO users (id, email, password_hash, first_name, last_name, created_at)
-VALUES (1, 'test1@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-30T09:54:08.916Z'),
-       (2, 'test2@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Palvo', 'Zanevych', '2022-04-12T09:54:08.916Z'),
-       (3, 'test3@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Denis', 'Zanevych', '2022-04-13T09:54:08.916Z'),
-       (4, 'test4@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-14T09:54:08.916Z'),
-       (5, 'test5@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-15T09:54:08.916Z'),
-       (6, 'test6@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-16T09:54:08.916Z'),
-       (7, 'test7@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-17T09:54:08.916Z'),
-       (8, 'test8@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-09T09:54:08.916Z'),
-       (9, 'test9@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-03T09:54:08.916Z'),
-       (10, 'test10@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Julia', 'Zanevych', '2022-04-03T09:54:08.916Z'),
-       (11, 'test11@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-03-30T09:54:08.916Z'),
-       (12, 'test12@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-23T09:54:08.916Z'),
-       (13, 'test13@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-24T09:54:08.916Z'),
-       (14, 'test14@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-25T09:54:08.916Z'),
-       (15, 'test15@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-12T09:54:08.916Z'),
-       (16, 'test16@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-14T09:54:08.916Z'),
-       (17, 'test17@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-15T09:54:08.916Z'),
-       (18, 'test18@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-16T09:54:08.916Z'),
-       (19, 'test19@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-11T09:54:08.916Z'),
-       (20, 'test20@gmail.com', '$2a$10$npdYm7ZfI1smVgMGqO9U3OLHTRPsclF0QkDRYCBF3ueOarfSFcST6', 'Ivan', 'Zanevych', '2022-04-30T09:54:08.916Z');
-SELECT setval('users_id_seq', 20);
+INSERT INTO users (id, email, first_name, last_name, password)
+VALUES (1, 'test1@mail.com', 'simple', 'user', '$2a$10$i5a2We9cZIP6D6EXRkCihuRjtkTvtLvghNY0wkAfvLM6lk/.WMyb2'),
+       (2, 'admin@mail.com', 'admin', 'admin', '$2a$10$i5a2We9cZIP6D6EXRkCihuRjtkTvtLvghNY0wkAfvLM6lk/.WMyb2');
+
 
 INSERT INTO team (id, name, coach, state)
 VALUES (1, 'Liverpool', 'Jürgen Klopp', 'UK'),
@@ -230,9 +212,11 @@ VALUES (1,
 SELECT setval('comments_id_seq', 20);
 
 INSERT INTO roles(id, name)
-VALUES (1, 'admin'),
-       (2, 'user');
+VALUES (1, 'user'),
+       (2, 'admin');
+
 SELECT setval('roles_id_seq', 2);
+
 
 INSERT INTO permissions(id, name)
 VALUES (1, 'GET_USERS_LIST'),
@@ -347,6 +331,9 @@ VALUES (1, 1),
        (2, 41),
        (2, 42);
 
+
 INSERT INTO user_roles (user_id, role_id)
 VALUES (1, 1),
        (2, 2);
+
+ALTER SEQUENCE SEQ_USER RESTART WITH 3;

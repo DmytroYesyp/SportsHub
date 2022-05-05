@@ -12,8 +12,13 @@ import java.util.Set;
 @Table(name="\"users\"")
 public class Users {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,
+            generator="user_seq")
+    @SequenceGenerator(name="user_seq",
+            sequenceName="SEQ_USER", allocationSize=1)
     private long id;
+
+
 
     private String firstName;
     private String lastName;
@@ -22,6 +27,9 @@ public class Users {
     //private String logo_url;
 
     private String email;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
     @ManyToMany()
     @JoinTable(
@@ -80,6 +88,9 @@ public class Users {
         this.email = email;
     }
 
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
     @Override
     public String toString() {
