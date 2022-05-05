@@ -15,10 +15,12 @@ import { LoginComponent } from './login/login.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MainKindsComponent} from "./services/main_kinds.component";
+import {NewsCardComponent} from "./services/news_card.component";
 
 @NgModule({
   declarations: [
     MainKindsComponent,
+    NewsCardComponent,
     AppComponent,
     RegistrationComponent,
     MainPageComponent,
