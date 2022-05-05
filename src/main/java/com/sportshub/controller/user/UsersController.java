@@ -1,7 +1,7 @@
 package com.sportshub.controller.user;
 import com.sportshub.service.user.UsersService;
 import com.sportshub.entity.role.Roles;
-import com.sportshub.entity.user.Users;
+import com.sportshub.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +20,15 @@ public class UsersController {
     }
 
     @GetMapping(path = "getAllUsers")
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return userService.GetUsers();
+    }
+
+
+
+    @GetMapping(path = "getUserByEmail{email}")
+    public User getByEmail(@RequestParam String email) {
+        return userService.getByEmail(email);
     }
 
 
@@ -32,7 +39,7 @@ public class UsersController {
 
 
     @GetMapping(path = "users{userId}")
-    public ResponseEntity<Users> getUser(@RequestParam long userId) {
+    public ResponseEntity<User> getUser(@RequestParam long userId) {
         return userService.getUserById(userId);
     }
 
@@ -48,16 +55,15 @@ public class UsersController {
         return userService.setRole(userId,roleId);
     }
 
-//    @CrossOrigin("*")
     @PostMapping(path = {"registerUser"})
-    public ResponseEntity<String> regNewUser(@RequestBody Users user) {
+    public ResponseEntity<String> regNewUser(@RequestBody User user) {
 
         return userService.addNewUser(user);
     }
 
     @PutMapping(path = "users{userId}")
     public ResponseEntity updateUser(
-            @RequestBody Users user,
+            @RequestBody User user,
             @PathVariable("userId") long userId) {
         return userService.updateUser(userId, user);
     }
