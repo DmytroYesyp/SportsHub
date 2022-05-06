@@ -83,12 +83,12 @@ public class ResetPasswordController {
 
     @CrossOrigin("*")
     @PostMapping("/reset_password")
-    public  ResponseEntity<String> processResetPassword(@RequestParam String token, String newPassword, String confirmPassword) {
+    public  ResponseEntity<String> processResetPassword(@RequestParam String reset_token, String newPassword, String confirmPassword) {
 //        String token = resetPasswordRequest.getToken();
 //        String newPassword = resetPasswordRequest.getNewPassword();
 //        String confirmPassword = resetPasswordRequest.getConfirmPassword();
         if (confirmPassword.equals(newPassword)) {
-            Users user = userService.getByResetPasswordToken(token);
+            Users user = userService.getByResetPasswordToken(reset_token);
             if (user != null) {
                 userService.updatePassword(user, newPassword);
 //                System.out.println(user.getPassword());
