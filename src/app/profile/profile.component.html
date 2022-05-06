@@ -1,1 +1,136 @@
-<p>profile works only for authorized!</p>
+<!DOCTYPE html>
+<html>
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src=
+            "https://code.jquery.com/jquery-1.12.4.min.js">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+
+  <div class="share-container"></div>
+
+</div>
+<div class="profile-container">
+  <div class="profile_img"></div>
+  <mat-expansion-panel class="profile">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{firstName}} {{lastName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a href="" class="txt1"> Change password</a><br>
+    <a href="" class="txt1"> My surveys</a><br>
+    <a href="" class="txt1"> My teamhub</a><br><br>
+    <a href="/register" class="txt1">Log out</a>
+  </mat-expansion-panel>
+</div>
+
+<mat-expansion-panel class="language">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      EN
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <a href="" class="txt1"> UA </a><br>
+</mat-expansion-panel>
+
+<div class="main">
+  <div class="sidebar">
+    <div class="sidebar_text">
+      <a class="txt1" href=""><b>HOME</b></a><br>
+      <a class="txt1" href=""><b>TEAM HUB</b></a><br>
+      <a class="txt1" href=""><b>LIFESTYLE</b></a><br>
+      <a class="txt1" href=""><b>DEALBOOK</b></a>
+      <main_kinds></main_kinds>
+
+    </div>
+
+    <div class="sidebar_icon">
+      <span class="txt1">Follow</span>
+      <div class="sidebar_follow">
+        <a href="https://twitter.com" class="fa fa-twitter"></a>
+        <a href="https://google.com" class="fa fa-google"></a><br>
+        <a href="https://youtube.com" class="fa fa-youtube"></a>
+        <a href="https://facebook.com" class="fa fa-facebook"></a>
+      </div>
+    </div>
+
+  </div>
+  <div id="middleForm">
+    <div id="TopContainerInMiddle">
+      <div class="switch-field">
+        <input [value]="1"
+               [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-one" name="switch-one"
+               value="first" checked/>
+        <label id="radio-one_" for="radio-one"><p style="padding-top: 0.6vw">Personal</p></label>
+        <input [value]="0"
+               [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-two" name="switch-one"
+               value="second"/>
+        <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
+      </div>
+
+
+      <div class="showDiv" *ngIf="isVisible == 1">
+
+        <div style="margin-left: auto; border-radius: 50%;margin-right: auto;width: 7vw;height: 7vw; background-color: gray">
+          <div style="background-color: #d72130; border-radius: 50%;height: 2.2vw; width: 2.2vw;float: right;margin-top: 4.5vw"><i style="color:white;font-size: 1vw; padding: 0.6vw" class="fa fa-camera" aria-hidden="true"></i></div>
+
+        </div>
+
+
+
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">NAME</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">EMAIL</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <button style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">UPDATE PROFILE</button>
+
+      </div>
+
+
+
+      <div class="showDiv2" *ngIf="isVisible == 0">
+
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">OLD PASSWORD</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">NEW PASSWORD</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <button style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">CHANGE PASSWORD</button>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+
