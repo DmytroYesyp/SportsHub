@@ -39,6 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
     // let body = new URLSearchParams();
     // body.set('email', this.form.value.email);
     // body.set('password', this.form.value.password);
+    this.success = true;
 
 
 
@@ -53,7 +54,6 @@ export class ForgotPasswordComponent implements OnInit {
     this.aSub = this.auth.forgot_password(param).subscribe(
       () => {
         console.log('Email send')
-        this.success = true;
       },
       error => {
         console.warn(error)

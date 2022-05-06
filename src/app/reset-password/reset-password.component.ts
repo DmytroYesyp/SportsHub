@@ -41,9 +41,9 @@ export class ResetPasswordComponent implements OnInit {
     // body.set('password', this.form.value.password);
 
 
-    let token = this.auth.parse();
+    let reset_token = this.auth.parse();
 
-    let params = new HttpParams({fromObject:{token:token, newPassword:this.form.value.newPassword, confirmPassword:this.form.value.confirmPassword}})
+    let params = new HttpParams({fromObject:{reset_token:reset_token, newPassword:this.form.value.newPassword, confirmPassword:this.form.value.confirmPassword}})
 
     // console.log(params)
     //let body = `email=${this.form.value.email}&password=${this.form.value.password}`;
@@ -54,11 +54,11 @@ export class ResetPasswordComponent implements OnInit {
 
     this.auth.reset_password(params).subscribe(
       () => {
-        console.log('I am here')
+        console.log('OK')
         this.router.navigate(['/login'])
       },
       error => {
-        console.log("Syka")
+        console.log("Error")
         console.warn(error)
       }
     )

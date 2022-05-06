@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Login</title>
 </head>
 
 
@@ -40,23 +43,27 @@
 
     </mat-form-field>
 <!--    {{formGroup.value | json}}-->
+
+
+
     <h4>Password</h4>
     <mat-form-field appearance="outline">
       <mat-label>Enter your password</mat-label>
-      <!--      <input matInput [type]="hide ? 'password' : 'text'">-->
-      <!--      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
-      <!--        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-      <!--      </button>-->
-      <input matInput placeholder="" formControlName="password">
-<!--      <span *ngIf="form.get('password').errors['required']">Email can't be empty</span>-->
-      <mat-error *ngIf="form.hasError('required','password')">Not valid</mat-error>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="some pass" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>
     </mat-form-field>
+
+    <a href="/forgot_password" class="forgot_txt">Forgot password?</a>
+
 
     <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Log in</button>
 
   </form>
 
-  <a href="/forgot_password">Forgot password?</a>
+
 
 
 

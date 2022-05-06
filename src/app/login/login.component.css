@@ -143,3 +143,17 @@
   background: #D72130;
   width: 100%;
 }
+
+.forgot_txt{
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+
+  text-align: right;
+
+  color: #4A90E2;
+}
