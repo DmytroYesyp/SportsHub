@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-main-page',
@@ -16,7 +17,7 @@ export class MainPageComponent implements OnInit {
 
   user: Object;
 
-  constructor(private mainpage: mainPage) {
+  constructor(private mainpage: mainPage, private auth: AuthService) {
   }
   getUserFromToken(){
 
@@ -59,5 +60,9 @@ export class MainPageComponent implements OnInit {
 
     // this.firstName = user.firstName;
     // this.lastName = user.lastName;
+  }
+
+  logOut(){
+    this.auth.logout()
   }
 }
