@@ -1,0 +1,13 @@
+<div class="profile-container">
+  <div class="profile_img"></div>
+  <mat-expansion-panel class="profile">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{firstName}} {{lastName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let item of createRange(arr.length)">
+      <a class="txt1" href="{{arr2[item]}}"> {{arr[item]}} </a>
+    </div>
+  </mat-expansion-panel>
+</div>
