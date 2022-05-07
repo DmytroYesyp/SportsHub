@@ -1,24 +1,37 @@
-import {Component, OnInit} from '@angular/core';
-import {mainPage} from "../services/main-page.service";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {mainPage} from "../../services/main-page.service";
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-header-user-profile',
+  templateUrl: './header-user-profile.component.html',
+  styleUrls: ['./header-user-profile.component.css']
 })
-export class MainPageComponent implements OnInit {
 
-
+export class HeaderUserProfileComponent implements OnInit {
   email: string;
+
+  @Input() arr :string[] = ["Viev Profile","Change password","My surveys","My teamhub","Log out"]
+  @Input() arr2 :string[]  = ["/profile","","","","/register"]
 
   firstName: any;
   lastName: any;
-
   user: Object;
+
+
+  createRange(number) {
+    var items: number[] = [];
+    for (var i = 0; i <= number; i++) {
+      items.push(i);
+    }
+    return items;
+    return new Array(number);
+  }
 
   constructor(private mainpage: mainPage) {
   }
-  getUserFromToken(){
+
+
+  getUserFromToken() {
 
     const token = localStorage.getItem('auth-token');
     if (!token)
@@ -42,22 +55,11 @@ export class MainPageComponent implements OnInit {
       }
 
     });
-    //console.log(this.firstName , this.lastName);
     return tmp;
   }
-
-
-  search: String = "";
-  foods: any;
-
-
   ngOnInit(): void {
-
 
     this.mainpage.getUserByEmail(this.getUserFromToken())
 
-
-    // this.firstName = user.firstName;
-    // this.lastName = user.lastName;
   }
 }

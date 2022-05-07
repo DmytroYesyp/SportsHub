@@ -20,6 +20,8 @@ import {MainKindsComponent} from "./services/main_kinds.component";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {AuthService} from "./services/auth.service";
+import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
+import {AdminPageComponent} from "./admin-page/admin-page.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import {AuthService} from "./services/auth.service";
     SiteLayoutComponent,
     MainKindsComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ProfileComponent,
+    HeaderUserProfileComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

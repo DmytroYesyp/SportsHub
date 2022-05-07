@@ -8,6 +8,7 @@ import {ProfileComponent} from "../profile/profile.component";
 import {AuthLayoutComponent} from "../layouts/auth-layout/auth-layout.component";
 import {SiteLayoutComponent} from "../layouts/site-layout/site-layout.component";
 import {AuthGuard} from "../classes/auth.guard";
+import {AdminPageComponent} from "../admin-page/admin-page.component";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
       {path: 'profile', component: ProfileComponent},
-      {path: 'main', component: MainPageComponent}
+      {path: 'main', component: MainPageComponent},
+      {path: 'admin_page', component: AdminPageComponent}
     ]
   }
 ];

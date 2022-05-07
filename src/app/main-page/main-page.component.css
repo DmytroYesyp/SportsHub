@@ -46,7 +46,7 @@ input[type=text] {
   text-align: center;
   height: 200px;
   position: absolute;
-  margin-left:1120px;
+  margin-left:78vw;
   z-index: 2;
 }
 
@@ -64,16 +64,26 @@ input[type=text] {
   border-radius: 50%;
 }
 
-
-
 .language{
   margin-top: -65px;
   margin-right: -350px;
   width: 80px;
   float: right;
   position: absolute;
-  margin-left:1400px;
+  margin-left:90vw;
   z-index: 2;
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1745px){
+  .profile-container {
+    margin-top: -80px;
+    float: right;
+    text-align: center;
+    height: 200px;
+    position: absolute;
+    margin-left:73vw;
+    z-index: 2;
+  }
 }
 
 .back_txt{
@@ -289,3 +299,5 @@ a:hover{
 .card p,h4{
   margin: 10px;
 }
+
+

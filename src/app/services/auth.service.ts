@@ -10,6 +10,7 @@ import {tap} from 'rxjs/operators'
 export class AuthService{
 
   private token: string
+  user : Object
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +33,47 @@ export class AuthService{
     return token[1];
   }
 
+
+
+  getUserByEmail(email: string){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("email",email);
+
+    let token = this.getToken();
+    return this.http.get('http://localhost:8080/api/users/getUserByEmail', {params: queryParams})
+  }
+
+  updateUser(body:User){
+
+      const token = localStorage.getItem('auth-token');
+      if (!token)
+        return console.log("error");
+
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      const tmp = JSON.parse(jsonPayload);
+
+
+      let id ;
+
+      this.getUserByEmail(tmp.sub).subscribe(data => {
+        this.user = data
+
+        for (let [key, value] of Object.entries(this.user)) {
+          if (key == "id")
+            id = value;
+        }
+
+
+        var PathUrl = 'http://localhost:8080/api/users/users?userId=' + id
+
+
+        return this.http.put(PathUrl, body).subscribe()
+      });
+  }
 
 
 

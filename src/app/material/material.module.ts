@@ -7,8 +7,6 @@ import {MatCommonModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 
-
-
 const MaterialComponents = [
   MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule
 ];
