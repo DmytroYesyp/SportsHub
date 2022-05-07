@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-profile',
@@ -9,47 +11,32 @@ import {mainPage} from "../services/main-page.service";
 export class ProfileComponent implements OnInit {
   isVisible: any = 1;
   isSelected: boolean = true;
+  form: FormGroup
+
+  arr :string[] = ["My surveys","My teamhub","Log out"]
+  arr2 :string[]  = ["","","/register"]
 
   email: string;
 
-  firstName: any;
-  lastName: any;
-
   user: Object;
-
-  constructor(private mainpage: mainPage) {
+  constructor(private auth:AuthService) {
   }
 
-  getUserFromToken() {
+  onSubmit(){
 
-    const token = localStorage.getItem('auth-token');
-    if (!token)
-      return console.log("error");
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    const tmp = JSON.parse(jsonPayload);
+    this.auth.updateUser(this.form.value)
 
+    setTimeout(function (){window.location.reload()},500)
 
-    this.mainpage.getUserByEmail(tmp.sub).subscribe(data => {
-      this.user = data
-
-      for (let [key, value] of Object.entries(this.user)) {
-        if (key == "firstName")
-          this.firstName = value;
-        if (key == "lastName")
-          this.lastName = value
-      }
-
-    });
-    return tmp;
   }
+
 
   ngOnInit(): void {
 
-    this.mainpage.getUserByEmail(this.getUserFromToken())
+    this.form = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required])
+    })
 
   }
 

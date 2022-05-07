@@ -18,6 +18,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import {MainKindsComponent} from "./services/main_kinds.component";
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     AuthLayoutComponent,
     SiteLayoutComponent,
     MainKindsComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    HeaderUserProfileComponent
   ],
   imports: [
     BrowserModule,
