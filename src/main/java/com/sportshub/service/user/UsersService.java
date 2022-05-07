@@ -1,7 +1,7 @@
 package com.sportshub.service.user;
 
 import com.sportshub.entity.role.Roles;
-import com.sportshub.entity.user.Users;
+import com.sportshub.entity.user.User;
 import com.sportshub.repository.role.RoleRepository;
 import com.sportshub.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -34,7 +33,7 @@ public class UsersService implements UserDetailsService {
     }
 
 
-    public ResponseEntity<String> addNewUser(Users user) {
+    public ResponseEntity<String> addNewUser(User user) {
         boolean userOptional = userRepository.findUserByEmail(user.getEmail()).isPresent();
         if (userOptional) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -47,7 +46,7 @@ public class UsersService implements UserDetailsService {
 
     public ResponseEntity<String> setRole(Long userId,Long roleId){
 
-        Users user = userRepository.getById(userId);
+        User user = userRepository.getById(userId);
         Roles role = roleRepository.getById(roleId);
 
 
@@ -66,7 +65,7 @@ public class UsersService implements UserDetailsService {
         return ResponseEntity.ok("User id "+userId.toString() +" Role id "+ roleId.toString());
     }
 
-    public List<Users> GetUsers() {
+    public List<User> GetUsers() {
         return userRepository.findAll();
     }
 
@@ -81,7 +80,7 @@ public class UsersService implements UserDetailsService {
     }
 
 
-    public ResponseEntity<Users> getUserById(long userId) {
+    public ResponseEntity<User> getUserById(long userId) {
         boolean exists = userRepository.existsById(userId);
         if (!exists) {
             return ResponseEntity.notFound().build();
@@ -95,15 +94,22 @@ public class UsersService implements UserDetailsService {
         return ResponseEntity.ok(userId);
     }
 
-    public ResponseEntity updateUser(long userId, Users upd_user) {
 
-        boolean trigger;
+    public ResponseEntity<User> findUserByEmail(String email){
+
+        User user  = userRepository.findUserByEmail(email).orElseThrow();
+
+        return ResponseEntity.ok(user);
+    }
+
+    public ResponseEntity updateUser(long userId, User upd_user) {
+
 
 
         if (userRepository.findById(userId).isEmpty())
             return ResponseEntity.notFound().build();
 
-        Users user = userRepository.getById(userId);
+        User user = userRepository.getById(userId);
 
         if (upd_user.getEmail() != null && upd_user.getEmail().length() > 0 && !Objects.equals(user.getEmail(), upd_user.getEmail())) {
             user.setEmail(upd_user.getEmail());
@@ -130,7 +136,7 @@ public class UsersService implements UserDetailsService {
     }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Users> user = userRepository.findUserByEmail(email);
+        Optional<User> user = userRepository.findUserByEmail(email);
         if (user.isEmpty()) {
             throw new UsernameNotFoundException("User not found");
         }
@@ -140,17 +146,17 @@ public class UsersService implements UserDetailsService {
     }
 
     public void updateResetPasswordToken(String token, String email) {
-        Optional<Users> user = userRepository.findUserByEmail(email);
-        Users new_user = user.get();
+        Optional<User> user = userRepository.findUserByEmail(email);
+        User new_user = user.get();
         new_user.setResetPasswordToken(token);
         userRepository.save(new_user);
     }
 
-    public Users getByResetPasswordToken(String token) {
+    public User getByResetPasswordToken(String token) {
         return userRepository.findByResetPasswordToken(token);
     }
 
-    public void updatePassword(Users user, String newPassword) {
+    public void updatePassword(User user, String newPassword) {
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //
 //        String encodedPassword = passwordEncoder.encode(newPassword);

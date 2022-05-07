@@ -1,26 +1,19 @@
 package com.sportshub.controller.reset.password;
 
 
-import com.sportshub.entity.user.Users;
-//import com.sportshub.request.resetPasswordRequest.ResetPasswordRequest;
-//import com.sportshub.request.emailRequest.EmailRequest;
+import com.sportshub.entity.user.User;
 import com.sportshub.service.user.UsersService;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
 
@@ -32,7 +25,6 @@ public class ResetPasswordController {
     @Autowired
     private UsersService userService;
 
-    @CrossOrigin("*")
     @PostMapping("/forgot_password")
     public ResponseEntity<?> processForgotPassword(@RequestParam String email) {
         String token = RandomString.make(30);
@@ -81,14 +73,13 @@ public class ResetPasswordController {
 //        return new ResponseEntity<>("Everything is ok", HttpStatus.OK);
 //    }
 
-    @CrossOrigin("*")
     @PostMapping("/reset_password")
     public  ResponseEntity<String> processResetPassword(@RequestParam String reset_token, String newPassword, String confirmPassword) {
 //        String token = resetPasswordRequest.getToken();
 //        String newPassword = resetPasswordRequest.getNewPassword();
 //        String confirmPassword = resetPasswordRequest.getConfirmPassword();
         if (confirmPassword.equals(newPassword)) {
-            Users user = userService.getByResetPasswordToken(reset_token);
+            User user = userService.getByResetPasswordToken(reset_token);
             if (user != null) {
                 userService.updatePassword(user, newPassword);
 //                System.out.println(user.getPassword());

@@ -1,6 +1,6 @@
 package com.sportshub.entity.role;
 
-import com.sportshub.entity.user.Users;
+import com.sportshub.entity.user.User;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,12 +18,12 @@ public class Roles {
 
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private Set<Users> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     public Roles() {
     }
 
-    public Roles(String name, Set<Users> user) {
+    public Roles(String name, Set<User> user) {
         this.name = name;
         this.users = user;
     }
@@ -40,11 +40,11 @@ public class Roles {
         this.name = name;
     }
 
-    public Set<Users> getUser() {
+    public Set<User> getUser() {
         return users;
     }
 
-    public void setUser(Set<Users> user) {
+    public void setUser(Set<User> user) {
         this.users = user;
     }
 }
