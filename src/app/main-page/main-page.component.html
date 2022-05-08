@@ -34,21 +34,21 @@
 
 
 
-<!--<div class="profile-container">-->
-<!--  <div class="profile_img"></div>-->
-<!--  <mat-expansion-panel  class = "profile">-->
-<!--    <mat-expansion-panel-header>-->
-<!--      <mat-panel-title>-->
-<!--        {{firstName}} {{lastName}}-->
-<!--      </mat-panel-title>-->
-<!--    </mat-expansion-panel-header>-->
-<!--    <a href="/profile" class="txt1"> View profile</a><br>-->
-<!--    <a href="" class="txt1"> Change password</a><br>-->
-<!--    <a href="" class="txt1"> My surveys</a><br>-->
-<!--    <a href="" class="txt1"> My teamhub</a><br><br>-->
-<!--    <a href="/login" class="txt1" (click)="logOut()">Log out</a>-->
-<!--  </mat-expansion-panel>-->
-<!--</div>-->
+<div class="profile-container">
+  <div class="profile_img"></div>
+  <mat-expansion-panel  class = "profile">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{firstName}} {{lastName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a href="/profile" class="txt1"> View profile</a><br>
+    <a href="" class="txt1"> Change password</a><br>
+    <a href="" class="txt1"> My surveys</a><br>
+    <a href="" class="txt1"> My teamhub</a><br><br>
+    <a href="/login" class="txt1" (click)="logOut()">Log out</a>
+  </mat-expansion-panel>
+</div>
 
 <app-header-user-profile></app-header-user-profile>
 
@@ -61,17 +61,13 @@
   <a href="" class="txt1"> UA </a><br>
 </mat-expansion-panel>
 
+
 <div class="main">
   <div class="back_txt2">ALL</div>
   <div class="back_txt">NEWS</div>
   <div class="sidebar">
     <div class="sidebar_text">
-      <a class="txt1" href=""><b>HOME</b></a><br>
-      <a class="txt1" href=""><b>TEAM HUB</b></a><br>
-      <a class="txt1" href=""><b>LIFESTYLE</b></a><br>
-      <a class="txt1" href=""><b>DEALBOOK</b></a>
-      <main_kinds></main_kinds>
-
+      <a class="txt1" href=""><b><main_kinds></main_kinds></b></a><br>
     </div>
 
     <div class="sidebar_icon">
@@ -83,9 +79,7 @@
         <a href="https://facebook.com" class="fa fa-facebook"></a>
       </div>
     </div>
-
   </div>
-
 
 
   <div class="block_right">
@@ -102,28 +96,9 @@
       </div>
     </div>
     <div class="block_2">
-      <div class="cards">
-        <a href="" class="card">
-          <img class="card_photo" src="assets/img/card1.png" alt="photo news">
-          <h4>Raider release</h4>
-          <p class="txt1">after a five-year stint with the Oaktland Raiders</p>
-        </a>
-        <a href="" class="card">
-          <img class="card_photo" src="assets/img/card2.png" alt="photo news">
-          <h4>London Games</h4>
-          <p class="txt1">NFL London Games return in 2019</p>
-        </a>
-        <a href="" class="card">
-          <img class="card_photo" src="assets/img/card3.png" alt="photo news">
-          <h4>2019</h4>
-          <p class="txt1">2019 NFL free agency</p>
-        </a>
-        <a href="" class="card">
-          <img class="card_photo" src="assets/img/card4.png" alt="photo news">
-          <h4>lorem ipsum</h4>
-          <p class="txt1">Lorem ipsum dolor sit amet, consectetur.</p>
-        </a>
-      </div>
+
+      <news_card class="cards"></news_card>
+
     </div>
   </div>
 </div>

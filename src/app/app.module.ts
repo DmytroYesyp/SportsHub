@@ -22,9 +22,12 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {AuthService} from "./services/auth.service";
 import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
+import {NewsCardComponent} from "./services/news_card.component";
 
 @NgModule({
   declarations: [
+    MainKindsComponent,
+    NewsCardComponent,
     AppComponent,
     RegistrationComponent,
     MainPageComponent,
@@ -39,6 +42,7 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
     HeaderUserProfileComponent,
     AdminPageComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
