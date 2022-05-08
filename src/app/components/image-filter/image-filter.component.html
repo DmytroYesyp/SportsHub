@@ -1,0 +1,50 @@
+<div class="app">
+  <div class="box image">
+    <img
+      src="assets/img/marin33.jpg"
+      alt=""
+      id="image"
+    >
+
+    <div class="input">
+      <input
+        id="img-url"
+        type="text"
+        placeholder="Image URL"
+        value=""
+      >
+    </div>
+  </div>
+  <div class="box settings">
+    <div class="sliders">
+      <div class="slider">
+        <label for="grayscale">Black and White</label>
+        <input type="range" min="0" max="100" value="0" id="grayscale">
+      </div>
+
+      <div class="slider">
+        <label for="contrast">Contrast</label>
+        <input type="range" min="50" max="200" value="100" id="contrast">
+      </div>
+
+      <div class="slider">
+        <label for="brightness">Brightness</label>
+        <input type="range" min="50" max="200" value="100" id="brightness">
+      </div>
+
+      <div class="slider">
+        <label for="sepia">Sepia</label>
+        <input type="range" min="0" max="100" value="0" id="sepia">
+      </div>
+
+      <div class="slider">
+        <label for="saturate">Saturation</label>
+        <input type="range" min="0" max="200" value="100" id="saturate">
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn" id="reset" disabled>Reset</button>
+    </div>
+
+  </div>
+</div>

@@ -11,6 +11,7 @@ import {AuthGuard} from "../classes/auth.guard";
 import {AdminPageComponent} from "../admin-page/admin-page.component";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
+import {ArticleEditorComponent} from "../article-editor/article-editor.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
       {path: 'profile', component: ProfileComponent},
       {path: 'main', component: MainPageComponent},
-      {path: 'admin_page', component: AdminPageComponent}
+      {path: 'admin_page', component: AdminPageComponent},
+      {path: 'article_editor', component: ArticleEditorComponent}
     ]
   }
 ];
