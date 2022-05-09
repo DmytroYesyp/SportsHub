@@ -25,7 +25,6 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
 import { ImageEditorComponent } from './components/image-editor/image-editor.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { ImageFilterComponent } from './components/image-filter/image-filter.component';
-import { DragDropComponent } from './components/drag-drop/drag-drop.component';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 import {AngularFireModule} from "@angular/fire/compat";
@@ -71,7 +70,6 @@ const config = {
     ImageEditorComponent,
     ArticleEditorComponent,
     ImageFilterComponent,
-    DragDropComponent,
     UploaderComponent,
     UploadTaskComponent,
     DropzoneDirective
