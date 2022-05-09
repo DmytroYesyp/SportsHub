@@ -20,6 +20,7 @@ export class UploaderComponent implements OnInit {
   onDrop(files: FileList) {
     for (let i = 0; i < files.length; i++) {
       this.files.push(<File>files.item(i))
+      console.log(files)
     }
   }
 
