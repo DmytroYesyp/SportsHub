@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {finalize, tap} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-image-filter',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageFilterComponent implements OnInit {
 
+
+  // @Input() url1: string;
+
+  @Input("src")
+  public url: string;
+
   constructor() { }
 
   ngOnInit(): void {
+
     const grayscale = document.querySelector('#grayscale')
     const contrast = document.querySelector('#contrast')
     const brightness = document.querySelector('#brightness')
@@ -50,6 +59,7 @@ export class ImageFilterComponent implements OnInit {
       img.style.filter = `\n    grayscale(${grayscale.value}%)\n    contrast(${contrast.value}%)\n    brightness(${brightness.value}%)\n    sepia(${sepia.value}%)\n    saturate(${saturate.value}%)\n  `
     }
 
+
     function resetFilterValue() {
       console.log('click')
       // @ts-ignore
@@ -74,12 +84,15 @@ export class ImageFilterComponent implements OnInit {
       reset.disabled = true
     }
 
-    function updateImageUrl() {
-      // @ts-ignore
-      const imageUrl = imgUrl.value
-      // @ts-ignore
-      img.setAttribute('src', imageUrl)
-    }
+
+    // function updateImageUrl() {
+    //   // @ts-ignore
+    //   const imageUrl = imgUrl.value
+    //   // @ts-ignore
+    //   img.setAttribute('src', imageUrl)
+    // }
   }
+
+
 
 }

@@ -18,16 +18,24 @@
 
   <div *ngIf="downloadURL as url">
     <h3>Results!</h3>
-    <img class="img" [src]="url"><br>
+    <input type="file" (change)="fileChangeEvent($event)" accept="image/*">
+    <div>
+      <image-cropper
+        style="width: 512px; height: 512px"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="false"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+      <img [src]="croppedImage" style="max-height: 256px; max-width: 256px">
+    </div>
+      <button (click)="startUpload2()">Save</button>
+
+
+      <app-image-filter [src]="url"></app-image-filter>
+
     <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
   </div>
   <hr>
-
-
-
-
-
-
   <button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>
   <button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
   <button (click)="task.resume()" class="button is-info"   [disabled]="!(snap?.state === 'paused')">Resume</button>

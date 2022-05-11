@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-article-editor',
@@ -6,13 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-editor.component.css']
 })
 export class ArticleEditorComponent implements OnInit {
+  button1: boolean = false;
+  button2: boolean = false;
 
-
+  @Input() url1: string;
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  OnSubmit(){
+    alert("Hyeta")
+    this.button1 = true
   }
 
 

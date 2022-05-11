@@ -37,18 +37,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-
-
-
-const config = {
-  apiKey: "AIzaSyAPBCRevQcuxSyHqiXMsFTgUU7bBjZbIPI",
-  authDomain: "sportshub-623db.firebaseapp.com",
-  projectId: "sportshub-623db",
-  storageBucket: "sportshub-623db.appspot.com",
-  messagingSenderId: "524872866401",
-  appId: "1:524872866401:web:d517a9efe5450869322820",
-  measurementId: "G-HK6SH6ZJ3J"
-};
+import {ImageCropperModule} from "ngx-image-cropper";
 
 
 
@@ -86,6 +75,7 @@ const config = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    ImageCropperModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),

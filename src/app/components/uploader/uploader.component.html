@@ -15,7 +15,8 @@
     <label class="file-label">
 
 
-      <input class="file-input" type="file" (change)="onDrop($any($event).target.files)">
+      <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="image/*">
+
 
 
 
@@ -37,3 +38,27 @@
 <div *ngFor="let file of files">
   <upload-task [file]="file"></upload-task>
 </div>
+
+
+
+<!--<form [formGroup]="formGroup" (ngSubmit)="addFile()">-->
+<!--  <input type="file" (change)="uploadFile($event)" accept="image/*">-->
+
+<!--  <div>-->
+<!--    <image-cropper-->
+<!--      style="width: 512px; height: 512px"-->
+<!--      [imageChangedEvent]="imageChangedEvent"-->
+<!--      format="png"-->
+<!--      [maintainAspectRatio]="false"-->
+<!--      (imageCropped)="imageCropped($event)"-->
+<!--    ></image-cropper>-->
+
+<!--    <img [src]="croppedImage">-->
+<!--  </div>-->
+
+<!--  <button type="submit">Save</button>-->
+
+<!--</form>-->
+
+
+

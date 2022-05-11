@@ -10,7 +10,6 @@ export class UploaderComponent implements OnInit {
   isHovering: boolean;
 
 
-
   files: File[] = [];
 
   toggleHover(event: boolean) {
@@ -24,7 +23,7 @@ export class UploaderComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
