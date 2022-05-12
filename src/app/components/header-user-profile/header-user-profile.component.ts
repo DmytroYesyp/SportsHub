@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {mainPage} from "../../services/main-page.service";
+import {AuthService} from "../../services/auth.service";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header-user-profile',
@@ -9,6 +12,7 @@ import {mainPage} from "../../services/main-page.service";
 
 export class HeaderUserProfileComponent implements OnInit {
   email: string;
+  profileUrl : string
 
   @Input() arr :string[] = ["Viev Profile","Change password","My surveys","My teamhub","Log out"]
   @Input() arr2 :string[]  = ["/profile","","","","/login"]
@@ -27,7 +31,7 @@ export class HeaderUserProfileComponent implements OnInit {
     return new Array(number);
   }
 
-  constructor(private mainpage: mainPage) {
+  constructor(private mainpage: mainPage,private http:HttpClient) {
   }
 
 
@@ -57,8 +61,14 @@ export class HeaderUserProfileComponent implements OnInit {
     });
     return tmp;
   }
-  ngOnInit(): void {
 
+
+
+  ngOnInit(): void {
+    // @ts-ignore
+    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
+    console.log(this.http.get<string>('http://localhost:8080/api/pictures/getUserProfileImage'))
+    console.log(this.profileUrl)
     this.mainpage.getUserByEmail(this.getUserFromToken())
 
   }

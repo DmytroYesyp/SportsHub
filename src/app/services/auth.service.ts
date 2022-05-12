@@ -35,6 +35,8 @@ export class AuthService{
 
 
 
+
+
   getUserByEmail(email: string){
     let queryParams = new HttpParams();
     queryParams = queryParams.append("email",email);

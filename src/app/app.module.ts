@@ -38,6 +38,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {ImageCropperModule} from "ngx-image-cropper";
+import { AdminTeamPageComponent } from './admin-team-page/admin-team-page.component';
 
 
 
@@ -61,7 +62,8 @@ import {ImageCropperModule} from "ngx-image-cropper";
     ImageFilterComponent,
     UploaderComponent,
     UploadTaskComponent,
-    DropzoneDirective
+    DropzoneDirective,
+    AdminTeamPageComponent
   ],
   imports: [
     BrowserModule,

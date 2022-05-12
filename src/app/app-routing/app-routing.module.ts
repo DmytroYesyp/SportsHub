@@ -12,6 +12,7 @@ import {AdminPageComponent} from "../admin-page/admin-page.component";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
 import {ArticleEditorComponent} from "../article-editor/article-editor.component";
+import {AdminTeamPageComponent} from "../admin-team-page/admin-team-page.component";
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent},
       {path: 'main', component: MainPageComponent},
       {path: 'admin_page', component: AdminPageComponent},
-      {path: 'article_editor', component: ArticleEditorComponent}
+      {path: 'article_editor', component: ArticleEditorComponent},
+      {path: 'admin_team-page', component: AdminTeamPageComponent}
     ]
   }
 ];
