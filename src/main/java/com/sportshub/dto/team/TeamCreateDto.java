@@ -13,5 +13,8 @@ public class TeamCreateDto {
     private String coach;
 
     @NotBlank
+    private String image_url;
+
+    @NotBlank
     private String state;
 }

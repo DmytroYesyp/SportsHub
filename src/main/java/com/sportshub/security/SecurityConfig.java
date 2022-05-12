@@ -1,6 +1,10 @@
 package com.sportshub.security;
 
-//import com.sportshub.filter.CorsFilter;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -22,10 +26,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
 import javax.servlet.http.HttpServletRequest;
-
-
 import java.util.Arrays;
 
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpMethod.POST;
 
 
@@ -33,8 +36,7 @@ import static org.springframework.http.HttpMethod.POST;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-    protected static String key;
+    public static String key;
 
     @Service
     @Component("propertiesConf")
@@ -57,6 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -82,6 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
+        http.authorizeRequests().antMatchers(POST,"/login").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);
@@ -106,4 +111,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean();
     }
+
 }

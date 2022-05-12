@@ -5,5 +5,6 @@ import lombok.Data;
 public class TeamUpdateDto {
     private String name;
     private String coach;
+    private String image_url;
     private String state;
 }

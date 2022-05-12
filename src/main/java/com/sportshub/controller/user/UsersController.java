@@ -55,7 +55,6 @@ public class UsersController {
         return userService.setRole(userId,roleId);
     }
 
-//    @CrossOrigin("*")
     @PostMapping(path = {"registerUser"})
     public ResponseEntity<String> regNewUser(@RequestBody User user) {
 

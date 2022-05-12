@@ -19,6 +19,7 @@ public interface TeamRepository extends JpaRepository<TeamEntity, Long> {
             UPDATE TeamEntity SET 
                 name = :#{#entity.name},
                 coach =:#{#entity.coach},
+                image_url =:#{#entity.image_url},
                 state =:#{#entity.state}
             WHERE id = :id
             """)

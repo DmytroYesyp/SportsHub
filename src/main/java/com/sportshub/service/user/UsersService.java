@@ -1,10 +1,16 @@
 package com.sportshub.service.user;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.sportshub.entity.role.Roles;
 import com.sportshub.entity.user.User;
 import com.sportshub.repository.role.RoleRepository;
 import com.sportshub.repository.user.UserRepository;
+import com.sportshub.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,14 +19,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.URI;
 import java.util.*;
 
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 @Service
 public class UsersService implements UserDetailsService {
-
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
@@ -32,12 +42,44 @@ public class UsersService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public String getUsernameFromToken (HttpServletRequest request){
+        String key = SecurityConfig.key;
+        String autorizationHeader = request.getHeader(AUTHORIZATION);
+        String token = autorizationHeader.substring("Bearer ".length());
+        Algorithm algorithm = Algorithm.HMAC256(key.getBytes());
+        JWTVerifier verifier = JWT.require(algorithm).build();
+        DecodedJWT decodedJWT = verifier.verify(token);
+        return decodedJWT.getSubject();
+
+    }
+
+    public String getUserLogo(HttpServletRequest request){
+        if (userRepository.findUserByEmail(getUsernameFromToken(request)).isEmpty())
+            return null;
+
+        return userRepository.findUserByEmail(getUsernameFromToken(request)).get().getLogo_url();
+    }
+
+
+    public User uploadImageToUserProfile(HttpServletRequest request) throws IOException {
+
+        if (userRepository.findUserByEmail(getUsernameFromToken(request)).isEmpty())
+            return null;
+
+        User user = userRepository.findUserByEmail(getUsernameFromToken(request)).get();
+
+
+        return user;
+    }
+
+
 
     public ResponseEntity<String> addNewUser(User user) {
         boolean userOptional = userRepository.findUserByEmail(user.getEmail()).isPresent();
         if (userOptional) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
+        user.setLogo_url("User.png");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/users/registerUser").toUriString());
@@ -166,4 +208,7 @@ public class UsersService implements UserDetailsService {
         user.setResetPasswordToken(null);
         userRepository.save(user);
     }
+
+
+
 }

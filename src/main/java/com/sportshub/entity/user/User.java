@@ -24,7 +24,7 @@ public class User {
     private String lastName;
 
     private String password;
-    //private String logo_url;
+    private String logo_url;
 
     private String email;
 
@@ -50,6 +50,14 @@ public class User {
         this.password = password;
         this.email = email;
         this.roles = role;
+    }
+
+    public String getLogo_url() {
+        return logo_url;
+    }
+
+    public void setLogo_url(String logo_url) {
+        this.logo_url = logo_url;
     }
 
     public long getId() {

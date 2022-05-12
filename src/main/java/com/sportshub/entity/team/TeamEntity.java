@@ -16,6 +16,7 @@ public class TeamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String image_url;
     private String coach;
     private String state;
 }
