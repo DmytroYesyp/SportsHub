@@ -24,6 +24,8 @@
     "cropperjs": "^1.5.12",
     "file-drop-element": "^1.0.1",
     "firebase": "9.7.0",
+    "ngp-image-picker": "^2.3.2",
+    "ngx-dropzone": "^3.1.0",
     "ngx-image-cropper": "^6.1.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",

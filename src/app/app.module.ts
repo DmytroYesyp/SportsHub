@@ -22,22 +22,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {AuthService} from "./services/auth.service";
 import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
-import { ImageEditorComponent } from './components/image-editor/image-editor.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
-import { ImageFilterComponent } from './components/image-filter/image-filter.component';
 import { UploaderComponent } from './components/uploader/uploader.component';
-import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
-import { DropzoneDirective } from './dropzone.directive';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-import {ImageCropperModule} from "ngx-image-cropper";
+import {NgpImagePickerModule} from "ngp-image-picker";
 
 
 
@@ -56,12 +48,8 @@ import {ImageCropperModule} from "ngx-image-cropper";
     ProfileComponent,
     HeaderUserProfileComponent,
     AdminPageComponent,
-    ImageEditorComponent,
     ArticleEditorComponent,
-    ImageFilterComponent,
     UploaderComponent,
-    UploadTaskComponent,
-    DropzoneDirective
   ],
   imports: [
     BrowserModule,
@@ -75,7 +63,7 @@ import {ImageCropperModule} from "ngx-image-cropper";
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    ImageCropperModule
+    NgpImagePickerModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
