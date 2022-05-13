@@ -82,6 +82,7 @@ CREATE TABLE team
     id    BIGSERIAL PRIMARY KEY,
     name  VARCHAR(128) UNIQUE NOT NULL,
     coach VARCHAR(128) NOT NULL,
+    image_url VARCHAR(128) NOT NULL,
     state VARCHAR(64)
 );
 
