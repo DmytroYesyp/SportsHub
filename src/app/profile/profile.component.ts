@@ -9,7 +9,7 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  isVisible: any = 1;
+  isVisible: any = 0;
   isSelected: boolean = true;
   form: FormGroup
 
@@ -22,12 +22,11 @@ export class ProfileComponent implements OnInit {
   constructor(private auth:AuthService) {
   }
 
+
+
   onSubmit(){
-
     this.auth.updateUser(this.form.value)
-
     setTimeout(function (){window.location.reload()},500)
-
   }
 
 

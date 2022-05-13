@@ -3,6 +3,8 @@ import {User} from "./user";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {tap} from 'rxjs/operators'
+import {Team} from "../admin-team-page/admin-team-page.component";
+import {postcss} from "@angular-devkit/build-angular/src/webpack/plugins/postcss-cli-resources";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,12 @@ export class AuthService{
     const vars = query.split('&');
     let token = vars[0].split('=')
     return token[1];
+  }
+
+
+
+  updateTeam(teamId:number,team: Team){
+    return this.http.put('http://localhost:8080/teams/' + teamId, team).subscribe()
   }
 
 
