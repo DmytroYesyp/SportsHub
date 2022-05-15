@@ -50,7 +50,18 @@
 <!--  </mat-expansion-panel>-->
 <!--</div>-->
 
-<app-header-user-profile></app-header-user-profile>
+
+<div *ngIf="authenticated">
+  <app-header-user-profile></app-header-user-profile>
+</div>
+
+<div *ngIf="!authenticated">
+  <a href="/register" class="txt">Sign up</a>
+  <a href="/login" class="btn">
+    <div class="btn_txt">Log In</div>
+  </a>
+</div>
+
 
 <mat-expansion-panel  class = "language">
   <mat-expansion-panel-header>

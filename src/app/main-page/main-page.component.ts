@@ -17,6 +17,8 @@ export class MainPageComponent implements OnInit {
 
   user: Object;
 
+  authenticated: boolean = false;
+
   constructor(private mainpage: mainPage, private auth: AuthService) {
   }
   getUserFromToken(){
@@ -53,6 +55,9 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.auth.isAuthenticated()){
+      this.authenticated = true
+    }
 
 
     this.mainpage.getUserByEmail(this.getUserFromToken())

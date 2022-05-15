@@ -15,23 +15,26 @@ import {Subscription} from "rxjs";
 
 export class RegistrationComponent implements OnInit, OnDestroy{
 
-  form: FormGroup
+  // form: FormGroup
   aSub: Subscription
 
-  @Input() formError = 'Error';
+  // @Input() formError = 'Error';
 
   hide=true;
+
+  form = new FormGroup({
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+  })
 
   constructor(private auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)])
-    })
+    this.auth.logout()
+
   }
 
   ngOnDestroy() {
@@ -41,7 +44,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
   }
 
   onSubmit(){
-    this.form.disable()
+    // this.form.disable()
 
     this.aSub = this.auth.register(this.form.value).subscribe(
       ()=> {
@@ -60,7 +63,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
   }
 
   onFormChange(){
-    this.formError = '';
+    // this.formError = '';
   }
 
 }

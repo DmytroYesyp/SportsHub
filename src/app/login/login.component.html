@@ -56,10 +56,11 @@
       <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>
     </mat-form-field>
 
+
     <a href="/forgot_password" class="forgot_txt">Forgot password?</a>
 
 
-    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Log in</button>
+    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid" >Log in</button>
 
   </form>
 

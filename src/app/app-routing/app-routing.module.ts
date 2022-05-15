@@ -16,17 +16,17 @@ import {ArticleEditorComponent} from "../article-editor/article-editor.component
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children:[
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
+      {path: '', redirectTo: '/main', pathMatch: 'full'},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegistrationComponent},
       {path: 'forgot_password', component: ForgotPasswordComponent},
-      {path: 'reset_password', component: ResetPasswordComponent}
+      {path: 'reset_password', component: ResetPasswordComponent},
+      {path: 'main', component: MainPageComponent},
     ]
   },
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
       {path: 'profile', component: ProfileComponent},
-      {path: 'main', component: MainPageComponent},
       {path: 'admin_page', component: AdminPageComponent},
       {path: 'article_editor', component: ArticleEditorComponent}
     ]

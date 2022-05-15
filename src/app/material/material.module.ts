@@ -6,9 +6,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCommonModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const MaterialComponents = [
-  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule
+  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
 ];
 
 @NgModule({
