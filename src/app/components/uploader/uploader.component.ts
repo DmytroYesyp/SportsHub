@@ -3,6 +3,7 @@ import {finalize, tap} from "rxjs/operators";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {Observable} from "rxjs";
 import {ImagePickerConf} from "ngp-image-picker";
+import {AuthService} from "../../services/auth.service";
 
 
 
@@ -35,7 +36,8 @@ export class UploaderComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL;
 
-  constructor(private storage: AngularFireStorage) {}
+  constructor(private storage: AngularFireStorage,
+              private auth: AuthService) {}
 
   ngOnInit(): void {
   }
@@ -43,18 +45,20 @@ export class UploaderComponent implements OnInit {
 
 
   async startUpload() {
-    const path = `image/${Date.now()}_${this.file.name}`;
-    const ref = this.storage.ref(path);
-    this.task = this.storage.upload(path, this.file);
+    // const path = `image/${Date.now()}_${this.file.name}`;
+    // const ref = this.storage.ref(path);
+    // this.task = this.storage.upload(path, this.file);
+    //
+    // this.snapshot   = this.task.snapshotChanges().pipe(
+    //   tap(),
+    //   finalize( async() =>  {
+    //     this.downloadURL = await ref.getDownloadURL().toPromise();
+    //     this.url = this.downloadURL;
+    //     console.log(this.url);
+    //   }),
+    // );
 
-    this.snapshot   = this.task.snapshotChanges().pipe(
-      tap(),
-      finalize( async() =>  {
-        this.downloadURL = await ref.getDownloadURL().toPromise();
-        this.url = this.downloadURL;
-        console.log(this.url);
-      }),
-    );
+    this.saveImage()
   }
 
   async onImageChanged(dataUri) {
@@ -62,5 +66,11 @@ export class UploaderComponent implements OnInit {
     const blob = await (await fetch(this.imageSrc)).blob();
     this.file = new File([blob], "image", {type: blob.type})
     console.log(this.imageSrc)
+  }
+
+  saveImage(){
+    const formData = new FormData();
+    formData.append('file', this.file)
+    this.auth.saveImage(formData);
   }
 }

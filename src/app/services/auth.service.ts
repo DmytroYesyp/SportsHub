@@ -41,6 +41,10 @@ export class AuthService{
     return this.http.put('http://localhost:8080/teams/' + teamId, team).subscribe()
   }
 
+  saveImage(formData: FormData){
+    return this.http.put('http://localhost:8080/api/pictures/updateUserImage', formData).subscribe()
+  }
+
 
 
 

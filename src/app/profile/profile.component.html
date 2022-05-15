@@ -73,16 +73,21 @@
         <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
       </div>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div *ngIf="imageAdd">
+        <app-uploader></app-uploader>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="Submit()">
       <div class="showDiv" *ngIf="isVisible == 1">
 
-        <div
-          style="margin-left: auto; border-radius: 50%;margin-right: auto;width: 7vw;height: 7vw; background-color: gray">
+        <div *ngIf="!imageAdd" style="margin-left: auto; margin-right: auto;width: 7vw;height: 7vw;" >
+          <img [src]="profileUrl" style="position: absolute; border-radius: 50%;width: 7vw;height: 7vw;">
           <div
-            style="background-color: #d72130; border-radius: 50%;height: 2.2vw; width: 2.2vw;float: right;margin-top: 4.5vw">
-            <i style="color:white;font-size: 1vw; padding: 0.6vw" class="fa fa-camera" aria-hidden="true"></i></div>
+            style="position:absolute;background-color: #d72130; border-radius: 50%;height: 2.2vw; width: 2.2vw;float: right;margin-top: 4.5vw; margin-left: 5vw">
+            <i style="color:white;font-size: 1vw; padding: 0.6vw" class="fa fa-camera" aria-hidden="true" (click)="imageAdd=true"></i></div>
 
         </div>
+
 
 
 
