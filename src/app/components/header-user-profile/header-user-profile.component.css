@@ -8,21 +8,24 @@
   margin-top: -80px;
   float: right;
   text-align: center;
+  width: 12vw;
   height: 200px;
   position: absolute;
-  margin-left:78vw;
+  margin-left:75vw;
   z-index: 2;
 }
 .profile{
   margin-top: 15px;
-  margin-right: 220px;
+
+  float: right;
 }
 
 .profile_img{
-  position: absolute;
+  float: left;
+  margin-top: 1vw;
   width: 40px;
   height: 40px;
-  background: url(src/assets/img/primg.jpg) no-repeat;
-  margin: 20px 20px 20px -60px;
+  z-index: 3;
+
   border-radius: 50%;
 }

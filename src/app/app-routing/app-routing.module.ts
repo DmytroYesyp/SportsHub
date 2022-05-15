@@ -12,11 +12,12 @@ import {AdminPageComponent} from "../admin-page/admin-page.component";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
 import {ArticleEditorComponent} from "../article-editor/article-editor.component";
+import {AdminTeamPageComponent} from "../admin-team-page/admin-team-page.component";
 
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children:[
-      {path: '', redirectTo: '/main', pathMatch: 'full'},
+      {path: '', redirectTo: '/main', pathMatch: "full"},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegistrationComponent},
       {path: 'forgot_password', component: ForgotPasswordComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
       {path: 'profile', component: ProfileComponent},
       {path: 'admin_page', component: AdminPageComponent},
-      {path: 'article_editor', component: ArticleEditorComponent}
+      {path: 'article_editor', component: ArticleEditorComponent},
+      {path: 'admin_team-page', component: AdminTeamPageComponent}
     ]
   }
 ];

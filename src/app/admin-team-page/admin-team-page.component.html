@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <title>Login</title>
+</head>
+
+
+<body>
+
+
+<div class="mainBox">
+  <div *ngIf="isVisible" class="editField">
+
+    <div class="editeFieldHeader">
+      <button class="editDeleteBackButtons" style="float: left;height: 1vw;width: 3vw;margin : 0.5vw"
+              (click)="toggleHide()">Back
+      </button>
+
+      <p style="margin: 0.5vw; width: 20vw;float: right;font-size:1vw">Team name: {{list[listId].name}}</p>
+    </div>
+
+
+    <div class="editFieldInput">
+
+      <div style="height: 9vw;width: 9vw; margin-left : auto; margin-right : auto">
+        <div style="background-color: gray;height: 9vw;width: 9vw;"></div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team name</p>
+          <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team image</p>
+          <input type="text" matInput formControlName="image_url" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team coach</p>
+          <input type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team state</p>
+          <input type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <button mat-raised-button type="submit"
+                style="color : white; margin-top: 2vw; height: 2vw;width: 25vw;border-radius: 0;border: none;background-color: #d72130">
+          UPDATE TEAM
+        </button>
+
+      </form>
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+  <div *ngIf="createTeam" class="editField">
+
+    <div class="editeFieldHeader">
+      <button class="editDeleteBackButtons" style="float: left;height: 1vw;width: 3vw;margin : 0.5vw"
+              (click)="toggleHide()">Back
+      </button>
+
+      <p style="margin: 0.5vw; width: 20vw;float: right;font-size:1vw">Add new team</p>
+    </div>
+
+
+    <div class="editFieldInput">
+
+      <div style="height: 9vw;width: 9vw; margin-left : auto; margin-right : auto">
+        <div style="background-color: gray;height: 9vw;width: 9vw;"></div>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit2()">
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team name</p>
+          <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team image</p>
+          <input type="text" matInput formControlName="image_url" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team coach</p>
+          <input type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">Team state</p>
+          <input type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
+        </div>
+        <button mat-raised-button type="submit" [disabled]="form.invalid"
+                style="color : white; margin-top: 2vw; height: 2vw;width: 25vw;border-radius: 0;border: none;background-color: #d72130">
+          CREATE TEAM
+        </button>
+
+      </form>
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <div (click)="createNewTeam()" *ngIf="isVisible==false && createTeam == false" class="box">
+    <div style="  float: left;margin: 0.5vw;height: 4vw;width: 4vw;"><i style="font-size: 4vw" class="bi bi-plus"></i></div>
+    <p style="width:15vw;margin-top: 2vw;text-align: left;float: left" class=teamName>Add new team</p>
+
+  </div>
+
+
+  <div *ngIf="isVisible==false && createTeam == false">
+
+    <div *ngFor="let i of createRange(list.length -1)" class="box">
+
+      <img class="teamLogo">
+
+      <p style="width: 15vw" class=teamName>{{list[i].name}}</p>
+
+      <button class="editDeleteBackButtons" style="float: right;height: 1vw;width: 3vw;margin-top: 0.5vw;margin-right: 0.5vw"
+              (click)="toggleShow(list[i].id,i)">Edit
+      </button>
+
+      <button class="editDeleteBackButtons" style="float: right;height: 1vw;width: 3vw;margin-top: 0.3vw;margin-right: 0.5vw"
+              (click)="toggleDelete(list[i].id)">Delete
+      </button>
+
+      <div class="bottomText">
+        <p style="float: left">Team coach : {{list[i].coach}}</p>
+        <p style="float: right">Team state : {{list[i].state}}</p>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+</body>

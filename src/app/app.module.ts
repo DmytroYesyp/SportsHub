@@ -30,6 +30,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
+import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
 
 
 
@@ -50,6 +51,7 @@ import {NgpImagePickerModule} from "ngp-image-picker";
     AdminPageComponent,
     ArticleEditorComponent,
     UploaderComponent,
+    AdminTeamPageComponent
   ],
   imports: [
     BrowserModule,
