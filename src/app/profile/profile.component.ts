@@ -29,14 +29,8 @@ export class ProfileComponent implements OnInit {
 
 
   Submit(){
-    console.log("Hyi")
     this.auth.updateUser(this.form.value)
     setTimeout(function (){window.location.reload()},500)
-  }
-  Submit2(){
-    console.log("Zhopa")
-
-    // setTimeout(function (){window.location.reload()},500)
   }
 
 

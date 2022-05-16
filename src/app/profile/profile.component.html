@@ -63,11 +63,11 @@
   <div id="middleForm">
     <div id="TopContainerInMiddle">
       <div class="switch-field">
-        <input [value]="1"
+        <input [value]="0"
                [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-one" name="switch-one"
                value="first" checked/>
         <label id="radio-one_" for="radio-one"><p style="padding-top: 0.6vw">Personal</p></label>
-        <input [value]="0"
+        <input [value]="1"
                [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-two" name="switch-one"
                value="second"/>
         <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
@@ -78,7 +78,7 @@
       </div>
 
       <form [formGroup]="form" (ngSubmit)="Submit()">
-      <div class="showDiv" *ngIf="isVisible == 1">
+      <div class="showDiv" *ngIf="isVisible == 0">
 
         <div *ngIf="!imageAdd" style="margin-left: auto; margin-right: auto;width: 7vw;height: 7vw;" >
           <img [src]="profileUrl" style="position: absolute; border-radius: 50%;width: 7vw;height: 7vw;">
@@ -110,7 +110,7 @@
       </form>
 
 
-      <div class="showDiv2" *ngIf="isVisible == 0">
+      <div class="showDiv2" *ngIf="isVisible == 1">
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">OLD PASSWORD</p>
           <input class="TextFields" type="text" name="fname" value="Some value"><br>

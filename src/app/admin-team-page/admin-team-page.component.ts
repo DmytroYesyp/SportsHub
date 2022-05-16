@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {trustedHTMLFromString} from "@angular/material/icon/trusted-types";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
-
 
 
 @Component({
@@ -14,46 +13,49 @@ import {AuthService} from "../services/auth.service";
 })
 
 
+export class AdminTeamPageComponent implements OnInit, OnChanges {
 
-export class AdminTeamPageComponent implements OnInit {
-
-  pressedId : number;
-  listId : number;
+  pressedId: number;
+  listId: number;
   isVisible: boolean = false;
-  createTeam : boolean = false;
+  createTeam: boolean = false;
   form: FormGroup
 
 
+  toggleHide() {
+    this.isVisible = false
+    this.createTeam = false
+  }
 
-  toggleHide(){
-  this.isVisible =false
-  this.createTeam =false
-}
-  toggleDelete(teamId : number){
+  toggleDelete(teamId: number) {
     this.http.delete(`http://localhost:8080/teams/` + teamId).subscribe()
-    setTimeout(function (){window.location.reload()},250)
+    setTimeout(function () {
+      window.location.reload()
+    }, 250)
   }
 
 
-  createNewTeam(){
+  createNewTeam() {
     this.createTeam = true
   }
 
 
-  toggleShow(event : number,event2 : number){
+  toggleShow(event: number, event2: number) {
     this.pressedId = event
     this.listId = event2
-    this.isVisible =true
+    this.isVisible = true
   }
 
-  onSubmit2(){
-    this.http.post(`http://localhost:8080/teams`,this.form.value).subscribe()
-    setTimeout(function (){window.location.reload()},500)
+  onSubmit2() {
+    this.http.post(`http://localhost:8080/teams`, this.form.value).subscribe()
+    setTimeout(function () {
+      window.location.reload()
+    }, 500)
   }
 
 
-  onSubmit(){
-    this.auth.updateTeam(this.pressedId,this.form.value)
+  onSubmit() {
+    this.auth.updateTeam(this.pressedId, this.form.value)
   }
 
   createRange(number) {
@@ -66,9 +68,27 @@ export class AdminTeamPageComponent implements OnInit {
   }
 
   list: Team[];
+  filterString: string = '';
 
 
-  constructor(private http:HttpClient,private auth:AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.http.get<Team[]>(`http://localhost:8080/teams`).subscribe(data => {
+      this.list = data
+    })
+
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      image_url: new FormControl('', [Validators.required]),
+      coach: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required])
+    })
+
+    console.log("anal")
+
+    }
 
 
   ngOnInit(): void {
