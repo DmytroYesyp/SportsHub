@@ -104,3 +104,11 @@
   color: white;
   transition: 0.4s;
 }
+.TextFields{
+  padding-left: 1vw;
+  border: 1px solid #d4d9e2;
+  box-shadow: none;
+  width: 23.9vw;
+  font-size: 0.8vw;
+  height: 2vw;
+}

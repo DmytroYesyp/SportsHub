@@ -31,6 +31,7 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 
@@ -51,7 +52,8 @@ import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.componen
     AdminPageComponent,
     ArticleEditorComponent,
     UploaderComponent,
-    AdminTeamPageComponent
+    AdminTeamPageComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

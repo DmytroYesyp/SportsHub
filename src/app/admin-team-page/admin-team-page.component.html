@@ -14,6 +14,9 @@
 
 
 <div class="mainBox">
+  <div style="height: 2vw">
+    <input placeholder="Search..." class="TextFields" *ngIf="!isVisible && !createTeam" type="text"  [(ngModel)]="filterString"/>
+  </div>
   <div *ngIf="isVisible" class="editField">
 
     <div class="editeFieldHeader">
@@ -121,23 +124,23 @@
 
   <div *ngIf="isVisible==false && createTeam == false">
 
-    <div *ngFor="let i of createRange(list.length -1)" class="box">
+    <div *ngFor="let team of list | appFilter:filterString;let i = index" [attr.data-index]="i" class="box">
 
       <img class="teamLogo">
 
-      <p style="width: 15vw" class=teamName>{{list[i].name}}</p>
+      <p style="width: 15vw" class=teamName>{{team.name}}</p>
 
       <button class="editDeleteBackButtons" style="float: right;height: 1vw;width: 3vw;margin-top: 0.5vw;margin-right: 0.5vw"
-              (click)="toggleShow(list[i].id,i)">Edit
+              (click)="toggleShow(team.id,i)">Edit
       </button>
 
       <button class="editDeleteBackButtons" style="float: right;height: 1vw;width: 3vw;margin-top: 0.3vw;margin-right: 0.5vw"
-              (click)="toggleDelete(list[i].id)">Delete
+              (click)="toggleDelete(team.id)">Delete
       </button>
 
       <div class="bottomText">
-        <p style="float: left">Team coach : {{list[i].coach}}</p>
-        <p style="float: right">Team state : {{list[i].state}}</p>
+        <p style="float: left">Team coach : {{team.coach}}</p>
+        <p style="float: right">Team state : {{team.state}}</p>
       </div>
     </div>
 
