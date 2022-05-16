@@ -84,3 +84,15 @@ body{
 }
 
 
+.photo_1{
+  position: absolute;
+  width: 70vh;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+

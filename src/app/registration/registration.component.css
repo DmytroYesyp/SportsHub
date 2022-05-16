@@ -5,28 +5,22 @@
 }
 
 .container{
+  /*position: absolute;*/
+  /*max-width: 500px;*/
+  /*margin: 0 auto;*/
+  /*max-height: 450px;*/
+  /*right: 400px;*/
+  /*top: 300px;*/
+  /*box-sizing: border-box;*/
   position: absolute;
-  max-width: 500px;
-  margin: 0 auto;
-  max-height: 450px;
-  right: 400px;
-  top: 300px;
-  box-sizing: border-box;
+  width: 90vh;
+  margin: auto;
+  right: 5vw;
+  top: 10vw;
+  /*height: 100vh;*/
 }
 
-.photo{
-  position: absolute;
-  width: 642px;
-  height: 100%;
-  left: 0px;
-  top: 0px;
 
-
-
-  background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
 
 .text{
   position: absolute;
@@ -57,7 +51,7 @@
 .btn2{
   position: absolute;
 
-  width: 100%;
+  width: 130px;
   height: 42px;
   box-sizing: border-box;
   color: white;
@@ -142,7 +136,7 @@
 .save-button {
   color: white;
   background: #D72130;
-  width: 100%;
+  width: 30vw;
 }
 
 .input_btn{

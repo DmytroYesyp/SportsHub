@@ -1,12 +1,28 @@
 .save-button {
-  color: white;
-  background: #D72130;
-  width: 100%;
+  /*color: white;*/
+  /*background: #D72130;*/
+  /*width: 100%;*/
+  color : white;
+  margin-top: 1vw;
+  height: 2vw;
+  width: 19.5vw;
+
+  border-radius: 0;
+  border: none;
+  background-color: #d72130;
 }
 
 .container1{
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
+  width: 25.2vw;
+  margin: auto;
+  /*position: center;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  /*height: 30vh;*/
+  /*width: 25.2vw;*/
+  /*margin: auto;*/
+
+
+  /*width: 50vh;*/
+  /*height: 60vh;*/
 }
