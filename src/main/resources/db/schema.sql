@@ -10,9 +10,8 @@ CREATE TABLE kinds_of_sport
 CREATE TABLE league
 (
     id          BIGSERIAL PRIMARY KEY,
-    name        VARCHAR(128) NOT NULL,
-    league_date INTEGER NOT NULL,
-    UNIQUE(name, league_date)
+    name        VARCHAR(128)  UNIQUE NOT NULL,
+    kinds_of_sport_id BIGINT       NOT NULL REFERENCES kinds_of_sport(id) ON DELETE CASCADE
 );
 
 CREATE TABLE news
@@ -81,9 +80,10 @@ CREATE TABLE team
 (
     id    BIGSERIAL PRIMARY KEY,
     name  VARCHAR(128) UNIQUE NOT NULL,
-    coach VARCHAR(128) NOT NULL,
-    image_url VARCHAR(128) NOT NULL,
-    state VARCHAR(64)
+    coach VARCHAR(128),
+    image_url VARCHAR(128),
+    state VARCHAR(64),
+    league_id        BIGINT       NOT NULL REFERENCES league (id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments

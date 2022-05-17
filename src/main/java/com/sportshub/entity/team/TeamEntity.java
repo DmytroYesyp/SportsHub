@@ -1,11 +1,14 @@
 package com.sportshub.entity.team;
 
+import com.sportshub.entity.league.LeagueEntity;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Data
@@ -19,4 +22,8 @@ public class TeamEntity {
     private String image_url;
     private String coach;
     private String state;
+
+    @ManyToOne
+    @JoinColumn(name="league_id")
+    private LeagueEntity league;
 }

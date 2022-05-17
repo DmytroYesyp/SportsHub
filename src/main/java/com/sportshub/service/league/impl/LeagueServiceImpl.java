@@ -1,9 +1,8 @@
 package com.sportshub.service.league.impl;
 
 import com.sportshub.dto.count.CountDto;
-import com.sportshub.dto.league.LeagueCreateDto;
+import com.sportshub.dto.league.LeagueContentDto;
 import com.sportshub.dto.league.LeagueDto;
-import com.sportshub.dto.league.LeagueUpdateDto;
 import com.sportshub.entity.league.LeagueEntity;
 import com.sportshub.exception.NotFoundException;
 import com.sportshub.mapper.league.LeagueMapper;
@@ -13,7 +12,6 @@ import com.sportshub.exception.ConflictException;
 import org.hibernate.exception.ConstraintViolationException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +26,7 @@ public class LeagueServiceImpl implements LeagueService {
     private final LeagueMapper leagueMapper;
 
     @Override
-    public LeagueDto create(LeagueCreateDto leagueDto) {
+    public LeagueDto create(LeagueContentDto leagueDto) {
         LeagueEntity leagueEntity = leagueMapper.toEntity(leagueDto);
         try {
             leagueEntity = leagueRepository.save(leagueEntity);
@@ -37,7 +35,7 @@ public class LeagueServiceImpl implements LeagueService {
             if (cause instanceof ConstraintViolationException) {
                 if ("league_name_league_date_key".equals(((ConstraintViolationException) cause).getConstraintName())) {
                     String errorMessage = String.format("League with name '%s' and '%s' year already exists!",
-                            leagueEntity.getName(), leagueEntity.getLeagueDate());
+                            leagueEntity.getName());
                     throw new ConflictException(errorMessage);
                 }
             }
@@ -68,7 +66,7 @@ public class LeagueServiceImpl implements LeagueService {
 
     @Override
     @Transactional
-    public void update(Long id, LeagueUpdateDto leagueDto) {
+    public void update(Long id, LeagueContentDto leagueDto) {
         LeagueEntity leagueEntity = leagueMapper.toEntity(leagueDto);
         try {
             int affectedRaws = leagueRepository.update(id, leagueEntity);
@@ -80,7 +78,7 @@ public class LeagueServiceImpl implements LeagueService {
             if (cause instanceof ConstraintViolationException) {
                 if ("league_name_league_date_key".equals(((ConstraintViolationException) cause).getConstraintName())) {
                     String errorMessage = String.format("League with name '%s' and '%s' year already exists!",
-                            leagueEntity.getName(), leagueEntity.getLeagueDate());
+                            leagueEntity.getName());
                     throw new ConflictException(errorMessage);
                 }
             }

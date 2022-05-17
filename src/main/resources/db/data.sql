@@ -21,27 +21,27 @@ VALUES (1, 'Football'),
        (20, 'Gymnastics');
 SELECT setval('kinds_of_sport_id_seq', 20);
 
-INSERT INTO league (id, name, league_date)
-VALUES (1, 'Major League Baseball', 2022),
-       (2, 'WBA', 2022),
-       (3, 'Major League Cricket', 2022),
-       (4, 'BMX', 2022),
-       (5, 'UEFA Champions League', 2022),
-       (6, 'Hockey One', 2022),
-       (7, 'PGA Tour', 2022),
-       (8, 'Handball League', 2022),
-       (9, 'Champions Hockey League', 2022),
-       (10, 'MotoGP', 2022),
-       (11, 'World Wrestling Entertainment', 2022),
-       (12, 'CEV Cup', 2022),
-       (13, 'FIVB Volleyball Men''s Nations League', 2022),
-       (14, 'LEN Champions League', 2022),
-       (15, 'Diamond League', 2022),
-       (16, 'FIFA Confederations Cup', 2022),
-       (17, 'UCI World Tour', 2022),
-       (18, 'T20 Blast', 2022),
-       (19, 'FIBA Intercontinental Cup', 2022),
-       (20, 'NBA G League', 2022);
+INSERT INTO league (id, name, kinds_of_sport_id)
+VALUES (1, 'Major League Baseball', 1),
+       (2, 'WBA', 2),
+       (3, 'Major League Cricket', 3),
+       (4, 'BMX', 4),
+       (5, 'UEFA Champions League', 5),
+       (6, 'Hockey One', 6),
+       (7, 'PGA Tour', 7),
+       (8, 'Handball League',8),
+       (9, 'Champions Hockey League', 9),
+       (10, 'MotoGP', 10),
+       (11, 'World Wrestling Entertainment', 11),
+       (12, 'CEV Cup', 12),
+       (13, 'FIVB Volleyball Men''s Nations League', 13),
+       (14, 'LEN Champions League', 14),
+       (15, 'Diamond League', 15),
+       (16, 'FIFA Confederations Cup', 16),
+       (17, 'UCI World Tour', 17),
+       (18, 'T20 Blast', 18),
+       (19, 'FIBA Intercontinental Cup', 19),
+       (20, 'NBA G League', 20);
 SELECT setval('league_id_seq', 20);
 
 INSERT INTO news (id, title, description, publication_date, league_id)
@@ -145,6 +145,28 @@ VALUES (1, 'Liverpool', 'Jürgen Klopp', 'UK'),
        (19, 'Nunchuk Buccaneers', 'Mary Jones', 'Finland'),
        (20, 'Silent Commandos', 'Matthew Jackson', 'Armenia');
 SELECT setval('team_id_seq', 20);
+
+INSERT INTO team (id, name, league_id)
+VALUES (1, 'Liverpool', 1),
+       (2, 'FC Barcelona', 2),
+       (3, 'Suomi-sarja', 3),
+       (4, 'Elitserien', 4),
+       (5, 'Pacific Coast', 5),
+       (6, 'Midwest', 6),
+       (7, 'Veracruzana', 7),
+       (8, 'Intercity', 8),
+       (9, 'Nunchuk Raiders', 9),
+       (10, 'Raging Buccaneers',10),
+       (11, 'Extreme Kings', 11),
+       (12, 'Spinning Dreamers', 12),
+       (13, 'American Planets', 13),
+       (14, 'Thunder Monsters', 14),
+       (15, 'Sneaky Mashers', 15),
+       (16, 'Fire Sharks', 16),
+       (17, 'Delta Tornadoes', 17),
+       (18, 'Deadly Killers', 18),
+       (19, 'Nunchuk Buccaneers', 19),
+       (20, 'Silent Commandos', 20);
 
 INSERT INTO team_news (news_id, team_id)
 VALUES (1, 1),

@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
 
@@ -85,6 +86,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests().antMatchers(GET,"/", "/swagger-ui/**",
+                "/swagger-resources/**", "/v2/api-docs").permitAll();
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login").permitAll();
         http.authorizeRequests().anyRequest().authenticated();

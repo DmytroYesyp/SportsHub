@@ -1,9 +1,8 @@
 package com.sportshub.controller.league;
 
 import com.sportshub.dto.count.CountDto;
-import com.sportshub.dto.league.LeagueCreateDto;
+import com.sportshub.dto.league.LeagueContentDto;
 import com.sportshub.dto.league.LeagueDto;
-import com.sportshub.dto.league.LeagueUpdateDto;
 import com.sportshub.service.league.LeagueService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +29,7 @@ public class LeagueController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public LeagueDto create(@RequestBody @Valid LeagueCreateDto leagueDto) {
+    public LeagueDto create(@RequestBody @Valid LeagueContentDto leagueDto) {
         return leagueService.create(leagueDto);
     }
 
@@ -53,7 +52,7 @@ public class LeagueController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody LeagueUpdateDto leagueDto) {
+    public void update(@PathVariable Long id, @RequestBody LeagueContentDto leagueDto) {
         leagueService.update(id, leagueDto);
     }
 

@@ -1,11 +1,12 @@
 package com.sportshub.dto.sport.kind;
-import lombok.Data;
 
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class SportKindCreateDto {
+public class SportKindContentDto {
     @NotBlank
     private String name;
+
 }
