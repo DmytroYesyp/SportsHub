@@ -16,6 +16,9 @@ export class ProfileComponent implements OnInit {
   imageAdd: boolean = false;
   profileUrl: string;
 
+  UserProfileUpload : string = 'UserProfileUpload';
+
+
   arr :string[] = ["My surveys","My teamhub","Log out"]
   arr2 :string[]  = ["","","/register"]
 

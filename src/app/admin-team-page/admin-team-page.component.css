@@ -29,7 +29,6 @@
   margin: 0.5vw;
   height: 4vw;
   width: 4vw;
-  background-color: gray;
 }
 
 .teamName{
@@ -66,7 +65,7 @@
 .editField{
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
   width: 26vw;
-  height: 36vw;
+  height: 31vw;
   z-index: 2;
   position: absolute;
 }

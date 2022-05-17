@@ -41,11 +41,17 @@ export class AuthService{
     return this.http.put('http://localhost:8080/teams/' + teamId, team).subscribe()
   }
 
-  saveImage(formData: FormData){
+  saveUserImage(formData: FormData){
     return this.http.put('http://localhost:8080/api/pictures/updateUserImage', formData).subscribe()
   }
 
+  saveTeamImage(formData: FormData, teamId:number){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("teamId",teamId);
 
+
+    return this.http.put('http://localhost:8080/api/pictures/updateTeamImage', formData,{params: queryParams}).subscribe()
+  }
 
 
 

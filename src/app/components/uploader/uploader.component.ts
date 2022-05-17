@@ -23,10 +23,14 @@ export class UploaderComponent implements OnInit {
     compressInitial: null,
     hideDownloadBtn: true
   }
-
+  @Input() destination : string;
+  @Input() AnyId : number;
   initialImage: string = '';
   imageSrc: any = '';
   file: File;
+
+
+
 
   url: string;
 
@@ -44,7 +48,26 @@ export class UploaderComponent implements OnInit {
 
 
 
-  async startUpload() {
+  async startUpload(destination,AnyId) {
+    const formData = new FormData();
+    formData.append('file', this.file)
+
+
+    switch (destination){
+      case "AdminTeamUpload":{
+        console.log("Test")
+        this.auth.saveTeamImage(formData,AnyId)
+        break;
+      }
+      case "UserProfileUpload":{
+        this.auth.saveUserImage(formData);
+        break;
+      }
+
+
+    }
+
+
     // const path = `image/${Date.now()}_${this.file.name}`;
     // const ref = this.storage.ref(path);
     // this.task = this.storage.upload(path, this.file);
@@ -69,8 +92,7 @@ export class UploaderComponent implements OnInit {
   }
 
   saveImage(){
-    const formData = new FormData();
-    formData.append('file', this.file)
-    this.auth.saveImage(formData);
+
+
   }
 }
