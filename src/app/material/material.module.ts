@@ -7,13 +7,17 @@ import {MatCommonModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MaterialComponents = [
-  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
+  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule,
+  MatSelectModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatMenuModule
 ];
 
 @NgModule({
   imports: [MaterialComponents],
   exports: [MaterialComponents]
-  })
-export class MaterialModule {}
+})
+export class MaterialModule {
+}

@@ -31,6 +31,16 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
+import { CreateCategoryDialogComponent } from './category-menu/create-category-dialog/create-category-dialog.component';
+import { CreateSubcategoryDialogComponent } from './category-menu/create-subcategory-dialog/create-subcategory-dialog.component';
+import { CreateTeamDialogComponent } from './category-menu/create-team-dialog/create-team-dialog.component';
+import { DeleteCategoryDialogComponent } from './category-menu/delete-category-dialog/delete-category-dialog.component';
+import { DeleteSubcategoryDialogComponent } from './category-menu/delete-subcategory-dialog/delete-subcategory-dialog.component';
+import { DeleteTeamDialogComponent } from './category-menu/delete-team-dialog/delete-team-dialog.component';
+import { EditCategoryDialogComponent } from './category-menu/edit-category-dialog/edit-category-dialog.component';
+import { EditSubcategoryDialogComponent } from './category-menu/edit-subcategory-dialog/edit-subcategory-dialog.component';
+import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-team-dialog.component';
+import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
 
 
 
@@ -51,7 +61,17 @@ import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.componen
     AdminPageComponent,
     ArticleEditorComponent,
     UploaderComponent,
-    AdminTeamPageComponent
+    AdminTeamPageComponent,
+    CreateCategoryDialogComponent,
+    CreateSubcategoryDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteCategoryDialogComponent,
+    DeleteSubcategoryDialogComponent,
+    DeleteTeamDialogComponent,
+    EditCategoryDialogComponent,
+    EditSubcategoryDialogComponent,
+    EditTeamDialogComponent,
+    NavMenuItemsComponent
   ],
   imports: [
     BrowserModule,

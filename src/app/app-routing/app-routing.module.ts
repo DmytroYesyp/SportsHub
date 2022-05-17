@@ -13,6 +13,7 @@ import {ForgotPasswordComponent} from "../forgot-password/forgot-password.compon
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
 import {ArticleEditorComponent} from "../article-editor/article-editor.component";
 import {AdminTeamPageComponent} from "../admin-team-page/admin-team-page.component";
+import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
       {path: 'profile', component: ProfileComponent},
       {path: 'admin_page', component: AdminPageComponent},
+      {path: 'admin_categories', component: NavMenuItemsComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent}
     ]
