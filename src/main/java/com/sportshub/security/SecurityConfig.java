@@ -70,15 +70,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        CorsConfigurationSource corsConfig = new CorsConfigurationSource() {
-//            @Override
-//            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-//                return null;
-//            }
-//        };
-//        http.cors().configurationSource(corsConfig);
-
-
         JWTFilter customAuthFilter = new JWTFilter(authenticationManagerBean(),key);
 
         http.cors().and().authorizeRequests().antMatchers(POST, "/login", "/forgot_password","/reset_password").permitAll();
@@ -87,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().anyRequest().permitAll();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);
     }

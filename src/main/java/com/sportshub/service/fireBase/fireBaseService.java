@@ -1,8 +1,14 @@
 package com.sportshub.service.fireBase;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.cloud.StorageClient;
+import com.sportshub.dto.team.TeamCreateDto;
+import com.sportshub.dto.team.TeamDto;
+import com.sportshub.entity.team.TeamEntity;
 import com.sportshub.entity.user.User;
+import com.sportshub.exception.NotFoundException;
+import com.sportshub.mapper.team.TeamMapper;
 import com.sportshub.repository.role.RoleRepository;
+import com.sportshub.repository.team.TeamRepository;
 import com.sportshub.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +17,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.nio.file.NotDirectoryException;
 
 @Service
 public class fireBaseService {
 
     UserRepository userRepository;
+    TeamRepository teamRepository;
+    TeamMapper teamMapper;
     @Autowired
-    public fireBaseService(UserRepository userRepository) {
+    public fireBaseService(UserRepository userRepository, TeamRepository teamRepository) {
         this.userRepository = userRepository;
+        this.teamRepository = teamRepository;
     }
     public String getImage(String imagePath){
 
@@ -48,7 +58,7 @@ public class fireBaseService {
         if (user.getLogo_url() != "User.png")
             System.out.println("pomer");
 
-        String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename();
+        String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename()+"."+ file.getContentType().split("/")[1];
 //            deleteImageFromStorage(user.getLogo_url());
         user.setLogo_url(blobString);
         userRepository.save(user);
@@ -56,7 +66,16 @@ public class fireBaseService {
         return ResponseEntity.ok().body(null);
     }
 
+    public ResponseEntity<String> updateTeamPic(Long id, MultipartFile file) throws IOException {
 
+        String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename()+"."+ file.getContentType().split("/")[1];
+        TeamEntity team = teamRepository.findById(id).orElseThrow(RuntimeException::new);
+        team.setImage_url(blobString);
+        teamRepository.save(team);
+        uploadImageToStorage(file,blobString);
+
+        return ResponseEntity.ok().body(null);
+    }
 
 
     public ResponseEntity<String> uploadImageToStorage(MultipartFile file,String newName) throws IOException {
