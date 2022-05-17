@@ -21,6 +21,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private mainpage: mainPage, private auth: AuthService) {
   }
+
   getUserFromToken(){
 
     const token = localStorage.getItem('auth-token');
@@ -57,6 +58,8 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     if(this.auth.isAuthenticated()){
       this.authenticated = true
+    }else{
+      this.auth.logout()
     }
 
 

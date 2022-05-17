@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {HttpParams} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
+import {AppComponent} from "../app.component";
 
 
 @Component({
@@ -29,7 +30,9 @@ export class RegistrationComponent implements OnInit, OnDestroy{
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService,
+              private router: Router,
+              private app: AppComponent) {
   }
 
   ngOnInit() {
@@ -56,7 +59,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
         })
       },
       error =>{
-        console.warn(error)
+        this.app.openSnackBar("Such email is already in use","")
         this.form.enable()
       }
     )

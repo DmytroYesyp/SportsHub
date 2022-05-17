@@ -96,3 +96,35 @@ body{
   background-repeat: no-repeat;
 }
 
+
+.cont{
+  max-width: 30vw;
+  /*margin: 2em auto;*/
+  text-align: center;
+  /*max-height: 20vw;*/
+}
+
+
+.full-width{
+  width: 100%;
+}
+
+.cont_txt{
+  float: left;
+}
+
+.forgot-password{
+  padding-left: 0px;
+}
+
+.email-input{
+  padding-top: 10px;
+}
+
+.aLink{
+  color: #4A90E2;
+  float: right;
+  padding-right: 60px;
+  text-decoration: none;
+}
+

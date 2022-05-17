@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {HttpParams} from "@angular/common/http";
 import {Subscription} from "rxjs";
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-login',
@@ -28,18 +28,12 @@ export class LoginComponent implements OnInit, OnDestroy{
     }
   );
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private snackBar: MatSnackBar
+              private app: AppComponent
   ) {}
 
-  openSnackBar(message: string, action: string){
-    this.snackBar.open(message, action, {horizontalPosition: this.horizontalPosition, verticalPosition: this.verticalPosition});
-  }
 
   ngOnInit(): void {
     this.auth.logout()
@@ -47,13 +41,13 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']){
         // alert("Now you registered")
-        this.openSnackBar("Now you registered", "Ok")
+        this.app.openSnackBar("Now you registered", "Ok")
       }else if(params['accessDenied']){
         // alert("You must be authorized to access this page")
-        this.openSnackBar("You must be authorized to access this page", "Login")
+        this.app.openSnackBar("You must be authorized to access this page", "Login")
       } else if(params['sessionFailed']){
         // alert("Login again")
-        this.openSnackBar("Login again", "Ok")
+        this.app.openSnackBar("Login again", "Ok")
       }
     })
 
@@ -71,19 +65,11 @@ export class LoginComponent implements OnInit, OnDestroy{
   // }
 
   onSubmit(){
-    // let body = new URLSearchParams();
-    // body.set('email', this.form.value.email);
-    // body.set('password', this.form.value.password);
-
+    this.form.disable()
 
 
     let params = new HttpParams({fromObject:{email:this.form.value.email, password:this.form.value.password}})
 
-    //let body = `email=${this.form.value.email}&password=${this.form.value.password}`;
-
-
-    // alert(params)
-    // this.form.disable()
 
       this.aSub = this.auth.login(params).subscribe(
         () => {
@@ -92,9 +78,13 @@ export class LoginComponent implements OnInit, OnDestroy{
         },
         error => {
           console.warn(error)
+          this.app.openSnackBar("Bad credentials, check email or password","OK")
+          this.form.enable()
         }
       )
   }
+
+
 
   ngOnDestroy() {
     if(this.aSub){
