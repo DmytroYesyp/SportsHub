@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {AuthService} from "../services/auth.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {HttpParams} from "@angular/common/http";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,7 +24,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private app: AppComponent
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +41,7 @@ export class ForgotPasswordComponent implements OnInit {
     // let body = new URLSearchParams();
     // body.set('email', this.form.value.email);
     // body.set('password', this.form.value.password);
-    this.success = true;
+
 
 
 
@@ -53,9 +55,11 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.aSub = this.auth.forgot_password(param).subscribe(
       () => {
+        this.success = true;
         console.log('Email send')
       },
       error => {
+        this.app.openSnackBar("This email is not exist", "Try again")
         console.warn(error)
       }
     )
