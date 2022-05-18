@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class UsersController {
 
 
     @GetMapping(path = "usersRole{userId}")
-    public ResponseEntity<Set<Roles>> getUserRole(@RequestParam long userId) {
+    public ResponseEntity<Collection<Roles>> getUserRole(@RequestParam long userId) {
         return userService.getUserRole(userId);
     }
 
@@ -43,7 +44,7 @@ public class UsersController {
 
 
     @GetMapping("getUserByEmail{email}")
-    public ResponseEntity<User> setRole(@RequestParam String email){
+    public ResponseEntity<User> getUserByEmail(@RequestParam String email){
 
         return userService.findUserByEmail(email);
     }

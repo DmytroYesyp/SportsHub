@@ -1,12 +1,13 @@
 package com.sportshub.entity.role;
 
 import com.sportshub.entity.user.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Transactional
 @Entity
 @Table(name="\"roles\"")
 public class Roles {

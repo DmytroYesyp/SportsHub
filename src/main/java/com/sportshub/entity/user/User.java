@@ -3,11 +3,12 @@ package com.sportshub.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sportshub.entity.role.Roles;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
+@Transactional
 @Entity
 @Table(name="\"users\"")
 public class User {
@@ -31,7 +32,7 @@ public class User {
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "userHasRoles",
             joinColumns = { @JoinColumn(name = "user_id") },
@@ -108,10 +109,10 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", roles=" + roles +
                 '}';
     }
 
+    @Transactional
     public Set<Roles> getRoles() {
         return roles;
     }

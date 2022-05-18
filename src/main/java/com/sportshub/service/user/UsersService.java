@@ -9,6 +9,7 @@ import com.sportshub.entity.user.User;
 import com.sportshub.repository.role.RoleRepository;
 import com.sportshub.repository.user.UserRepository;
 import com.sportshub.security.SecurityConfig;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,8 @@ public class UsersService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String getUsernameFromToken (HttpServletRequest request){
+
+    public String getUsernameFromToken(HttpServletRequest request) {
         String key = SecurityConfig.key;
         String autorizationHeader = request.getHeader(AUTHORIZATION);
         String token = autorizationHeader.substring("Bearer ".length());
@@ -53,7 +55,7 @@ public class UsersService implements UserDetailsService {
 
     }
 
-    public String getUserLogo(HttpServletRequest request){
+    public String getUserLogo(HttpServletRequest request) {
         if (userRepository.findUserByEmail(getUsernameFromToken(request)).isEmpty())
             return null;
 
@@ -73,7 +75,6 @@ public class UsersService implements UserDetailsService {
     }
 
 
-
     public ResponseEntity<String> addNewUser(User user) {
         boolean userOptional = userRepository.findUserByEmail(user.getEmail()).isPresent();
         if (userOptional) {
@@ -81,12 +82,13 @@ public class UsersService implements UserDetailsService {
         }
         user.setLogo_url("User.png");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.getRoles().add(roleRepository.getById(56L));
         userRepository.save(user);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/users/registerUser").toUriString());
         return ResponseEntity.created(uri).build();
     }
 
-    public ResponseEntity<String> setRole(Long userId,Long roleId){
+    public ResponseEntity<String> setRole(Long userId, Long roleId) {
 
         User user = userRepository.getById(userId);
         Roles role = roleRepository.getById(roleId);
@@ -104,7 +106,7 @@ public class UsersService implements UserDetailsService {
         roleRepository.save(role);
         userRepository.save(user);
 
-        return ResponseEntity.ok("User id "+userId.toString() +" Role id "+ roleId.toString());
+        return ResponseEntity.ok("User id " + userId.toString() + " Role id " + roleId.toString());
     }
 
     public List<User> GetUsers() {
@@ -112,7 +114,7 @@ public class UsersService implements UserDetailsService {
     }
 
 
-    public ResponseEntity<Set<Roles>> getUserRole (long userId) {
+    public ResponseEntity<Collection<Roles>> getUserRole(long userId) {
         boolean exists = userRepository.existsById(userId);
         if (!exists) {
             return ResponseEntity.notFound().build();
@@ -137,15 +139,14 @@ public class UsersService implements UserDetailsService {
     }
 
 
-    public ResponseEntity<User> findUserByEmail(String email){
+    public ResponseEntity<User> findUserByEmail(String email) {
 
-        User user  = userRepository.findUserByEmail(email).orElseThrow();
+        User user = userRepository.findUserByEmail(email).orElseThrow();
 
         return ResponseEntity.ok(user);
     }
 
     public ResponseEntity updateUser(long userId, User upd_user) {
-
 
 
         if (userRepository.findById(userId).isEmpty())
@@ -176,16 +177,26 @@ public class UsersService implements UserDetailsService {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/registerUser").toUriString());
         return ResponseEntity.created(uri).body(null);
     }
+
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+
         Optional<User> user = userRepository.findUserByEmail(email);
         if (user.isEmpty()) {
             throw new UsernameNotFoundException("User not found");
         }
+
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("Default_Role"));
+
+        user.get().getRoles().forEach(roles -> {
+            authorities.add(new SimpleGrantedAuthority(roles.getName()));
+        });
+
         return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), authorities);
     }
+
 
     public void updateResetPasswordToken(String token, String email) {
         Optional<User> user = userRepository.findUserByEmail(email);
@@ -208,7 +219,6 @@ public class UsersService implements UserDetailsService {
         user.setResetPasswordToken(null);
         userRepository.save(user);
     }
-
 
 
 }

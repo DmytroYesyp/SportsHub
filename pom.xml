@@ -30,6 +30,7 @@
         <net.ttddyy.datasource-proxy.version>1.7</net.ttddyy.datasource-proxy.version>
         <jjwt.version>0.9.1</jjwt.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <property name="current_session_context_class">thread</property>
 	</properties>
 
     <dependencies>
