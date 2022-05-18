@@ -7,9 +7,10 @@ import {MatCommonModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const MaterialComponents = [
-  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule, MatSnackBarModule
+  MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule, MatSelectModule, MatExpansionModule, MatSnackBarModule, MatProgressSpinnerModule
 ];
 
 @NgModule({

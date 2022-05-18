@@ -5,6 +5,7 @@ import {AuthService} from "../services/auth.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {HttpParams} from "@angular/common/http";
 import {AppComponent} from "../app.component";
+import {ProgressSpinnerMode} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-forgot-password',
@@ -21,6 +22,10 @@ export class ForgotPasswordComponent implements OnInit {
   form: FormGroup;
   aSub: Subscription
   success: boolean = false;
+  loading: boolean = false;
+
+  color: "red"
+  mode: ProgressSpinnerMode = 'determinate';
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -41,6 +46,7 @@ export class ForgotPasswordComponent implements OnInit {
     // let body = new URLSearchParams();
     // body.set('email', this.form.value.email);
     // body.set('password', this.form.value.password);
+    this.loading=true;
 
 
 
@@ -55,10 +61,12 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.aSub = this.auth.forgot_password(param).subscribe(
       () => {
+        this.loading=false;
         this.success = true;
         console.log('Email send')
       },
       error => {
+        this.loading=false;
         this.app.openSnackBar("This email is not exist", "Try again")
         console.warn(error)
       }
