@@ -21,6 +21,8 @@ CREATE TABLE news
     description      TEXT         NOT NULL,
     news_date        TIMESTAMP,
     publication_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    alternative_text VARCHAR(128) NOT NULL,
+    caption          VARCHAR(128) NOT NULL,
     image            VARCHAR(128),
     league_id        BIGINT       NOT NULL REFERENCES league (id) ON DELETE CASCADE
 );

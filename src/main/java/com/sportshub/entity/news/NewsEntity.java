@@ -29,6 +29,8 @@ public class NewsEntity {
     private String title;
     private String description;
     private Instant publicationDate;
+    private String alternativeText;
+    private String caption;
     private String image;
 
     @ManyToOne

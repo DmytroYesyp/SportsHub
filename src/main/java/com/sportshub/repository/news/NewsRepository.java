@@ -15,6 +15,8 @@ public interface NewsRepository extends CustomNewsRepository, JpaRepository<News
                 title = :#{#entity.title},
                 description = :#{#entity.description},
                 publicationDate = :#{#entity.publicationDate},
+                alternativeText =:#{#entity.alternativeText},
+                caption =:#{#entity.caption},
                 image = :#{#entity.image},
                 league.id = :#{#entity.league.id}
             WHERE id = :id

@@ -12,6 +12,8 @@ public class NewsUpdateDto {
     private String description;
     private Instant publicationDate;
     private String image;
+    private String alternativeText;
+    private String caption;
     private Long leagueId;
     private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;

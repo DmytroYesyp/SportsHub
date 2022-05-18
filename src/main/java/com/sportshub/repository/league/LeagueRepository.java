@@ -17,7 +17,8 @@ public interface LeagueRepository extends JpaRepository<LeagueEntity, Long> {
     @Modifying
     @Query("""
             UPDATE LeagueEntity SET 
-                name = :#{#entity.name}
+                name = :#{#entity.name},
+                sportKind = :#{#entity.sportKind}
             WHERE id = :id
             """)
     int update(@Param("id") Long id, @Param("entity") LeagueEntity entity);
