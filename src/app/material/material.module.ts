@@ -9,10 +9,14 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 const MaterialComponents = [
   MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule,
-  MatSelectModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatMenuModule
+  MatSelectModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatMenuModule,MatNativeDateModule,MatDatepickerModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({

@@ -41,6 +41,7 @@ import { EditCategoryDialogComponent } from './category-menu/edit-category-dialo
 import { EditSubcategoryDialogComponent } from './category-menu/edit-subcategory-dialog/edit-subcategory-dialog.component';
 import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-team-dialog.component';
 import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
+import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 
 
 
@@ -71,7 +72,8 @@ import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-i
     EditCategoryDialogComponent,
     EditSubcategoryDialogComponent,
     EditTeamDialogComponent,
-    NavMenuItemsComponent
+    NavMenuItemsComponent,
+    AddArticleComponent
   ],
   imports: [
     BrowserModule,

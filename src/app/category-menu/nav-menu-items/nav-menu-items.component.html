@@ -2,9 +2,10 @@
   <div class="section">
     <button class="button button_category" (click)="openModal()">+ Add category</button>
     <div *ngFor="let category of sportKinds " >
-      <button mat-button [matMenuTriggerFor]="menu"  class="button button_name_category {{category === activeSportKind ? 'active-category' : null}}"
-              (click)="clickCategory(category)">{{category.name}}<mat-icon class="mat-icon-points">more_vert</mat-icon></button>
-      <mat-menu #menu="matMenu"  xPosition="after">
+      <button mat-button  class="button button_name_category {{category === activeSportKind ? 'active-category' : null}}"
+              (click)="clickCategory(category)">{{category.name}}
+        <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
+      <mat-menu #menu="matMenu">
         <button mat-menu-item>Hide</button>
         <button mat-menu-item (click)="deleteCategory(category)">Delete</button>
         <button mat-menu-item (click)="openModalEditCat(category)">Edit</button>
@@ -15,18 +16,20 @@
     <div *ngIf="activeSportKind">
       <button class="button button_subcategory" (click)="openModalSub()">+ Add subcategory</button>
       <div *ngFor="let subCategory of activeSportKind.leagues">
-        <button mat-button [matMenuTriggerFor]="menu"
+        <button mat-button
                 class="button button_name_subcategory {{subCategory === activeLeague ? 'active-subcategory' : null}}"
-                (click)="clickSubCategory(subCategory)">{{subCategory.name}}<mat-icon class="mat-icon-points">more_vert</mat-icon></button>
-        <mat-menu #menu="matMenu" xPosition="after">
-          <button mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
+                (click)="clickSubCategory(subCategory)">{{subCategory.name}}
+          <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button *ngIf="sportKinds.length > 1" mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
           <button mat-menu-item>Hide</button>
           <button mat-menu-item (click)="deleteSubCategory(subCategory)">Delete</button>
           <button mat-menu-item (click)="openModalEditSubCat(subCategory)">Edit</button>
         </mat-menu>
         <mat-menu #moveTo="matMenu">
           <div *ngFor="let category of sportKinds">
-            <button mat-menu-item>{{category.name}}</button>
+            <button *ngIf="category !== activeSportKind" mat-menu-item
+                    (click)="moveLeagueToSportKind(subCategory, category)">{{category.name}}</button>
           </div>
         </mat-menu>
       </div>
@@ -36,11 +39,12 @@
     <div *ngIf="activeLeague">
       <button class="button button_team" (click)="openModalTeam()">+ Add team</button>
       <div *ngFor="let team of activeLeague.teams">
-        <button mat-button [matMenuTriggerFor]="menu"
+        <button mat-button
                 class="button button_name_team {{team === activeTeam ? 'active-team' : null}}"
-                (click)="clickTeam(team)">{{team.name}}<mat-icon class="mat-icon-points">more_vert</mat-icon></button>
-        <mat-menu #menu="matMenu" xPosition="after">
-          <button mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
+                (click)="clickTeam(team)">{{team.name}}
+          <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button *ngIf="sportKinds.length > 1" mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
           <button mat-menu-item>Hide</button>
           <button mat-menu-item (click)="deleteTeam(team)">Delete</button>
           <button mat-menu-item (click)="openModalEditTeam(team)">Edit</button>
@@ -52,7 +56,8 @@
               <button mat-menu-item [matMenuTriggerFor]="subcat">{{category.name}}</button>
               <mat-menu #subcat="matMenu">
                 <div *ngFor="let subCategory of category.leagues">
-                  <button mat-menu-item>{{subCategory.name}}</button>
+                  <button *ngIf="subCategory !== activeLeague" mat-menu-item
+                          (click)="moveTeamToLeague(team, subCategory)">{{subCategory.name}}</button>
                 </div>
               </mat-menu>
             </ng-template>

@@ -235,8 +235,40 @@ export class NavMenuItemsComponent implements OnInit {
     }
   }
 
+  moveLeagueToSportKind(league: League, sportKind: SportKind) {
+    const leagueContent = {
+      name: league.name,
+      sportKindId: sportKind.id
+    };
+
+    this.leagueService.updateLeague(league.id, leagueContent).subscribe(() => {
+      if (this.activeSportKind?.leagues) {
+        this.activeSportKind.leagues = this.activeSportKind.leagues.filter(v => v !== league);
+        sportKind.leagues = [league, ...sportKind.leagues];
+      }
+
+      this.activeSportKind = sportKind;
+    })
+  }
+
+  moveTeamToLeague(team: Team, league: League) {
+    const teamContent = {
+      name: team.name,
+      leagueId: league.id
+    };
+
+    this.teamService.updateTeam(team.id, teamContent).subscribe(() => {
+      if (this.activeLeague?.teams) {
+        this.activeLeague.teams = this.activeLeague.teams.filter(v => v !== team);
+        league.teams = [team, ...league.teams];
+      }
+
+      this.activeSportKind = this.sportKinds.find(v => v.leagues.includes(league)) ?? null;
+      this.activeLeague = league;
+    })
+  }
+
   closeModal() {
 
   }
-
 }

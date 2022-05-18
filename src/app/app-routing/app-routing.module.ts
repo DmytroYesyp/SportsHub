@@ -14,6 +14,7 @@ import {ResetPasswordComponent} from "../reset-password/reset-password.component
 import {ArticleEditorComponent} from "../article-editor/article-editor.component";
 import {AdminTeamPageComponent} from "../admin-team-page/admin-team-page.component";
 import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
+import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent},
       {path: 'admin_page', component: AdminPageComponent},
       {path: 'admin_categories', component: NavMenuItemsComponent},
+      {path: 'article/add', component: AddArticleComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent}
     ]
