@@ -84,7 +84,7 @@
       </div>
 
       <div *ngIf="imageAdd">
-        <app-uploader></app-uploader>
+        <app-uploader [destination]="UserProfileUpload" [AnyId]="1" ></app-uploader>
       </div>
 
       <form [formGroup]="form" (ngSubmit)="Submit()">

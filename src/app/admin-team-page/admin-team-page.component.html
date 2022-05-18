@@ -21,7 +21,7 @@
 
     <div class="editeFieldHeader">
       <button class="editDeleteBackButtons" style="float: left;height: 1vw;width: 3vw;margin : 0.5vw"
-              (click)="toggleHide()">Back
+              (click)="toggleHide();imageActivated = false">Back
       </button>
 
       <p style="margin: 0.5vw; width: 20vw;float: right;font-size:1vw">Team name: {{list[listId].name}}</p>
@@ -31,16 +31,21 @@
     <div class="editFieldInput">
 
       <div style="height: 9vw;width: 9vw; margin-left : auto; margin-right : auto">
-        <div style="background-color: gray;height: 9vw;width: 9vw;"></div>
+        <div (click)="imageActivated = true"  style="background-color: gray;height: 9vw;width: 9vw;">
+
+          <div *ngIf="imageActivated">
+            <app-uploader [destination]="TeamDestination" [AnyId]="pressedId" ></app-uploader>
+          </div>
+
+
+
+
+        </div>
       </div>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">Team name</p>
           <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
-        </div>
-        <div style="margin-top: 1vw">
-          <p style="color: #9fa6b2">Team image</p>
-          <input type="text" matInput formControlName="image_url" class="TextFields" type="text" name="fname"><br>
         </div>
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">Team coach</p>
@@ -71,7 +76,7 @@
 
     <div class="editeFieldHeader">
       <button class="editDeleteBackButtons" style="float: left;height: 1vw;width: 3vw;margin : 0.5vw"
-              (click)="toggleHide()">Back
+              (click)="toggleHide();imageActivated = false">Back
       </button>
 
       <p style="margin: 0.5vw; width: 20vw;float: right;font-size:1vw">Add new team</p>
@@ -79,18 +84,10 @@
 
 
     <div class="editFieldInput">
-
-      <div style="height: 9vw;width: 9vw; margin-left : auto; margin-right : auto">
-        <div style="background-color: gray;height: 9vw;width: 9vw;"></div>
-      </div>
       <form [formGroup]="form" (ngSubmit)="onSubmit2()">
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 10vw">
           <p style="color: #9fa6b2">Team name</p>
           <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
-        </div>
-        <div style="margin-top: 1vw">
-          <p style="color: #9fa6b2">Team image</p>
-          <input type="text" matInput formControlName="image_url" class="TextFields" type="text" name="fname"><br>
         </div>
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">Team coach</p>
@@ -126,7 +123,7 @@
 
     <div *ngFor="let team of list | appFilter:filterString;let i = index" [attr.data-index]="i" class="box">
 
-      <img class="teamLogo">
+      <img class="teamLogo" [src]="getImage(team.image_url)">
 
       <p style="width: 15vw" class=teamName>{{team.name}}</p>
 

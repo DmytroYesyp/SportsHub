@@ -1,9 +1,10 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {trustedHTMLFromString} from "@angular/material/icon/trusted-types";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
+import {strict} from "assert";
 
 
 @Component({
@@ -21,6 +22,10 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
   createTeam: boolean = false;
   form: FormGroup
 
+  TeamDestination: string = "AdminTeamUpload";
+
+  imageActivated: boolean = false;
+
 
   toggleHide() {
     this.isVisible = false
@@ -32,6 +37,12 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
     setTimeout(function () {
       window.location.reload()
     }, 250)
+  }
+
+
+  getImage(path: string): string {
+    let base : string = "https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2F";
+    return base + path + "?alt=media";
   }
 
 
@@ -47,6 +58,9 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
   }
 
   onSubmit2() {
+
+    this.form.value.image_url = "User.png";
+
     this.http.post(`http://localhost:8080/teams`, this.form.value).subscribe()
     setTimeout(function () {
       window.location.reload()
@@ -55,7 +69,11 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
 
   onSubmit() {
+
+
+
     this.auth.updateTeam(this.pressedId, this.form.value)
+
   }
 
   createRange(number) {
@@ -81,14 +99,13 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      image_url: new FormControl('', [Validators.required]),
+      image_url: new FormControl(''),
       coach: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required])
     })
 
-    console.log("anal")
 
-    }
+  }
 
 
   ngOnInit(): void {
@@ -98,15 +115,16 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      image_url: new FormControl('', [Validators.required]),
+      image_url: new FormControl('' ),
       coach: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required])
     })
 
   }
 }
-export class Team{
-  id : number
+
+export class Team {
+  id: number
   name: string
   image_url: string
   coach: string
