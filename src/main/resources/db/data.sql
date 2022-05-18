@@ -118,9 +118,9 @@ VALUES (1, 1),
        (19, 19),
        (20, 20);
 
-INSERT INTO users (id, email, first_name, last_name, password)
-VALUES (1, 'test1@mail.com', 'simple', 'user', '$2a$10$i5a2We9cZIP6D6EXRkCihuRjtkTvtLvghNY0wkAfvLM6lk/.WMyb2'),
-       (2, 'admin@mail.com', 'admin', 'admin', '$2a$10$i5a2We9cZIP6D6EXRkCihuRjtkTvtLvghNY0wkAfvLM6lk/.WMyb2');
+INSERT INTO users (id, email, first_name, last_name, password, reset_password_token, logo_url)
+VALUES (1, 'admin@mail.com', 'admin', 'admin', '$2a$10$i5a2We9cZIP6D6EXRkCihuRjtkTvtLvghNY0wkAfvLM6lk/.WMyb2', '', 'admin.jpg');
+
 
 
 INSERT INTO team (id, name, coach, state)
@@ -333,7 +333,6 @@ VALUES (1, 1),
 
 
 INSERT INTO user_roles (user_id, role_id)
-VALUES (1, 1),
-       (2, 2);
+VALUES (1, 2);
 
-ALTER SEQUENCE SEQ_USER RESTART WITH 3;
+ALTER SEQUENCE SEQ_USER RESTART WITH 2;

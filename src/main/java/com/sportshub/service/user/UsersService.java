@@ -77,7 +77,7 @@ public class UsersService implements UserDetailsService {
     public ResponseEntity<String> addNewUser(User user) {
         boolean userOptional = userRepository.findUserByEmail(user.getEmail()).isPresent();
         if (userOptional) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Such email is already in use. Check your email");
         }
         user.setLogo_url("User.png");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
