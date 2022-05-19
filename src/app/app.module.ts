@@ -22,6 +22,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {AuthService} from "./services/auth.service";
 import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
+import {NewsCardComponent} from "./services/news_card.component";
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import {AngularFireModule} from "@angular/fire/compat";
@@ -37,6 +38,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
+    MainKindsComponent,
+    NewsCardComponent,
     AppComponent,
     RegistrationComponent,
     MainPageComponent,
@@ -55,6 +58,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     AdminTeamPageComponent,
     SearchFilterPipe
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
