@@ -33,7 +33,20 @@
 
 </div>
 
-<app-header-user-profile></app-header-user-profile>
+
+
+<div *ngIf="authenticated">
+  <app-header-user-profile></app-header-user-profile>
+</div>
+
+<div *ngIf="!authenticated">
+  <a href="/register" class="txt">Sign up</a>
+  <a href="/login" class="btn">
+    <div class="btn_txt">Log In</div>
+  </a>
+</div>
+
+
 <app-lang></app-lang>
 
 <div class="main">
@@ -59,8 +72,9 @@
   <div class="block_right">
     <div class="block_1">
       <div class="toptxt">{{leagueList['name']}} > {{list['title']}}</div>
-      <div class="photo">
-      </div>
+<!--      <div class="photo">-->
+        <img class="photo" src="{{list['image']}}">
+<!--      </div>-->
       <div class="side_bloke">
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
         <span class="side_bloke_p1"><b> {{list['title']}}</b></span>

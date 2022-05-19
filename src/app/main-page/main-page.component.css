@@ -302,62 +302,7 @@ a:hover{
   font-size: 16px;
   font-weight: bold;
 }
-.btn{
-  position: absolute;
-  right: 200px;
-  top: 23px;
-  width: 150px;
-  height: 30px;
-  border: 1px solid #D72130;
-  box-sizing: border-box;
-  color: #D72130;
-  text-align: center;
-  text-decoration: none;
-}
 
-.btn_txt{
-  position: absolute;
-  text-align: center;
-  left: 26.88%;
-  right: 26.09%;
-  top: 25.33%;
-  bottom: 34.94%;
-  z-index: 100;
-
-
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 17px;
-  /* identical to box height, or 127% */
-
-
-  color: #D72130;
-
-}
-
-.txt{
-  position: absolute;
-  text-align: center;
-
-  right: 350px;
-  top: 30px;
-  width: 150px;
-  height: 30px;
-
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 17px;
-  text-decoration: none;
-  /* identical to box height, or 127% */
-
-
-  color: #D72130;
-
-}
 
 .switch_view{
   position: absolute;

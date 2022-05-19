@@ -110,7 +110,7 @@
           <label>
             <input formControlName="email" matInput placeholder="pat@example.com" required>
           </label>
-          <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
+          <mat-error *ngIf="form.hasError('required','email')">Must be email (@)</mat-error>
         </mat-form-field>
 
 

@@ -11,12 +11,12 @@ import {AuthGuard} from "../classes/auth.guard";
 import {AdminPageComponent} from "../admin-page/admin-page.component";
 import {ForgotPasswordComponent} from "../forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "../reset-password/reset-password.component";
-import {ArticleComponent} from "../article/article.component";
-import {SetLangComponent} from "../set-lang/set-lang.component";
 import {ArticleEditorComponent} from "../article-editor/article-editor.component";
 import {AdminTeamPageComponent} from "../admin-team-page/admin-team-page.component";
 import {AdminLayoutComponent} from "../layouts/admin-layout/admin-layout.component";
 import {AdminGuard} from "../classes/admin.guard";
+import {ArticleComponent} from "../article/article.component";
+import {SetLangComponent} from "../set-lang/set-lang.component";
 
 const routes: Routes = [
   {
@@ -26,13 +26,13 @@ const routes: Routes = [
       {path: 'register', component: RegistrationComponent},
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
-      {path: 'main', component: MainPageComponent}
+      {path: 'main', component: MainPageComponent},
+      {path: 'article/:newsId', component: ArticleComponent}
     ]
   },
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children:[
-      {path: 'profile', component: ProfileComponent},
-      {path: 'article/:newsId', component: ArticleComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
   {

@@ -64,7 +64,7 @@ export class MainPageComponent implements OnInit {
     if(this.auth.isAuthenticated()){
       this.authenticated = true
     }else{
-      this.auth.logout()
+      // this.auth.logout()
     }
 
     this.role = this.app.getUserFromToken()

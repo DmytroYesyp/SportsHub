@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
+
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>'
@@ -53,4 +54,3 @@ export class AppComponent implements OnInit{
     }
   }
 }
-

@@ -128,7 +128,7 @@ export class AuthService{
 
   logout() {
     this.setToken('')
-    localStorage.clear()
+    // localStorage.clear()
   }
 
 }

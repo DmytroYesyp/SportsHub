@@ -199,12 +199,14 @@ input[type=text] {
 
 .photo{
   position: absolute;
+  /*width: 50vw;*/
+  /*height: 50vh;*/
   width: 900px;
   height: 460px;
-  background: url(src/assets/img/article.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
+  /*background: url(src/assets/img/article.png);*/
+  /*background-size: 100%;*/
+  /*background-repeat: no-repeat;*/
+  /*z-index: 1;*/
 }
 ::ng-deep .newstext{
   width: 940px;

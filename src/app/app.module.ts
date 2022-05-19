@@ -34,15 +34,13 @@ import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
 import { SearchFilterPipe } from './search-filter.pipe';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import {AdminGuard} from "./classes/admin.guard";
-
-
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { ArticleComponent } from './article/article.component';
 import { LangComponent } from './components/lang/lang.component';
 import { SetLangComponent } from './set-lang/set-lang.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -97,7 +95,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    NgpImagePickerModule
+    NgpImagePickerModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
+    MatCheckboxModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),

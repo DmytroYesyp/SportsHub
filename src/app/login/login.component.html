@@ -24,20 +24,16 @@
 
 <div class="container">
   <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
-  <!--  <div class="t1">Create Account</div>-->
-  <!--  <div class="t2">-->
   <a href="#" class="fa fa-facebook"></a>
   <a href="#" class="fa fa-google"></a>
-  <!--  </div>-->
 
-  <!--  <div class="t3">Or use your email for registration:</div>-->
 
   <div class="cont">
     <form [formGroup]="form" (change)="onFormChange()" (submit)="onSubmit()">
       <div class="email-input">
         <div class="cont_txt">{{ 'LOGIN.EMAIL' | translate}}</div>
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>{{ 'LOGIN.ENTEMAIL' | translate}}</mat-label>
+          <mat-label>Enter your email</mat-label>
           <label>
             <input formControlName="email" matInput placeholder="pat@example.com" required>
           </label>
@@ -48,7 +44,7 @@
 
 
 
-      <a class="aLink" href="/forgot_password">Forgot Password?</a>
+      <a class="aLink" href="/forgot_password">{{'LOGIN.FGTPASS' | translate}}</a>
       <div class="cont_txt">{{ 'LOGIN.PASS' | translate}}</div>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
@@ -72,18 +68,8 @@
 
 
   <h1></h1>
-  <!--  <a href="" class="btn2">-->
-  <!--    <div class="btn2_txt">Sign Up</div>-->
-  <!--  </a>-->
-
-
-<!--  <button mat-raised-button class="save-button" [disabled]="form.invalid || !!formError">Log in</button>-->
-  <!--  <mat-error *ngIf="formError">{{formError}}</mat-error>-->
-
 </div>
 
 
 <div class="photo_1"></div>
 </body>
-
-
