@@ -1,3 +1,13 @@
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-icons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-richtexteditor/styles/material.css';
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
@@ -75,10 +85,98 @@ body{
 .column {
   display: table-cell;
   float: left;
-  width: 220px;
+  width: 14.5vw;
+  margin-right: 0.5vw;
   vertical-align: middle;
   border-right: 10px;
   border-left: 10px;
   /*padding: 10px 10px;*/
 
 }
+
+
+.photo_1{
+  position: absolute;
+  width: 70vh;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.cont{
+  max-width: 30vw;
+  /*margin: 2em auto;*/
+  text-align: center;
+  /*max-height: 20vw;*/
+}
+
+
+.full-width{
+  width: 100%;
+}
+
+.half-width{
+  width: 50%;
+}
+
+.cont_txt{
+  float: left;
+}
+
+.forgot-password{
+  padding-left: 0px;
+}
+
+.email-input{
+  padding-top: 10px;
+}
+
+.aLink{
+  color: #4A90E2;
+  float: right;
+  padding-right: 60px;
+  text-decoration: none;
+}
+
+.btn{
+  position: absolute;
+  right: 200px;
+  top: 23px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid #D72130;
+  box-sizing: border-box;
+  color: #D72130;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn_txt{
+  position: absolute;
+  text-align: center;
+  left: 26.88%;
+  right: 26.09%;
+  top: 25.33%;
+  bottom: 34.94%;
+  z-index: 100;
+
+
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  /* identical to box height, or 127% */
+
+
+  color: #D72130;
+
+}
+
+
+

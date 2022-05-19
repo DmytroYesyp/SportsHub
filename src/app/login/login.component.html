@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Login</title>
 </head>
 
 
@@ -12,68 +15,61 @@
   <a href="/main" class="logo">
     <div class="logo_txt">Sports Hub</div>
   </a>
-  <div class="text">Don't have an account?</div>
+  <div class="text">{{ 'LOGIN.QSTNLOG' | translate}}</div>
   <a href="/register" class="btn">
-    <div class="btn_txt">Get started</div>
+    <div class="btn_txt">{{ 'LOGIN.REG' | translate}}</div>
   </a>
 </div>
 
 
 <div class="container">
-  <h1>Log in to sports hub</h1>
-  <!--  <div class="t1">Create Account</div>-->
-  <!--  <div class="t2">-->
+  <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
   <a href="#" class="fa fa-facebook"></a>
   <a href="#" class="fa fa-google"></a>
-  <!--  </div>-->
-
-  <!--  <div class="t3">Or use your email for registration:</div>-->
 
 
-  <form [formGroup]="form" (change)="onFormChange()" (ngSubmit)="onSubmit()">
-    <h4>Email</h4>
-    <mat-form-field appearance="outline">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" formControlName="email">
-      <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
-<!--      <span *ngIf="form.get('email').errors['email']">Email can't be empty</span>-->
-
-    </mat-form-field>
-<!--    {{formGroup.value | json}}-->
-    <h4>Password</h4>
-    <mat-form-field appearance="outline">
-      <mat-label>Enter your password</mat-label>
-      <!--      <input matInput [type]="hide ? 'password' : 'text'">-->
-      <!--      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
-      <!--        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-      <!--      </button>-->
-      <input matInput placeholder="" formControlName="password">
-<!--      <span *ngIf="form.get('password').errors['required']">Email can't be empty</span>-->
-      <mat-error *ngIf="form.hasError('required','password')">Not valid</mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Log in</button>
-
-  </form>
+  <div class="cont">
+    <form [formGroup]="form" (change)="onFormChange()" (submit)="onSubmit()">
+      <div class="email-input">
+        <div class="cont_txt">{{ 'LOGIN.EMAIL' | translate}}</div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <label>
+            <input formControlName="email" matInput placeholder="pat@example.com" required>
+          </label>
+          <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
+        </mat-form-field>
+      </div>
 
 
 
+
+      <a class="aLink" href="/forgot_password">{{'LOGIN.FGTPASS' | translate}}</a>
+      <div class="cont_txt">{{ 'LOGIN.PASS' | translate}}</div>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
+        <label>
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
+        </label>
+        <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+<!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >{{ 'LOGIN.LOGIN' | translate}}</button>
+
+    </form>
+  </div>
+
+  <a href="/admin_page">admin link</a>
+  <a href="/admin_team-page">admin_team link</a>
 
 
 
   <h1></h1>
-  <!--  <a href="" class="btn2">-->
-  <!--    <div class="btn2_txt">Sign Up</div>-->
-  <!--  </a>-->
-
-
-<!--  <button mat-raised-button class="save-button" [disabled]="form.invalid || !!formError">Log in</button>-->
-  <!--  <mat-error *ngIf="formError">{{formError}}</mat-error>-->
-
 </div>
 
 
-<div class="photo"></div>
+<div class="photo_1"></div>
 </body>
-
-

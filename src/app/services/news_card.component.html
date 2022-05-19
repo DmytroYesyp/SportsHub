@@ -1,0 +1,8 @@
+
+  <a [routerLink]="['/article', e['id']]" [ngClass]="1==1?'cards':'cards'" *ngFor="let e of li;" >
+    <div  class="card">
+      <img class="card_photo" src="{{e['image']}}" alt="photo news">
+      <h4>{{ e['title'] }}</h4>
+      <p class="txt1">{{e['description']}}</p>
+    </div>
+  </a>

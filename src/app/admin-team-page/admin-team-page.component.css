@@ -1,0 +1,126 @@
+.mainBox{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vw;
+  width: 26vw;
+  height: 35vw;
+  overflow:auto;
+  padding-bottom: 1vw;
+}
+.box{
+  border: 1px solid #d8dde5;
+  width: 25vw;
+  height: 5vw;
+  margin-top: 0.5vw;
+}
+
+
+.box:hover
+{
+  border: 1px solid white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
+
+}
+
+.teamLogo{
+  position: relative;
+  float: left;
+  margin: 0.5vw;
+  height: 4vw;
+  width: 4vw;
+}
+
+.teamName{
+  margin-top: 0.5vw;
+  width: 20vw;
+  float: left;
+  text-align: left;
+  font-size: 1vw;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid #d8dde5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fbe7e8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c80515;
+  transition: 2s;
+}
+.bottomText{
+  margin-top: 3.5vw;
+  margin-left: 5vw;
+  width: 19.5vw;
+  height: 1vw;
+}
+.editField{
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
+  width: 26vw;
+  height: 31vw;
+  z-index: 2;
+  position: absolute;
+}
+.editeFieldHeader{
+  text-align: right;
+  height: 2vw;
+  z-index: 3;
+}
+.editFieldInput{
+  padding: 0.5vw;
+}
+.TextFields{
+  padding-left: 1vw;
+  border: 1px solid #d4d9e2;
+  box-shadow: none;
+  width: 23.75vw;
+  font-size: 0.8vw;
+  height: 2vw;
+}
+p {
+  font-size: 1vw;
+}
+
+.someClass{
+
+  width: 10vw;
+  height: 10vw;
+}
+.save-button{
+  width: 10vw;
+}
+.editDeleteBackButtons{
+  background-color: white;
+  border : 1px solid #d72130;
+  font-size: 0.7vw;
+  color: #d72130;
+}
+
+.editDeleteBackButtons:hover{
+  background-color: #e02232;
+  border : none;
+  color: white;
+  transition: 0.4s;
+}
+.editDeleteBackButtons:focus{
+  background-color: #c80515;
+  border : none;
+  color: white;
+  transition: 0.4s;
+}
+.TextFields{
+  padding-left: 1vw;
+  border: 1px solid #d4d9e2;
+  box-shadow: none;
+  width: 23.9vw;
+  font-size: 0.8vw;
+  height: 2vw;
+}

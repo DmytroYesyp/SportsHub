@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+}
+
+.picture {
+  margin: 10px;
+  padding: 15px;
+}
+
+.dashed {
+  border-style: dashed;
+  border-color: #c2cbd0;
+  color: #c80515;
+  background-color: #d4d4d7;
+  text-align: center;
+  width: 745px;
+  height: 500px;
+}
+
+h2.data-dash {
+  top: 50%;
+  left: 50%;
+}
+
+.dashed .mat-icon {
+  padding: 15px;
+}
+.league {
+  margin: 10px;
+  padding: 15px;
+}
+
+.team {
+  margin: 10px;
+  padding: 15px;
+}
+
+.date {
+  margin: 10px;
+  padding: 15px;
+}
+
+.alt {
+  margin: 10px;
+  padding: 15px;
+}
+
+.alt .mat-form-field {
+  width: 745px;
+}
+
+.title  {
+  margin: 10px;
+  padding: 15px;
+}
+
+.title .mat-form-field {
+  width: 745px;
+}
+
+.caption {
+  margin: 10px;
+  padding: 15px;
+}
+
+.caption .mat-form-field {
+  width: 745px;
+}
+
+.content {
+  margin: 10px;
+  padding: 15px;
+}
+
+.custom-switch {
+  margin: 10px;
+  padding: 15px;
+}
+.mat-slide-toggle {
+  padding: 10px;
+}
+
+.article-text {
+  max-width: 745px;
+}
+
+.footer-but {
+  display: flex;
+}
+
+.button-add {
+  margin-left: 460px;
+  padding: 15px;
+}

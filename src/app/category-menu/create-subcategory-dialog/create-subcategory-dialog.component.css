@@ -1,0 +1,9 @@
+.mat-dialog-title {
+  text-align: center;
+}
+.mat-form-field {
+  width: 450px;
+}
+.mat-dialog-actions {
+  float: right;
+}

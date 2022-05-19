@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+
+  <div class="search-container">
+    <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate}}" name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+
+  </div>
+
+  <div class="share-container">
+    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
+
+</div>
+
+
+
+<div *ngIf="authenticated">
+  <app-header-user-profile></app-header-user-profile>
+</div>
+
+<div *ngIf="!authenticated">
+  <a href="/register" class="txt">Sign up</a>
+  <a href="/login" class="btn">
+    <div class="btn_txt">Log In</div>
+  </a>
+</div>
+
+
+<app-lang></app-lang>
+
+<div class="main">
+<div class="back_txt2" >{{leagueList['name']}}</div>
+  <div class="back_txt">{{ 'BODY.BACKTXT2' | translate}}</div>
+  <div class="sidebar">
+    <div class="sidebar_text">
+      <a class="txt1" href=""><b><main_kinds></main_kinds></b></a><br>
+    </div>
+
+    <div class="sidebar_icon">
+      <span class="txt1">{{ 'BODY.FOLLOW' | translate}}</span>
+      <div class="sidebar_follow">
+        <a href="https://twitter.com" class="fa fa-twitter"></a>
+        <a href="https://google.com" class="fa fa-google"></a><br>
+        <a href="https://youtube.com" class="fa fa-youtube"></a>
+        <a href="https://facebook.com" class="fa fa-facebook"></a><br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="block_right">
+    <div class="block_1">
+      <div class="toptxt">{{leagueList['name']}} > {{list['title']}}</div>
+<!--      <div class="photo">-->
+        <img class="photo" src="{{list['image']}}">
+<!--      </div>-->
+      <div class="side_bloke">
+        <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
+        <span class="side_bloke_p1"><b> {{list['title']}}</b></span>
+        <br>
+        <span class="side_bloke_p2"><b>{{list['description']}}</b></span>
+        <a href="" class="share_btn">{{'HEADER.SHARE' | translate}} <i class="fa fa-share"></i></a>
+      </div>
+    </div>
+    <div class="block_2"></div>
+
+  </div>
+  <a class="newstext">{{list['text']}}</a>
+
+</div>
+
+
+
+
+
+<div class="footer">
+  <div>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</div>
+</div>
+
+</body>
+
+<!--<div class="wrapper">-->
+
+
+
+
+<!--</div>-->
+
+
+

@@ -5,27 +5,32 @@
 }
 
 .container{
+  /*position: absolute;*/
+  /*width: 500px;*/
+  /*margin: 0 auto;*/
+  /*max-height: 450px;*/
+  /*right: 400px;*/
+  /*top: 300px;*/
+  /*box-sizing: border-box;*/
   position: absolute;
-  width: 500px;
-  margin: 0 auto;
-  max-height: 450px;
-  right: 400px;
-  top: 300px;
-  box-sizing: border-box;
+  width: 90vh;
+  margin: auto;
+  right: 5vw;
+  top: 10vw;
 }
 
-.photo{
-  position: absolute;
-  width: 642px;
-  height: 100%;
-  left: 0px;
-  top: 0px;
+/*.photo{*/
+/*  position: absolute;*/
+/*  width: 642px;*/
+/*  height: 100%;*/
+/*  left: 0px;*/
+/*  top: 0px;*/
 
 
-  background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
+/*  background: url(src/assets/img/freddie-collins-527284-unsplash-1024x683.jpg);*/
+/*  background-size: 100%;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
 
 .text{
   position: absolute;
@@ -125,7 +130,6 @@
 }
 
 .fa-google {
-
   background: white;
   color: black;
 }
@@ -141,5 +145,19 @@
 .save-button {
   color: white;
   background: #D72130;
-  width: 100%;
+  width: 30vw;
+}
+
+.forgot_txt{
+  margin-left: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+
+  text-align: right;
+
+  color: #4A90E2;
 }

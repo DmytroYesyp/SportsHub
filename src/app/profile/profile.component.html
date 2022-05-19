@@ -1,1 +1,144 @@
-<p>profile works only for authorized!</p>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src=
+            "https://code.jquery.com/jquery-1.12.4.min.js">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+  <div class="search-container">
+    <input style="height: 83px; width: 400px; font-size: 18px; border: none; background: white;" type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+
+  </div>
+
+  <div class="share-container">
+    <div class="txt1">Share</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
+
+</div>
+<app-header-user-profile [arr]="arr" [arr2]="arr2"></app-header-user-profile>
+
+<mat-expansion-panel class="language">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      EN
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <a href="" class="txt1"> UA </a><br>
+</mat-expansion-panel>
+
+<div class="main">
+  <div class="sidebar">
+    <div class="sidebar_text">
+      <main_kinds></main_kinds>
+
+    </div>
+
+    <div class="sidebar_icon">
+      <span class="txt1">Follow</span>
+      <div class="sidebar_follow">
+        <a href="https://twitter.com" class="fa fa-twitter"></a>
+        <a href="https://google.com" class="fa fa-google"></a><br>
+        <a href="https://youtube.com" class="fa fa-youtube"></a>
+        <a href="https://facebook.com" class="fa fa-facebook"></a>
+      </div>
+    </div>
+
+  </div>
+  <div id="middleForm">
+    <div id="TopContainerInMiddle">
+      <div class="switch-field">
+        <input [value]="0"
+               [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-one" name="switch-one"
+               value="first" checked/>
+        <label id="radio-one_" for="radio-one"><p style="padding-top: 0.6vw">Personal</p></label>
+        <input  [value]="1"
+               [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-two" name="switch-one"
+               value="second"/>
+        <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
+      </div>
+
+      <div style="width: 10vw; margin-left: 8vw;" *ngIf="imageAdd && !isVisible">
+        <app-uploader [destination]="UserProfileUpload" [AnyId]="1" ></app-uploader>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="Submit()">
+      <div class="showDiv" *ngIf="isVisible == 0">
+
+        <div *ngIf="!imageAdd" style="margin-left: auto; margin-right: auto;width: 7vw;height: 7vw;" >
+          <img [src]="profileUrl" style="position: absolute; border-radius: 50%;width: 7vw;height: 7vw;">
+          <div
+            style="position:absolute;background-color: #d72130; border-radius: 50%;height: 2.2vw; width: 2.2vw;float: right;margin-top: 4.5vw; margin-left: 5vw">
+            <i style="color:white;font-size: 1vw; padding: 0.6vw" class="fa fa-camera" aria-hidden="true" (click)="imageAdd=true"></i></div>
+
+        </div>
+
+
+
+
+
+          <div style="margin-top: 1vw">
+            <p style="color: #9fa6b2">First name</p>
+            <input id="firstName"  formControlName="firstName" class="TextFields" type="text" name="fname" ><br>
+          </div>
+          <div style="margin-top: 1vw">
+            <p style="color: #9fa6b2">Last name</p>
+            <input type="text" matInput  formControlName="lastName" class="TextFields" type="text" name="fname" ><br>
+          </div>
+          <button mat-raised-button type="submit"
+            style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
+            UPDATE PROFILE
+          </button>
+
+
+      </div>
+      </form>
+
+
+      <div class="showDiv2" *ngIf="isVisible == 1">
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">OLD PASSWORD</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">NEW PASSWORD</p>
+          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+        </div>
+        <button
+          style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
+          CHANGE PASSWORD
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sportshub-623db"
+  },
+  "targets": {
+    "sportshub-623db": {
+      "hosting": {
+        "client": [
+          "sportshub-623db"
+        ]
+      }
+    }
+  }
+}
