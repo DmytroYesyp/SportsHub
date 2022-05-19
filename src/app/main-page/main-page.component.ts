@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-main-page',
@@ -23,7 +24,7 @@ export class MainPageComponent implements OnInit {
 
   authenticated: boolean = false;
 
-  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent) {
+  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent, public translate: TranslateService) {
   }
 
   getUserFromToken(){

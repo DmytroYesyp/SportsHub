@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -37,6 +37,16 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import {AdminGuard} from "./classes/admin.guard";
 
 
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ArticleComponent } from './article/article.component';
+import { LangComponent } from './components/lang/lang.component';
+import { SetLangComponent } from './set-lang/set-lang.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -59,7 +69,10 @@ import {AdminGuard} from "./classes/admin.guard";
     UploaderComponent,
     AdminTeamPageComponent,
     SearchFilterPipe,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    ArticleComponent,
+    LangComponent,
+    SetLangComponent
   ],
 
   imports: [
@@ -70,6 +83,16 @@ import {AdminGuard} from "./classes/admin.guard";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
+    MatCheckboxModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,

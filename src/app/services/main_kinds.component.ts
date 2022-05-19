@@ -24,7 +24,7 @@ export class MainKindsComponent implements OnInit {
       .subscribe(Response => {
         console.log(Response)
         this.li=Response;
-        this.lis=this.li;
+
 
       });
   }}

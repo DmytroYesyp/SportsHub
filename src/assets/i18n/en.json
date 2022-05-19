@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "SHARE": "Share",
+    "SEARCH": "Search..",
+    "LANG": {
+      "EN": "English",
+      "UA": "Ukrainian",
+      "RU": "Russian"
+    },
+    "PROFILE" : {
+      "VIEW" : "View profile",
+      "PASS" : "Change password",
+      "SURVEYS" : "My surveys",
+      "TEAMHUB" : "My teamhub",
+      "LOGOUT" : "Log out"
+    }
+  },
+  "BODY": {
+    "BACKTXT": "ALL",
+    "BACKTXT2": "NEWS",
+    "MORE": "More",
+    "FOLLOW": "Follow",
+    "DATE": "Published"
+  },
+  "FOOTER": {
+    "PRIVACY": "Privacy",
+    "TERMS": "Terms"
+  },
+  "LOGIN": {
+    "FGTPASS": "Forgot password?",
+    "TITLE": "Log in to Sports Hub",
+    "EMAIL": "Email",
+    "ENTEMAIL": "Enter your email",
+    "PASS": "Password",
+    "ENTPASS": "Enter your password",
+    "REG": "Get stated",
+    "QSTNLOG": "Don`t have an account?",
+    "LOGIN": "Log in"
+  },
+  "REG": {
+    "TITLE" : "Create account",
+    "TITLE2" : "Or use your email for registration:",
+    "FNAME": "First name",
+    "ENTFNAME": "Enter your first name",
+    "LNAME": "Last name",
+    "ENTLNAME": "Enter your last name",
+    "QSTNREG": "Already have an account?",
+    "LOGIN": "Log in",
+    "SIGNUP": "Sign up"
+  },
+  "FGTPASS": {
+    "TITLE": "Forgot your password?",
+    "TITLE2": "Enter your email address below and we’ll get you back on track.",
+    "SUBMIT": "Submit",
+    "CHECK": "Check your email",
+    "DESCR": "If there's Sports Hub account linked to this email address, we'll send over instructions to reset your password. You will receive the mail within a minute"
+  }
+}
