@@ -168,25 +168,5 @@ body{
 
 }
 
-.txt{
-  position: absolute;
-  text-align: center;
 
-  right: 350px;
-  top: 30px;
-  width: 150px;
-  height: 30px;
-
-  font-family: 'Open Sans', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 17px;
-  text-decoration: none;
-  /* identical to box height, or 127% */
-
-
-  color: #D72130;
-
-}
 

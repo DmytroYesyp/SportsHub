@@ -68,8 +68,8 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.form.disable()
 
 
-    let params = new HttpParams({fromObject:{email:this.form.value.email, password:this.form.value.password}})
 
+    let params = new HttpParams({fromObject:{email:this.form.value.email, password:this.form.value.password}})
 
       this.aSub = this.auth.login(params).subscribe(
         () => {

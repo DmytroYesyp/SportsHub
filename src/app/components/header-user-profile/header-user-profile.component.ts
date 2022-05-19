@@ -3,6 +3,7 @@ import {mainPage} from "../../services/main-page.service";
 import {AuthService} from "../../services/auth.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {reload} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-header-user-profile',
@@ -21,6 +22,7 @@ export class HeaderUserProfileComponent implements OnInit {
   lastName: any;
   role: any;
   user: Object;
+  view:boolean = false;
 
 
   createRange(number) {
@@ -39,6 +41,7 @@ export class HeaderUserProfileComponent implements OnInit {
   getUserFromToken() {
 
     const token = localStorage.getItem('auth-token');
+    console.log("token", token)
     if (!token)
       return console.log("error");
     var base64Url = token.split('.')[1];
@@ -66,13 +69,27 @@ export class HeaderUserProfileComponent implements OnInit {
     return tmp;
   }
 
+  // viewFunc(): Promise<boolean>{
+  //   this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'})
+  //     .subscribe(responseData =>{this.profileUrl = responseData; this.view=true})
+  //   return new Promise(this.view)
+  // }
+
+
+
 
 
   ngOnInit(): void {
     // @ts-ignore
-    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
-    console.log(this.http.get<string>('http://localhost:8080/api/pictures/getUserProfileImage'))
-    this.mainpage.getUserByEmail(this.getUserFromToken())
 
+    // console.log(this.http.get<string>('http://localhost:8080/api/pictures/getUserProfileImage'))
+    this.mainpage.getUserByEmail(this.getUserFromToken())
+    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
+    this.view = true;
+    // console.log(this.profileUrl)
+    // setTimeout(()=>{
+    //
+    // }, 2000)
   }
+
 }

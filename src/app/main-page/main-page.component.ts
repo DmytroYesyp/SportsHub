@@ -74,7 +74,7 @@ export class MainPageComponent implements OnInit {
     }
 
 
-    this.mainpage.getUserByEmail(this.getUserFromToken())
+    // this.mainpage.getUserByEmail(this.getUserFromToken())
 
 
     // this.firstName = user.firstName;

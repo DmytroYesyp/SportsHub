@@ -1,16 +1,19 @@
-<div class="profile-container">
+<div *ngIf="view">
+  <div class="profile-container">
 
-  <img class="profile_img" [src]="profileUrl"/>
-  <mat-expansion-panel class="profile">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{firstName}} {{lastName}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <a class="txt1" href="/profile"> {{ 'HEADER.PROFILE.VIEW' | translate}} </a><br>
-    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.PASS' | translate}} </a><br>
-    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.SURVEYS' | translate}} </a><br>
-    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.TEAMHUB' | translate}} </a><br>
-    <a class="txt1" href="/login"> {{ 'HEADER.PROFILE.LOGOUT' | translate}} </a>
-  </mat-expansion-panel>
+    <img class="profile_img" [src]="profileUrl"/>
+    <mat-expansion-panel class="profile">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{firstName}} {{lastName}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a class="txt1" href="/profile"> {{ 'HEADER.PROFILE.VIEW' | translate}} </a><br>
+      <a class="txt1" href="/"> {{ 'HEADER.PROFILE.PASS' | translate}} </a><br>
+      <a class="txt1" href="/"> {{ 'HEADER.PROFILE.SURVEYS' | translate}} </a><br>
+      <a class="txt1" href="/"> {{ 'HEADER.PROFILE.TEAMHUB' | translate}} </a><br>
+      <a class="txt1" href="/login"> {{ 'HEADER.PROFILE.LOGOUT' | translate}} </a>
+    </mat-expansion-panel>
+  </div>
 </div>
+
