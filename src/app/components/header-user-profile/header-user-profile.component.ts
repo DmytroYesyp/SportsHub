@@ -19,6 +19,7 @@ export class HeaderUserProfileComponent implements OnInit {
 
   firstName: any;
   lastName: any;
+  role: any;
   user: Object;
 
 
@@ -48,7 +49,10 @@ export class HeaderUserProfileComponent implements OnInit {
     const tmp = JSON.parse(jsonPayload);
 
 
+    console.log(tmp.sub)
+
     this.mainpage.getUserByEmail(tmp.sub).subscribe(data => {
+      console.log(data)
       this.user = data
 
       for (let [key, value] of Object.entries(this.user)) {
@@ -68,7 +72,6 @@ export class HeaderUserProfileComponent implements OnInit {
     // @ts-ignore
     this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
     console.log(this.http.get<string>('http://localhost:8080/api/pictures/getUserProfileImage'))
-    console.log(this.profileUrl)
     this.mainpage.getUserByEmail(this.getUserFromToken())
 
   }

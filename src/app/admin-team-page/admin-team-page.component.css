@@ -65,7 +65,7 @@
 .editField{
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
   width: 26vw;
-  height: 33vw;
+  height: 31vw;
   z-index: 2;
   position: absolute;
 }
@@ -85,9 +85,22 @@
   font-size: 0.8vw;
   height: 2vw;
 }
+p {
+  font-size: 1vw;
+}
+
+.someClass{
+
+  width: 10vw;
+  height: 10vw;
+}
+.save-button{
+  width: 10vw;
+}
 .editDeleteBackButtons{
   background-color: white;
   border : 1px solid #d72130;
+  font-size: 0.7vw;
   color: #d72130;
 }
 

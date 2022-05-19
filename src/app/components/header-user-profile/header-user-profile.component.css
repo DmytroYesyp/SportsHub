@@ -1,19 +1,57 @@
 .txt1{
   font-family: 'Open Sans', sans-serif;
   color: #919191;
-  font-size: 16px;
+  font-size: 0.9vw;
   text-decoration: none;
 }
 .profile-container {
   margin-top: -80px;
   float: right;
   text-align: center;
-  width: 15vw;
+  width: 14vw;
   height: 200px;
   position: absolute;
-  margin-left:70vw;
+  margin-left:75vw;
   z-index: 2;
 }
+
+
+@media screen  and (min-width: 2100px) {
+  .profile-container{
+    width: 12vw;
+    margin-left:77vw;
+  }
+}
+
+@media screen  and (min-width: 1900px) and (max-width: 2000px) {
+  .profile-container{
+    width: 14vw;
+    margin-left:75vw;
+  }
+}
+
+@media screen  and (min-width: 1730px) and (max-width: 1800px) {
+  .profile-container{
+    width: 13vw;
+    margin-left:73vw;
+  }
+}
+
+@media screen  and (max-width: 1700px) {
+  .profile-container{
+    width: 15vw;
+    margin-left:70vw;
+  }
+}
+
+
+@media screen  and (max-width: 1300px) {
+  .profile-container{
+    margin-left:65vw;
+    width: 18vw;
+  }
+}
+
 .profile{
   margin-top: 15px;
 

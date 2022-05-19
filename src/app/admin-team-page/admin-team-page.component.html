@@ -31,10 +31,11 @@
     <div class="editFieldInput">
 
       <div style="height: 9vw;width: 9vw; margin-left : auto; margin-right : auto">
-        <div (click)="imageActivated = true"  style="background-color: gray;height: 9vw;width: 9vw;">
+        <div   (click)="cliclingOnimge()"  style="height: 9vw;width: 9vw;">
+          <img *ngIf="!imageActivated " style="height: 9vw;width: 9vw;" [src]="getImage(list[listId].image_url)" >
 
-          <div *ngIf="imageActivated">
-            <app-uploader [destination]="TeamDestination" [AnyId]="pressedId" ></app-uploader>
+          <div class="someClass" *ngIf="imageActivated">
+            <app-uploader  [destination]="TeamDestination" [AnyId]="pressedId" ></app-uploader>
           </div>
 
 
@@ -42,7 +43,7 @@
 
         </div>
       </div>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form class="forms" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">Team name</p>
           <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>

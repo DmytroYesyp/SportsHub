@@ -27,6 +27,11 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
   imageActivated: boolean = false;
 
 
+  cliclingOnimge(){
+    this.imageActivated = true
+  }
+
+
   toggleHide() {
     this.isVisible = false
     this.createTeam = false

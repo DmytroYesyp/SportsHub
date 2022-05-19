@@ -73,13 +73,13 @@
                [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-one" name="switch-one"
                value="first" checked/>
         <label id="radio-one_" for="radio-one"><p style="padding-top: 0.6vw">Personal</p></label>
-        <input [value]="1"
-               [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-two" name="switch-one"
+        <input  [value]="1"
+               [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-two" name="switch-one"
                value="second"/>
         <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
       </div>
 
-      <div *ngIf="imageAdd">
+      <div style="width: 10vw; margin-left: 8vw;" *ngIf="imageAdd && !isVisible">
         <app-uploader [destination]="UserProfileUpload" [AnyId]="1" ></app-uploader>
       </div>
 
