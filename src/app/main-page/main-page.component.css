@@ -390,3 +390,9 @@ a:hover{
   color: #D72130;
 
 }
+
+.switch_view{
+  position: absolute;
+  right: 460px;
+  top: 3vh;
+}

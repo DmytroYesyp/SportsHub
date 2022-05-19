@@ -33,6 +33,13 @@
 </div>
 
 
+<div *ngIf="isAdmin">
+  <div class="switch_view">
+    <a href="/admin_page"><i class="fa fa-rotate-right" aria-hidden="true" style="font-size: 2vw;color: black;"></i></a>
+  </div>
+</div>
+
+
 
 <!--<div class="profile-container">-->
 <!--  <div class="profile_img"></div>-->
@@ -96,10 +103,6 @@
   <div class="block_right">
     <div class="block_1">
       <div class="photo">
-        <div *ngIf="isAdmin"
-        >
-
-        </div>
         <div class="photo_button"><b>Kind of sport</b></div>
       </div>
       <div class="side_bloke">

@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
         })
       },
       error =>{
-        this.app.openSnackBar("Such email is already in use","")
+        this.app.openSnackBar("Such email is already in use","Ok")
         this.form.enable()
       }
     )
