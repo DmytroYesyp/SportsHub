@@ -7,18 +7,8 @@ VALUES (1, 'Football'),
        (6, 'Handball'),
        (7, 'Volleyball'),
        (8, 'Cycling'),
-       (9, 'Cricket'),
-       (10, 'Hockey'),
-       (11, 'Boxing'),
-       (12, 'Swimming'),
-       (13, 'Fencing'),
-       (14, 'Equestrian'),
-       (15, 'Bowling'),
-       (16, 'Running'),
-       (17, 'Motorsports'),
-       (18, 'Athletics'),
-       (19, 'Weightlifting'),
-       (20, 'Gymnastics');
+       (9, 'Cricket');
+
 SELECT setval('kinds_of_sport_id_seq', 20);
 
 INSERT INTO league (id, name, league_date)
@@ -44,7 +34,7 @@ VALUES (1, 'Major League Baseball', 2022),
        (20, 'NBA G League', 2022);
 SELECT setval('league_id_seq', 20);
 
-INSERT INTO news (id, title, description, publication_date, league_id)
+INSERT INTO news (id, title, description, publication_date, league_id, image)
 VALUES (1, 'Premier League: 10 talking points',
         'There is a reason Everton are third-bottom in the league: they’ve been the league’s third-worst team',
         '2022-04-24T09:44:08.916Z', 1),
@@ -84,16 +74,16 @@ VALUES (1, 'Premier League: 10 talking points',
        (16, 'Black Jack ', 'Black Jack has overcome a rocky preparation.', '2022-04-25T09:54:08.916Z', 16),
        (17, 'Dragons',
         'Crucially, they were able to back their defence which had previously been the worst in the NRL.',
-        '2022-03-23T09:54:08.916Z', 17),
+        '2022-03-23T09:54:08.916Z', 17, 'https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2Fbasketball.jpg?alt=media&token=f880ae0d-1219-4476-97f2-0e1f076dc971'),
        (18, 'World Cup draw',
         'The days when Lionel Messi underperformed for his country while winning everything with his club are long gone.',
-        '2022-03-28T09:54:08.916Z', 18),
+        '2022-03-28T09:54:08.916Z', 18, 'https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2Fvolleyball.jpg?alt=media&token=7585e50e-b2b2-41e6-82a2-b1136db18237'),
        (19, 'Nathan and Ivan Cleary',
         'Amid a great deal of controversy in 2019, Nathan Cleary was reunited with his father Ivan.',
-        '2022-05-28T09:54:08.916Z', 19),
+        '2022-05-28T09:54:08.916Z', 19, 'https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2Fhockey.jpg?alt=media&token=99160c6d-f798-43e1-be34-50e0019c6bbc'),
        (20, 'Female athletes still have to tread a hard road',
         'There are so many factors to consider and while no one can claim to have all the answers.',
-        '2022-04-30T09:54:08.916Z', 20);
+        '2022-04-30T09:54:08.916Z', 20, 'https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2Ffootball.jpg?alt=media&token=5da23e00-a830-42f7-93a1-ec1649ba72d2');
 SELECT setval('news_id_seq', 20);
 
 INSERT INTO news_kind_of_sport (news_id, kinds_of_sport_id)

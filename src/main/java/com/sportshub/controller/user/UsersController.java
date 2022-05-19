@@ -50,7 +50,7 @@ public class UsersController {
     }
 
 
-    @PostMapping(path = "setRole{userId}{roleId}")
+    @PutMapping(path = "setRole{userId}{roleId}")
     public ResponseEntity<String> setRole(@RequestParam long userId,@RequestParam long roleId){
 
         return userService.setRole(userId,roleId);

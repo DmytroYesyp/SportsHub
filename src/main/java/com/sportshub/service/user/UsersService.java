@@ -82,7 +82,7 @@ public class UsersService implements UserDetailsService {
         }
         user.setLogo_url("User.png");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.getRoles().add(roleRepository.getById(56L));
+        user.getRoles().add(roleRepository.getById(2L));
         userRepository.save(user);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/users/registerUser").toUriString());
         return ResponseEntity.created(uri).build();
