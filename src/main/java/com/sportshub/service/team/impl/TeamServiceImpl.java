@@ -4,6 +4,7 @@ import com.sportshub.dto.count.CountDto;
 import com.sportshub.dto.team.TeamCreateDto;
 import com.sportshub.dto.team.TeamDto;
 import com.sportshub.dto.team.TeamUpdateDto;
+import com.sportshub.entity.league.LeagueEntity;
 import com.sportshub.entity.team.TeamEntity;
 import com.sportshub.exception.ConflictException;
 import com.sportshub.exception.NotFoundException;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -29,6 +31,11 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public TeamDto create(TeamCreateDto teamDto) {
         TeamEntity teamEntity = teamMapper.toEntity(teamDto);
+
+        if (teamDto.getLeagueId() == null)
+            teamEntity.setLeague(null);
+
+
         try {
             teamEntity = teamRepository.save(teamEntity);
         } catch (DataIntegrityViolationException e) {
@@ -68,7 +75,27 @@ public class TeamServiceImpl implements TeamService {
     @Transactional
     public void update(Long id, TeamUpdateDto teamDto) {
         TeamEntity teamEntity = teamMapper.toEntity(teamDto);
+
+        TeamEntity currentTeam = teamRepository.getById(id);
+
         try {
+
+            if (Objects.equals(teamEntity.getName(), ""))
+                teamEntity.setName(currentTeam.getName());
+
+            if (Objects.equals(teamEntity.getCoach(), ""))
+                teamEntity.setCoach(currentTeam.getCoach());
+
+            if (Objects.equals(teamEntity.getState(), ""))
+                teamEntity.setState(currentTeam.getState());
+
+            if (Objects.equals(teamEntity.getImage_url(), ""))
+                teamEntity.setImage_url(currentTeam.getImage_url());
+
+            if (teamDto.getLeagueId() == null)
+                teamEntity.setLeague(null);
+
+
             int affectedRaws = teamRepository.update(id, teamEntity);
             if (affectedRaws == 0) {
                 new NotFoundException("Team not found!");
