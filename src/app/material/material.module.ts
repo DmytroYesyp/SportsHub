@@ -17,7 +17,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 const MaterialComponents = [
   MatProgressSpinnerModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCommonModule,
   MatSelectModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatMenuModule,MatNativeDateModule,MatDatepickerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule, MatProgressSpinnerModule
 ];
 
 @NgModule({

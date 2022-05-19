@@ -29,6 +29,7 @@ const routes: Routes = [
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
+      {path: 'article/:newsId', component: ArticleComponent}
     ]
   },
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
     path: '', component: AdminLayoutComponent, canActivate: [AdminGuard], children:[
       {path: 'admin_page', component: AdminPageComponent},
       {path: 'admin_categories', component: NavMenuItemsComponent},
-      {path: 'article/add', component: AddArticleComponent},
+      {path: 'article_add', component: AddArticleComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent},
       {path: 'admin_page/set-lang', component: SetLangComponent}
