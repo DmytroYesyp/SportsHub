@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@syncfusion/ej2-angular-richtexteditor": "^20.1.56",
     "cropperjs": "^1.5.12",
     "file-drop-element": "^1.0.1",
     "firebase": "9.7.0",

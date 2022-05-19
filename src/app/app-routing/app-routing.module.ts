@@ -17,6 +17,8 @@ import {AdminLayoutComponent} from "../layouts/admin-layout/admin-layout.compone
 import {AdminGuard} from "../classes/admin.guard";
 import {ArticleComponent} from "../article/article.component";
 import {SetLangComponent} from "../set-lang/set-lang.component";
+import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
+import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
 
 const routes: Routes = [
   {
@@ -27,7 +29,6 @@ const routes: Routes = [
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
-      {path: 'article/:newsId', component: ArticleComponent}
     ]
   },
   {
@@ -38,6 +39,8 @@ const routes: Routes = [
   {
     path: '', component: AdminLayoutComponent, canActivate: [AdminGuard], children:[
       {path: 'admin_page', component: AdminPageComponent},
+      {path: 'admin_categories', component: NavMenuItemsComponent},
+      {path: 'article/add', component: AddArticleComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent},
       {path: 'admin_page/set-lang', component: SetLangComponent}

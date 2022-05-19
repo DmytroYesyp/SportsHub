@@ -29,6 +29,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
@@ -40,6 +41,17 @@ import { ArticleComponent } from './article/article.component';
 import { LangComponent } from './components/lang/lang.component';
 import { SetLangComponent } from './set-lang/set-lang.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { CreateCategoryDialogComponent } from './category-menu/create-category-dialog/create-category-dialog.component';
+import { CreateSubcategoryDialogComponent } from './category-menu/create-subcategory-dialog/create-subcategory-dialog.component';
+import { CreateTeamDialogComponent } from './category-menu/create-team-dialog/create-team-dialog.component';
+import { DeleteCategoryDialogComponent } from './category-menu/delete-category-dialog/delete-category-dialog.component';
+import { DeleteSubcategoryDialogComponent } from './category-menu/delete-subcategory-dialog/delete-subcategory-dialog.component';
+import { DeleteTeamDialogComponent } from './category-menu/delete-team-dialog/delete-team-dialog.component';
+import { EditCategoryDialogComponent } from './category-menu/edit-category-dialog/edit-category-dialog.component';
+import { EditSubcategoryDialogComponent } from './category-menu/edit-subcategory-dialog/edit-subcategory-dialog.component';
+import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-team-dialog.component';
+import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
+import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,7 +82,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminLayoutComponent,
     ArticleComponent,
     LangComponent,
-    SetLangComponent
+    SetLangComponent,
+    AdminTeamPageComponent,
+    CreateCategoryDialogComponent,
+    CreateSubcategoryDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteCategoryDialogComponent,
+    DeleteSubcategoryDialogComponent,
+    DeleteTeamDialogComponent,
+    EditCategoryDialogComponent,
+    EditSubcategoryDialogComponent,
+    EditTeamDialogComponent,
+    NavMenuItemsComponent,
+    AddArticleComponent
   ],
 
   imports: [
@@ -95,6 +119,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    RichTextEditorModule,
     NgpImagePickerModule,
     TranslateModule.forRoot({
       loader: {

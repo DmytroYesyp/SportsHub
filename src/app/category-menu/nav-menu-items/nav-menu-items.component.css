@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+}
+
+.section {
+  margin: 20px;
+}
+
+.button {
+  padding: 7px 25px;
+  font-family : "Open Sans";
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.mat-icon-points {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  transform: translateY(-50%);
+}
+/*.mat-typography {*/
+/*  padding: 7px 25px;*/
+/*  font-family : "Open Sans";*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  display: inline-block;*/
+/*  font-size: 13px;*/
+/*  margin: 4px 2px;*/
+/*  transition-duration: 0.4s;*/
+/*  cursor: pointer;*/
+/*  width: 100%;*/
+/*}*/
+
+.button_category {
+  background-color: white;
+  color: gray;
+  border: 2px dashed #e7e7e7;
+}
+
+.button_category:hover {background-color: #e7e7e7;}
+
+.button_name_category {
+  background-color: white;
+  color: gray;
+  border: 2px solid #e7e7e7;
+}
+
+.button_name_category:hover {
+  background-color: #e7e7e7;
+}
+
+.active-category {
+  background-color: #e7e7e7;
+  color:red;
+}
+
+.button_subcategory {
+  background-color: white;
+  color: gray;
+  border: 2px dashed #e7e7e7;
+}
+
+.button_subcategory:hover {background-color: #e7e7e7;}
+
+.button_name_subcategory {
+  background-color: white;
+  color: gray;
+  border: 2px solid #e7e7e7;
+}
+
+.button_name_subcategory:hover {
+  background-color: #e7e7e7;
+}
+
+.active-subcategory {
+  background-color: #e7e7e7;
+  color:red;
+}
+
+.button_team {
+  background-color: white;
+  color: gray;
+  border: 2px dashed #e7e7e7;
+}
+
+.button_team:hover {background-color: #e7e7e7;}
+
+.button_name_team {
+  background-color: white;
+  color: gray;
+  border: 2px solid #e7e7e7;
+}
+
+.button_name_team:hover {
+  background-color: #e7e7e7;
+}
+
+.active-team {
+  background-color: #e7e7e7;
+  color:red;
+}
