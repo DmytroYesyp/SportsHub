@@ -11,28 +11,22 @@ VALUES (1, 'Football'),
 
 SELECT setval('kinds_of_sport_id_seq', 9);
 
-INSERT INTO league (id, name, league_date)
-VALUES (1, 'Major League Baseball', 2022),
-       (2, 'WBA', 2022),
-       (3, 'Major League Cricket', 2022),
-       (4, 'BMX', 2022),
-       (5, 'UEFA Champions League', 2022),
-       (6, 'Hockey One', 2022),
-       (7, 'PGA Tour', 2022),
-       (8, 'Handball League', 2022),
-       (9, 'Champions Hockey League', 2022),
-       (10, 'MotoGP', 2022),
-       (11, 'World Wrestling Entertainment', 2022),
-       (12, 'CEV Cup', 2022),
-       (13, 'FIVB Volleyball Men''s Nations League', 2022),
-       (14, 'LEN Champions League', 2022),
-       (15, 'Diamond League', 2022),
-       (16, 'FIFA Confederations Cup', 2022),
-       (17, 'UCI World Tour', 2022),
-       (18, 'T20 Blast', 2022),
-       (19, 'FIBA Intercontinental Cup', 2022),
-       (20, 'NBA G League', 2022);
-SELECT setval('league_id_seq', 20);
+INSERT INTO roles(id, name)
+VALUES (1, 'user'),
+       (2, 'admin');
+SELECT setval('role_user', 2);
+
+INSERT INTO league (id, name, kinds_of_sport_id)
+VALUES (1, 'Major League Baseball', 1),
+       (2, 'WBA', 2),
+       (3, 'Major League Cricket', 3),
+       (4, 'BMX', 4),
+       (5, 'UEFA Champions League', 5),
+       (6, 'Hockey One', 6),
+       (7, 'PGA Tour', 7),
+       (8, 'Handball League',8),
+       (9, 'Champions Hockey League', 9);
+SELECT setval('league_id_seq', 9);
 
 INSERT INTO news (id, title, description, publication_date, league_id, image, text)
 VALUES (1, 'Dragons',
@@ -49,35 +43,26 @@ VALUES (1, 'Dragons',
         '2022-04-30T09:54:08.916Z', 4, 'https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2Ffootball.jpg?alt=media&token=5da23e00-a830-42f7-93a1-ec1649ba72d2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation');
 SELECT setval('news_id_seq', 4);
 
-INSERT INTO news_kind_of_sport (news_id, kinds_of_sport_id)
-VALUES (1, 1),
-       (2, 2),
-       (3, 3),
-       (4, 4);
+-- INSERT INTO news_kind_of_sport (news_id, kinds_of_sport_id)
+-- VALUES (1, 1),
+--        (2, 2),
+--        (3, 3),
+--        (4, 4);
 
 
-INSERT INTO team (id, name, coach, state)
-VALUES (1, 'Liverpool', 'Jürgen Klopp', 'UK'),
-       (2, 'FC Barcelona', 'Xavi Hernandez', 'Spain'),
-       (3, 'Suomi-sarja', 'Mu Si', 'Finland'),
-       (4, 'Elitserien', 'Scott Munoz', 'Singapore'),
-       (5, 'Pacific Coast', 'Ricardo Perez', 'Canada'),
-       (6, 'Midwest', 'Tammy Hubbard', 'USA'),
-       (7, 'Veracruzana', 'Tonya Walker', 'Slovenia'),
-       (8, 'Intercity', 'Caleb Zamora', 'Bulgaria'),
-       (9, 'Nunchuk Raiders', 'Natalie Gonzalez', 'Ireland'),
-       (10, 'Raging Buccaneers', 'Marissa Johnson', 'Hungary'),
-       (11, 'Extreme Kings', 'Sarah Tucker', 'Finland'),
-       (12, 'Spinning Dreamers', 'Sally Brown MD', 'Iceland'),
-       (13, 'American Planets', 'Ebony Hess', 'Portugal'),
-       (14, 'Thunder Monsters', 'Laura Rodriguez', 'Lithuania'),
-       (15, 'Sneaky Mashers', 'Juan Smith', 'France'),
-       (16, 'Fire Sharks', 'Katelyn Ruiz', 'Poland'),
-       (17, 'Delta Tornadoes', 'Joseph Hunt', 'Monaco'),
-       (18, 'Deadly Killers', 'William Calhoun', 'Ukraine'),
-       (19, 'Nunchuk Buccaneers', 'Mary Jones', 'Finland'),
-       (20, 'Silent Commandos', 'Matthew Jackson', 'Armenia');
-SELECT setval('team_id_seq', 20);
+
+
+INSERT INTO team (id, name, coach, state, league_id)
+VALUES (1, 'Liverpool', 'Jürgen Klopp', 'UK',1),
+       (2, 'FC Barcelona', 'Xavi Hernandez', 'Spain',2),
+       (3, 'Suomi-sarja', 'Mu Si', 'Finland',3),
+       (4, 'Elitserien', 'Scott Munoz', 'Singapore',4),
+       (5, 'Pacific Coast', 'Ricardo Perez', 'Canada',5),
+       (6, 'Midwest', 'Tammy Hubbard', 'USA',6),
+       (7, 'Veracruzana', 'Tonya Walker', 'Slovenia',7),
+       (8, 'Intercity', 'Caleb Zamora', 'Bulgaria',8),
+       (9, 'Nunchuk Raiders', 'Natalie Gonzalez', 'Ireland',9);
+SELECT setval('team_id_seq', 9);
 
 INSERT INTO team_news (news_id, team_id)
 VALUES (1, 1),

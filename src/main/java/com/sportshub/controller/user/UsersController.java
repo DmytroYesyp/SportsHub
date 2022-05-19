@@ -44,7 +44,6 @@ public class UsersController {
 
     @GetMapping("getUserByEmail{email}")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email){
-
         return userService.findUserByEmail(email);
     }
 

@@ -53,12 +53,6 @@ public class NewsRepositoryImpl implements CustomNewsRepository {
             predicates.add(criteriaBuilder.or(leagueIdPredicates));
         }
 
-        Set<Long> kindsOfSportIds = newsSearchFilters.getKindsOfSportIds();
-        if (kindsOfSportIds != null && !kindsOfSportIds.isEmpty()) {
-            Predicate[] kindsOfSportIdPredicates = kindsOfSportIds.stream().map(kindsOfSportId -> criteriaBuilder.isMember(kindsOfSportId, queryRoot.get("kindsOfSportIds")))
-                    .toArray(Predicate[]::new);
-            predicates.add(criteriaBuilder.or(kindsOfSportIdPredicates));
-        }
 
         Set<Long> teamIds = newsSearchFilters.getTeamIds();
         if (teamIds != null && !teamIds.isEmpty()) {
@@ -111,12 +105,6 @@ public class NewsRepositoryImpl implements CustomNewsRepository {
             predicates.add(criteriaBuilder.or(leagueIdPredicates));
         }
 
-        Set<Long> kindsOfSportIds = newsSearchFilters.getKindsOfSportIds();
-        if (kindsOfSportIds != null && !kindsOfSportIds.isEmpty()) {
-            Predicate[] kindsOfSportIdPredicates = kindsOfSportIds.stream().map(kindsOfSportId -> criteriaBuilder.isMember(kindsOfSportId, queryRoot.get("kindsOfSportIds")))
-                    .toArray(Predicate[]::new);
-            predicates.add(criteriaBuilder.or(kindsOfSportIdPredicates));
-        }
 
         Set<Long> teamIds = newsSearchFilters.getTeamIds();
         if (teamIds != null && !teamIds.isEmpty()) {

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -58,7 +57,6 @@ public class TeamServiceImpl implements TeamService {
         return new CountDto(sportKindsCount);
     }
 
-
     @Override
     public TeamDto find(Long id) {
         TeamEntity sportKindEntity = teamRepository.findById(id)
@@ -69,24 +67,8 @@ public class TeamServiceImpl implements TeamService {
     @Override
     @Transactional
     public void update(Long id, TeamUpdateDto teamDto) {
-
-        TeamEntity currentTeam = teamRepository.getById(id);
-
-
         TeamEntity teamEntity = teamMapper.toEntity(teamDto);
         try {
-            if (Objects.equals(teamEntity.getName(), ""))
-                teamEntity.setName(currentTeam.getName());
-
-            if (Objects.equals(teamEntity.getCoach(), ""))
-                teamEntity.setCoach(currentTeam.getCoach());
-
-            if (Objects.equals(teamEntity.getState(), ""))
-                teamEntity.setState(currentTeam.getState());
-
-            if (Objects.equals(teamEntity.getImage_url(), ""))
-                teamEntity.setImage_url(currentTeam.getImage_url());
-
             int affectedRaws = teamRepository.update(id, teamEntity);
             if (affectedRaws == 0) {
                 new NotFoundException("Team not found!");

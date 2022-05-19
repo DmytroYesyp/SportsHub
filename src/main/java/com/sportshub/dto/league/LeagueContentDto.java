@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class LeagueCreateDto {
+public class LeagueContentDto {
     @NotBlank
     private String name;
-    private Integer leagueDate;
+    private Long sportKindId;
 }

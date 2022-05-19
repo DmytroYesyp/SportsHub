@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface SportKindRepository extends JpaRepository<SportKindEntity, Long> {
 
-    @Query("FROM SportKindEntity LI")
+    @Query("FROM SportKindEntity")
     List<SportKindEntity> findAllSportKinds(Pageable pageable);
 
     @Modifying

@@ -1,9 +1,8 @@
 package com.sportshub.controller.sport.kind;
 
 import com.sportshub.dto.count.CountDto;
-import com.sportshub.dto.sport.kind.SportKindCreateDto;
+import com.sportshub.dto.sport.kind.SportKindContentDto;
 import com.sportshub.dto.sport.kind.SportKindDto;
-import com.sportshub.dto.sport.kind.SportKindUpdateDto;
 import com.sportshub.service.sport.kind.SportKindService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +29,7 @@ public class SportKindController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public SportKindDto create(@RequestBody @Valid SportKindCreateDto sportKindDto) {
+    public SportKindDto create(@RequestBody @Valid SportKindContentDto sportKindDto) {
         return sportKindService.create(sportKindDto);
     }
 
@@ -53,7 +52,7 @@ public class SportKindController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody SportKindUpdateDto sportKindDto) {
+    public void update(@PathVariable Long id, @RequestBody SportKindContentDto sportKindDto) {
         sportKindService.update(id, sportKindDto);
     }
 

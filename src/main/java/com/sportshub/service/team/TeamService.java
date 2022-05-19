@@ -13,7 +13,6 @@ public interface TeamService {
     List<TeamDto> findAll(int page, int limit);
     CountDto getCount();
     TeamDto find(Long id);
-//    TeamDto UploadTeamImage(Long id);
     void update(Long id, TeamUpdateDto teamDto);
     void delete(Long id);
 }

@@ -1,9 +1,8 @@
 package com.sportshub.service.sport.kind.impl;
 
 import com.sportshub.dto.count.CountDto;
-import com.sportshub.dto.sport.kind.SportKindCreateDto;
+import com.sportshub.dto.sport.kind.SportKindContentDto;
 import com.sportshub.dto.sport.kind.SportKindDto;
-import com.sportshub.dto.sport.kind.SportKindUpdateDto;
 import com.sportshub.entity.sport.kind.SportKindEntity;
 import com.sportshub.exception.ConflictException;
 import com.sportshub.exception.NotFoundException;
@@ -27,7 +26,7 @@ public class SportKindServiceImpl implements SportKindService {
     private final SportKindMapper sportKindMapper;
 
     @Override
-    public SportKindDto create(SportKindCreateDto sportKindDto) {
+    public SportKindDto create(SportKindContentDto sportKindDto) {
         SportKindEntity sportKindEntity = sportKindMapper.toEntity(sportKindDto);
         try {
             sportKindEntity = sportKindRepository.save(sportKindEntity);
@@ -66,7 +65,7 @@ public class SportKindServiceImpl implements SportKindService {
 
     @Override
     @Transactional
-    public void update(Long id, SportKindUpdateDto sportKindDto) {
+    public void update(Long id, SportKindContentDto sportKindDto) {
         SportKindEntity sportKindEntity = sportKindMapper.toEntity(sportKindDto);
         try{
             int affectedRaws = sportKindRepository.update(id, sportKindEntity);
