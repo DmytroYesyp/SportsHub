@@ -1,13 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="addArticle()">
-  <div class="picture">
-    <p>PICTURE*</p>
-    <div class="dashed">
-      <h2 class="data-dash">
-        <mat-icon>camera_alt</mat-icon>
-        <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.
-      </h2>
-    </div>
-  </div>
+<!--  <div class="picture">-->
+<!--    <p>PICTURE*</p>-->
+<!--    <div class="dashed">-->
+<!--      <h2 class="data-dash">-->
+<!--        <mat-icon>camera_alt</mat-icon>-->
+<!--        <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.-->
+<!--      </h2>-->
+<!--    </div>-->
+<!--  </div>-->
+  <app-uploader></app-uploader>
 
   <div class="container">
     <div class="league">
