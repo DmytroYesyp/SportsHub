@@ -33,6 +33,8 @@ import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
 import { SearchFilterPipe } from './search-filter.pipe';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import {AdminGuard} from "./classes/admin.guard";
 
 
 
@@ -56,7 +58,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
     ArticleEditorComponent,
     UploaderComponent,
     AdminTeamPageComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AdminLayoutComponent
   ],
 
   imports: [
@@ -79,6 +82,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
   ],
   providers: [
     AuthService,
+    AppComponent,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
