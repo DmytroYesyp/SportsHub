@@ -17,6 +17,5 @@ public class NewsCreateDto {
     private String caption;
     private String image;
     private Long leagueId;
-    private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;
 }

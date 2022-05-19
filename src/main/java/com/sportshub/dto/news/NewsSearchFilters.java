@@ -12,6 +12,5 @@ public class NewsSearchFilters {
     private Instant publicationDateFrom;
     private Instant publicationDateTo;
     private Set<Long> leagueIds;
-    private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;
 }

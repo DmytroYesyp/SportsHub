@@ -27,12 +27,7 @@ CREATE TABLE news
     league_id        BIGINT       NOT NULL REFERENCES league (id) ON DELETE CASCADE
 );
 
-CREATE TABLE news_kind_of_sport
-(
-    news_id           BIGINT NOT NULL REFERENCES news (id) ON DELETE CASCADE,
-    kinds_of_sport_id BIGINT NOT NULL REFERENCES kinds_of_sport (id) ON DELETE CASCADE,
-    PRIMARY KEY (news_id, kinds_of_sport_id)
-);
+
 
 CREATE TABLE users
 (

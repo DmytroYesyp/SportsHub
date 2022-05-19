@@ -16,6 +16,5 @@ public class NewsDto {
     private String caption;
     private String image;
     private Long leagueId;
-    private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;
 }
