@@ -164,10 +164,22 @@ a:hover{
   width: 200px;
   min-height: 100px;
 }
+
+/*.sidebar_admin{*/
+/*  padding-left: 52px;*/
+/*  width: 200px;*/
+/*  min-height: 100px;*/
+/*}*/
+
 .sidebar_text{
   width: 100px;
   min-height: 100px;
 }
+
+/*.sidebar_text_admin{*/
+/*  width: 100px;*/
+/*  min-height: 100px;*/
+/*}*/
 
 .sidebar_follow a{
   color: #000000;
@@ -178,6 +190,16 @@ a:hover{
   text-decoration: none;
   margin: 12px 12px 0 0;
 }
+
+/*.sidebar_follow_admin a{*/
+/*  color: #000000;*/
+/*  background: #ffffff;*/
+/*  font-size: 25px;*/
+/*  border: none;*/
+/*  cursor: pointer;*/
+/*  text-decoration: none;*/
+/*  margin: 12px 12px 0 0;*/
+/*}*/
 
 .sidebar_text main_kinds{
   color: #b2b2b2;
@@ -312,3 +334,4 @@ a:hover{
   font-size: 16px;
   font-weight: bold;
 }
+
