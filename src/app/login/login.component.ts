@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {

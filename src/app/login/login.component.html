@@ -15,15 +15,15 @@
   <a href="/main" class="logo">
     <div class="logo_txt">Sports Hub</div>
   </a>
-  <div class="text">Don't have an account?</div>
+  <div class="text">{{ 'LOGIN.QSTNLOG' | translate}}</div>
   <a href="/register" class="btn">
-    <div class="btn_txt">Get started</div>
+    <div class="btn_txt">{{ 'LOGIN.REG' | translate}}</div>
   </a>
 </div>
 
 
 <div class="container">
-  <h1>Log in to sports hub</h1>
+  <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
   <!--  <div class="t1">Create Account</div>-->
   <!--  <div class="t2">-->
   <a href="#" class="fa fa-facebook"></a>
@@ -34,9 +34,9 @@
 
 
   <form [formGroup]="form" (change)="onFormChange()" (ngSubmit)="onSubmit()">
-    <h4>Email</h4>
+    <h4>{{ 'LOGIN.EMAIL' | translate}}</h4>
     <mat-form-field appearance="outline">
-      <mat-label>Enter your email</mat-label>
+      <mat-label>{{ 'LOGIN.ENTEMAIL' | translate}}</mat-label>
       <input matInput placeholder="pat@example.com" formControlName="email">
       <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
 <!--      <span *ngIf="form.get('email').errors['email']">Email can't be empty</span>-->
@@ -46,9 +46,9 @@
 
 
 
-    <h4>Password</h4>
+    <h4>{{ 'LOGIN.PASS' | translate}}</h4>
     <mat-form-field appearance="outline">
-      <mat-label>Enter your password</mat-label>
+      <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" placeholder="some pass" formControlName="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -56,10 +56,10 @@
       <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>
     </mat-form-field>
 
-    <a href="/forgot_password" class="forgot_txt">Forgot password?</a>
+    <a href="/forgot_password" class="forgot_txt">{{'LOGIN.FGTPASS' | translate}}</a>
 
 
-    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >Log in</button>
+    <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || !!formError" >{{ 'LOGIN.LOGIN' | translate}}</button>
 
   </form>
 

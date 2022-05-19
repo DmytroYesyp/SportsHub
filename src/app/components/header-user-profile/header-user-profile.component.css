@@ -10,12 +10,12 @@
   text-align: center;
   height: 200px;
   position: absolute;
-  margin-left:78vw;
-  z-index: 2;
+  margin-left:74vw;
+  z-index: 3;
 }
 .profile{
   margin-top: 15px;
-  margin-right: 220px;
+  margin-right: 215px;
 }
 
 .profile_img{
@@ -25,4 +25,8 @@
   background: url(src/assets/img/primg.jpg) no-repeat;
   margin: 20px 20px 20px -60px;
   border-radius: 50%;
+}
+a:hover{
+  color: #D72130;
+  transition: all 0.5s ease;
 }

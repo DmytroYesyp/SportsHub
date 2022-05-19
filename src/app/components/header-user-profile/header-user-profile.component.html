@@ -6,8 +6,10 @@
         {{firstName}} {{lastName}}
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div *ngFor="let item of createRange(arr.length)">
-      <a class="txt1" href="{{arr2[item]}}"> {{arr[item]}} </a>
-    </div>
+    <a class="txt1" href="/profile"> {{ 'HEADER.PROFILE.VIEW' | translate}} </a><br>
+    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.PASS' | translate}} </a><br>
+    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.SURVEYS' | translate}} </a><br>
+    <a class="txt1" href="/"> {{ 'HEADER.PROFILE.TEAMHUB' | translate}} </a><br>
+    <a class="txt1" href="/login"> {{ 'HEADER.PROFILE.LOGOUT' | translate}} </a>
   </mat-expansion-panel>
 </div>

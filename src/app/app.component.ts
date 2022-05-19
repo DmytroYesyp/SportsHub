@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ import {AuthService} from "./services/auth.service";
 export class AppComponent implements OnInit{
   title = 'client';
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, public translate: TranslateService) {
+    let lang = translate.getBrowserLang()
+    if (lang != null) {
+      translate.setDefaultLang(lang)
+      translate.use(localStorage.getItem('lang')||lang);
+    }
   }
 
   ngOnInit() {
@@ -19,3 +25,4 @@ export class AppComponent implements OnInit{
     }
   }
 }
+

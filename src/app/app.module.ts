@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -23,6 +23,16 @@ import {AuthService} from "./services/auth.service";
 import {HeaderUserProfileComponent} from "./components/header-user-profile/header-user-profile.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
 import {NewsCardComponent} from "./services/news_card.component";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { ArticleComponent } from './article/article.component';
+import { LangComponent } from './components/lang/lang.component';
+import { SetLangComponent } from './set-lang/set-lang.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +50,10 @@ import {NewsCardComponent} from "./services/news_card.component";
     ForgotPasswordComponent,
     ProfileComponent,
     HeaderUserProfileComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    ArticleComponent,
+    LangComponent,
+    SetLangComponent
   ],
 
   imports: [
@@ -50,7 +63,17 @@ import {NewsCardComponent} from "./services/news_card.component";
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
+    MatCheckboxModule
   ],
   providers: [
     AuthService,

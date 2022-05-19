@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-main-page',
@@ -17,8 +18,10 @@ export class MainPageComponent implements OnInit {
 
   user: Object;
 
-  constructor(private mainpage: mainPage, private auth: AuthService) {
+  constructor(private mainpage: mainPage, private auth: AuthService, public translate: TranslateService) {
+
   }
+
   getUserFromToken(){
 
     const token = localStorage.getItem('auth-token');
