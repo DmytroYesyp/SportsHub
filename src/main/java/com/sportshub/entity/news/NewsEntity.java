@@ -28,6 +28,7 @@ public class NewsEntity {
     private Long id;
     private String title;
     private String description;
+    private String text;
     private Instant publicationDate;
     private String image;
 

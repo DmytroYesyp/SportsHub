@@ -9,6 +9,7 @@ import java.util.Set;
 public class NewsSearchFilters {
     private String title;
     private String description;
+    private String text;
     private Instant publicationDateFrom;
     private Instant publicationDateTo;
     private Set<Long> leagueIds;
