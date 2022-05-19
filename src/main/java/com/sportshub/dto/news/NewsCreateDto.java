@@ -12,6 +12,7 @@ import java.util.Set;
 public class NewsCreateDto {
     private String title;
     private String description;
+    private String text;
     private Instant publicationDate;
     private String image;
     private Long leagueId;
