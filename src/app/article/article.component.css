@@ -94,19 +94,29 @@ input[type=text] {
 
 
 .footer{
-  position: absolute;
-  float: bottom;
+  /*!*position: absolute;*!*/
+  /*float: bottom;*/
+  /*position: absolute;*/
+  /*left: 0;*/
+  /*bottom: 0;*/
+  /*width: 100%;*/
+  /*height: 40px;*/
+  /*text-align: right;*/
+  /*background: #D72130;*/
+  /*!*padding: 17px;*!*/
+  /*position: absolute;*/
+  /*float: bottom;*/
+  margin-bottom: 0;
   width: 1485px;
   height: 40px;
   text-align: right;
   background: #D72130;
-  padding: 17px;
-}
-
-.footer p{
   color: white;
   font-size: 12px;
+  /*padding: 17px;*/
+
 }
+
 
 .main{
   display: flex;
