@@ -1,10 +1,9 @@
 package com.sportshub.controller.pictures;
 
-import com.sportshub.dto.team.TeamDto;
 import com.sportshub.entity.user.User;
 import com.sportshub.service.fireBase.fireBaseService;
 import com.sportshub.service.team.TeamService;
-import com.sportshub.service.user.UsersService;
+import com.sportshub.service.user.impl.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +18,13 @@ public class pictureController {
 
     @Autowired
     private final fireBaseService fireBase;
-    private final UsersService usersService;
+    private final UsersServiceImpl usersServiceImpl;
     private final TeamService teamService;
 
 
-    public pictureController(fireBaseService fireBase, UsersService usersService, TeamService teamService) {
+    public pictureController(fireBaseService fireBase, UsersServiceImpl usersServiceImpl, TeamService teamService) {
         this.fireBase = fireBase;
-        this.usersService = usersService;
+        this.usersServiceImpl = usersServiceImpl;
         this.teamService = teamService;
     }
 
@@ -33,7 +32,7 @@ public class pictureController {
 
     @GetMapping(path = "getUserProfileImage")
     public ResponseEntity<String> getUserProfileImage(HttpServletRequest request){
-        return ResponseEntity.ok().body(fireBase.getImage(usersService.getUserLogo(request)));
+        return ResponseEntity.ok().body(fireBase.getImage(usersServiceImpl.getUserLogo(request)));
     }
 
     @GetMapping(path = "getImage{imagePath}")
@@ -45,7 +44,7 @@ public class pictureController {
     @PutMapping(path = "updateUserImage")
     public ResponseEntity<String> updateUserImage(HttpServletRequest request, @RequestParam("file") MultipartFile file) throws IOException {
 
-        User user = usersService.uploadImageToUserProfile(request);
+        User user = usersServiceImpl.uploadImageToUserProfile(request);
         fireBase.updateUserProfilePic(user,file);
         return ResponseEntity.ok().body(null);
     }

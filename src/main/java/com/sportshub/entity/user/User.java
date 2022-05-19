@@ -53,6 +53,11 @@ public class User {
         this.roles = role;
     }
 
+
+
+
+
+
     public String getLogo_url() {
         return logo_url;
     }

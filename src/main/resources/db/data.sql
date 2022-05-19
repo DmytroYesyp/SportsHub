@@ -215,7 +215,6 @@ INSERT INTO roles(id, name)
 VALUES (1, 'user'),
        (2, 'admin');
 
-SELECT setval('roles_id_seq', 2);
 
 
 INSERT INTO permissions(id, name)
@@ -266,74 +265,6 @@ VALUES (1, 'GET_USERS_LIST'),
        (45, 'DELETE_SURVEY');
 SELECT setval('permissions_id_seq', 45);
 
-INSERT INTO permission_roles(role_id, permission_id)
-VALUES (1, 1),
-       (1, 2),
-       (1, 3),
-       (1, 4),
-       (1, 5),
-       (1, 6),
-       (1, 7),
-       (1, 8),
-       (1, 9),
-       (1, 10),
-       (1, 11),
-       (1, 12),
-       (1, 13),
-       (1, 14),
-       (1, 15),
-       (1, 16),
-       (1, 17),
-       (1, 18),
-       (1, 19),
-       (1, 20),
-       (1, 21),
-       (1, 22),
-       (1, 23),
-       (1, 24),
-       (1, 25),
-       (1, 26),
-       (1, 27),
-       (1, 28),
-       (1, 29),
-       (1, 30),
-       (1, 31),
-       (1, 32),
-       (1, 33),
-       (1, 34),
-       (1, 35),
-       (1, 36),
-       (1, 37),
-       (1, 38),
-       (1, 39),
-       (1, 40),
-       (1, 41),
-       (1, 42),
-       (1, 43),
-       (1, 44),
-       (1, 45),
-       (2, 1),
-       (2, 2),
-       (2, 6),
-       (2, 7),
-       (2, 11),
-       (2, 12),
-       (2, 16),
-       (2, 17),
-       (2, 21),
-       (2, 22),
-       (2, 26),
-       (2, 27),
-       (2, 31),
-       (2, 32),
-       (2, 36),
-       (2, 37),
-       (2, 41),
-       (2, 42);
 
 
-INSERT INTO user_roles (user_id, role_id)
-VALUES (1, 1),
-       (2, 2);
-
-ALTER SEQUENCE SEQ_USER RESTART WITH 3;
+ALTER SEQUENCE SEQ_USER RESTART WITH 1;

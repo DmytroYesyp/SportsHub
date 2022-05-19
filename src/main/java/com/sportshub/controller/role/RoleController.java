@@ -1,7 +1,7 @@
 package com.sportshub.controller.role;
 
 import com.sportshub.entity.role.Roles;
-import com.sportshub.service.role.RoleService;
+import com.sportshub.service.role.impl.RoleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,39 +12,39 @@ import java.util.List;
 @RequestMapping(path = "api/roles/")
 public class RoleController {
 
-    private final RoleService roleService;
+    private final RoleServiceImpl roleServiceImpl;
 
     @Autowired
-    public RoleController(RoleService roleService) {
-        this.roleService = roleService;
+    public RoleController(RoleServiceImpl roleServiceImpl) {
+        this.roleServiceImpl = roleServiceImpl;
     }
 
 
     @GetMapping(path = "getAllRoles")
     public List<Roles> getUsers() {
-        return roleService.GetRoles();
+        return roleServiceImpl.GetRoles();
     }
 
     @GetMapping(path = "roles{userId}")
     public ResponseEntity<Roles> getUser(@RequestParam long roleId) {
-        return roleService.getRolesById(roleId);
+        return roleServiceImpl.getRolesById(roleId);
     }
 
     @DeleteMapping(path = "roles{userId}")
     public ResponseEntity<String> deleteUser(@RequestParam long userId) {
-        return roleService.deleteRole(userId);
+        return roleServiceImpl.deleteRole(userId);
     }
 
     @PostMapping(path = "addNewRole")
     public ResponseEntity<String> regNewUser(@RequestBody Roles role) {
 
-        return roleService.addNewRole(role);
+        return roleServiceImpl.addNewRole(role);
     }
 
     @PutMapping(path = "roles{roleId}")
     public ResponseEntity updateUser(
             @RequestBody Roles role,
             @PathVariable("roleId") long roleId) {
-        return roleService.updateRole(roleId, role);
+        return roleServiceImpl.updateRole(roleId, role);
     }
 }

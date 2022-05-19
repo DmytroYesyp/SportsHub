@@ -2,7 +2,7 @@ package com.sportshub.controller.reset.password;
 
 
 import com.sportshub.entity.user.User;
-import com.sportshub.service.user.UsersService;
+import com.sportshub.service.user.impl.UsersServiceImpl;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class ResetPasswordController {
     private JavaMailSender mailSender;
 
     @Autowired
-    private UsersService userService;
+    private UsersServiceImpl userService;
 
     @PostMapping("/forgot_password")
     public ResponseEntity<?> processForgotPassword(@RequestParam String email) {

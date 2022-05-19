@@ -1,5 +1,5 @@
 package com.sportshub.controller.user;
-import com.sportshub.service.user.UsersService;
+import com.sportshub.service.user.impl.UsersServiceImpl;
 import com.sportshub.entity.role.Roles;
 import com.sportshub.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(path = "api/users/")
 public class UsersController {
-    private final UsersService userService;
+    private final UsersServiceImpl userService;
 
     @Autowired
-    public UsersController(UsersService userService) {
+    public UsersController(UsersServiceImpl userService) {
         this.userService = userService;
     }
 

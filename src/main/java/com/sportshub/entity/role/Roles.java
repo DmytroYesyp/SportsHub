@@ -13,7 +13,10 @@ import java.util.Set;
 public class Roles {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,
+            generator="role_seq")
+    @SequenceGenerator(name="role_seq",
+            sequenceName="ROLE_USER", allocationSize=1)
     private long id;
     private String name;
 
