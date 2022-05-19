@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-main-page',
@@ -14,12 +15,15 @@ export class MainPageComponent implements OnInit {
 
   firstName: any;
   lastName: any;
+  isAdmin: boolean = false;
+
+  role: string;
 
   user: Object;
 
   authenticated: boolean = false;
 
-  constructor(private mainpage: mainPage, private auth: AuthService) {
+  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent) {
   }
 
   getUserFromToken(){
@@ -60,6 +64,12 @@ export class MainPageComponent implements OnInit {
       this.authenticated = true
     }else{
       this.auth.logout()
+    }
+
+    this.role = this.app.getUserFromToken()
+    console.log(this.role)
+    if(this.role=="admin"){
+      this.isAdmin = true;
     }
 
 
