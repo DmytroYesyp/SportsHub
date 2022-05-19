@@ -1,86 +1,93 @@
-<div class="picture">
-  <p>PICTURE*</p>
-  <div class="dashed">
-    <h2 class="data-dash">
-      <mat-icon>camera_alt</mat-icon>
-      <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.</h2>
+<form [formGroup]="form" (ngSubmit)="addArticle()">
+  <div class="picture">
+    <p>PICTURE*</p>
+    <div class="dashed">
+      <h2 class="data-dash">
+        <mat-icon>camera_alt</mat-icon>
+        <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.
+      </h2>
+    </div>
   </div>
-</div>
 
-<div class="container">
-<div class="league">
-  <p>SUBCATEGORY</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Not Selected</mat-label>
-    <mat-select>
-      <mat-option>
+  <div class="container">
+    <div class="league">
+      <p>SUBCATEGORY</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Not Selected</mat-label>
+        <mat-select>
+          <mat-option>
 
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-<div class="team">
-  <p>TEAM</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Not Selected</mat-label>
-    <mat-select>
-      <mat-option>
+    <div class="team">
+      <p>TEAM</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Not Selected</mat-label>
+        <mat-select>
+          <mat-option>
 
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-<div class="date">
-  <p>PUBLICATION DATE</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-</div>
+    <div class="date">
+      <p>PUBLICATION DATE</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="publicationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
 
-<div class="alt">
-  <p>ALT.*</p>
-  <form class="alt-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <input matInput placeholder="Alternative text for picture">
-    </mat-form-field>
-  </form>
-</div>
+  <div class="alt">
+    <p>ALT.*</p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="Alternative text for picture" formControlName="alternativeText">
+      </mat-form-field>
+  </div>
 
-<div class="title">
-  <p>ARTICLE HEADLINE*</p>
-  <form class="alt-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <input matInput placeholder="Name">
-    </mat-form-field>
-  </form>
-</div>
+  <div class="title">
+    <p>ARTICLE HEADLINE*</p>
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <input matInput placeholder="Name" formControlName="title">
+      </mat-form-field>
+  </div>
 
-<div class="caption">
-  <p>CAPTION*</p>
-  <form class="alt-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <input matInput placeholder="Write caption text here">
-    </mat-form-field>
-  </form>
-</div>
+  <div class="caption">
+    <p>CAPTION*</p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="Write caption text here" formControlName="caption">
+      </mat-form-field>
+  </div>
 
-<div class="content">
-  <p>CONTENT*</p>
-  <form class="alt-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <textarea matInput placeholder="Please add text here"></textarea>
-    </mat-form-field>
-  </form>
-</div>
+  <div class="content">
+    <p>CONTENT*</p>
+    <ejs-richtexteditor id='article-text' class="article-text" formControlName="description">
+      <ng-template #valueTemplate>
+        <p>Today, May 18, in Rijeka at the Ruevitsa Stadium, the national team of Ukraine will hold its third control match this year (starting at 19.00 Kyiv time). This time the rival of the blue and yellows will be the Croatian football club "Rijeka".</p>
+        <p>The anthem of Ukraine before the match will be performed live by Ukrainian singer Svitlana Tarabarova - performer of the hits "Good with you", "I'm fabulous" and "Come back alive".</p>
+        <p>We hope that the Anthem of Ukraine in its performance will inspire the blue and yellows to a dedicated and meaningful game.</p>
+      </ng-template>
+    </ejs-richtexteditor>
+  </div>
 
-<div class="custom-switch">
-<!--  <input type="checkbox" class="custom-control-input" id="customSwitches">-->
-<!--  <label class="custom-control-label" for="customSwitches">Comments: Show</label>-->
-  <p>Comments: Show <mat-slide-toggle color="warn"></mat-slide-toggle></p>
-</div>
+
+  <div class="footer-but">
+    <div class="custom-switch">
+      <p>Comments: Show
+        <mat-slide-toggle color="warn"></mat-slide-toggle>
+      </p>
+    </div>
+
+    <div class="button-add">
+      <button mat-raised-button color="warn" type="submit">Add</button>
+    </div>
+  </div>
+</form>
+

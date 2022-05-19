@@ -28,6 +28,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { environment } from '../environments/environment';
 import {NgpImagePickerModule} from "ngp-image-picker";
 import {AdminTeamPageComponent} from "./admin-team-page/admin-team-page.component";
@@ -87,7 +88,8 @@ import { AddArticleComponent } from './admin-article/add-article/add-article.com
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    NgpImagePickerModule
+    NgpImagePickerModule,
+    RichTextEditorModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),

@@ -79,3 +79,16 @@ h2.data-dash {
 .mat-slide-toggle {
   padding: 10px;
 }
+
+.article-text {
+  max-width: 745px;
+}
+
+.footer-but {
+  display: flex;
+}
+
+.button-add {
+  margin-left: 460px;
+  padding: 15px;
+}
