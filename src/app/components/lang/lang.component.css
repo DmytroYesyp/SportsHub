@@ -1,0 +1,32 @@
+.language{
+  margin-top: -65px;
+  width: 110px;
+  float: right;
+  position: absolute;
+  margin-left:88vw;
+  z-index: 3;
+}
+
+.language button{
+  background: none;
+  border: none;
+}
+
+.txt1{
+  font-family: 'Open Sans', sans-serif;
+  color: #919191;
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: -15px;
+}
+
+.fa
+{
+  font-size: 30px;
+  margin: auto;
+}
+
+.txt1:hover{
+  color: #D72130;
+  transition: all 0.5s ease;
+}

@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<mat-expansion-panel  class = "language">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <i class="fa fa-globe"></i>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <button class="txt1"  (click)="changeLang('en')" > {{ 'HEADER.LANG.EN' | translate}} </button><br>
+  <button class="txt1"  (click)="changeLang('uk')"> {{ 'HEADER.LANG.UA' | translate}} </button><br>
+  <button class="txt1" (click)="changeLang('ru')"> {{ 'HEADER.LANG.RU' | translate}} </button><br>
+</mat-expansion-panel>
