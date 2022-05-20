@@ -21,8 +21,8 @@ export class mainPage implements OnInit {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("email",email);
 
-      let token = this.auth.getToken();
-      console.log(token);
+    console.log('Testting get by email'+'http://localhost:8080/api/users/getUserByEmail' + ' an email ' + email)
+
     return this.http.get('http://localhost:8080/api/users/getUserByEmail', {params: queryParams})
   }
 

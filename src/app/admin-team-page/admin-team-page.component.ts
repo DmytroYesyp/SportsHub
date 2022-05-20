@@ -75,7 +75,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
   onSubmit() {
 
-
+    console.log(this.form.value)
 
     this.auth.updateTeam(this.pressedId, this.form.value)
 
@@ -104,6 +104,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
+      league : new FormControl('' ),
       image_url: new FormControl(''),
       coach: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required])
@@ -120,6 +121,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
+      league : new FormControl('' ),
       image_url: new FormControl('' ),
       coach: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required])
@@ -130,6 +132,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
 export class Team {
   id: number
+  league : null
   name: string
   image_url: string
   coach: string
