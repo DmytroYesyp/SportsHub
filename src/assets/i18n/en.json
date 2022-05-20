@@ -32,8 +32,10 @@
     "EMAIL": "Email",
     "ENTEMAIL": "Enter your email",
     "PASS": "Password",
+    "CONFPASS": "Confirm password",
     "ENTPASS": "Enter your password",
     "REG": "Get stated",
+    "GOBACK": "Back to login",
     "QSTNLOG": "Don`t have an account?",
     "LOGIN": "Log in"
   },
@@ -49,6 +51,7 @@
     "SIGNUP": "Sign up"
   },
   "FGTPASS": {
+    "NEWPASS": "Enter your new password",
     "TITLE": "Forgot your password?",
     "TITLE2": "Enter your email address below and we’ll get you back on track.",
     "SUBMIT": "Submit",
