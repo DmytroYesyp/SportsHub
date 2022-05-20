@@ -11,6 +11,7 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class HeaderUserProfileComponent implements OnInit {
+
   email: string;
   profileUrl : string
 
@@ -34,11 +35,8 @@ export class HeaderUserProfileComponent implements OnInit {
 
   constructor(private mainpage: mainPage,private http:HttpClient) {
   }
-
-
   getUserFromToken() {
-
-    const token = localStorage.getItem('auth-token');
+    const token = localStorage.getItem('auth-token')
     if (!token)
       return console.log("error");
     var base64Url = token.split('.')[1];
@@ -48,30 +46,27 @@ export class HeaderUserProfileComponent implements OnInit {
     }).join(''));
     const tmp = JSON.parse(jsonPayload);
 
-
-    console.log(tmp.sub)
-
     this.mainpage.getUserByEmail(tmp.sub).subscribe(data => {
-      console.log(data)
       this.user = data
-
       for (let [key, value] of Object.entries(this.user)) {
         if (key == "firstName")
           this.firstName = value;
         if (key == "lastName")
           this.lastName = value
       }
-
     });
     return tmp;
   }
 
 
-
   ngOnInit(): void {
+
     // @ts-ignore
-    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
-    console.log(this.http.get<string>('http://localhost:8080/api/pictures/getUserProfileImage'))
+    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
+      error => {
+        console.warn(error)
+        window.location.reload();
+      })
     this.mainpage.getUserByEmail(this.getUserFromToken())
 
   }
