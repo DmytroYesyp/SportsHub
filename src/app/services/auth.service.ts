@@ -97,11 +97,6 @@ export class AuthService{
 
 
   login(params): Observable<{token:string}> {
-
-    // let httpOptions = {
-    //   headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
-    // }
-    // let reqHeader = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     return this.http.post<{token: string}>('http://localhost:8080/login', null, {params: params})
       .pipe(
         tap(

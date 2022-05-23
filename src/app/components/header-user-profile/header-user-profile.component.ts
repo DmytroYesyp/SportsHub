@@ -3,6 +3,7 @@ import {mainPage} from "../../services/main-page.service";
 import {AuthService} from "../../services/auth.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header-user-profile',
@@ -33,7 +34,7 @@ export class HeaderUserProfileComponent implements OnInit {
     return new Array(number);
   }
 
-  constructor(private mainpage: mainPage,private http:HttpClient) {
+  constructor(private mainpage: mainPage,private http:HttpClient, private auth: AuthService, private router: Router) {
   }
   getUserFromToken() {
     const token = localStorage.getItem('auth-token')

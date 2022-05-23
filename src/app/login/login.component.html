@@ -49,7 +49,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
         <label>
-          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
         </label>
         <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
