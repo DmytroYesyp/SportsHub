@@ -1,0 +1,14 @@
+.sidebar_icon{
+  margin-top: 50px;
+  min-height: 50px;
+  width: 100px;
+}
+.sidebar_follow a{
+  color: #000000;
+  background: #ffffff;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 12px 12px 0 0;
+}

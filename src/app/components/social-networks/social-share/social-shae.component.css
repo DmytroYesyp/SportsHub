@@ -1,0 +1,22 @@
+.social-shareComponent{
+  height: 2vw;
+  width: 10vw;
+  background-color: red;
+}
+.share-container {
+  height: 83px;
+  border-right: 1px solid #EDEDED;
+  margin-right: 500px;
+  margin-left: 720px;
+  padding: 34px 45px 34px 34px;
+}
+.share-container a {
+  margin-top: -24px;
+  margin-left: 20px;
+  color: #000000;
+  float: right;
+  background: #ffffff;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+}

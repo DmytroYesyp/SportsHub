@@ -52,6 +52,8 @@ import { EditSubcategoryDialogComponent } from './category-menu/edit-subcategory
 import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-team-dialog.component';
 import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
+import { SocialShaeComponent } from './components/social-networks/social-share/social-shae.component';
+import { SocialFollowComponent } from './components/social-networks/social-follow/social-follow.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -94,7 +96,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditSubcategoryDialogComponent,
     EditTeamDialogComponent,
     NavMenuItemsComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    SocialShaeComponent,
+    SocialFollowComponent
   ],
 
   imports: [
