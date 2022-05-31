@@ -62,7 +62,7 @@ public class NewsRepositoryImpl implements CustomNewsRepository {
 
         Set<Long> teamIds = newsSearchFilters.getTeamIds();
         if (teamIds != null && !teamIds.isEmpty()) {
-            Predicate[] teamIdPredicates = teamIds.stream().map(teamId -> criteriaBuilder.equal(queryRoot.get("teamIds"), teamId))
+            Predicate[] teamIdPredicates = teamIds.stream().map(teamId -> criteriaBuilder.isMember(teamId, queryRoot.get("teamIds")))
                     .toArray(Predicate[]::new);
             predicates.add(criteriaBuilder.or(teamIdPredicates));
         }
