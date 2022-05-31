@@ -206,16 +206,6 @@ input[type=text] {
   font-size: 16px;
 }
 
-.more{
-
-  padding: 10px;
-  text-align: center;
-  border: 3px solid #a2a2a2;
-  border-radius: 20px;
-  width: 130px;
-  margin-left: 385px;
-}
-
 .mcard_photo{
   width: 200px;
   height: 130px;
@@ -225,19 +215,18 @@ input[type=text] {
   margin-top: 30px;
   height: 450px;
   width: 900px;
-  display: grid;
-  grid-template-columns: repeat(2, 500px);
+  display: inline;
 }
 
 .mcard{
   height: 130px;
-  width: 400px;
+  width: 900px;
   padding: 10px;
 }
 
 .mcard_text{
   float: right;
-  width: 180px;
+  width: 680px;
   font-size: 14px;
   color: #333333;
 }
@@ -254,18 +243,6 @@ input[type=text] {
   color: #D72130;
 }
 
-
-
-.share_btn{
-  bottom: 0;
-  left: 0;
-  color: #939393;
-  font-size: 18px;
-  position: absolute;
-  margin: 20px;
-  text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-}
 
 .txt{
   position: absolute;

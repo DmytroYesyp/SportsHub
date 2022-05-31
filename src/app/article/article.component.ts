@@ -1,6 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-article',
@@ -13,8 +17,10 @@ import {AuthService} from "../services/auth.service";
 export class ArticleComponent implements OnInit {
 
   list:any = [];
+  moreList:any = [];
   leagueList:any = [];
   leagueId:string;
+  kindsOfSportId:string;
   authenticated: boolean = false;
   date:string;
   constructor(private http : HttpClient,
@@ -31,6 +37,7 @@ export class ArticleComponent implements OnInit {
         this.list=(<Array<any>>Response);
         console.log(this.list);
         this.leagueId = this.getLeagueId();
+        this.kindsOfSportId = this.getKindsOfSportId();
         this.http.get('http://localhost:8080/leagues/' + this.leagueId)
           .subscribe(Response => {
             this.leagueList=(<Array<any>>Response);
@@ -38,6 +45,19 @@ export class ArticleComponent implements OnInit {
           });
         this.date = this.getDate();
         console.log(this.date)
+        this.http.get('http://localhost:8080/news?kindsOfSportIds=' + this.kindsOfSportId)
+          .subscribe(Response => {
+            this.moreList = (<Array<any>>Response);
+            for (let i = 0; i < this.moreList.length; i++){
+              if (this.list['id'] == this.moreList[i]['id']){
+                this.moreList.splice(i, 1);
+              }
+            }
+            this.moreList=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 6),
+              (<Array<any>>Response).length);
+            console.log(this.moreList);
+            console.log(window.location)
+          });
       });
   }
 
@@ -50,7 +70,16 @@ export class ArticleComponent implements OnInit {
     return this.list['leagueId']
   }
 
+  getKindsOfSportId(){
+    return this.list['kindsOfSportIds']
+  }
+
   getDate(){
     return this.list['publicationDate'].substring(0,10) + ' ' + this.list['publicationDate'].substring(11,19)
+  }
+
+  reloadCurrentPage(id) {
+    let url = 'article/' + id;
+    window.open(url);
   }
 }

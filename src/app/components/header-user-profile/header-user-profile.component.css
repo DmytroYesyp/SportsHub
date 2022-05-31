@@ -11,7 +11,7 @@
   width: 14vw;
   height: 200px;
   position: absolute;
-  margin-left:75vw;
+  margin-left:74vw;
   z-index: 2;
 }
 
@@ -64,7 +64,7 @@
   width: 40px;
   height: 40px;
   z-index: 3;
-
+  margin-left: px;
   border-radius: 50%;
 }
 a:hover{

@@ -49,7 +49,7 @@
 <app-lang></app-lang>
 
 <div class="main">
-<div class="back_txt2" >{{leagueList['name']}}</div>
+  <div class="back_txt2">{{league['name']}}</div>
   <div class="back_txt">{{ 'BODY.BACKTXT2' | translate}}</div>
   <div class="sidebar">
     <div class="sidebar_text">
@@ -70,35 +70,34 @@
 
   <div class="block_right">
     <div class="block_1">
-      <div class="toptxt">{{leagueList['name']}} > {{list['title']}}</div>
+      <div class="toptxt">{{league['name']}}</div>
       <div class="photo">
-        <img class="photo" src="{{list['image']}}">
+        <img class="photo" src="{{article['image']}}">
       </div>
       <div class="side_bloke">
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
-        <span class="side_bloke_p1"><b> {{list['title']}}</b></span>
+        <span class="side_bloke_p1"><b> {{article['title']}}</b></span>
         <br>
-        <span class="side_bloke_p2"><b>{{list['description']}}</b></span>
-        <a href="" class="share_btn">{{'HEADER.SHARE' | translate}} <i class="fa fa-share"></i></a>
+        <span class="side_bloke_p2"><b>{{article['description']}}</b></span>
+        <a [routerLink]="['/article', article['id']]" class="side_bloke_button"><b class="">{{ 'BODY.MORE' | translate}}</b></a>
       </div>
     </div>
     <div class="block_2"></div>
 
 
   </div>
-  <a class="newstext">{{list['text']}}<br><br><br><br><br>
-    <div class="more">MORE ARTICLES</div>
+  <a class="newstext">
 
-<div class="mcards">
-  <a [routerLink]="['/article', e['id']]" *ngFor="let e of moreList;" (click)="reloadCurrentPage(e['id'])" >
-    <div  class="mcard">
-      <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
-      <div class="mcard_text"><b>{{ e['title'] }}</b>
-      <p >{{e['description']}}</p></div>
+    <div class="mcards">
+      <a [routerLink]="['/article', e['id']]" *ngFor="let e of list;">
+        <div  class="mcard">
+          <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
+          <div class="mcard_text"><b>{{ e['title'] }}</b>
+            <p >{{e['description']}}</p></div>
+        </div>
+      </a>
+
     </div>
-  </a>
-
-</div>
   </a>
 
 
@@ -112,7 +111,3 @@
   <div>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</div>
 </div>
 </body>
-
-
-
-

@@ -14,6 +14,7 @@ import {HttpClient} from "@angular/common/http";
 export class NewsCardComponent implements OnInit {
 
   li:any = [];
+  lis:any = [];
   constructor(private http : HttpClient){
 
   }

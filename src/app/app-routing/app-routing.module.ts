@@ -19,6 +19,8 @@ import {ArticleComponent} from "../article/article.component";
 import {SetLangComponent} from "../set-lang/set-lang.component";
 import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
 import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
+import {TeamPageComponent} from "../team-page/team-page.component";
+import {LeaguePageComponent} from "../league-page/league-page.component";
 
 const routes: Routes = [
   {
@@ -29,7 +31,9 @@ const routes: Routes = [
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
-      {path: 'article/:newsId', component: ArticleComponent}
+      {path: 'article/:newsId', component: ArticleComponent},
+      {path: 'team/:teamId', component: TeamPageComponent},
+      {path: 'league/:leagueId', component: LeaguePageComponent}
     ]
   },
   {
