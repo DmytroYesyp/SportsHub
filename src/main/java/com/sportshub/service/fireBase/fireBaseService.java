@@ -1,23 +1,17 @@
 package com.sportshub.service.fireBase;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.cloud.StorageClient;
-import com.sportshub.dto.team.TeamCreateDto;
-import com.sportshub.dto.team.TeamDto;
 import com.sportshub.entity.team.TeamEntity;
 import com.sportshub.entity.user.User;
-import com.sportshub.exception.NotFoundException;
 import com.sportshub.mapper.team.TeamMapper;
-import com.sportshub.repository.role.RoleRepository;
 import com.sportshub.repository.team.TeamRepository;
 import com.sportshub.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.nio.file.NotDirectoryException;
 
 @Service
 public class fireBaseService {
@@ -39,7 +33,6 @@ public class fireBaseService {
 
     private void deleteImageFromStorage(String imagePath){
         StorageClient storageClient = StorageClient.getInstance();
-//        Bucket bucket = StorageClient.getInstance().bucket("sportshub-623db.appspot.com");
 
         System.out.println(imagePath);
 

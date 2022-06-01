@@ -31,8 +31,6 @@ public class fireBaseInit {
                 .setStorageBucket("sportshub-623db.appspot.com")
                 .build();
 
-
-
         StorageClient.getInstance(FirebaseApp.initializeApp(options));
 
     }

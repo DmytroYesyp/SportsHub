@@ -223,12 +223,7 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
 
     @Override
     public void updatePassword(User user, String newPassword) {
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//
-//        String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(passwordEncoder.encode(newPassword));
-//        user.setPassword(encodedPassword);
-
         user.setResetPasswordToken(null);
         userRepository.save(user);
     }
