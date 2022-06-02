@@ -1,7 +1,24 @@
 <div class="share-container">
   <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
-  <a href="https://facebook.com" class="fa fa-facebook"></a>
-  <a href="https://twitter.com" class="fa fa-twitter"></a>
-  <a href="https://google.com" class="fa fa-google"></a>
+  <a class="{{l.pictogram}}" *ngFor="let l of list" href="{{l.url}}"></a>
+  <a (click)="reverse()" class="fa fa-gear"></a>
+  <div *ngIf="show" class="editBox">
+
+    <form [formGroup]="form">
+      <div style="margin-top: 1vw">
+        <p style="color: #9fa6b2">url</p>
+        <input type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
+      </div>
+      <div style="margin-top: 1vw">
+        <p style="color: #9fa6b2">icon</p>
+        <input type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
+      </div>
+      <button mat-raised-button type="submit" [disabled]="form.invalid"
+              style=" margin-left: 2.4vw; color : white; margin-top: 2vw; height: 2vw;width: 5vw;border-radius: 0;border: none;background-color: #d72130">
+        Add share
+      </button>
+    </form>
+
+  </div>
 </div>
 

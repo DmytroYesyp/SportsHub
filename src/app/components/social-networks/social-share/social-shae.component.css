@@ -4,7 +4,7 @@
   background-color: red;
 }
 .share-container {
-  height: 83px;
+  height: 17px;
   border-right: 1px solid #EDEDED;
   margin-right: 500px;
   margin-left: 720px;
@@ -19,4 +19,14 @@
   font-size: 25px;
   border: none;
   cursor: pointer;
+}
+.editBox{
+  width: 10vw;
+  height: 10vw;
+  background-color: red;
+  overflow: visible;
+  position: absolute;
+  margin-left: 23.8vw;
+  margin-top: 1.5vw;
+  z-index: 10;
 }

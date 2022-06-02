@@ -7,7 +7,7 @@ input[type=text] {
 }
 .search-container {
   float: left;
-  margin-left: 270px;
+  margin-left: 5vw;
   border-right: 1px solid #EDEDED;
   text-align: center;
 
