@@ -1,0 +1,28 @@
+.delete{
+  background: none;
+  border: none;
+  height: 35px;
+  margin-left: 140px;
+  font-size: 16px;
+  color: #D72130;
+  text-align: center;
+}
+.delete:hover{
+  background: #EDEDED;
+}
+.cancel{
+  background: none;
+  border: none;
+  height: 35px;
+  font-size: 16px;
+  color: #8d8d8d;
+}
+.cancel:hover{
+  background: #EDEDED;
+}
+.fa-trash{
+  text-align: center;
+  color: #D72130;
+  font-size: 30px;
+  margin-left: 180px;
+}

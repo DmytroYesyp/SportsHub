@@ -74,6 +74,7 @@ export class MainPageComponent implements OnInit {
     }
 
 
+
     // this.mainpage.getUserByEmail(this.getUserFromToken())
 
 

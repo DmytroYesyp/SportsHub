@@ -7,7 +7,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MainPageComponent } from './main-page/main-page.component';
-
+import {MatDialogModule} from "@angular/material/dialog";
 import {MaterialModule} from "./material/material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -54,6 +54,7 @@ import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-i
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import { TeamPageComponent } from './team-page/team-page.component';
 import { LeaguePageComponent } from './league-page/league-page.component';
+import { PopupDeleteLangComponent } from './pop-ups/popup-delete-lang/popup-delete-lang.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -98,10 +99,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavMenuItemsComponent,
     AddArticleComponent,
     TeamPageComponent,
-    LeaguePageComponent
+    LeaguePageComponent,
+    PopupDeleteLangComponent
   ],
 
   imports: [
+    MatDialogModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
