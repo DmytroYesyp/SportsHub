@@ -1,10 +1,11 @@
 .sidebar_icon{
   margin-top: 50px;
   min-height: 50px;
-  width: 100px;
+  width: 60px;
 }
 .sidebar_follow a{
   color: #000000;
+  padding-right: 10px;
   background: #ffffff;
   font-size: 25px;
   border: none;

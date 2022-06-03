@@ -54,6 +54,7 @@ import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-i
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import { SocialShaeComponent } from './components/social-networks/social-share/social-shae.component';
 import { SocialFollowComponent } from './components/social-networks/social-follow/social-follow.component';
+import { SocialLoginComponent } from './components/social-networks/social-login/social-login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -98,7 +99,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavMenuItemsComponent,
     AddArticleComponent,
     SocialShaeComponent,
-    SocialFollowComponent
+    SocialFollowComponent,
+    SocialLoginComponent
   ],
 
   imports: [

@@ -19,6 +19,7 @@ import {ArticleComponent} from "../article/article.component";
 import {SetLangComponent} from "../set-lang/set-lang.component";
 import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
 import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
+import {SocialLoginComponent} from "../components/social-networks/social-login/social-login.component";
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
-      {path: 'article/:newsId', component: ArticleComponent}
+      {path: 'article/:newsId', component: ArticleComponent},
+      {path: 'admin_page/social-login', component: SocialLoginComponent}
     ]
   },
   {

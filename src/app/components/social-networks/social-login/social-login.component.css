@@ -1,0 +1,22 @@
+.inBody{
+  height: 2vw;
+  margin-top: 3vw;
+  width: 20vw;
+}
+.as{
+  border: none;
+  cursor: pointer;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  background: #ffffff;
+  font-size: 25px;
+}
+.iconBox{
+  height: 25px;
+  width: 25px;
+  margin-top: -24px;
+  margin-left: 20px;
+  float: right;
+}

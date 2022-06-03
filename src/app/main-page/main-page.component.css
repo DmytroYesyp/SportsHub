@@ -7,10 +7,16 @@ input[type=text] {
 }
 .search-container {
   float: left;
-  margin-left: 5vw;
+  margin-left: 15vw;
   border-right: 1px solid #EDEDED;
   text-align: center;
+}
 
+@media (max-width: 1600px) {
+  .search-container{
+    margin-left: 20vw;
+
+  }
 }
 .search-container button {
   height: 83px;

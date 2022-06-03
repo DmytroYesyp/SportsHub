@@ -2,9 +2,10 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
-import {HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Subscription} from "rxjs";
 import {AppComponent} from "../app.component";
+import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
 
 @Component({
   selector: 'app-login',
@@ -27,17 +28,20 @@ export class LoginComponent implements OnInit, OnDestroy{
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     }
   );
-
+  list: socialFollow[];
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private app: AppComponent
+              private app: AppComponent,
+              private http: HttpClient
   ) {}
 
 
   ngOnInit(): void {
     this.auth.logout()
-
+    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialLogIn/getAllLogIn`).subscribe(data => {
+      this.list = data
+    })
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']){
         // alert("Now you registered")

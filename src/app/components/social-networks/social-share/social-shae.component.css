@@ -11,6 +11,13 @@
   padding: 34px 45px 34px 34px;
 }
 .share-container a {
+  color: #000000;
+  background: #ffffff;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+}
+#edit{
   margin-top: -24px;
   margin-left: 20px;
   color: #000000;
@@ -20,13 +27,25 @@
   border: none;
   cursor: pointer;
 }
+.iconBox{
+  height: 25px;
+  width: 25px;
+  margin-top: -24px;
+  margin-left: 20px;
+  float: right;
+}
 .editBox{
   width: 10vw;
   height: 10vw;
-  background-color: red;
+  box-shadow: 2px 2px 10px 10px rgba(0,0,0, .1);
+  background-color: white;
   overflow: visible;
   position: absolute;
   margin-left: 23.8vw;
   margin-top: 1.5vw;
   z-index: 10;
+}
+.TextFields{
+  height: 1vw;
+  width: 9.55vw;
 }
