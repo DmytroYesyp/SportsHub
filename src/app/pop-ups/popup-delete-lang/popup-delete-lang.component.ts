@@ -22,6 +22,7 @@ export class PopupDeleteLangComponent implements OnInit {
   delete(id) {
     this.http.delete('http://localhost:8080/language/' + id)
       .subscribe(Response => {
+        localStorage.removeItem('lang')
         window.location.reload()
       });
   }

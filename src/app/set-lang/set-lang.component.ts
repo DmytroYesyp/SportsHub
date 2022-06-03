@@ -48,19 +48,13 @@ export class SetLangComponent implements OnInit {
   hide(id) {
     this.http.put('http://localhost:8080/language/' + id, {"hidden": "true"})
       .subscribe(Response => {
+        localStorage.removeItem('lang')
         window.location.reload()
       });
   }
 
   show(id) {
     this.http.put('http://localhost:8080/language/' + id, {"hidden": "false"})
-      .subscribe(Response => {
-        window.location.reload()
-      });
-  }
-
-  delete(id) {
-    this.http.delete('http://localhost:8080/language/' + id)
       .subscribe(Response => {
         window.location.reload()
       });
