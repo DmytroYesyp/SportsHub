@@ -16,6 +16,10 @@ export class ArticleService {
     return this.http.post<Article>(`${HOST_URL}/news`, article);
   }
 
+  public getArticle(id:number): Observable<Article> {
+    return this.http.get<Article>(`${HOST_URL}/news/${id}`);
+  }
+
   public getArticles():Observable<Article[]> {
     return this.http.get<Article[]>(`${HOST_URL}/news`)
   }

@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ToolbarService, LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
+import {Component, OnInit} from '@angular/core';
+import {ToolbarService, LinkService, ImageService, HtmlEditorService} from '@syncfusion/ej2-angular-richtexteditor';
 import {ArticleContent} from "../../dto/article/article-content";
 import {FormBuilder, Validators} from '@angular/forms';
 import {ArticleService} from "../../services/article.service";
 import {Router} from "@angular/router";
+import {LeagueService} from "../../services/league.service";
+import {League} from "../../dto/league/league";
+import {SportKindService} from "../../services/sport-kind.service";
+import {SportKind} from "../../dto/sport/kind/sport-kind";
+import {TeamService} from "../../services/team.service";
+import {Team} from "../../dto/team/team";
 
 @Component({
   selector: 'app-add-article',
@@ -13,47 +19,67 @@ import {Router} from "@angular/router";
 })
 export class AddArticleComponent implements OnInit {
 
+  sportKinds: SportKind[] = [];
+
+
+  leagues: League[] = [];
+
+  teams: Team[] = [];
+
   alternativeText: string;
+
 
   form = this.fb.group({
     title: ['', [Validators.required]],
-    description: ['',[Validators.required]],
+    description: ['', [Validators.required]],
     publicationDate: [new Date(), [Validators.required]],
     alternativeText: ['', [Validators.required]],
     caption: ['', [Validators.required]],
     image: ['', [Validators.required]],
-    leagueId:[1,[Validators.required]],
-    teamIds:[[]],
+    league: [null, [Validators.required]],
+    teams: [[]]
   })
 
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private router: Router ){ }
-
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private articleService: ArticleService,
+    private leagueService: LeagueService,
+    private sportKindService: SportKindService,
+    private teamService: TeamService,
+    private router: Router
+  ) {
   }
 
-  addArticle():void {
-    const formValue = this.form.value;
+  ngOnInit(): void {
+    this.sportKindService.getSportKinds().subscribe(sportKinds => {
+      this.sportKinds = sportKinds.filter(v => v.leagues.length);
+    })
+  }
 
-    console.log(formValue.title);
-    console.log(formValue.publicationDate);
+  changeKindOfSport({value: {leagues}}) {
+    this.leagues = leagues;
+  }
+
+  changeLeague({value:{teams}}) {
+    this.teams = teams;
+  }
+
+  addArticle(): void {
+    const formValue = this.form.value;
 
     const articleContent = new ArticleContent();
     articleContent.title = formValue.title;
     articleContent.description = formValue.description;
     articleContent.publicationDate = formValue.publicationDate;
     articleContent.alternativeText = formValue.alternativeText;
-    articleContent.caption =  formValue.caption;
+    articleContent.caption = formValue.caption;
     articleContent.image = formValue.image;
-    articleContent.leagueId = formValue.leagueId;
-    articleContent.teamIds = formValue.teamIds;
+    articleContent.leagueId = formValue.league.id;
+    articleContent.teamIds = formValue.teams.map(team => team.id);
 
-    console.log(articleContent);
-
-    this.articleService.createArticle(articleContent).subscribe(createdArticle =>{
+    this.articleService.createArticle(articleContent).subscribe(createdArticle => {
       const goToCreatePromise = this.router.navigate(['news', createdArticle.id]);
       goToCreatePromise.then();
     });
   }
-
-
 }
