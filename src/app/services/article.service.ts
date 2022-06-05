@@ -24,6 +24,10 @@ export class ArticleService {
     return this.http.get<Article[]>(`${HOST_URL}/news`)
   }
 
+  public getArticlesBySportKind(sportKindId: number):Observable<Article[]>{
+    return this.http.get<Article[]>(`${HOST_URL}/news?sportKindIds=${sportKindId}`)
+  }
+
   public updateArticle(id: number, article: ArticleContent):Observable<void> {
     return this.http.put<void>(`${HOST_URL}/news/${id}`, article);
   }

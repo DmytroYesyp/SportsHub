@@ -1,0 +1,54 @@
+<div class="filter-criteria">
+
+  <div class="league">
+    <mat-form-field appearance="fill">
+      <mat-label>All Subcategories</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let league of leagues">{{league.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="team">
+    <mat-form-field appearance="fill">
+      <mat-label>All Teams</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let team of teams">{{team.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="all">
+    <mat-form-field appearance="fill">
+      <mat-label>All</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let team of teams">{{team.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
+<div class="admin-article-list">
+  <div class="item-article" *ngFor="let article of articles">
+    <img src="{{article.image}}">
+    <div class="article-decr">
+      <h3>{{article.title}}</h3>
+      <p [innerHTML]="article.description">{{article.description}}</p>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Publish</button>
+      <button mat-menu-item >Edit</button>
+      <button mat-menu-item >Delete</button>
+      <button mat-menu-item [matMenuTriggerFor]="moveTo" >Move</button>
+    </mat-menu>
+    <mat-menu #moveTo="matMenu">
+      <div *ngFor="let category of sportKinds">
+        <button *ngIf="category !== activeSportKind" mat-menu-item
+             >{{category.name}}</button>
+      </div>
+    </mat-menu>
+  </div>
+</div>

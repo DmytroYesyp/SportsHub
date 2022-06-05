@@ -53,6 +53,7 @@ import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-t
 import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import { EditArticleComponent } from './admin-article/edit-article/edit-article.component';
+import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -96,7 +97,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditTeamDialogComponent,
     NavMenuItemsComponent,
     AddArticleComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    AdminArticleListComponent
   ],
 
   imports: [
