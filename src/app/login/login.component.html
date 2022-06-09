@@ -25,9 +25,12 @@
 <div class="container">
   <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
   <a href="#" class="fa fa-facebook"></a>
-  <a href="#" class="fa fa-google"></a>
+  <a (click)="signIn()" class="fa fa-google"></a>
+<button (click)="signOut()">Sign out</button>
 
-
+  <div *ngIf="user != null">
+    <div>You are {{user.getBasicProfile().getName()}}</div>
+  </div>
   <div class="cont">
     <form [formGroup]="form" (change)="onFormChange()" (submit)="onSubmit()">
       <div class="email-input">

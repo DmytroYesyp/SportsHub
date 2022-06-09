@@ -1,10 +1,11 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {HttpParams} from "@angular/common/http";
 import {Subscription} from "rxjs";
 import {AppComponent} from "../app.component";
+import {GoogleSigninService} from "../services/google-signin.service";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import {AppComponent} from "../app.component";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy{
+  user: gapi.auth2.GoogleUser
 
   // @Input() formError = 'Error';
 
@@ -31,11 +33,18 @@ export class LoginComponent implements OnInit, OnDestroy{
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private app: AppComponent
+              private app: AppComponent,
+              private signInService: GoogleSigninService,
+              private ref: ChangeDetectorRef
   ) {}
 
 
   ngOnInit(): void {
+    this.signInService.observable().subscribe(user =>{
+      this.user = user
+      this.ref.detectChanges()
+    })
+
     this.auth.logout()
 
     this.route.queryParams.subscribe((params: Params) => {
@@ -90,6 +99,14 @@ export class LoginComponent implements OnInit, OnDestroy{
     if(this.aSub){
       this.aSub.unsubscribe()
     }
+  }
+
+  signIn(){
+    this.signInService.signin()
+  }
+
+  signOut(){
+    this.signInService.signOut()
   }
 
 }
