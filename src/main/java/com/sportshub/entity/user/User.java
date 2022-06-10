@@ -2,11 +2,13 @@ package com.sportshub.entity.user;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sportshub.entity.auth.AuthenticationProvider;
 import com.sportshub.entity.role.Roles;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Transactional
 @Entity
@@ -31,6 +33,10 @@ public class User {
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_provider")
+    private AuthenticationProvider authenticationProvider;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -105,6 +111,10 @@ public class User {
     public void setResetPasswordToken(String resetPasswordToken) {
         this.resetPasswordToken = resetPasswordToken;
     }
+
+    public AuthenticationProvider getAuthenticationProvider() {return authenticationProvider;}
+
+    public void setAuthenticationProvider(AuthenticationProvider authenticationProvider) {this.authenticationProvider = authenticationProvider;}
 
     @Override
     public String toString() {

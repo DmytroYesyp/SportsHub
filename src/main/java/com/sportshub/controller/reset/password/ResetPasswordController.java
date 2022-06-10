@@ -60,29 +60,13 @@ public class ResetPasswordController {
         helper.setText(content, true);
         mailSender.send(message);
     }
-//    @CrossOrigin("*")
-//    @GetMapping("/reset_password")
-//    public ResponseEntity<String> showResetPasswordForm(@Param(value = "token") String token, Model model) {
-//        Users customer = userService.getByResetPasswordToken(token);
-//        model.addAttribute("token", token);
-//
-//        if (customer == null) {
-//            return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
-//        }
-//
-//        return new ResponseEntity<>("Everything is ok", HttpStatus.OK);
-//    }
 
     @PostMapping("/reset_password")
     public  ResponseEntity<String> processResetPassword(@RequestParam String reset_token, String newPassword, String confirmPassword) {
-//        String token = resetPasswordRequest.getToken();
-//        String newPassword = resetPasswordRequest.getNewPassword();
-//        String confirmPassword = resetPasswordRequest.getConfirmPassword();
         if (confirmPassword.equals(newPassword)) {
             User user = userService.getByResetPasswordToken(reset_token);
             if (user != null) {
                 userService.updatePassword(user, newPassword);
-//                System.out.println(user.getPassword());
             }
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

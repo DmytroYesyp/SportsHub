@@ -83,7 +83,7 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
         if (userOptional) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-        user.setLogo_url("User.png");
+        user.setLogo_url(user.getLogo_url());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(roleRepository.getById(1L));
         userRepository.save(user);
