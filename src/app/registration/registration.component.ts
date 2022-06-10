@@ -6,6 +6,7 @@ import {HttpParams} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
 import {AppComponent} from "../app.component";
+import {User} from "../services/user";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
 
   // form: FormGroup
   aSub: Subscription
+  user: User;
 
   // @Input() formError = 'Error';
 
@@ -49,7 +51,15 @@ export class RegistrationComponent implements OnInit, OnDestroy{
   onSubmit(){
     // this.form.disable()
 
-    this.aSub = this.auth.register(this.form.value).subscribe(
+    this.user = {
+      'firstName' : this.form.value.firstName,
+      'lastName': this.form.value.lastName,
+      'email' : this.form.value.email,
+      'password' : this.form.value.password,
+      'logo_url' : 'User.png'
+    }
+
+    this.aSub = this.auth.register(this.user).subscribe(
       ()=> {
         console.log('Register success')
         this.router.navigate(['/login'], {

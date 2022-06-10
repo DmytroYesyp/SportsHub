@@ -3,6 +3,7 @@ import {AuthService} from "./services/auth.service";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 
+
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>'
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit{
   constructor(private auth: AuthService,
               private snackBar: MatSnackBar,
               public translate: TranslateService) {
+
     let lang = translate.getBrowserLang()
     if (lang != null) {
       translate.setDefaultLang(lang)

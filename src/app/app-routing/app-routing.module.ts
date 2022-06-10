@@ -19,12 +19,14 @@ import {ArticleComponent} from "../article/article.component";
 import {SetLangComponent} from "../set-lang/set-lang.component";
 import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-items.component";
 import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
+import {OauthComponent} from "../login/OAuth/oauth/oauth.component";
 
 const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent, children:[
       {path: '', redirectTo: '/main', pathMatch: "full"},
       {path: 'login', component: LoginComponent},
+      {path: 'oauth', component: OauthComponent},
       {path: 'register', component: RegistrationComponent},
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},

@@ -52,7 +52,8 @@ import { EditSubcategoryDialogComponent } from './category-menu/edit-subcategory
 import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-team-dialog.component';
 import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
-import {GoogleSigninService} from "./services/google-signin.service";
+import {OAuthModule} from "angular-oauth2-oidc";
+import { OauthComponent } from './login/OAuth/oauth/oauth.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -95,7 +96,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditSubcategoryDialogComponent,
     EditTeamDialogComponent,
     NavMenuItemsComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    OauthComponent
   ],
 
   imports: [
@@ -103,10 +105,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    OAuthModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -138,7 +140,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AuthService,
-    GoogleSigninService,
     AppComponent,
     {
       provide: HTTP_INTERCEPTORS,

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,12 +26,9 @@
 <div class="container">
   <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
   <a href="#" class="fa fa-facebook"></a>
-  <a (click)="signIn()" class="fa fa-google"></a>
-<button (click)="signOut()">Sign out</button>
+  <a href="/oauth"  class="fa fa-google"></a>
 
-  <div *ngIf="user != null">
-    <div>You are {{user.getBasicProfile().getName()}}</div>
-  </div>
+
   <div class="cont">
     <form [formGroup]="form" (change)="onFormChange()" (submit)="onSubmit()">
       <div class="email-input">
@@ -52,7 +50,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
         <label>
-          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
         </label>
         <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -76,3 +74,5 @@
 
 <div class="photo_1"></div>
 </body>
+
+
