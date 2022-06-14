@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Team} from "../../../admin-team-page/admin-team-page.component";
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
+import {Clipboard} from '@angular/cdk/clipboard';
+
 
 @Component({
   selector: 'app-social-share',
@@ -15,14 +16,21 @@ export class SocialShaeComponent implements OnInit {
   isAdmin: boolean = false;
   role: string;
 
-  constructor(private http: HttpClient,private app: AppComponent) {
+  constructor(private clipboard: Clipboard,private http: HttpClient,private app: AppComponent) {
   }
+
+  prefix : string = "http://localhost:4200"
+  @Input() path :string = "/main"
 
   delete(id: number) {
     this.http.delete(`http://localhost:8080/api/socialShare/deleteShares?Id=` + id).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
+  }
+
+  copySite() {
+    this.clipboard.copy(this.prefix+this.path)
   }
 
   OnSubmit() {

@@ -61,7 +61,6 @@ export class HeaderUserProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // @ts-ignore
     this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
       error => {
         console.warn(error)

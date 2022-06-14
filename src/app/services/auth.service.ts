@@ -74,10 +74,7 @@ export class AuthService{
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
       const tmp = JSON.parse(jsonPayload);
-
-
       let id ;
-
       this.getUserByEmail(tmp.sub).subscribe(data => {
         this.user = data
 
@@ -85,8 +82,6 @@ export class AuthService{
           if (key == "id")
             id = value;
         }
-
-
         var PathUrl = 'http://localhost:8080/api/users/users?userId=' + id
 
 

@@ -29,13 +29,13 @@
 
   </div>
 
-  <div class="share-container">
-    <div class="txt1">Share</div>
-    <a href="https://facebook.com" class="fa fa-facebook"></a>
-    <a href="https://twitter.com" class="fa fa-twitter"></a>
-    <a href="https://google.com" class="fa fa-google"></a>
-  </div>
-
+<!--  <div class="share-container">-->
+<!--    <div class="txt1">Share</div>-->
+<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
+<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
+<!--    <a href="https://google.com" class="fa fa-google"></a>-->
+<!--  </div>-->
+  <app-social-share></app-social-share>
 </div>
 <app-header-user-profile [arr]="arr" [arr2]="arr2"></app-header-user-profile>
 
@@ -107,7 +107,7 @@
             <input type="text" matInput  formControlName="lastName" class="TextFields" type="text" name="fname" ><br>
           </div>
           <button mat-raised-button type="submit"
-            style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
+            style="color : white; margin-top: 2vw; font-size: 0.9vw; height: 2vw;width: 25.2vw;line-height: 0;border-radius: 0;border: none;background-color: #d72130">
             UPDATE PROFILE
           </button>
 
