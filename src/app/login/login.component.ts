@@ -5,6 +5,9 @@ import {AuthService} from "../services/auth.service";
 import {HttpParams} from "@angular/common/http";
 import {Subscription} from "rxjs";
 import {AppComponent} from "../app.component";
+import {googleLoginConfig} from "../auth-config";
+import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
+import {OAuthService} from "angular-oauth2-oidc";
 
 
 
@@ -33,9 +36,34 @@ export class LoginComponent implements OnInit, OnDestroy{
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
-              private app: AppComponent
+              private app: AppComponent,
+              private oauthService: OAuthService
   ) {
+    this.configure()
   }
+
+  private configure() {
+    this.oauthService.configure(googleLoginConfig);
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
+
+  get isLoggedIn() {
+    return !!this.oauthService.getIdToken();
+  }
+
+  get claims() {
+    console.log(this.oauthService.getIdentityClaims())
+    return this.oauthService.getIdentityClaims() as any;
+  }
+
+  submit():void{
+    this.oauthService.initLoginFlow();
+    console.log("syka")
+    // this.sendUser();
+    // console.log("pizda")
+  }
+
 
 
 

@@ -53,7 +53,8 @@ import { EditTeamDialogComponent } from './category-menu/edit-team-dialog/edit-t
 import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-items.component';
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import {OAuthModule} from "angular-oauth2-oidc";
-import { OauthComponent } from './login/OAuth/oauth/oauth.component';
+import { GoogleRegisterComponent } from './login/OAuth/google-register/google-register.component';
+import { GoogleLoginComponent } from './login/OAuth/google-login/google-login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -97,7 +98,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditTeamDialogComponent,
     NavMenuItemsComponent,
     AddArticleComponent,
-    OauthComponent
+    GoogleRegisterComponent,
+    GoogleLoginComponent
   ],
 
   imports: [

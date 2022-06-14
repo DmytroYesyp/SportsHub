@@ -7,6 +7,9 @@ import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
 import {AppComponent} from "../app.component";
 import {User} from "../services/user";
+import {OAuthService} from "angular-oauth2-oidc";
+import {googleRegisterConfig} from "../auth-config";
+import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 
 
 @Component({
@@ -16,6 +19,9 @@ import {User} from "../services/user";
 })
 
 export class RegistrationComponent implements OnInit, OnDestroy{
+  name: string;
+  email: string;
+  picture: string;
 
   // form: FormGroup
   aSub: Subscription
@@ -34,7 +40,47 @@ export class RegistrationComponent implements OnInit, OnDestroy{
 
   constructor(private auth: AuthService,
               private router: Router,
-              private app: AppComponent) {
+              private app: AppComponent,
+              private oauthService: OAuthService,
+              private http: HttpClient) {
+    this.configure();
+  }
+
+  private configure() {
+    this.oauthService.configure(googleRegisterConfig);
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
+
+  get isLoggedIn() {
+    return !!this.oauthService.getIdToken();
+  }
+
+  get claims() {
+    console.log(this.oauthService.getIdentityClaims())
+    return this.oauthService.getIdentityClaims() as any;
+  }
+
+  sendUser(){
+
+    this.user = {
+      'firstName' : this.claims.given_name,
+      'lastName': this.claims.family_name,
+      'email' : this.claims.email,
+      'logo_url' : this.claims.picture,
+      'password' : 'supersecret'
+    }
+    localStorage.setItem('user', this.user.email)
+    this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
+      ()=> {
+        console.log('Register success')
+        this.router.navigate(['/main'])
+      },
+      error =>{
+        console.log("Error happened")
+        this.router.navigate(['/register'])
+      }
+    )
   }
 
   ngOnInit() {
@@ -73,6 +119,13 @@ export class RegistrationComponent implements OnInit, OnDestroy{
         this.form.enable()
       }
     )
+  }
+
+  submit():void{
+    this.oauthService.initLoginFlow();
+    console.log("syka")
+    // this.sendUser();
+    // console.log("pizda")
   }
 
   onFormChange(){

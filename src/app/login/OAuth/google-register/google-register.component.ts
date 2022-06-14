@@ -1,28 +1,31 @@
 import {OAuthService} from "angular-oauth2-oidc";
-import {authConfig} from "src/app/auth-config";
+import {googleRegisterConfig} from "src/app/auth-config";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../../services/user";
+// import {authConfig} from "../../../auth-config";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-oauth',
-  templateUrl: './oauth.component.html',
-  styleUrls: ['./oauth.component.css']
+  templateUrl: './google-register.component.html',
+  styleUrls: ['./google-register.component.css']
 })
-export class OauthComponent{
+export class GoogleRegisterComponent implements OnInit{
   name: string;
   email: string;
   picture: string;
   user: User;
 
   constructor(private oauthService: OAuthService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private router: Router) {
   this.configure();
 }
 
   private configure() {
-    this.oauthService.configure(authConfig);
+    this.oauthService.configure(googleRegisterConfig);
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
   }
@@ -45,22 +48,27 @@ export class OauthComponent{
       'logo_url' : this.claims.picture,
       'password' : 'supersecret'
     }
-    localStorage.setItem('user', this.user.email)
     return this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
       ()=> {
         console.log('Register success')
+        this.router.navigate(['/login'])
       },
       error =>{
         console.log("Error happened")
+        this.router.navigate(['/register'])
       }
     )
   }
 
-  submit(){
-    console.log("I am here")
-    this.oauthService.initLoginFlow();
+  ngOnInit(): void{
     this.sendUser();
-    console.log("I am here222")
+  }
+
+  submit():void{
+    // this.oauthService.initLoginFlow();
+    // console.log("syka")
+    // this.sendUser();
+    // console.log("pizda")
   }
 
 }
