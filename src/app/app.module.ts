@@ -54,6 +54,10 @@ import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-i
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import { EditArticleComponent } from './admin-article/edit-article/edit-article.component';
 import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
+import { SiteFooterComponent } from './site-footer/site-footer.component';
+import { AboutComponent } from './about/about.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -98,7 +102,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavMenuItemsComponent,
     AddArticleComponent,
     EditArticleComponent,
-    AdminArticleListComponent
+    AdminArticleListComponent,
+    SiteFooterComponent,
+    AboutComponent,
+    PrivacyPolicyComponent,
+    ContactUsComponent
   ],
 
   imports: [

@@ -312,7 +312,7 @@ hr{
   height: 200px;
   position: absolute;
   margin-left:78vw;
-  z-index: 2;
+  z-index: 1;
 }
 
 .profile{
