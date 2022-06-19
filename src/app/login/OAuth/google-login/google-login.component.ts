@@ -62,10 +62,7 @@ export class GoogleLoginComponent implements OnInit {
   }
 
   submit():void{
-    // this.oauthService.initLoginFlow();
-    // console.log("syka")
-    // this.sendUser();
-    // console.log("pizda")
+
   }
 
 }

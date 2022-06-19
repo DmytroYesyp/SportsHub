@@ -10,6 +10,7 @@ import {User} from "../services/user";
 import {OAuthService} from "angular-oauth2-oidc";
 import {googleRegisterConfig} from "../auth-config";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
+import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 
 
 @Component({
@@ -19,6 +20,8 @@ import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 })
 
 export class RegistrationComponent implements OnInit, OnDestroy{
+  fbUser: SocialUser;
+
   name: string;
   email: string;
   picture: string;
@@ -42,7 +45,8 @@ export class RegistrationComponent implements OnInit, OnDestroy{
               private router: Router,
               private app: AppComponent,
               private oauthService: OAuthService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private socialAuthService: SocialAuthService) {
     this.configure();
   }
 
@@ -70,7 +74,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
       'logo_url' : this.claims.picture,
       'password' : 'supersecret'
     }
-    localStorage.setItem('user', this.user.email)
+    // localStorage.setItem('user', this.user.email)
     this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
       ()=> {
         console.log('Register success')
@@ -83,9 +87,42 @@ export class RegistrationComponent implements OnInit, OnDestroy{
     )
   }
 
+  sendUser2(){
+
+    this.user = {
+      'firstName' : this.fbUser.firstName,
+      'lastName': this.fbUser.lastName,
+      'email' : this.fbUser.email,
+      'logo_url' : this.fbUser.photoUrl,
+      'password' : 'supersecret'
+    }
+    // localStorage.setItem('user', this.user.email)
+    this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
+      ()=> {
+        console.log('Register success')
+        this.router.navigate(['/login'])
+      },
+      error =>{
+        console.log("Error happened")
+        this.router.navigate(['/register'])
+      }
+    )
+  }
+
   ngOnInit() {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.fbUser = user;
+      console.log(this.fbUser);
+    });
+
     this.auth.logout()
 
+  }
+
+  facebookInit(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data=>
+      this.sendUser2()
+    )
   }
 
   ngOnDestroy() {
@@ -123,9 +160,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
 
   submit():void{
     this.oauthService.initLoginFlow();
-    console.log("syka")
-    // this.sendUser();
-    // console.log("pizda")
+    console.log("ok")
   }
 
   onFormChange(){

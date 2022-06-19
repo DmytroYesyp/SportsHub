@@ -55,6 +55,8 @@ import { AddArticleComponent } from './admin-article/add-article/add-article.com
 import {OAuthModule} from "angular-oauth2-oidc";
 import { GoogleRegisterComponent } from './login/OAuth/google-register/google-register.component';
 import { GoogleLoginComponent } from './login/OAuth/google-login/google-login.component';
+import {FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -99,7 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavMenuItemsComponent,
     AddArticleComponent,
     GoogleRegisterComponent,
-    GoogleLoginComponent
+    GoogleLoginComponent,
   ],
 
   imports: [
@@ -134,7 +136,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: 'en'
     }),
-    MatCheckboxModule
+    MatCheckboxModule,
+    SocialLoginModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
@@ -147,6 +150,20 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '2851340391840240'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
     }
   ],
   bootstrap: [AppComponent]

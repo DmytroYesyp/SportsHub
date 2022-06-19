@@ -8,6 +8,7 @@ import {AppComponent} from "../app.component";
 import {googleLoginConfig} from "../auth-config";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {OAuthService} from "angular-oauth2-oidc";
+import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 
 
 
@@ -18,7 +19,8 @@ import {OAuthService} from "angular-oauth2-oidc";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy{
-
+  params: any;
+  fbUser: SocialUser;
   // @Input() formError = 'Error';
   hide=true;
   // email: string
@@ -37,7 +39,8 @@ export class LoginComponent implements OnInit, OnDestroy{
               private router: Router,
               private route: ActivatedRoute,
               private app: AppComponent,
-              private oauthService: OAuthService
+              private oauthService: OAuthService,
+              private socialAuthService: SocialAuthService
   ) {
     this.configure()
   }
@@ -59,9 +62,30 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   submit():void{
     this.oauthService.initLoginFlow();
-    console.log("syka")
-    // this.sendUser();
-    // console.log("pizda")
+    console.log("ok")
+  }
+
+  facebookInit(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data=>
+      this.sendUser()
+    )
+  }
+
+  sendUser(){
+    this.params = {
+      'email' : this.fbUser.email,
+      'password' : 'supersecret'
+    }
+    return this.auth.login(this.params).subscribe(
+      ()=> {
+        console.log('Login success')
+        this.router.navigate(['/main'])
+      },
+      error =>{
+        console.log("Error happened")
+        this.router.navigate(['/login'])
+      }
+    )
   }
 
 
@@ -69,6 +93,10 @@ export class LoginComponent implements OnInit, OnDestroy{
 
 
   ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.fbUser = user;
+      console.log(this.fbUser);
+    });
 
 
     this.auth.logout()
