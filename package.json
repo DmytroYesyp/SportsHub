@@ -30,7 +30,6 @@
     "angular-oauth2-oidc": "^13.0.1",
     "angular-oauth2-oidc-jwks": "^13.0.1",
     "angular-social-login": "^0.0.1",
-    "angularx-social-login": "^4.1.0",
     "cropperjs": "^1.5.12",
     "file-drop-element": "^1.0.1",
     "firebase": "9.7.0",
