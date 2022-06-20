@@ -36,12 +36,12 @@
 }
 .editBox{
   width: 10vw;
-  height: 10vw;
+  height: auto;
+  padding-bottom: 1vh;
   box-shadow: 2px 2px 10px 10px rgba(0,0,0, .1);
   background-color: white;
   overflow: visible;
   position: absolute;
-  margin-left: 23.8vw;
   margin-top: 1.5vw;
   z-index: 10;
 }

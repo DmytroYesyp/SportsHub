@@ -55,7 +55,8 @@ import { AddArticleComponent } from './admin-article/add-article/add-article.com
 import { SocialShaeComponent } from './components/social-networks/social-share/social-shae.component';
 import { SocialFollowComponent } from './components/social-networks/social-follow/social-follow.component';
 import { SocialLoginComponent } from './components/social-networks/social-login/social-login.component';
-
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {GoogleLoginProvider, FacebookLoginProvider} from '@abacritt/angularx-social-login';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -100,10 +101,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddArticleComponent,
     SocialShaeComponent,
     SocialFollowComponent,
-    SocialLoginComponent
+    SocialLoginComponent,
+
   ],
 
   imports: [
+    SocialLoginModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -148,6 +151,20 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '2851340391840240'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
     }
   ],
   bootstrap: [AppComponent]

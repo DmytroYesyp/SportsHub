@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
 import {Clipboard} from '@angular/cdk/clipboard';
-
+import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-social-share',
@@ -11,16 +11,26 @@ import {Clipboard} from '@angular/cdk/clipboard';
   styleUrls: ['./social-shae.component.css']
 })
 export class SocialShaeComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
+  fbUser:SocialUser;
   show: Boolean = false
   isAdmin: boolean = false;
   role: string;
-
-  constructor(private clipboard: Clipboard,private http: HttpClient,private app: AppComponent) {
+  params: any;
+  userPageID : string;
+  UserAccessToken :string;
+  constructor(private clipboard: Clipboard,
+              private http: HttpClient,
+              private app: AppComponent,
+              private socialAuthService: SocialAuthService
+  ) {
   }
-
   prefix : string = "http://localhost:4200"
   @Input() path :string = "/main"
+
+
+
+
 
   delete(id: number) {
     this.http.delete(`http://localhost:8080/api/socialShare/deleteShares?Id=` + id).subscribe()
@@ -29,9 +39,15 @@ export class SocialShaeComponent implements OnInit {
     }, 250)
   }
 
-  copySite() {
+  copySite(pic : string) {
+    if (pic == "fa fa-facebook"){
+      console.log("it do work")
+      this.facebookInit()
+    }
     this.clipboard.copy(this.prefix+this.path)
   }
+
+
 
   OnSubmit() {
 
@@ -47,7 +63,25 @@ export class SocialShaeComponent implements OnInit {
 
   list: socialFollow[];
 
+  facebookInit(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data=>
+     console.log(data)
+    )
+
+
+
+    this.http.post("https://graph.facebook.com/"+this.userPageID+"/feed ?message=Join SportsHub!"+
+      this.prefix + this.path+ " &access_token="+this.UserAccessToken,null).subscribe()
+
+  }
+
   ngOnInit(): void {
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.fbUser = user;
+      console.log("So here it comes"+this.fbUser);
+    });
+
     this.http.get<socialFollow[]>(`http://localhost:8080/api/socialShare/getAllShares`).subscribe(data => {
       this.list = data
     })
