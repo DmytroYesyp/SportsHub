@@ -11,14 +11,16 @@ import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/an
   styleUrls: ['./social-shae.component.css']
 })
 export class SocialShaeComponent implements OnInit {
+  twt : string = "twitter-share-button fa fa-twitter"
+  faceb : string = "fb-share-button fa fa-facebook"
   form: FormGroup;
   fbUser:SocialUser;
   show: Boolean = false
   isAdmin: boolean = false;
   role: string;
+  dta: any;
   params: any;
-  userPageID : string;
-  UserAccessToken :string;
+  dat : string
   constructor(private clipboard: Clipboard,
               private http: HttpClient,
               private app: AppComponent,
@@ -63,20 +65,35 @@ export class SocialShaeComponent implements OnInit {
 
   list: socialFollow[];
 
+
+  func(){
+    return 1
+  }
+
   facebookInit(){
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data=>
-     console.log(data)
+      this.sendUser()
     )
+  }
 
+  sendUser(){
+    console.log("see har")
+    console.log(this.fbUser.id + "sdadsasad" +this.fbUser.authToken)
+    console.log("https://graph.facebook.com/{"+this.fbUser.id+"}/feed ?message=Join SportsHub!"+
+      this.prefix + this.path+ " &access_token={"+this.fbUser.authToken + "}")
 
+    this.http.post("https://graph.facebook.com/{"+this.fbUser.id+"}/feed?message=Join SportsHub!"+
+      this.prefix + this.path+ "&access_token={"+this.fbUser.authToken + "}",null).subscribe()
 
-    this.http.post("https://graph.facebook.com/"+this.userPageID+"/feed ?message=Join SportsHub!"+
-      this.prefix + this.path+ " &access_token="+this.UserAccessToken,null).subscribe()
+    // "https://graph.facebook.com/{page-id}/feed
+    //   ?message=Hello Fans!
+    //   &access_token={page-access-token}"
 
   }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.dat = this.prefix + this.path
     this.socialAuthService.authState.subscribe((user) => {
       this.fbUser = user;
       console.log("So here it comes"+this.fbUser);
