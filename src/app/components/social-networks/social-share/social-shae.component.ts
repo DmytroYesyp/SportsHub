@@ -18,9 +18,9 @@ export class SocialShaeComponent implements OnInit {
   show: Boolean = false
   isAdmin: boolean = false;
   role: string;
-  dta: any;
   params: any;
   dat : string
+  twet : string
   constructor(private clipboard: Clipboard,
               private http: HttpClient,
               private app: AppComponent,
@@ -32,7 +32,9 @@ export class SocialShaeComponent implements OnInit {
 
 
 
-
+  openning(input : string){
+    window.open(input + this.dat,'name','width=600,height=400')
+  }
 
   delete(id: number) {
     this.http.delete(`http://localhost:8080/api/socialShare/deleteShares?Id=` + id).subscribe()
@@ -92,11 +94,13 @@ export class SocialShaeComponent implements OnInit {
   }
 
 
+
   ngOnInit(): void {
     this.dat = this.prefix + this.path
+    this.twet ="https://twitter.com/intent/tweet?text=See%20more%20on%20SportsHub%3A%0A" + this.dat
+
     this.socialAuthService.authState.subscribe((user) => {
       this.fbUser = user;
-      console.log("So here it comes"+this.fbUser);
     });
 
     this.http.get<socialFollow[]>(`http://localhost:8080/api/socialShare/getAllShares`).subscribe(data => {
