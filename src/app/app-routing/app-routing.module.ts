@@ -21,6 +21,7 @@ import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-it
 import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
 import {GoogleRegisterComponent} from "../login/OAuth/google-register/google-register.component";
 import {GoogleLoginComponent} from "../login/OAuth/google-login/google-login.component";
+import {VideoComponent} from "../video/video.component";
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
       {path: 'forgot_password', component: ForgotPasswordComponent},
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
-      {path: 'article/:newsId', component: ArticleComponent}
+      {path: 'article/:newsId', component: ArticleComponent},
+      {path: 'video', component: VideoComponent}
     ]
   },
   {

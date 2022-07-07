@@ -56,6 +56,8 @@ import {OAuthModule} from "angular-oauth2-oidc";
 import { GoogleRegisterComponent } from './login/OAuth/google-register/google-register.component';
 import { GoogleLoginComponent } from './login/OAuth/google-login/google-login.component';
 import {FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
+import { VideoComponent } from './video/video.component';
+import { VideoUploaderComponent } from './video/video-uploader/video-uploader.component';
 
 
 
@@ -102,6 +104,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddArticleComponent,
     GoogleRegisterComponent,
     GoogleLoginComponent,
+    VideoComponent,
+    VideoUploaderComponent
   ],
 
   imports: [

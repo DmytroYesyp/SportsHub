@@ -45,7 +45,7 @@ export class GoogleRegisterComponent implements OnInit{
       'firstName' : this.claims.given_name,
       'lastName': this.claims.family_name,
       'email' : this.claims.email,
-      'logo_url' : this.claims.picture,
+      'logo_url' : 'User.png',
       'password' : 'supersecret'
     }
     return this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(

@@ -71,7 +71,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
       'firstName' : this.claims.given_name,
       'lastName': this.claims.family_name,
       'email' : this.claims.email,
-      'logo_url' : this.claims.picture,
+      'logo_url' : 'User.png',
       'password' : 'supersecret'
     }
     // localStorage.setItem('user', this.user.email)
@@ -93,7 +93,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
       'firstName' : this.fbUser.firstName,
       'lastName': this.fbUser.lastName,
       'email' : this.fbUser.email,
-      'logo_url' : this.fbUser.photoUrl,
+      'logo_url' : "User.png",
       'password' : 'supersecret'
     }
     // localStorage.setItem('user', this.user.email)

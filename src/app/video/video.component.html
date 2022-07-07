@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+
+  <div class="search-container">
+    <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate}}" name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+
+  </div>
+
+  <div class="share-container">
+    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
+
+</div>
+
+
+<div *ngIf="isAdmin">
+  <div class="switch_view">
+    <a href="/admin_page"><i class="fa fa-rotate-right" aria-hidden="true" style="font-size: 2vw;color: black;"></i></a>
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="authenticated">
+  <app-header-user-profile></app-header-user-profile>
+</div>
+
+<div *ngIf="!authenticated">
+  <a href="/register" class="txt">{{'REG.SIGNUP'|translate}}</a>
+  <a href="/login" class="btn">
+    <div class="btn_txt">{{'REG.LOGIN'|translate}}</div>
+  </a>
+</div>
+
+
+<app-lang></app-lang>
+
+<div style="display: flex; justify-content: center;">
+<!--  <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="video/*">-->
+  <button (click)="upload = true">Upload</button>
+
+  <div *ngIf="upload">
+      <app-video-uploader [file]="file"></app-video-uploader>
+  </div>
+</div>
+<!--<div>-->
+<!--  <video src="https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/video%2F1657211364973_Evangelion.MP4?alt=media&token=1139fd17-d39b-4756-9926-d2db25975af0"></video>-->
+<!--</div>-->
+<input type='file' (change)="onSelectFile($event)" accept="video/*"/>
+<video [src]="url" *ngIf="format==='video' && url" height="300" controls></video> <br/>
+<br/>
+
+<div *ngIf="url">
+  <div style="">
+    <h3>Video preview example:</h3>
+    <video [src]="url" *ngIf="format==='video' && url" height="150"></video> <br/>
+    <h6>{{name}}</h6>
+    <h6>Edited at {{time}}</h6>
+  </div>
+</div>
+
+
+
+<div class="footer">
+  <p>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</p>
+</div>
+
+
+</body>
