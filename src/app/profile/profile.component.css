@@ -399,3 +399,11 @@ a:hover{
   font-size: 0.8vw;
   height: 2vw;
 }
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start, .mat-form-field-appearance-outline .mat-form-field-outline-end{
+  border-radius: 1px 0 0 1px !important;
+
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end{
+  border-radius: 0 1px 1px 0 !important;
+}
