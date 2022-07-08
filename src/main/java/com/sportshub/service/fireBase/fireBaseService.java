@@ -47,18 +47,6 @@ public class fireBaseService {
 
 
 
-    public ResponseEntity<String> updateUserProfilePic(User user,MultipartFile file) throws IOException {
-        if (user.getLogo_url() != "User.png")
-            System.out.println("pomer");
-
-        String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename()+"."+ file.getContentType().split("/")[1];
-//            deleteImageFromStorage(user.getLogo_url());
-        user.setLogo_url(blobString);
-        userRepository.save(user);
-        uploadImageToStorage(file,blobString);
-        return ResponseEntity.ok().body(null);
-    }
-
     public ResponseEntity<String> updateTeamPic(Long id, MultipartFile file) throws IOException {
 
         String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename()+"."+ file.getContentType().split("/")[1];
@@ -70,6 +58,16 @@ public class fireBaseService {
         return ResponseEntity.ok().body(null);
     }
 
+
+    public ResponseEntity<String> updateUserProfilePic(User user,MultipartFile file) throws IOException {
+
+        String blobString = java.time.LocalTime.now() +"_"+ file.getOriginalFilename()+"."+ file.getContentType().split("/")[1];
+//            deleteImageFromStorage(user.getLogo_url());
+        user.setLogo_url(blobString);
+        userRepository.save(user);
+        uploadImageToStorage(file,blobString);
+        return ResponseEntity.ok().body(null);
+    }
 
     public ResponseEntity<String> uploadImageToStorage(MultipartFile file,String newName) throws IOException {
 

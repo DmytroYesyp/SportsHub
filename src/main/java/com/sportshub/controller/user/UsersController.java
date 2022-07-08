@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,6 +31,13 @@ public class UsersController {
         return userService.getUserRole(userId);
     }
 
+    @PatchMapping(path = "checkPass{OldPassword}{NewPassword}{passwordConfirmation}")
+    public ResponseEntity<String> checkPass(HttpServletRequest request,
+                                            @RequestParam String OldPassword,
+                                            @RequestParam String NewPassword,
+                                            @RequestParam String passwordConfirmation) {
+        return userService.checkUserPass(request,OldPassword,NewPassword,passwordConfirmation);
+    }
 
     @GetMapping(path = "users{userId}")
     public ResponseEntity<User> getUser(@RequestParam long userId) {

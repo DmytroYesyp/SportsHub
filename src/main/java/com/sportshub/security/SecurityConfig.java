@@ -72,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**", "/v2/api-docs").permitAll();
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login","/main").permitAll();
-        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}").permitAll();
+        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}","/api/socialLogIn/getAllLogIn").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);
