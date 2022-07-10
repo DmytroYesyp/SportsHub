@@ -23,6 +23,12 @@ export class SocialLoginComponent implements OnInit {
     })
   }
 
+
+  func(){
+    // const cb = document.getElementById('allSectionCheck')as HTMLInputElement | null;
+    // alert(cb?.checked)
+  }
+
   delete(id: number) {
     this.http.delete(`http://localhost:8080/api/socialLogIn/deleteLogIn?Id=` + id).subscribe()
     setTimeout(function () {
