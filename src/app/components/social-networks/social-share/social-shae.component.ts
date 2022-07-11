@@ -79,13 +79,13 @@ export class SocialShaeComponent implements OnInit {
   }
 
   sendUser(){
-    console.log("see har")
-    console.log(this.fbUser.id + "sdadsasad" +this.fbUser.authToken)
-    console.log("https://graph.facebook.com/{"+this.fbUser.id+"}/feed ?message=Join SportsHub!"+
-      this.prefix + this.path+ " &access_token={"+this.fbUser.authToken + "}")
-
-    this.http.post("https://graph.facebook.com/{"+this.fbUser.id+"}/feed?message=Join SportsHub!"+
-      this.prefix + this.path+ "&access_token={"+this.fbUser.authToken + "}",null).subscribe()
+    // console.log("see har")
+    // console.log(this.fbUser.id + "sdadsasad" +this.fbUser.authToken)
+    // console.log("https://graph.facebook.com/{"+this.fbUser.id+"}/feed ?message=Join SportsHub!"+
+    //   this.prefix + this.path+ " &access_token={"+this.fbUser.authToken + "}")
+    //
+    // this.http.post("https://graph.facebook.com/{"+this.fbUser.id+"}/feed?message=Join SportsHub!"+
+    //   this.prefix + this.path+ "&access_token={"+this.fbUser.authToken + "}",null).subscribe()
 
     // "https://graph.facebook.com/{page-id}/feed
     //   ?message=Hello Fans!

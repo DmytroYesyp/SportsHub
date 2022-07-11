@@ -429,3 +429,16 @@ main_kinds{
 .changeBox{
   overflow: visible;
 }
+.textButtons:hover{
+  color: #d72130;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.textButtons:checked + label
+{
+  color: #d72130;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
