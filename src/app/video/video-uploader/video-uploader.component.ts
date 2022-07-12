@@ -64,7 +64,7 @@ export class VideoUploaderComponent implements OnInit {
     //   }),
     // );
 
-    listAll(videoRef)
+    // listAll(videoRef)
 
   }
 

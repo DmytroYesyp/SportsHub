@@ -62,17 +62,38 @@
   <button (click)="upload = true">Upload</button>
 
   <div *ngIf="upload">
-      <app-video-uploader [file]="file"></app-video-uploader>
+      <app-video-uploader [file]="new_file"></app-video-uploader>
   </div>
 </div>
 <!--<div>-->
 <!--  <video src="https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/video%2F1657211364973_Evangelion.MP4?alt=media&token=1139fd17-d39b-4756-9926-d2db25975af0"></video>-->
 <!--</div>-->
 <input type='file' (change)="onSelectFile($event)" accept="video/*"/>
-<video [src]="url" *ngIf="format==='video' && url" height="300" controls></video> <br/>
+<video [src]="url" *ngIf="format==='video' && url" height="300" controls ></video> <br/>
 <br/>
 
 <div *ngIf="url">
+
+  <div class="container">
+    <div class="cont">
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="email-input">
+          <div class="cont_txt">Enter video title</div>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Enter video title</mat-label>
+            <label>
+              <input formControlName="title" matInput placeholder="some title" required>
+            </label>
+            <mat-error *ngIf="form.hasError('required','title')">Not valid</mat-error>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >Submit</button>
+
+      </form>
+    </div>
+  </div>
+
   <div style="">
     <h3>Video preview example:</h3>
     <video [src]="url" *ngIf="format==='video' && url" height="150"></video> <br/>

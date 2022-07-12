@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-header-user-profile',
@@ -34,7 +35,11 @@ export class HeaderUserProfileComponent implements OnInit {
     return new Array(number);
   }
 
-  constructor(private mainpage: mainPage,private http:HttpClient, private auth: AuthService, private router: Router) {
+  constructor(private mainpage: mainPage,
+              private http:HttpClient,
+              private auth: AuthService,
+              private router: Router,
+              private app: AppComponent) {
   }
   getUserFromToken() {
     const token = localStorage.getItem('auth-token')
@@ -61,14 +66,17 @@ export class HeaderUserProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    // @ts-ignore
-    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
-      error => {
-        console.warn(error)
-        window.location.reload();
-      })
-    this.mainpage.getUserByEmail(this.getUserFromToken())
-
+    if(this.app.isExpired()){
+      localStorage.removeItem('auth-token')
+      this.router.navigate(['/login'])
+    }else{
+      // @ts-ignore
+      this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
+        error => {
+          console.warn(error)
+          window.location.reload();
+        })
+      this.mainpage.getUserByEmail(this.getUserFromToken())
+    }
   }
 }

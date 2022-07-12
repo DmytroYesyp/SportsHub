@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./services/auth.service";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,6 +12,7 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class AppComponent implements OnInit{
   title = 'client';
+  expTime;
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit{
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     const tmp = JSON.parse(jsonPayload);
+    this.expTime = tmp.exp
     return tmp.roles[0];
   }
 
@@ -47,6 +50,10 @@ export class AppComponent implements OnInit{
     let role = this.getUserFromToken()
     console.log(role)
     return role == "admin";
+  }
+
+  isExpired(){
+    return (Math.floor((new Date).getTime() / 1000)) >= this.expTime;
   }
 
   ngOnInit() {

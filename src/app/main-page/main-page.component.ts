@@ -3,6 +3,7 @@ import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-page',
@@ -24,7 +25,11 @@ export class MainPageComponent implements OnInit {
 
   authenticated: boolean = false;
 
-  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent, public translate: TranslateService) {
+  constructor(private mainpage: mainPage,
+              private auth: AuthService,
+              private app: AppComponent,
+              public translate: TranslateService,
+              private router: Router) {
   }
 
   getUserFromToken(){
@@ -65,6 +70,10 @@ export class MainPageComponent implements OnInit {
       this.authenticated = true
     }else{
       this.auth.logout()
+    }
+    if(this.app.isExpired()){
+      localStorage.removeItem('auth-token')
+      this.router.navigate(['/login'])
     }
 
     this.role = this.app.getUserFromToken()

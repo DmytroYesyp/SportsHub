@@ -3,6 +3,8 @@ import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-video',
@@ -14,6 +16,7 @@ export class VideoComponent implements OnInit {
   isHovering: boolean;
   files: File[] = [];
   file: File;
+  new_file;
 
   email: string;
 
@@ -27,6 +30,11 @@ export class VideoComponent implements OnInit {
   user: Object;
 
   authenticated: boolean = false;
+
+  form = new FormGroup({
+      title: new FormControl('', [Validators.required])
+    }
+  );
 
   constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent, public translate: TranslateService) {
   }
@@ -120,6 +128,17 @@ export class VideoComponent implements OnInit {
         this.url = (<FileReader>event.target).result;
       }
     }
+  }
+
+  async onSubmit(){
+    const url = URL.createObjectURL(this.file)
+    console.log("Url" + url)
+    const blob = await (await fetch(url)).blob();
+    console.log("Blob" + blob)
+    this.form.disable()
+    this.new_file = new File([blob], this.form.value.title, {type: this.file.type})
+    console.log("File" + this.new_file)
+    console.log(this.new_file.name + this.new_file.type)
   }
 
 }
