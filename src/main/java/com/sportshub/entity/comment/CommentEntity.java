@@ -1,12 +1,11 @@
 package com.sportshub.entity.comment;
 
+import com.sportshub.entity.news.NewsEntity;
+import com.sportshub.entity.user.User;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.Instant;
 
 
 @Data
@@ -17,4 +16,8 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
+    private Long userId;
+    private Long newsId;
+    private Instant publicationDate;
+    private boolean isEdited;
 }

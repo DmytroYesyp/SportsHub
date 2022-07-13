@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class NewsDto {
     private Long id;
+    private Long views;
     private String title;
     private String description;
     private String text;

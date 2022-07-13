@@ -2,9 +2,12 @@ package com.sportshub.service.comment.impl;
 
 import com.sportshub.dto.comment.CommentCreateDto;
 import com.sportshub.dto.comment.CommentDto;
+import com.sportshub.dto.comment.CommentSearchFilters;
 import com.sportshub.dto.comment.CommentUpdateDto;
 import com.sportshub.dto.count.CountDto;
+import com.sportshub.dto.news.NewsDto;
 import com.sportshub.entity.comment.CommentEntity;
+import com.sportshub.entity.news.NewsEntity;
 import com.sportshub.exception.NotFoundException;
 import com.sportshub.mapper.comment.CommentMapper;
 import com.sportshub.repository.comment.CommentRepository;
@@ -32,9 +35,10 @@ public class CommentServiceImpl implements CommentService {
         return commentMapper.toDto(commentEntity);
     }
 
+
     @Override
-    public List<CommentDto> findAll(int page, int limit) {
-        List<CommentEntity> commentEntities = commentRepository.findAllComments(PageRequest.of(page - 1, limit));
+    public List<CommentDto> findAll(Long id, CommentSearchFilters commentSearchFilters, int page, int limit) {
+        List<CommentEntity> commentEntities = commentRepository.findAllComments(id, PageRequest.of(page - 1, limit));
         return commentMapper.toDtoList(commentEntities);
     }
 

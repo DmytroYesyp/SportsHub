@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,6 +30,8 @@ public interface UsersService {
     ResponseEntity<Long> deleteUser(long userId);
 
     ResponseEntity<User> findUserByEmail(String email);
+
+
 
     ResponseEntity updateUser(long userId, User upd_user);
 

@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 public class NewsCreateDto {
+    private Long views;
     private String title;
     private String description;
     private String text;

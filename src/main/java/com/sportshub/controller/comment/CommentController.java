@@ -2,8 +2,11 @@ package com.sportshub.controller.comment;
 
 import com.sportshub.dto.comment.CommentCreateDto;
 import com.sportshub.dto.comment.CommentDto;
+import com.sportshub.dto.comment.CommentSearchFilters;
 import com.sportshub.dto.comment.CommentUpdateDto;
 import com.sportshub.dto.count.CountDto;
+import com.sportshub.dto.news.NewsDto;
+import com.sportshub.dto.news.NewsSearchFilters;
 import com.sportshub.service.comment.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,11 +37,12 @@ public class CommentController {
         return commentService.create(commentDto);
     }
 
-    @GetMapping
-    public List<CommentDto> findAll(@RequestParam(defaultValue = "1") int page,
+    @GetMapping("news{id}")
+    public List<CommentDto> findAll(@PathVariable Long id, CommentSearchFilters commentSearchFilters,
+                                    @RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "1000") int limit) {
 
-        return commentService.findAll(page, limit);
+        return commentService.findAll(id, commentSearchFilters, page, limit);
     }
 
     @GetMapping("{id}")

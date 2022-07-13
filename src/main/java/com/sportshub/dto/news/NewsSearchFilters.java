@@ -8,6 +8,7 @@ import java.util.Set;
 @Data
 public class NewsSearchFilters {
     private String title;
+    private Long views;
     private String description;
     private String text;
     private Instant publicationDateFrom;

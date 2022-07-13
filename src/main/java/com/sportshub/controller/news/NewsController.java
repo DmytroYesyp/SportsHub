@@ -43,6 +43,16 @@ public class NewsController {
         return newsService.findAll(newsSearchFilters, limit, page);
     }
 
+    @GetMapping("mostpop")
+    public List<NewsDto> findPopular(@RequestParam(defaultValue = "30") int limitDate){
+        return newsService.findPopular(limitDate);
+    }
+
+    @GetMapping("mostcomm")
+    public List<NewsDto> findCommented(@RequestParam(defaultValue = "30") int limitDate){
+        return newsService.findCommented(limitDate);
+    }
+
     @GetMapping("{id}")
     public NewsDto find(@PathVariable Long id) {
         return newsService.find(id);
@@ -61,7 +71,5 @@ public class NewsController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        newsService.delete(id);
-    }
+    public void delete(@PathVariable Long id) {newsService.delete(id);}
 }

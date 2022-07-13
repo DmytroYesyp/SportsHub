@@ -26,6 +26,7 @@ public class NewsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long views;
     private String title;
     private String description;
     private String text;

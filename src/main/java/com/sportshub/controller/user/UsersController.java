@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,9 +33,10 @@ public class UsersController {
 
 
     @GetMapping(path = "users{userId}")
-    public ResponseEntity<User> getUser(@RequestParam long userId) {
+    public ResponseEntity<User> getUser(@RequestParam("userId") long userId) {
         return userService.getUserById(userId);
     }
+
 
     @DeleteMapping(path = "users{userId}")
     public ResponseEntity<Long> deleteUser(@RequestParam("userId") long userId) {
@@ -44,10 +46,8 @@ public class UsersController {
 
     @GetMapping("getUserByEmail{email}")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email){
-
         return userService.findUserByEmail(email);
     }
-
 
     @PostMapping(path = "setRole{userId}{roleId}")
     public ResponseEntity<String> setRole(@RequestParam long userId,@RequestParam long roleId){

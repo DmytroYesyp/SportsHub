@@ -74,7 +74,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login","/main").permitAll();
-        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}", "/language").permitAll();
+        http.authorizeRequests().antMatchers(PUT,"/news/{id}", "/datelimits/{id}").permitAll();
+        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}",
+                "/language", "/comments", "/comments/news{id}", "/api/users/users{userId}", "/news/mostpop", "/teams/{id}",
+                "/comments/mostcomm", "/datelimits/{id}","/datelimits", "/likes", "/likes/count", "/likes/check",
+                "/dislikes", "/dislikes/count", "/dislikes/check").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);
