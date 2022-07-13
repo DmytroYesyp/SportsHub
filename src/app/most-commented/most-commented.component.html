@@ -1,0 +1,10 @@
+<div class="body">
+  <div class="head"><b>MOST COMMENTED</b><div class="line"></div></div>
+  <div class="articles">
+    <div class="article" [routerLink]="['/article', e['id']]" *ngFor="let e of list">
+      <img class="img" [src]="e['image']">
+      <div class="title"><b>{{e['title']}}</b></div>
+      <div class="descr">{{e['description']}}</div>
+    </div>
+  </div>
+</div>
