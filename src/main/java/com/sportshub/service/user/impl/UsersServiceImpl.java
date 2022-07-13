@@ -83,7 +83,7 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
         if (userOptional) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-        user.setLogo_url(user.getLogo_url());
+        user.setLogo_url("User.png");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(roleRepository.getById(1L));
         userRepository.save(user);
@@ -156,6 +156,24 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
     }
 
     @Override
+     public ResponseEntity<String> checkUserPass(HttpServletRequest request,
+                                 String OldPassword,
+                                 String NewPassword,
+                                 String passwordConfirmation){
+        if (userRepository.findUserByEmail(getUsernameFromToken(request)).isEmpty())
+            return ResponseEntity.badRequest().body("Token is not correct");
+
+         User user = userRepository.findUserByEmail(getUsernameFromToken(request)).get();
+
+         if (passwordEncoder.matches(OldPassword,user.getPassword())){
+             updatePassword(user,NewPassword);
+             return ResponseEntity.ok(null);
+         }
+        return ResponseEntity.badRequest().body("Password is not correct");
+    }
+
+
+    @Override
     public ResponseEntity updateUser(long userId, User upd_user) {
 
 
@@ -177,9 +195,9 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
             user.setLastName(upd_user.getLastName());
         }
 
-
+//        passwordEncoder.encode(user.getPassword())
         if (upd_user.getPassword() != null && upd_user.getPassword().length() > 8 && !Objects.equals(user.getPassword(), upd_user.getPassword())) {
-            user.setPassword(upd_user.getPassword());
+            user.setPassword(passwordEncoder.encode(upd_user.getPassword()));
         }
 
 
@@ -223,12 +241,7 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
 
     @Override
     public void updatePassword(User user, String newPassword) {
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//
-//        String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(passwordEncoder.encode(newPassword));
-//        user.setPassword(encodedPassword);
-
         user.setResetPasswordToken(null);
         userRepository.save(user);
     }
