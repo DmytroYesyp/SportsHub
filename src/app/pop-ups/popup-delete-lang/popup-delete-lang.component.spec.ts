@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResetPasswordComponent } from './reset-password.component';
+import { PopupDeleteLangComponent } from './popup-delete-lang.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
 import {TranslateModule} from "@ngx-translate/core";
 
-describe('ResetPasswordComponent', () => {
-  let component: ResetPasswordComponent;
-  let fixture: ComponentFixture<ResetPasswordComponent>;
+describe('PopupDeleteLangComponent', () => {
+  let component: PopupDeleteLangComponent;
+  let fixture: ComponentFixture<PopupDeleteLangComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
-      declarations: [ ResetPasswordComponent ]
+      declarations: [ PopupDeleteLangComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResetPasswordComponent);
+    fixture = TestBed.createComponent(PopupDeleteLangComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

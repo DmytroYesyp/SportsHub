@@ -5,7 +5,5 @@
       <i class="fa fa-globe"></i>
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <button class="txt1"  (click)="changeLang('en')" > {{ 'HEADER.LANG.EN' | translate}} </button><br>
-  <button class="txt1"  (click)="changeLang('uk')"> {{ 'HEADER.LANG.UA' | translate}} </button><br>
-  <button class="txt1" (click)="changeLang('ru')"> {{ 'HEADER.LANG.RU' | translate}} </button><br>
+  <button  *ngFor="let e of list;" class="txt1"  (click)="changeLang(e['locale'])" > {{e['name']}} </button><br>
 </mat-expansion-panel>

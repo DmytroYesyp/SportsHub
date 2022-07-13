@@ -168,6 +168,7 @@ input[type=text] {
   background-color: #f5f5f5;
   padding-top: 30px;
   padding-left: 15px;
+  padding-right: 15px;
   position: absolute;
   top: 230px; right: 120px;
   z-index: 2;
@@ -224,11 +225,73 @@ input[type=text] {
   font-size: 16px;
 }
 
+.more{
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #b2b2b2;
+  border-radius: 25px;
+  width: 130px;
+  margin-left: 373px;
+  font-size: 14px;
+  background: white;
+  margin-top: -22px;
+}
+
+.line_more{
+  height: 1px;
+  background: #b2b2b2;
+}
+.article{
+  border: 1px #c7c7c7 solid;
+  margin-bottom: -1px;
+  height: 115px;
+  width: 430px;
+  display: block;
+;
+}
+
+.article:hover{
+  cursor: pointer;
+  background: #f5f5f5;
+}
+
+.img{
+  width: 180px;
+  height: 115px;
+  margin-bottom: -5px;
+  position: absolute;
+}
+.title{
+  margin-top: 10px;
+  margin-left: 190px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+.descr{
+  margin-left: 190px;
+  margin-right: 5px;
+  font-size: 12px;
+  color: #969696;
+}
+
+.mcards{
+  display: grid;
+  grid-template-columns: repeat(2, 468px);
+}
+
 .toptxt{
   position: absolute;
   margin-top: -20px;
   z-index: 3;
   color: #D72130;
+}
+.toptxt a{
+  margin-top: -20px;
+  color: #D72130;
+  text-decoration: none;
+}
+.toptxt a:hover{
+  text-decoration: underline;
 }
 
 .share_btn{
@@ -242,7 +305,7 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
 }
 
-.txt{
+.txt {
   position: absolute;
   text-align: center;
 
@@ -257,9 +320,11 @@ input[type=text] {
   font-size: 16px;
   line-height: 17px;
   text-decoration: none;
+}
   /* identical to box height, or 127% */
 
-
+.views{
+  margin-top: 460px;
   color: #D72130;
 
 }

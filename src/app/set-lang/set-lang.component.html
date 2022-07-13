@@ -1,6 +1,83 @@
-<button (click)="toggleShow()" type="checkbox" >show/hide</button>
+<!DOCTYPE html>
+<html>
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
 
-<div *ngIf="isShown" class="row container-fluid"  id="divshow" >
-  Div Content
+<body>
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+
+  <div class="search-container">
+    <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate}}" name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+
+  </div>
+
+  <div class="share-container">
+    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
 
 </div>
+  <app-header-user-profile></app-header-user-profile>
+
+<app-lang></app-lang>
+
+<div class="main">
+  <div class="under_head">
+    <div class="under_one">
+      <div class="under_home">Languages</div>
+      <div class="under_right">
+      </div>
+    </div>
+    <hr>
+    <div class="under_two">
+      <a href="/main">Home</a>
+      <a href="/video">Video</a>
+      <a href="/lifestle">Lifestyle</a>
+      <a href="/dealbook">Dealbook</a>
+    </div>
+  </div>
+  <div class="wrapper">
+  <div class="sidebar">
+    <a href="/surveys"><i class="fa fa-comment-o" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/admin_page/set-lang"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/footer"><i class="fa fa-edit" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/users"><i class="fa fa-users" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/info"><i class="fa fa-info" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/admin_team-page"><i class="fa fa-flag" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/news-partners"><i class="fa fa-briefcase" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a><br>
+    <a href="/advertising"><i class="fa fa-dollar" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+
+  </div>
+  <div class="langlist">
+    <b><div class="langel2">Languages<div class="sh_h">Show/Hide</div> </div></b>
+<div  *ngFor="let e of list;" class="langel"> {{e['name']}}
+  <button class="fa fa-trash" *ngIf="e['locale']!='en'" (click)="openDialog(e['id'], e['name'])"></button>
+  <button class="hide" *ngIf="e['hidden']==false" (click)="hide(e['id'])">Hide</button>
+  <button class="show" *ngIf="e['hidden']==true" (click)="show(e['id'])">Show</button>
+
+</div>
+  </div>
+
+  </div>
+  <div class="footer">
+    <div>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</div>
+  </div>
+</div>
+
+

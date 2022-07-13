@@ -1,0 +1,158 @@
+.comments {
+  background: #f5f5f5;
+  width: 860px;
+  padding: 20px;
+}
+.txt{
+  font-family: 'Open Sans', sans-serif;
+}
+.txt_nick{
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.head{
+  background: white;
+  margin-top: 10px;
+  display: inline-block;
+  border: solid 0.5px #c2c2c2;
+}
+.input{
+  border: none;
+  height: 60px;
+  width: 707px;
+}
+
+.post_btn{
+  background: none;
+  height: 60px;
+  width: 70px;
+  font-size: 16px;
+  color: #a4a4a4;
+  border: none;
+}
+
+.post_btn:hover{
+  cursor: pointer;
+  color: #D72130;
+}
+
+.com{
+  background: white;
+  border-left: solid 0.5px #c2c2c2;
+  border-right: solid 0.5px #c2c2c2;
+  border-bottom: solid 0.5px #c2c2c2;
+  padding: 7px;
+  margin-top: -1px;
+}
+
+.delete{
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  background: white;
+  float: right;
+  color: #a4a4a4;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+.delete:hover{
+  color: #D72130;
+  cursor: pointer;
+}
+
+.txt1{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #696969;
+}
+
+.profile_img{
+  float: left;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  margin-right: 20px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+#img1{
+  margin-left: 17px;
+}
+.input2{
+  border:  #e3e3e3 1px solid;
+  height: 36px;
+  width: 655px;
+  margin-top: 10px;
+}
+
+.sort{
+  box-shadow: none;
+  float: right;
+  margin-top: -30px;
+  width: 200px;
+  background: none;
+}
+.sort1{
+  height: 30px;
+  font-size: 13px;
+}
+.sortbtn{
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  width: 150px;
+  text-align: left;
+  color: #D72130;
+}
+.sortbtn:hover{
+  text-decoration: underline #D72130;
+}
+.txt2{
+  font-family: 'Open Sans', sans-serif;
+  color: #D72130;
+}
+.txt3{
+  margin-top: 5px;
+  margin-left: 70px;
+  margin-right: 40px;
+  margin-bottom: 30px;
+}
+
+.fa{
+  border: none;
+  background: white;
+  color: #a8a8a8;
+  margin-top: 5px;
+  display: inline;
+  float: left;
+}
+
+.fa:hover{
+  cursor: pointer;
+  color: #696969;
+}
+
+#active_like{
+  color: #4b4b4b;
+}
+#active_dislike{
+  color: #4b4b4b;
+}
+
+
+.line{
+  height: 0.5px;
+  background: #c2c2c2;
+  margin-top: 5px;
+}
+.top{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.txt4{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}

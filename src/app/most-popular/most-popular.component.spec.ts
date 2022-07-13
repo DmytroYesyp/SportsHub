@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoogleRegisterComponent } from './google-register.component';
+import { MostPopularComponent } from './most-popular.component';
 
-describe('OauthComponent', () => {
-  let component: GoogleRegisterComponent;
-  let fixture: ComponentFixture<GoogleRegisterComponent>;
+describe('MostPopularComponent', () => {
+  let component: MostPopularComponent;
+  let fixture: ComponentFixture<MostPopularComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoogleRegisterComponent ]
+      declarations: [ MostPopularComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoogleRegisterComponent);
+    fixture = TestBed.createComponent(MostPopularComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

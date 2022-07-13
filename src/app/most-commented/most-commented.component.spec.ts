@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SocialFollowComponent } from './social-follow.component';
+import { MostCommentedComponent } from './most-commented.component';
 
-describe('SocialFollowComponent', () => {
-  let component: SocialFollowComponent;
-  let fixture: ComponentFixture<SocialFollowComponent>;
+describe('MostCommentedComponent', () => {
+  let component: MostCommentedComponent;
+  let fixture: ComponentFixture<MostCommentedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialFollowComponent ]
+      declarations: [ MostCommentedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SocialFollowComponent);
+    fixture = TestBed.createComponent(MostCommentedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

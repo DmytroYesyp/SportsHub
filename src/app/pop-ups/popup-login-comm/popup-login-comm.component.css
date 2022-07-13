@@ -1,0 +1,18 @@
+.delete{
+  background: #D72130;
+  padding: 10px;
+  margin: 20px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.delete:hover{
+  text-decoration: underline;
+}
+h3{
+  margin-top: 10px;
+}
+.buttons{
+  text-align: center;
+}

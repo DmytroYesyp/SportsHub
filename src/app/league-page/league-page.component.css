@@ -7,16 +7,10 @@ input[type=text] {
 }
 .search-container {
   float: left;
-  margin-left: 15vw;
+  margin-left: 270px;
   border-right: 1px solid #EDEDED;
   text-align: center;
-}
 
-@media (max-width: 1600px) {
-  .search-container{
-    margin-left: 20vw;
-
-  }
 }
 .search-container button {
   height: 83px;
@@ -46,20 +40,7 @@ input[type=text] {
   cursor: pointer;
 }
 
-
-@media screen and (min-width: 1280px) and (max-width: 1745px){
-  .profile-container {
-    margin-top: -80px;
-    float: right;
-    text-align: center;
-    height: 200px;
-    position: absolute;
-    margin-left:73vw;
-    z-index: 2;
-  }
-}
-
-.back_txt{
+.back_txt {
   position: absolute;
   width: 343px;
   height: 192px;
@@ -73,14 +54,13 @@ input[type=text] {
   letter-spacing: 1.25893px;
   color: rgba(204, 211, 224, 0.301628);
   transform: rotate(90deg);
-
-
 }
+
 .back_txt2 {
   position: absolute;
   width: 254px;
   height: 192px;
-  left: 105px;
+  left: 95px;
   top: 140px;
   font-family: 'Roboto Condensed';
   font-style: normal;
@@ -90,7 +70,10 @@ input[type=text] {
   letter-spacing: 1.25893px;
   color: rgba(204, 211, 224, 0.301628);
   transform: rotate(90deg);
+  white-space: nowrap;
+  z-index: 0;
 }
+
 .line {
   position: absolute;
   width: 100%;
@@ -109,27 +92,19 @@ input[type=text] {
   text-decoration: none;
 }
 
-a:hover{
-  color: #D72130;
-  transition: all 1s ease;
-}
 
 .footer{
-  position: absolute;
-  float: bottom;
-  width: 99%;
+  /*position: absolute;*/
+  width: 1485px;
   height: 40px;
   text-align: right;
   background: #D72130;
-  padding-top: 17px;
-  padding-bottom: 17px;
-  padding-right: 1%;
-}
-
-.footer p{
   color: white;
   font-size: 12px;
+  padding: 17px;
+  margin-bottom: 0;
 }
+
 
 .main{
   display: flex;
@@ -139,22 +114,10 @@ a:hover{
   width: 200px;
   min-height: 100px;
 }
-
-/*.sidebar_admin{*/
-/*  padding-left: 52px;*/
-/*  width: 200px;*/
-/*  min-height: 100px;*/
-/*}*/
-
 .sidebar_text{
   width: 100px;
   min-height: 100px;
 }
-
-/*.sidebar_text_admin{*/
-/*  width: 100px;*/
-/*  min-height: 100px;*/
-/*}*/
 
 .sidebar_follow a{
   color: #000000;
@@ -165,16 +128,6 @@ a:hover{
   text-decoration: none;
   margin: 12px 12px 0 0;
 }
-
-/*.sidebar_follow_admin a{*/
-/*  color: #000000;*/
-/*  background: #ffffff;*/
-/*  font-size: 25px;*/
-/*  border: none;*/
-/*  cursor: pointer;*/
-/*  text-decoration: none;*/
-/*  margin: 12px 12px 0 0;*/
-/*}*/
 
 .sidebar_text main_kinds{
   color: #b2b2b2;
@@ -246,77 +199,50 @@ a:hover{
   position: absolute;
   width: 900px;
   height: 460px;
-  background: url(src/assets/img/main-photo-article.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
 }
-.photo_button {
-  background: #2f2f2f;
-  width: 100px;
-  text-align: center;
-  top: 0;
-  left: 0;
-  font-size: 15px;
-  font-style: normal;
-  padding: 10px;
-  text-decoration: none;
-  color: white;
-  z-index: 2;
-}
-
-.block_2{
-  width: 100%;
-  margin-top: 30px;
-}
-::ng-deep .cards{
-  margin-left: -8px;
-  display: flex;
-  justify-content: space-between;
+::ng-deep .newstext{
   width: 940px;
-  margin-top: 260px;
-  text-decoration: none;
-}
-::ng-deep .card{
-  width: 200px;
-  height: 300px;
-  padding: 10px;
-  text-decoration: none;
+  margin-top: 500px;
+  font-size: 16px;
 }
 
-::ng-deep .card_photo{
-  /*object-fit: cover;*/
-  width: 100%;
+.mcard_photo{
+  width: 200px;
   height: 130px;
 }
 
-::ng-deep .card:hover{
+.mcards{
+  margin-top: 30px;
+  height: 450px;
+  width: 900px;
+  display: inline;
+}
+
+.mcard{
+  height: 130px;
+  width: 900px;
+  padding: 10px;
+}
+
+.mcard_text{
+  float: right;
+  width: 680px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.mcard:hover{
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
   color: #D72130;
 }
-::ng-deep .cards:hover  p,h4,img{box-shadow: none;}
 
-::ng-deep .card p,h4{
-  margin: 10px;
-  text-decoration: none;
-  color: #b2b2b2;
-  font-size: 14px;
-}
-
-::ng-deep .card h4{
-  margin: 10px;
-  text-decoration: none;
-  color: #2B2F43;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-
-.switch_view{
+.toptxt{
   position: absolute;
-  right: 460px;
-  top: 3vh;
+  margin-top: -20px;
+  z-index: 3;
+  color: #D72130;
 }
+
 
 .txt{
   position: absolute;
@@ -333,16 +259,7 @@ a:hover{
   font-size: 16px;
   line-height: 17px;
   text-decoration: none;
-  /* identical to box height, or 127% */
-
 
   color: #D72130;
-}
-
-.most_pop_comm {
-  margin-left: 250px;
-  margin-top: 20px;
-  width: 900px;
-  height: 450px;
 
 }

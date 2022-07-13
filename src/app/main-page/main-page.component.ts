@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-main-page',
@@ -14,7 +15,7 @@ export class MainPageComponent implements OnInit {
 
 
   email: string;
-
+  dateLimits: any;
   firstName: any;
   lastName: any;
   isAdmin: boolean = false;
@@ -29,7 +30,8 @@ export class MainPageComponent implements OnInit {
               private auth: AuthService,
               private app: AppComponent,
               public translate: TranslateService,
-              private router: Router) {
+              private router: Router,
+              private http: HttpClient) {
   }
 
   getUserFromToken(){
@@ -81,13 +83,10 @@ export class MainPageComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
-
-
-    // this.mainpage.getUserByEmail(this.getUserFromToken())
-
-
-    // this.firstName = user.firstName;
-    // this.lastName = user.lastName;
+    this.http.get('http://localhost:8080/datelimits')
+      .subscribe(Response => {
+        this.dateLimits = <Array<any>>Response
+      });
   }
 
   logOut(){

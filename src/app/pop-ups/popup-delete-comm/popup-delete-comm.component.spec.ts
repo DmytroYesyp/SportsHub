@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoUploaderComponent } from './video-uploader.component';
+import { PopupDeleteCommComponent } from './popup-delete-comm.component';
 
-describe('VideoUploaderComponent', () => {
-  let component: VideoUploaderComponent;
-  let fixture: ComponentFixture<VideoUploaderComponent>;
+describe('PopupDeleteCommComponent', () => {
+  let component: PopupDeleteCommComponent;
+  let fixture: ComponentFixture<PopupDeleteCommComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoUploaderComponent ]
+      declarations: [ PopupDeleteCommComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoUploaderComponent);
+    fixture = TestBed.createComponent(PopupDeleteCommComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

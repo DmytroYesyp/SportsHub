@@ -116,6 +116,13 @@
 
     </div>
   </div>
+
+</div>
+<div class="most_pop_comm">
+  <div *ngIf="dateLimits">
+    <app-most-popular *ngIf="dateLimits[0]['datelim']!=0"></app-most-popular>
+    <app-most-commented *ngIf="dateLimits[1]['datelim']!=0"></app-most-commented>
+  </div>
 </div>
 
 <div class="footer">

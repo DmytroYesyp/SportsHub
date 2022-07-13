@@ -52,6 +52,7 @@
     <a class="txt1" href=""><main_kinds></main_kinds></a>
     <a href="/video">Video</a>
     <a href="/lifestle">Lifestyle</a>
+    <a href="/dealbook">Dealbook</a>
   </div>
 </div>
 
@@ -61,7 +62,7 @@
   <div class="sidebar">
     <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="Categories" href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Languages" href="/languages"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a href="/admin_page/set-lang"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="Footer" href="/footer"><i class="fa fa-edit" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="Social Networks" href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="Users" href="/users"><i class="fa fa-users" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
@@ -339,7 +340,7 @@
       </div>
 
       <div style="width: 8vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">
-        <a style="color: red" href=""> +Add one more article</a>
+        <a style="color: red" href="/article_add"> +Add one more article</a>
       </div>
 
 
@@ -501,19 +502,19 @@
         <div style="float: left; height: 3vw; width: 23vw;background-color: #f8f8f8">
           <p style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST POPULAR</Strong></p>
           <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
-
-            <div style="padding-top: 0.2vw;float: left; width: 2vw">
-              <label style="padding-right: 0.7vw;border-top:5vw;">Show</label></div>
-            <input type="checkbox" class="toggle-button">
+            <div *ngIf="dateLimitList">
+            <button class="hide" *ngIf="dateLimitList[0]['datelim']!=0" (click)="hide(1)">Hide</button>
+            <button class="show" *ngIf="dateLimitList[0]['datelim']==0" (click)="show(1)">Show</button>
+            </div>
           </div>
         </div>
         <div style="float: right; height: 3vw; width: 23vw;background-color: #f8f8f8"><p
           style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST COMMENTED</Strong></p>
           <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
-
-            <div style="padding-top: 0.2vw;float: left; width: 2vw">
-              <label style="padding-right: 0.7vw;border-top:5vw;">Hide</label></div>
-            <input type="checkbox" class="toggle-button">
+            <div *ngIf="dateLimitList">
+            <button class="hide" *ngIf="dateLimitList[1]['datelim']!=0" (click)="hide(2)">Hide</button>
+            <button class="show" *ngIf="dateLimitList[1]['datelim']==0" (click)="show(2)">Show</button>
+            </div>
           </div>
         </div>
       </div>
@@ -523,15 +524,15 @@
     </div>
 
     <div style="margin-top: 9vw">
-      <p style="color: gray">FROM THE PERIOD*</p>
+      <p style="color: gray">FROM THE PERIOD* (<b>{{dateLimit}}</b> days)</p>
       <form>
         <mat-form-field class="RowForm" appearance="outline">
 
-          <!--          <mat-label>subcategory</mat-label>-->
           <mat-select [(ngModel)]="selectedValue3" name="value2">
-            <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-              {{value3.viewValue}}
-            </mat-option>
+            <mat-option class="datelimbtn" (click)="changeDateLimit(1)">Day</mat-option>
+            <mat-option class="datelimbtn" (click)="changeDateLimit(7)">Week</mat-option>
+            <mat-option class="datelimbtn" (click)="changeDateLimit(30)">Month</mat-option>
+            <mat-option class="datelimbtn" (click)="changeDateLimit(365)">Year</mat-option>
           </mat-select>
         </mat-form-field>
       </form>

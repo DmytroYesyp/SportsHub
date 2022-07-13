@@ -9,7 +9,6 @@
 
 <body>
 
-
 <div class="header">
 
   <a href="/main" class="logo">
@@ -24,13 +23,13 @@
 
   </div>
 
-<!--  <div class="share-container">-->
-<!--    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>-->
-<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
-<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
-<!--    <a href="https://google.com" class="fa fa-google"></a>-->
-<!--  </div>-->
-  <app-social-share [path]="path" ></app-social-share>
+  <div class="share-container">
+    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
+
 </div>
 
 
@@ -50,7 +49,7 @@
 <app-lang></app-lang>
 
 <div class="main">
-<div class="back_txt2" >{{leagueList['name']}}</div>
+  <div class="back_txt2">{{league['name']}}</div>
   <div class="back_txt">{{ 'BODY.BACKTXT2' | translate}}</div>
   <div class="sidebar">
     <div class="sidebar_text">
@@ -71,39 +70,34 @@
 
   <div class="block_right">
     <div class="block_1">
-      <div class="toptxt"><a href="/league/{{leagueList['id']}}">{{leagueList['name']}}</a>  >
-        <a href="/team/{{e['id']}}" *ngFor="let e of teamList">{{e['name']}}<a *ngIf="e!=teamList[teamList.length-1]">, </a>
-        </a>  > {{list['title']}}</div>
+      <div class="toptxt">{{league['name']}}</div>
       <div class="photo">
-        <img class="photo" src="{{list['image']}}">
-        <div class="views">Views: {{list['views']}}</div>
+        <img class="photo" src="{{article['image']}}">
       </div>
       <div class="side_bloke">
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
-        <span class="side_bloke_p1"><b> {{list['title']}}</b></span>
+        <span class="side_bloke_p1"><b> {{article['title']}}</b></span>
         <br>
-        <span class="side_bloke_p2"><b>{{list['description']}}</b></span>
-        <a href="" class="share_btn">{{'HEADER.SHARE' | translate}} <i class="fa fa-share"></i></a>
+        <span class="side_bloke_p2"><b>{{article['description']}}</b></span>
+        <a [routerLink]="['/article', article['id']]" class="side_bloke_button"><b class="">{{ 'BODY.MORE' | translate}}</b></a>
       </div>
     </div>
     <div class="block_2"></div>
 
 
   </div>
-  <a class="newstext">{{list['text']}}<br><br><br>
-    <app-comment></app-comment><br><br><br><br>
-    <div class="line_more"></div>
-    <div class="more"><b>MORE ARTICLES</b></div><br><br>
+  <a class="newstext">
 
+    <div class="mcards">
+      <a [routerLink]="['/article', e['id']]" *ngFor="let e of list;">
+        <div  class="mcard">
+          <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
+          <div class="mcard_text"><b>{{ e['title'] }}</b>
+            <p >{{e['description']}}</p></div>
+        </div>
+      </a>
 
-<div class="mcards">
-  <div class="article" [routerLink]="['/article', e['id']]" *ngFor="let e of moreList;" (click)="reloadCurrentPage(e['id'])" >
-      <img class="img" [src]="e['image']">
-      <div class="title"><b>{{e['title']}}</b></div>
-      <div class="descr">{{e['description']}}</div>
-  </div>
-
-</div>
+    </div>
   </a>
 
 
@@ -116,15 +110,4 @@
 <div class="footer">
   <div>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</div>
 </div>
-
 </body>
-
-<!--<div class="wrapper">-->
-
-
-
-
-<!--</div>-->
-
-
-

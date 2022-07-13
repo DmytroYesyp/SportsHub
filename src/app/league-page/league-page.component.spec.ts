@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResetPasswordComponent } from './reset-password.component';
+import { LeaguePageComponent } from './league-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
 import {TranslateModule} from "@ngx-translate/core";
 
-describe('ResetPasswordComponent', () => {
-  let component: ResetPasswordComponent;
-  let fixture: ComponentFixture<ResetPasswordComponent>;
+describe('LeaguePageComponent', () => {
+  let component: LeaguePageComponent;
+  let fixture: ComponentFixture<LeaguePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
-      declarations: [ ResetPasswordComponent ]
+      declarations: [ LeaguePageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResetPasswordComponent);
+    fixture = TestBed.createComponent(LeaguePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

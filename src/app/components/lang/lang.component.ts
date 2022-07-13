@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-lang',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lang.component.css']
 })
 export class LangComponent implements OnInit {
+  list: any;
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:8080/language')
+      .subscribe(Response => {
+        this.list = (<Array<any>>Response);
+        console.log(this.list)
+        for (let i = 0; i < this.list.length; i++) {
+          if (this.list[i]['hidden'] == true) {
+            this.list.splice(i, 1)
+          }
+        }
+      });
   }
 
   changeLang(lang){
