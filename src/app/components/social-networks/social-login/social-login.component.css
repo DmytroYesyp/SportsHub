@@ -1,3 +1,25 @@
+.inBody{
+  height: 2vw;
+  margin-top: 3vw;
+  width: 20vw;
+}
+.as{
+  border: none;
+  cursor: pointer;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  background: #ffffff;
+  font-size: 25px;
+}
+.iconBox{
+  height: 25px;
+  width: 25px;
+  margin-top: -24px;
+  margin-left: 20px;
+  float: right;
+}
 #generalSection{
 
   width: 55vw;
@@ -288,6 +310,7 @@
 .sidebar{
   width: 100px;
   border-right: 1px solid #d8d8d8;
+  float: left;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -372,4 +395,50 @@ main_kinds{
 
 ::ng-deep .under_two p{
   margin-right: 60px;
+}
+.wrapper{
+  display: flex;
+  background-color: #f2f2f2;
+  width: 30vw;
+  margin-left: 25vw;
+  padding-block-start: 5vw;
+  padding-block-end: 5vw;
+  min-height: 20vw;
+}
+#working_section{
+  width: 25vw;
+  height: 20vw;
+  margin-left: 10vw;
+  margin-top: 3vw;
+
+}
+.item{
+  height: 3.3vw;
+  width: 25vw;
+  /*background-color: blue;*/
+}
+.itemInChange{
+  height: 3.3vw;
+  width: 24.9vw;
+  border: solid 1px #ededef;
+}
+.itemInChange:hover{
+  border: none;
+  box-shadow: 1px 1px 10px lightgray;
+}
+.changeBox{
+  overflow: visible;
+}
+.textButtons:hover{
+  color: #d72130;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.textButtons:checked + label
+{
+  color: #d72130;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
 }

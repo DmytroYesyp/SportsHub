@@ -1,0 +1,15 @@
+<div class="sidebar_icon">
+  <span class="txt1">{{ 'BODY.FOLLOW' | translate}}</span>
+  <div class="sidebar_follow">
+    <div style="width: 30px; float: left" class="iconBox" *ngFor="let l of list">
+      <a *ngIf="l.isVisible" class="{{l.pictogram}}" href="{{l.url}}"></a>
+    </div>
+<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
+<!--    <a href="https://google.com" class="fa fa-google"></a>-->
+<!--    <a href="https://youtube.com" class="fa fa-youtube"></a>-->
+<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
+  </div>
+
+
+
+</div>

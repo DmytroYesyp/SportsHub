@@ -29,13 +29,13 @@
 
   </div>
 
-  <div class="share-container">
-    <div class="txt1">Share</div>
-    <a href="https://facebook.com" class="fa fa-facebook"></a>
-    <a href="https://twitter.com" class="fa fa-twitter"></a>
-    <a href="https://google.com" class="fa fa-google"></a>
-  </div>
-
+<!--  <div class="share-container">-->
+<!--    <div class="txt1">Share</div>-->
+<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
+<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
+<!--    <a href="https://google.com" class="fa fa-google"></a>-->
+<!--  </div>-->
+  <app-social-share></app-social-share>
 </div>
 <app-header-user-profile [arr]="arr" [arr2]="arr2"></app-header-user-profile>
 
@@ -107,7 +107,7 @@
             <input type="text" matInput  formControlName="lastName" class="TextFields" type="text" name="fname" ><br>
           </div>
           <button mat-raised-button type="submit"
-            style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
+            style="color : white; margin-top: 2vw; font-size: 0.9vw; height: 2vw;width: 25.2vw;line-height: 0;border-radius: 0;border: none;background-color: #d72130">
             UPDATE PROFILE
           </button>
 
@@ -115,24 +115,53 @@
       </div>
       </form>
 
-
+      <form [formGroup]="form2" (ngSubmit)="Submit2()">
       <div class="showDiv2" *ngIf="isVisible == 1">
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">OLD PASSWORD</p>
-          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+          <input formControlName="OldPassword" class="TextFields" type="text" name="fname" value="Some value"><br>
         </div>
+        <a class="aLink" href="/forgot_password">{{'LOGIN.FGTPASS' | translate}}</a>
+
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">NEW PASSWORD</p>
-          <input class="TextFields" type="text" name="fname" value="Some value"><br>
+
+          <mat-form-field style="width: 25.3vw" class="full-width" appearance="outline">
+            <mat-label>Enter new password</mat-label>
+            <label>
+              <input formControlName="NewPassword" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
+            </label>
+            <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+          </mat-form-field>
+
+
+
         </div>
-        <button
+
+        <div style="margin-top: 1vw">
+          <p style="color: #9fa6b2">PASSWORD CONFIRMATION</p>
+          <mat-form-field style="width: 25.3vw" class="full-width" appearance="outline">
+            <mat-label>Confirm new password</mat-label>
+            <label>
+              <input formControlName="passwordConfirmation" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
+            </label>
+            <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+          </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit"
           style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
           CHANGE PASSWORD
         </button>
 
 
       </div>
-
+      </form>
 
     </div>
 

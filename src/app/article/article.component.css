@@ -107,8 +107,7 @@ input[type=text] {
   /*position: absolute;*/
   /*float: bottom;*/
   margin-bottom: 0;
-  width: 100%;
-  /*width: 1485px;*/
+  width: 1485px;
   height: 40px;
   text-align: right;
   background: #D72130;

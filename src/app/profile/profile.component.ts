@@ -2,7 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {mainPage} from "../services/main-page.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {AppComponent} from "../app.component";
+import {User} from "../services/user";
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +15,8 @@ export class ProfileComponent implements OnInit {
   isVisible: any = 0;
   isSelected: boolean = true;
   form: FormGroup
+  hide=true;
+  form2: FormGroup
   imageAdd: boolean = false;
   profileUrl: string;
 
@@ -26,7 +30,8 @@ export class ProfileComponent implements OnInit {
 
   user: Object;
   constructor(private auth:AuthService,
-              private http:HttpClient) {
+              private http:HttpClient,
+              private app: AppComponent) {
   }
 
 
@@ -34,6 +39,27 @@ export class ProfileComponent implements OnInit {
   Submit(){
     this.auth.updateUser(this.form.value)
     setTimeout(function (){window.location.reload()},500)
+  }
+
+  Submit2(){
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("OldPassword",this.form2.value.OldPassword);
+    queryParams = queryParams.append("NewPassword",this.form2.value.NewPassword);
+    queryParams = queryParams.append("passwordConfirmation",this.form2.value.passwordConfirmation);
+
+    // let url : string = "http://localhost:8080/api/users/checkPass?OldPassword=12345678&NewPassword=12345678&passwordConfirmation=12345678"
+    // let url : string = "http://localhost:8080/api/users/checkPass?OldPassword="+this.form2.value.OldPassword+
+    //   "&NewPassword="+this.form2.value.NewPassword+
+    //   "&passwordConfirmation="+this.form2.value.passwordConfirmation
+
+    return this.http.patch('http://localhost:8080/api/users/checkPass',null,{params:queryParams}).subscribe(() =>{
+      this.app.openSnackBar("Password changed successfully","OK")
+    },error => {
+      this.app.openSnackBar("Old password is not correct","OK")
+      this.form.enable()
+    })
+
   }
 
 
@@ -44,6 +70,11 @@ export class ProfileComponent implements OnInit {
       lastName: new FormControl('', [Validators.required])
     })
 
+    this.form2 = new FormGroup({
+      OldPassword: new FormControl('', [Validators.required]),
+      NewPassword: new FormControl('', [Validators.required]),
+      passwordConfirmation: new FormControl('', [Validators.required])
+    })
   }
 
 }

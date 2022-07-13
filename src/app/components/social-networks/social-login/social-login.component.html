@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+</div>
+
+<div class="switch_view">
+  <a href="/main"><i class="fa fa-rotate-right" aria-hidden="true" style="font-size: 2vw;color: black;"></i></a>
+</div>
+
+<div class="right_header">
+  <app-header-user-profile></app-header-user-profile>
+
+  <mat-expansion-panel  class = "language">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        EN
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a href="" class="txt1"> UA </a><br>
+  </mat-expansion-panel>
+</div>
+
+
+<div class="under_head">
+  <div class="under_one" style="height: 1.5vw">
+    <div class="under_home">Share</div>
+
+  </div>
+  <hr>
+  <div class="under_two">
+    <a href="/main">Home</a>
+    <a class="txt1" href=""><main_kinds></main_kinds></a>
+    <a href="/video">Video</a>
+    <a href="/lifestle">Lifestyle</a>
+  </div>
+</div>
+
+<!--<div id="wrapper">-->
+<div class="sidebar">
+  <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Categories" href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Languages" href="/languages"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Footer" href="/footer"><i class="fa fa-edit" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Social Networks" href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Users" href="/users"><i class="fa fa-users" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="IA" href="/info"><i class="fa fa-info" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Teams" href="/admin_team-page"><i class="fa fa-flag" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="News Partners" href="/news-partners"><i class="fa fa-briefcase" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Advertising" href="/advertising"><i class="fa fa-dollar" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+  <a title="Share buttons menu" href="admin_page/social-login"><i class="fa fa-share-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+
+
+</div>
+
+
+
+<div id="working_section">
+
+  <div class="item" style="color: #c3c2c7">
+    <div style="margin-top: 1vw;width: 1vw;height: 1.2vw"></div>
+    <input id="radio1" type="radio" name="switch-one" (click)="changeFunc(0)" class="textButtons" style="display:none;font-weight: bold;width: auto;float: left;font-size: 0.7vw;margin-top: 2vw;" checked>
+    <label class="textButtons" style="width: auto;" for="radio1">SHARE</label>
+    <input id="radio2" type="radio" name="switch-one" (click)="changeFunc(1)" class="textButtons" style="display:none;font-weight: bold;width: auto;float: left;font-size: 0.7vw;margin-top: 2vw;margin-left: 2vw">
+    <label class="textButtons" style="width: auto;margin-left: 1.5vw;" for="radio2">FOLLOW</label>
+    <input id="radio3" type="radio" name="switch-one" (click)="changeFunc(2)" class="textButtons" style="display:none;font-weight: bold;width: auto;float: left;font-size: 0.7vw;margin-top: 2vw;margin-left: 2vw">
+    <label class="textButtons" style="width: auto;margin-left: 1.5vw;" for="radio3">SIGN UP/LOG IN</label>
+  </div>
+  <div class="item" style="background-color: #f1f1f1">
+    <p style="float: left; margin-left: 1vw;margin-top: 1.1vw"><strong>SOCIAL NETWORKS</strong></p>
+    <p style="float: right; margin-right: 1vw;margin-top: 1.1vw"><strong>STATUS</strong></p>
+
+  </div>
+
+
+  <div *ngIf="checker == 0" class="changeBox" style="height: 6.66vw; width: 25vw">
+
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+      <input (click)="shared('facebook')" id="FacebookShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareFace"></div>
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
+      <input (click)="shared('twitter')" id="TwitterShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareTwit" ></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecShare()" id="allSectionShare" style="float: left" type="checkbox" class="toggle-button" [checked] ="allShare">
+    </div>
+  </div>
+
+  <div *ngIf="checker == 1" class="changeBox" style="height: 6.66vw; width: 25vw">
+
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+      <input (click)="follow('facebook')" id="FacebookFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowFace"></div>
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
+      <input (click)="follow('twitter')" id="TwitterFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowTwit"></div>
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">YouTube</p>
+      <input (click)="follow('youtube')" id="YouTubeFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowYoutube"></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecFollow()" id="allSectionFollow" style="float: left" type="checkbox" class="toggle-button" [checked] ="allFollow">
+    </div>
+  </div>
+  <div *ngIf="checker == 2" class="changeBox" style="height: 6.66vw; width: 25vw">
+
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+      <input (click)="logIn('facebook')" id="FacebookLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInFace"></div>
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
+      <input (click)="logIn('twitter')" id="TwitterLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInTwit"></div>
+    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Google</p>
+      <input (click)="logIn('google')" id="GoogleLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInGoogle"></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecLogIn()" id="allSectionLogIn" style="float: left" type="checkbox" class="toggle-button" [checked] ="allLogIn">
+    </div>
+  </div>
+
+
+
+
+</div>
+<!--</div>-->
+
+
+<!--<div class="inBody" >-->
+<!--  <div style="width: 30px; float: left" class="iconBox" *ngFor="let l of list">-->
+<!--    <div (click)="delete(l.id)" class="fa fa-trash" style="cursor: pointer; color: black;position:absolute;height: 10px;width: 10px;margin-left: 20px;margin-top: -5px"></div>-->
+<!--    <a class="{{l.pictogram}} as" href="{{l.url}}"></a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<form [formGroup]="form" (ngSubmit)="OnSubmit()">-->
+<!--  <div style="margin-top: 0.5vw">-->
+<!--    <p style="color: #9fa6b2">url</p>-->
+<!--    <input type="text" matInput formControlName="url" class="TextFields" type="text" name="fname"><br>-->
+<!--  </div>-->
+<!--  <div style="margin-top: 0.5vw">-->
+<!--    <p style="color: #9fa6b2">icon</p>-->
+<!--    <input type="text" matInput formControlName="pictogram" class="TextFields" type="text" name="fname"><br>-->
+<!--  </div>-->
+<!--  <button mat-raised-button type="submit" [disabled]="form.invalid"-->
+<!--          style=" margin-left: 2.4vw; color : white; margin-top: 1vw; height: 2vw;width: 5vw;border-radius: 0;border: none;background-color: #d72130">-->
+<!--    Add login-->
+<!--  </button>-->
+<!--</form>-->
+
+</body>
+</html>

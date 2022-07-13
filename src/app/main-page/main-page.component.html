@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="height: 100vh">
 
 <div class="header">
 
@@ -23,13 +23,13 @@
 
   </div>
 
-  <div class="share-container">
-    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
-    <a href="https://facebook.com" class="fa fa-facebook"></a>
-    <a href="https://twitter.com" class="fa fa-twitter"></a>
-    <a href="https://google.com" class="fa fa-google"></a>
-  </div>
-
+<!--  <div class="share-container">-->
+<!--    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>-->
+<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
+<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
+<!--    <a href="https://google.com" class="fa fa-google"></a>-->
+<!--  </div>-->
+  <app-social-share></app-social-share>
 </div>
 
 
@@ -92,15 +92,8 @@
 
     </div>
 
-    <div class="sidebar_icon">
-      <span class="txt1">{{ 'BODY.FOLLOW' | translate}}</span>
-      <div class="sidebar_follow">
-        <a href="https://twitter.com" class="fa fa-twitter"></a>
-        <a href="https://google.com" class="fa fa-google"></a><br>
-        <a href="https://youtube.com" class="fa fa-youtube"></a>
-        <a href="https://facebook.com" class="fa fa-facebook"></a>
-      </div>
-    </div>
+    <app-social-follow></app-social-follow>
+
   </div>
 
 
@@ -128,6 +121,8 @@
 <div class="footer">
   <p>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</p>
 </div>
+
+
 
 
 </body>

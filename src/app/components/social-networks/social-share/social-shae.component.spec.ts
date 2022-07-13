@@ -1,29 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SearchFilterPipe } from 'src/app/search-filter.pipe';
-import { AdminTeamPageComponent } from './admin-team-page.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SocialShaeComponent } from './social-shae.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {AppComponent} from "../../../app.component";
+import {NgModule} from "@angular/core";
+
+describe('SocialShaeComponent', () => {
+  let component: SocialShaeComponent;
+  let fixture: ComponentFixture<SocialShaeComponent>;
 
 
-
-
-describe('AdminTeamPageComponent', () => {
-  let component: AdminTeamPageComponent;
-  let fixture: ComponentFixture<AdminTeamPageComponent>;
-  // let http: HttpClient;
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule]
 
   }));
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminTeamPageComponent ]
+      declarations: [ SocialShaeComponent]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminTeamPageComponent);
+    fixture = TestBed.createComponent(SocialShaeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

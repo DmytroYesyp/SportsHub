@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article',
@@ -12,19 +13,23 @@ import {AuthService} from "../services/auth.service";
 
 export class ArticleComponent implements OnInit {
 
+  path :string
   list:any = [];
   leagueList:any = [];
   leagueId:string;
   authenticated: boolean = false;
   date:string;
   constructor(private http : HttpClient,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private router: Router) {
   }
+
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated()){
       this.authenticated = true
     }
+    this.path = this.router.url
     let Id = this.getId()
     this.http.get('http://localhost:8080/news/' + Id)
       .subscribe(Response => {

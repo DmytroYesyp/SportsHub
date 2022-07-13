@@ -22,6 +22,7 @@ import {AddArticleComponent} from "../admin-article/add-article/add-article.comp
 import {GoogleRegisterComponent} from "../login/OAuth/google-register/google-register.component";
 import {GoogleLoginComponent} from "../login/OAuth/google-login/google-login.component";
 import {VideoComponent} from "../video/video.component";
+import {SocialLoginComponent} from "../components/social-networks/social-login/social-login.component";
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
       {path: 'article/:newsId', component: ArticleComponent},
-      {path: 'video', component: VideoComponent}
+      {path: 'video', component: VideoComponent},
+      {path: 'admin_page/social-login', component: SocialLoginComponent}
     ]
   },
   {

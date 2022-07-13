@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoogleLoginComponent } from './google-login.component';
+import { SocialFollowComponent } from './social-follow.component';
 
-describe('GoogleLoginComponent', () => {
-  let component: GoogleLoginComponent;
-  let fixture: ComponentFixture<GoogleLoginComponent>;
+describe('SocialFollowComponent', () => {
+  let component: SocialFollowComponent;
+  let fixture: ComponentFixture<SocialFollowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoogleLoginComponent ]
+      declarations: [ SocialFollowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoogleLoginComponent);
+    fixture = TestBed.createComponent(SocialFollowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -58,7 +58,9 @@ import { GoogleLoginComponent } from './login/OAuth/google-login/google-login.co
 import {FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "@abacritt/angularx-social-login";
 import { VideoComponent } from './video/video.component';
 import { VideoUploaderComponent } from './video/video-uploader/video-uploader.component';
-
+import { SocialShaeComponent } from './components/social-networks/social-share/social-shae.component';
+import { SocialFollowComponent } from './components/social-networks/social-follow/social-follow.component';
+import { SocialLoginComponent } from './components/social-networks/social-login/social-login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -105,14 +107,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     GoogleRegisterComponent,
     GoogleLoginComponent,
     VideoComponent,
-    VideoUploaderComponent
+    VideoUploaderComponent,
+    SocialShaeComponent,
+    SocialFollowComponent,
+    SocialLoginComponent,
   ],
 
   imports: [
+    SocialLoginModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
