@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteSubcategoryDialogComponent } from './delete-subcategory-dialog.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('DeleteSubcategoryDialogComponent', () => {
   let component: DeleteSubcategoryDialogComponent;
@@ -8,6 +11,7 @@ describe('DeleteSubcategoryDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
       declarations: [ DeleteSubcategoryDialogComponent ]
     })
     .compileComponents();

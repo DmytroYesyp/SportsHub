@@ -373,3 +373,28 @@ main_kinds{
 ::ng-deep .under_two p{
   margin-right: 60px;
 }
+
+.hide{
+  float: right;
+  background: none;
+  border: none;
+  color: #818181;
+  font-size: 16px;
+}
+
+.show{
+  float: right;
+  background: none;
+  border: none;
+  color: #818181;
+  font-size: 16px;
+}
+
+.hide:hover{
+  background: #dedede;
+  cursor: pointer;
+}
+.show:hover{
+  background: #dedede;
+  cursor: pointer;
+}

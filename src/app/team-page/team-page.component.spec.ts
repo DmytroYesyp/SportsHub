@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamPageComponent } from './team-page.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -8,6 +11,7 @@ describe('TeamPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
       declarations: [ TeamPageComponent ]
     })
     .compileComponents();

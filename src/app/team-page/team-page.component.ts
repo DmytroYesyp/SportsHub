@@ -14,6 +14,7 @@ export class TeamPageComponent implements OnInit {
   date: string;
   league: any;
   leagueId: any;
+  team:any;
 
   constructor(private http : HttpClient, private auth: AuthService) { }
 
@@ -36,6 +37,11 @@ export class TeamPageComponent implements OnInit {
           .subscribe(Response => {
             this.league=(<Array<any>>Response);
             console.log(this.league);
+          });
+        this.http.get('http://localhost:8080/teams/' + Id)
+          .subscribe(Response => {
+            this.team = (<Array<any>>Response);
+            console.log(this.team);
           });
       });
 

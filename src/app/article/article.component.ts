@@ -23,16 +23,21 @@ export class ArticleComponent implements OnInit {
   kindsOfSportId:string;
   authenticated: boolean = false;
   date:string;
+  Id: any;
+  views: any;
+  teamIds: any;
+  teamList: any = [];
   constructor(private http : HttpClient,
               private auth: AuthService) {
+
   }
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated()){
       this.authenticated = true
     }
-    let Id = this.getId()
-    this.http.get('http://localhost:8080/news/' + Id)
+    this.Id = this.getId()
+    this.http.get('http://localhost:8080/news/' + this.Id)
       .subscribe(Response => {
         this.list=(<Array<any>>Response);
         console.log(this.list);
@@ -58,6 +63,24 @@ export class ArticleComponent implements OnInit {
             console.log(this.moreList);
             console.log(window.location)
           });
+        this.views = this.list['views'] + 1
+        this.http.put('http://localhost:8080/news/' + this.Id, {
+          "title": this.list['title'],
+          "description": this.list['description'],
+          "publicationDate": this.list['publicationDate'],
+          "image": this.list['image'],
+          "leagueId": this.list['leagueId'],
+          "views": this.views
+        })
+          .subscribe(() => {});
+        this.teamIds = this.list['teamIds']
+        for (let i = 0; i<this.teamIds.length; i++){
+          this.http.get('http://localhost:8080/teams/' + this.teamIds[i])
+            .subscribe(Response => {
+              this.teamList.push(<Array<any>>Response);
+            });
+        }
+        console.log(this.teamList);
       });
   }
 

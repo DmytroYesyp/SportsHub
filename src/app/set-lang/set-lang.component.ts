@@ -34,20 +34,10 @@ export class SetLangComponent implements OnInit {
     })
   }
 
-  func() {
-    let chbox;
-    chbox = document.getElementById('chk');
-    if (chbox.checked) {
-      alert('Выбран');
-    } else {
-      alert('Не выбран');
-    }
-  }
-
 
   hide(id) {
     this.http.put('http://localhost:8080/language/' + id, {"hidden": "true"})
-      .subscribe(Response => {
+      .subscribe(() => {
         localStorage.removeItem('lang')
         window.location.reload()
       });
@@ -55,7 +45,7 @@ export class SetLangComponent implements OnInit {
 
   show(id) {
     this.http.put('http://localhost:8080/language/' + id, {"hidden": "false"})
-      .subscribe(Response => {
+      .subscribe(()=> {
         window.location.reload()
       });
   }

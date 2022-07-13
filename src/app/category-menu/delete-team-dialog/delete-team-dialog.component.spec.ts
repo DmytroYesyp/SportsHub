@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteTeamDialogComponent } from './delete-team-dialog.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('DeleteTeamDialogComponent', () => {
   let component: DeleteTeamDialogComponent;
@@ -8,6 +11,7 @@ describe('DeleteTeamDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
       declarations: [ DeleteTeamDialogComponent ]
     })
     .compileComponents();

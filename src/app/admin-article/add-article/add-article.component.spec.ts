@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddArticleComponent } from './add-article.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('AddArticleComponent', () => {
   let component: AddArticleComponent;
@@ -8,6 +11,7 @@ describe('AddArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, MatDialogModule, TranslateModule.forRoot()],
       declarations: [ AddArticleComponent ]
     })
     .compileComponents();

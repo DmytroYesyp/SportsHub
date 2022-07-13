@@ -7,7 +7,7 @@ import {AppRoutingModule} from "./app-routing/app-routing.module";
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MaterialModule} from "./material/material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -55,6 +55,11 @@ import { AddArticleComponent } from './admin-article/add-article/add-article.com
 import { TeamPageComponent } from './team-page/team-page.component';
 import { LeaguePageComponent } from './league-page/league-page.component';
 import { PopupDeleteLangComponent } from './pop-ups/popup-delete-lang/popup-delete-lang.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { PopupDeleteCommComponent } from './pop-ups/popup-delete-comm/popup-delete-comm.component';
+import { PopupLoginCommComponent } from './pop-ups/popup-login-comm/popup-login-comm.component';
+import { MostPopularComponent } from './most-popular/most-popular.component';
+import { MostCommentedComponent } from './most-commented/most-commented.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -100,7 +105,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddArticleComponent,
     TeamPageComponent,
     LeaguePageComponent,
-    PopupDeleteLangComponent
+    PopupDeleteLangComponent,
+    CommentComponent,
+    PopupDeleteCommComponent,
+    PopupLoginCommComponent,
+    MostPopularComponent,
+    MostCommentedComponent,
   ],
 
   imports: [
@@ -136,8 +146,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: 'en'
     }),
-    MatCheckboxModule
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule, // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
     // provideStorage(() => getStorage())

@@ -39,25 +39,6 @@
   </div>
 </div>
 
-
-
-<!--<div class="profile-container">-->
-<!--  <div class="profile_img"></div>-->
-<!--  <mat-expansion-panel  class = "profile">-->
-<!--    <mat-expansion-panel-header>-->
-<!--      <mat-panel-title>-->
-<!--        {{firstName}} {{lastName}}-->
-<!--      </mat-panel-title>-->
-<!--    </mat-expansion-panel-header>-->
-<!--    <a href="/profile" class="txt1"> View profile</a><br>-->
-<!--    <a href="" class="txt1"> Change password</a><br>-->
-<!--    <a href="" class="txt1"> My surveys</a><br>-->
-<!--    <a href="" class="txt1"> My teamhub</a><br><br>-->
-<!--    <a href="/login" class="txt1" (click)="logOut()">Log out</a>-->
-<!--  </mat-expansion-panel>-->
-<!--</div>-->
-
-
 <div *ngIf="authenticated">
   <app-header-user-profile></app-header-user-profile>
 </div>
@@ -68,16 +49,6 @@
     <div class="btn_txt">{{'REG.LOGIN'|translate}}</div>
   </a>
 </div>
-
-
-<!--<mat-expansion-panel  class = "language">-->
-<!--  <mat-expansion-panel-header>-->
-<!--    <mat-panel-title>-->
-<!--      EN-->
-<!--    </mat-panel-title>-->
-<!--  </mat-expansion-panel-header>-->
-<!--  <a href="" class="txt1"> UA </a><br>-->
-<!--</mat-expansion-panel>-->
 
 <app-lang></app-lang>
 
@@ -121,8 +92,14 @@
 
     </div>
   </div>
-</div>
 
+</div>
+<div class="most_pop_comm">
+  <div *ngIf="dateLimits">
+    <app-most-popular *ngIf="dateLimits[0]['datelim']!=0"></app-most-popular>
+    <app-most-commented *ngIf="dateLimits[1]['datelim']!=0"></app-most-commented>
+  </div>
+</div>
 <div class="footer">
   <p>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</p>
 </div>

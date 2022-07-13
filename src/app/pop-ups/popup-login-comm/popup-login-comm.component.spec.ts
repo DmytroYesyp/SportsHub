@@ -1,22 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LangComponent } from './lang.component';
-import {HttpClientModule} from "@angular/common/http";
+import { PopupLoginCommComponent } from './popup-login-comm.component';
 
-describe('LangComponent', () => {
-  let component: LangComponent;
-  let fixture: ComponentFixture<LangComponent>;
+describe('PopupLoginCommComponent', () => {
+  let component: PopupLoginCommComponent;
+  let fixture: ComponentFixture<PopupLoginCommComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ LangComponent ]
+      declarations: [ PopupLoginCommComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LangComponent);
+    fixture = TestBed.createComponent(PopupLoginCommComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -70,9 +70,12 @@
 
   <div class="block_right">
     <div class="block_1">
-      <div class="toptxt">{{leagueList['name']}} > {{list['title']}}</div>
+      <div class="toptxt"><a href="/league/{{leagueList['id']}}">{{leagueList['name']}}</a>  >
+        <a href="/team/{{e['id']}}" *ngFor="let e of teamList">{{e['name']}}<a *ngIf="e!=teamList[teamList.length-1]">, </a>
+        </a>  > {{list['title']}}</div>
       <div class="photo">
         <img class="photo" src="{{list['image']}}">
+        <div class="views">Views: {{list['views']}}</div>
       </div>
       <div class="side_bloke">
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
@@ -86,17 +89,18 @@
 
 
   </div>
-  <a class="newstext">{{list['text']}}<br><br><br><br><br>
-    <div class="more">MORE ARTICLES</div>
+  <a class="newstext">{{list['text']}}<br><br><br>
+    <app-comment></app-comment><br><br><br><br>
+    <div class="line_more"></div>
+    <div class="more"><b>MORE ARTICLES</b></div><br><br>
+
 
 <div class="mcards">
-  <a [routerLink]="['/article', e['id']]" *ngFor="let e of moreList;" (click)="reloadCurrentPage(e['id'])" >
-    <div  class="mcard">
-      <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
-      <div class="mcard_text"><b>{{ e['title'] }}</b>
-      <p >{{e['description']}}</p></div>
-    </div>
-  </a>
+  <div class="article" [routerLink]="['/article', e['id']]" *ngFor="let e of moreList;" (click)="reloadCurrentPage(e['id'])" >
+      <img class="img" [src]="e['image']">
+      <div class="title"><b>{{e['title']}}</b></div>
+      <div class="descr">{{e['description']}}</div>
+  </div>
 
 </div>
   </a>

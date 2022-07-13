@@ -1,22 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LangComponent } from './lang.component';
-import {HttpClientModule} from "@angular/common/http";
+import { PopupDeleteCommComponent } from './popup-delete-comm.component';
 
-describe('LangComponent', () => {
-  let component: LangComponent;
-  let fixture: ComponentFixture<LangComponent>;
+describe('PopupDeleteCommComponent', () => {
+  let component: PopupDeleteCommComponent;
+  let fixture: ComponentFixture<PopupDeleteCommComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ LangComponent ]
+      declarations: [ PopupDeleteCommComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LangComponent);
+    fixture = TestBed.createComponent(PopupDeleteCommComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
