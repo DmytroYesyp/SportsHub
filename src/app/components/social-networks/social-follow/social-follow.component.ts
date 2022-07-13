@@ -35,21 +35,18 @@ export class SocialFollowComponent implements OnInit {
   reverse(): void {
     this.show = !this.show
   }
-  list: socialFollow[];
+  list: socialMore[];
   ngOnInit(): void {
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialFollow/getAllFollows`).subscribe(data => {
+    this.http.get<socialMore[]>(`http://localhost:8080/api/socialFollow/getAllFollows`).subscribe(data => {
       this.list = data
     })
-    this.form = new FormGroup({
-      url: new FormControl('', [Validators.required]),
-      pictogram: new FormControl('', [Validators.required]),
-    })
 
-    this.role = this.app.getUserFromToken()
-    console.log(this.role)
-    if (this.role == "admin") {
-      this.isAdmin = true;
-    }
   }
 
+}
+class socialMore{
+  id: number
+  url: string
+  pictogram: string
+  isVisible :boolean
 }

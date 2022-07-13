@@ -24,11 +24,15 @@
 
 <div class="container">
   <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
+  <div style="width: 35vw;height: 3vw">
+    <div *ngFor="let l of list" style="width:20vw">
 
-  <a *ngFor="let l of list" class="{{l.pictogram}}" href="{{l.url}}"></a>
+      <a style="color: black;padding-right: 1vw; float: left" class="{{l.pictogram}}" *ngIf="l.url == '1'" href="{{l.url}}"></a>
 
-<!--  <a href="#" class="fa fa-facebook"></a>-->
-<!--  <a href="#" class="fa fa-google"></a>-->
+    </div>
+  </div>
+  <!--  <a href="#" class="fa fa-facebook"></a>-->
+  <!--  <a href="#" class="fa fa-google"></a>-->
 
 
   <div class="cont">
@@ -45,29 +49,29 @@
       </div>
 
 
-
-
       <a class="aLink" href="/forgot_password">{{'LOGIN.FGTPASS' | translate}}</a>
       <div class="cont_txt">{{ 'LOGIN.PASS' | translate}}</div>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'LOGIN.ENTPASS' | translate}}</mat-label>
         <label>
-          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required placeholder="some pass" >
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required
+                 placeholder="some pass">
         </label>
-        <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-<!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+        <!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
       </mat-form-field>
 
-      <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >{{ 'LOGIN.LOGIN' | translate}}</button>
+      <button mat-raised-button type="submit" class="save-button"
+              [disabled]="form.invalid || form.disabled">{{ 'LOGIN.LOGIN' | translate}}</button>
 
     </form>
   </div>
 
-<!--  <a href="/admin_page">admin link</a>-->
-<!--  <a href="/admin_team-page">admin_team link</a>-->
-
+  <!--  <a href="/admin_page">admin link</a>-->
+  <!--  <a href="/admin_team-page">admin_team link</a>-->
 
 
   <h1></h1>

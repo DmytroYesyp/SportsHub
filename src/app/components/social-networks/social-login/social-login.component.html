@@ -93,35 +93,42 @@
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
       <input (click)="shared('facebook')" id="FacebookShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareFace"></div>
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
-      <input (click)="shared('twitter')" id="TwitterShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareTwit"></div>
-
+      <input (click)="shared('twitter')" id="TwitterShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareTwit" ></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecShare()" id="allSectionShare" style="float: left" type="checkbox" class="toggle-button" [checked] ="allShare">
+    </div>
   </div>
 
   <div *ngIf="checker == 1" class="changeBox" style="height: 6.66vw; width: 25vw">
 
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
-      <input (click)="func()" id="FacebookFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
+      <input (click)="follow('facebook')" id="FacebookFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowFace"></div>
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
-      <input (click)="func()" id="TwitterFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
+      <input (click)="follow('twitter')" id="TwitterFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowTwit"></div>
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">YouTube</p>
-      <input (click)="func()" id="YouTubeFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
-
+      <input (click)="follow('youtube')" id="YouTubeFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowYoutube"></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecFollow()" id="allSectionFollow" style="float: left" type="checkbox" class="toggle-button" [checked] ="allFollow">
+    </div>
   </div>
   <div *ngIf="checker == 2" class="changeBox" style="height: 6.66vw; width: 25vw">
 
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
-      <input (click)="func()" id="FacebookLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
+      <input (click)="logIn('facebook')" id="FacebookLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInFace"></div>
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
-      <input (click)="func()" id="TwitterLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
+      <input (click)="logIn('twitter')" id="TwitterLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInTwit"></div>
     <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Google</p>
-      <input (click)="func()" id="GoogleLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button"></div>
+      <input (click)="logIn('google')" id="GoogleLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInGoogle"></div>
+    <div style="margin-top: 0.3vw;float: left" class="item">
+      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <input (click)="allSecLogIn()" id="allSectionLogIn" style="float: left" type="checkbox" class="toggle-button" [checked] ="allLogIn">
+    </div>
   </div>
 
 
-  <div style="margin-top: 0.3vw;float: left" class="item">
-    <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
-    <input (click)="func()" id="allSectionCheck" style="float: left" type="checkbox" class="toggle-button">
-  </div>
+
 
 </div>
 <!--</div>-->

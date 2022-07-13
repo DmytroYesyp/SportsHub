@@ -1,11 +1,8 @@
 <div class="sidebar_icon">
   <span class="txt1">{{ 'BODY.FOLLOW' | translate}}</span>
   <div class="sidebar_follow">
-    <a *ngIf="isAdmin" id="edit" (click)="reverse()" class="fa fa-gear"></a>
-
     <div style="width: 30px; float: left" class="iconBox" *ngFor="let l of list">
-      <div  (click)="delete(l.id)" *ngIf="show" class="fa fa-trash" style="cursor: pointer; color: black;position:absolute;height: 10px;width: 10px;margin-left: 20px;margin-top: -5px"></div>
-      <a class="{{l.pictogram}}" href="{{l.url}}"></a>
+      <a *ngIf="l.isVisible" class="{{l.pictogram}}" href="{{l.url}}"></a>
     </div>
 <!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
 <!--    <a href="https://google.com" class="fa fa-google"></a>-->
@@ -14,23 +11,5 @@
   </div>
 
 
-  <div *ngIf="show" class="editBox">
-
-    <form  [formGroup]="form" (ngSubmit)="OnSubmit()">
-      <div style="margin-top: 0.5vw">
-        <p style="color: #9fa6b2">url</p>
-        <input type="text" matInput formControlName="url" class="TextFields" type="text" name="fname"><br>
-      </div>
-      <div style="margin-top: 0.5vw">
-        <p style="color: #9fa6b2">icon</p>
-        <input type="text" matInput formControlName="pictogram" class="TextFields" type="text" name="fname"><br>
-      </div>
-      <button mat-raised-button type="submit" [disabled]="form.invalid"
-              style="margin-left: 2.4vw;font-size: 0.8vw; color : white; margin-top: 1vw; height: 2vw;width: 5vw;border-radius: 0;border: none;padding:0;background-color: #d72130">
-        Add follow
-      </button>
-    </form>
-
-  </div>
 
 </div>
