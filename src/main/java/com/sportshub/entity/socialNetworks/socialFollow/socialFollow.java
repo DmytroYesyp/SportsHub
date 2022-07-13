@@ -13,17 +13,27 @@ public class socialFollow {
     long id;
     String url;
     String pictogram;
+    Boolean isVisible;
 
     public socialFollow() {
     }
 
-    public socialFollow(String url, String pictogram) {
+    public socialFollow(String url, String pictogram, Boolean isVisible) {
         this.url = url;
         this.pictogram = pictogram;
+        this.isVisible = isVisible;
     }
 
     public String getUrl() {
         return url;
+    }
+
+    public Boolean getIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(Boolean isVisible) {
+        this.isVisible = isVisible;
     }
 
     public void setUrl(String url) {

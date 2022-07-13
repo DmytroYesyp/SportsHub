@@ -155,7 +155,7 @@ public class UsersServiceImpl implements UserDetailsService, com.sportshub.servi
         return ResponseEntity.ok(user);
     }
 
-
+    @Override
      public ResponseEntity<String> checkUserPass(HttpServletRequest request,
                                  String OldPassword,
                                  String NewPassword,

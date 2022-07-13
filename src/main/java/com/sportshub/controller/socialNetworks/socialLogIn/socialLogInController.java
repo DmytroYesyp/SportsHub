@@ -18,16 +18,23 @@ public class socialLogInController {
     public socialLogInController(SocialNetworksServiceImpl socialNetworksService) {
         this.socialNetworksService = socialNetworksService;
     }
+    @PostMapping(path = "addLogIn")
+    public ResponseEntity<socialLogIn> addLogIn(@RequestBody socialLogIn share) {
+        return socialNetworksService.addNewLogIn(share);
+    }
+
+    @PutMapping(path = "editLogInByPic{pic}{url}")
+    public ResponseEntity<String> editLogInByPic(@RequestParam String pic,
+                                                   @RequestParam String url) {
+        return socialNetworksService.editLogInByPic(pic,url);
+    }
 
     @GetMapping(path = "getAllLogIn")
     public ResponseEntity<List<socialLogIn>> AllLogIn() {
         return socialNetworksService.getAllLogIn();
     }
 
-    @PostMapping(path = "addLogIn")
-    public ResponseEntity<socialLogIn> addLogIn(@RequestBody socialLogIn share) {
-        return socialNetworksService.addNewLogIn(share);
-    }
+
 
     @DeleteMapping(path = "deleteLogIn{Id}")
     public ResponseEntity<String> deleteShares(@RequestParam long Id) {

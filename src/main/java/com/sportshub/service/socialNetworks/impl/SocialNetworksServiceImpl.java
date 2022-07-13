@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class SocialNetworksServiceImpl implements SocialNetworksService {
@@ -41,7 +42,24 @@ public class SocialNetworksServiceImpl implements SocialNetworksService {
     }
 
 
+    public ResponseEntity<String> editSharesByPic(String str, String val){
 
+        socialShare sh = shareRepository.findShareByPictogram(str).orElseThrow();
+        sh.setUrl(val);
+        shareRepository.save(sh);
+        return ResponseEntity.ok(null);
+    }
+
+    public ResponseEntity<String> editLogInByPic (String pic, String url){
+        if (logInRepository.findLogInByPictogram(pic).isEmpty())
+            return ResponseEntity.notFound().build();
+        socialLogIn entity = logInRepository.findLogInByPictogram(pic).get();
+
+        if (!url.equals(""))
+            entity.setUrl(url);
+        logInRepository.save(entity);
+        return ResponseEntity.ok().body(null);
+    }
     public ResponseEntity<socialShare> addNewShare(socialShare share){
         shareRepository.save(share);
         return ResponseEntity.ok(share);
@@ -55,6 +73,22 @@ public class SocialNetworksServiceImpl implements SocialNetworksService {
         return ResponseEntity.ok(login);
     }
 
+
+    public ResponseEntity<String> editFollowsByPic(String pic,int isVisible, String url){
+        if (followRepository.findShareByPictogram(pic).isEmpty())
+            return ResponseEntity.notFound().build();
+        socialFollow entity = followRepository.findShareByPictogram(pic).get();
+
+        if (isVisible == 1 || isVisible == 0)
+            entity.setIsVisible(isVisible == 1);
+
+        if (!url.equals(""))
+            entity.setUrl(url);
+
+        followRepository.save(entity);
+
+        return ResponseEntity.ok().body(null);
+    }
 
 
     public ResponseEntity<String> deleteShare(long id){

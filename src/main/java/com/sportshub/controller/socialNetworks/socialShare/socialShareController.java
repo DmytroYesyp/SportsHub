@@ -1,6 +1,5 @@
 package com.sportshub.controller.socialNetworks.socialShare;
 
-import com.sportshub.entity.socialNetworks.socialFollow.socialFollow;
 import com.sportshub.entity.socialNetworks.socialShare.socialShare;
 import com.sportshub.service.socialNetworks.impl.SocialNetworksServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,11 @@ public class socialShareController {
     @GetMapping(path = "getAllShares")
     public ResponseEntity<List<socialShare>> AllShares() {
         return socialNetworksService.getAllShare();
+    }
+
+    @PutMapping(path = "editSharesByPic{pic}{val}")
+    public ResponseEntity<String> editSharesByName(@RequestParam String pic,@RequestParam String val) {
+        return socialNetworksService.editSharesByPic(pic,val);
     }
 
     @PostMapping(path = "addShares")

@@ -22,6 +22,7 @@ public interface UsersService {
 
     List<User> GetUsers();
 
+
     ResponseEntity<Collection<Roles>> getUserRole(long userId);
 
     ResponseEntity<User> getUserById(long userId);
@@ -29,6 +30,11 @@ public interface UsersService {
     ResponseEntity<Long> deleteUser(long userId);
 
     ResponseEntity<User> findUserByEmail(String email);
+
+    ResponseEntity<String> checkUserPass(HttpServletRequest request,
+                                         String OldPassword,
+                                         String NewPassword,
+                                         String passwordConfirmation);
 
     ResponseEntity updateUser(long userId, User upd_user);
 
