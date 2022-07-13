@@ -14,6 +14,7 @@ import com.sportshub.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,6 +58,18 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public List<NewsDto> findAll(NewsSearchFilters newsSearchFilters, int limit, Integer page) {
          List<NewsEntity> newsEntities = newsRepository.findAll(newsSearchFilters, limit, page);
+        return newsMapper.toDtoList(newsEntities);
+    }
+
+    @Override
+    public List<NewsDto> findPopular(int limitDate) {
+        List<NewsEntity> newsEntities = newsRepository.findPopular(limitDate, PageRequest.of(0,3));
+        return newsMapper.toDtoList(newsEntities);
+    }
+
+    @Override
+    public List<NewsDto> findCommented(int limitDate) {
+        List<NewsEntity> newsEntities = newsRepository.findCommented(limitDate, PageRequest.of(0,3));
         return newsMapper.toDtoList(newsEntities);
     }
 

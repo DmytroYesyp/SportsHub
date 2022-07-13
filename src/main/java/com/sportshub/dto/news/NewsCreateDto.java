@@ -10,13 +10,13 @@ import java.util.Set;
 
 @Data
 public class NewsCreateDto {
+    private Long views;
     private String title;
     private String description;
     private String text;
     private Instant publicationDate;
-    private String alternativeText;
-    private String caption;
     private String image;
     private Long leagueId;
+    private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;
 }

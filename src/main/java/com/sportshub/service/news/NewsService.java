@@ -11,8 +11,12 @@ import java.util.List;
 public interface NewsService {
     NewsDto create(NewsCreateDto newsDto);
     List<NewsDto> findAll(NewsSearchFilters newsSearchFilters, int limit, Integer page);
+    List<NewsDto> findPopular(int limitDate);
+    List<NewsDto> findCommented(int limitDate);
     CountDto getCount(NewsSearchFilters newsSearchFilters);
     NewsDto find(Long id);
     void update(Long id, NewsUpdateDto newsDto);
     void delete(Long id);
+
+
 }

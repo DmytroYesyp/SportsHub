@@ -59,7 +59,7 @@ public class JWTFilter extends UsernamePasswordAuthenticationFilter {
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
 
-        String token_refresh = JWT.create().withSubject(user.getUsername()).withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 10000))
+        String token_refresh = JWT.create().withSubject(user.getUsername()).withExpiresAt(new Date(System.currentTimeMillis() + 300 * 60 * 10000))
                 .withIssuer(request.getRequestURL().toString()).sign(algorithm);
         Map<String,String> tokens = new HashMap<>();
         tokens.put("token",token);

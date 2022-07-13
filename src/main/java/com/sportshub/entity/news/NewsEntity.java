@@ -26,17 +26,20 @@ public class NewsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long views;
     private String title;
     private String description;
     private String text;
     private Instant publicationDate;
-    private String alternativeText;
-    private String caption;
     private String image;
 
     @ManyToOne
     private LeagueEntity league;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "news_kind_of_sport", joinColumns = @JoinColumn(name = "news_id"))
+    @Column(name = "kinds_of_sport_id")
+    private Set<Long> kindsOfSportIds;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "team_news", joinColumns = @JoinColumn(name = "news_id"))

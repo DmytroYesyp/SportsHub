@@ -20,8 +20,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+
+import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
@@ -72,7 +72,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**", "/v2/api-docs").permitAll();
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login","/main").permitAll();
-        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}","/api/socialLogIn/getAllLogIn", "/api/socialShare/**", "/api/socialFollow/getAllFollows").permitAll();
+        http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}","/api/socialLogIn/getAllLogIn", "/api/socialShare/**", "/api/socialFollow/getAllFollows",
+                "/language", "/comments", "/comments/news{id}", "/api/users/users{userId}", "/news/mostpop", "/teams/{id}",
+                "/comments/mostcomm", "/datelimits/{id}","/datelimits", "/likes", "/likes/count", "/likes/check",
+                "/dislikes", "/dislikes/count", "/dislikes/check").permitAll();
+        http.authorizeRequests().antMatchers(PUT,"/news/{id}", "/datelimits/{id}").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
         http.addFilterBefore(new CustomAuthFilter(key), UsernamePasswordAuthenticationFilter.class);

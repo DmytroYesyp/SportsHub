@@ -74,12 +74,12 @@ public class TeamServiceImpl implements TeamService {
     @Override
     @Transactional
     public void update(Long id, TeamUpdateDto teamDto) {
-        TeamEntity teamEntity = teamMapper.toEntity(teamDto);
 
         TeamEntity currentTeam = teamRepository.getById(id);
 
-        try {
 
+        TeamEntity teamEntity = teamMapper.toEntity(teamDto);
+        try {
             if (Objects.equals(teamEntity.getName(), ""))
                 teamEntity.setName(currentTeam.getName());
 

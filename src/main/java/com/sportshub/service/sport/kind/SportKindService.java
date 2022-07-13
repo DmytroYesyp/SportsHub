@@ -3,6 +3,7 @@ package com.sportshub.service.sport.kind;
 import com.sportshub.dto.count.CountDto;
 import com.sportshub.dto.sport.kind.SportKindContentDto;
 import com.sportshub.dto.sport.kind.SportKindDto;
+import com.sportshub.dto.sport.kind.SportKindUpdateDto;
 
 import java.util.List;
 
