@@ -33,6 +33,8 @@ public class NewsEntity {
     private String alternativeText;
     private String caption;
     private String image;
+    private Boolean isPublished;
+    private Integer mainPageOrder;
 
     @ManyToOne
     private LeagueEntity league;

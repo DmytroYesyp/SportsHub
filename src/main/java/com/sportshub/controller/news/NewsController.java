@@ -5,6 +5,8 @@ import com.sportshub.dto.news.NewsCreateDto;
 import com.sportshub.dto.news.NewsDto;
 import com.sportshub.dto.news.NewsSearchFilters;
 import com.sportshub.dto.news.NewsUpdateDto;
+import com.sportshub.dto.payload.BooleanPayload;
+import com.sportshub.dto.payload.IntegerPayload;
 import com.sportshub.service.news.NewsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -57,6 +59,18 @@ public class NewsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id, @RequestBody NewsUpdateDto newsDto) {
         newsService.update(id, newsDto);
+    }
+
+    @PutMapping("{id}/publication-status")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePublicationStatus(@PathVariable Long id, @Valid @RequestBody BooleanPayload booleanPayload) {
+        newsService.updatePublicationStatus(id, booleanPayload );
+    }
+
+    @PutMapping("{id}/main-page-order")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateMainPageOrder(@PathVariable Long id, @RequestBody IntegerPayload integerPayload) {
+        newsService.updateMainPageOrder(id, integerPayload);
     }
 
     @DeleteMapping("{id}")

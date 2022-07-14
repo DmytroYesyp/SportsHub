@@ -16,6 +16,8 @@ public class NewsDto {
     private String alternativeText;
     private String caption;
     private String image;
+    private Boolean isPublished;
+    private Integer mainPageOrder;
     private Long leagueId;
     private Set<Long> teamIds;
 }

@@ -5,6 +5,8 @@ import com.sportshub.dto.news.NewsCreateDto;
 import com.sportshub.dto.news.NewsDto;
 import com.sportshub.dto.news.NewsSearchFilters;
 import com.sportshub.dto.news.NewsUpdateDto;
+import com.sportshub.dto.payload.BooleanPayload;
+import com.sportshub.dto.payload.IntegerPayload;
 import com.sportshub.entity.news.NewsEntity;
 import com.sportshub.exception.ConflictException;
 import com.sportshub.mapper.news.NewsMapper;
@@ -107,6 +109,24 @@ public class NewsServiceImpl implements NewsService {
         }
 
         newsRepository.update(id, newsEntity);
+    }
+
+    @Override
+    @Transactional
+    public void updatePublicationStatus(Long id, BooleanPayload booleanPayload) {
+        int affectedRaws = newsRepository.updatePublicationStatus(id, booleanPayload.getValue());
+        if (affectedRaws == 0) {
+            throw new NotFoundException("News not found!");
+        }
+    }
+
+    @Override
+    @Transactional
+    public void updateMainPageOrder(Long id, IntegerPayload integerPayload) {
+        int affectedRaws = newsRepository.updateMainPageOrder(id, integerPayload.getValue());
+        if (affectedRaws == 0) {
+            throw new NotFoundException("News not found!");
+        }
     }
 
     @Override

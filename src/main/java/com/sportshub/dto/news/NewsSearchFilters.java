@@ -12,6 +12,8 @@ public class NewsSearchFilters {
     private String text;
     private Instant publicationDateFrom;
     private Instant publicationDateTo;
+    private Boolean isPublished;
+    private Set<Long> sportKindIds;
     private Set<Long> leagueIds;
     private Set<Long> teamIds;
 }
