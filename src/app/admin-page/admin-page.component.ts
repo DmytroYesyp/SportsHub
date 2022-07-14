@@ -1,6 +1,15 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-
+import {SportKind} from "../dto/sport/kind/sport-kind";
+import {League} from "../dto/league/league";
+import {Team} from "../dto/team/team";
+import {LeagueService} from "../services/league.service";
+import {SportKindService} from "../services/sport-kind.service";
+import {TeamService} from "../services/team.service";
+import {ArticleService} from "../services/article.service";
+import {forkJoin} from "rxjs";
+import {Article} from "../dto/article/article";
+import {ActivatedRoute} from "@angular/router";
 
 interface text {
   value: string;
@@ -27,9 +36,31 @@ export class AdminPageComponent implements OnInit {
     {value: 'text-3', viewValue: 'text-3'},
   ];
 
-  constructor(private http : HttpClient) { }
+  sportKinds: SportKind[] = [];
+
+  leagues: League[] = [];
+
+  teams: Team[] = [];
+
+  articles: Article[] = []
+
+  // sportKindId = 0;
+
+  isPublished = true;
+
+  constructor(private http : HttpClient,
+              private leagueService: LeagueService,
+              private sportKindService: SportKindService,
+              private teamService: TeamService,
+              private articleService: ArticleService,
+              private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    const calls = [this.articleService.getArticles(), this.sportKindService.getSportKinds()]
+    forkJoin(calls).subscribe(([articles, sportKinds]) => {
+      this.articles = articles as Article[];
+      this.sportKinds = sportKinds as SportKind[];
+    })
     this.http.get('http://localhost:8080/datelimits')
       .subscribe((Response) => {
         this.dateLimitList = <Array<any>>Response
@@ -41,6 +72,11 @@ export class AdminPageComponent implements OnInit {
         }
       });
   }
+
+  getOrderedArticles(): Article[] {
+    return this.articles.filter(({mainPageOrder}) => mainPageOrder != null)
+  }
+
 
   changeDateLimit(a){
     for(let i = 0; i<this.dateLimitList.length; i++) {

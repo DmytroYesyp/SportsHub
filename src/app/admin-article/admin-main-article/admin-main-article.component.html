@@ -1,0 +1,56 @@
+<div class = "section">
+<div class="filter-criteria">
+<div class="sport-kinds">
+  <p style="color: gray; font-size: 12px">CATEGORY</p>
+  <mat-form-field class="RowForm" appearance="fill">
+    <mat-label>Not Selected</mat-label>
+    <mat-select [(value)]="selectedSportKind" (selectionChange)="changeKindOfSport($event)">
+      <mat-option *ngFor="let category of sportKinds " [value]= "category">{{category.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="league">
+  <p style="color: gray; font-size: 12px">SUBCATEGORY</p>
+  <mat-form-field class="RowForm" appearance="fill">
+    <mat-label>Not Selected</mat-label>
+    <mat-select [(value)]="selectedLeague" (selectionChange)="changeLeague($event)">
+      <mat-option *ngFor="let league of leagues" [value] = "league">{{league.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="team">
+  <p style="color: gray; font-size: 12px">TEAM</p>
+  <mat-form-field class="RowForm" appearance="fill">
+    <mat-label>Not Selected</mat-label>
+    <mat-select multiple [(value)]="selectedTeams">
+      <mat-option *ngFor="let team of teams" [value]="team">{{team.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+</div>
+
+<div class="article">
+  <p style="color: gray; font-size: 12px">ARTICLE</p>
+  <mat-form-field class="RowForm2" appearance="fill">
+    <mat-label>Not Selected</mat-label>
+    <mat-select [value]="article" (selectionChange)="changeArticle($event)">
+      <mat-option *ngFor="let article of getFilteredArticles()" [value]="article">{{article.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div style="width: 2vw;padding-top:0.2vw; float: left;position:relative;">
+  <button style="color: red"> Delete</button>
+</div>
+<div style="" class="container">
+
+  <div style="padding-top: 0.2vw;float: left; width: 8.3vw">
+    <label style="padding-right: 0.7vw;">Show on the main page</label></div>
+  <input type="checkbox" class="toggle-button" [(ngModel)]="isPublished" (change)="changeIsPublished()" >
+</div>
+
+</div>
+
+

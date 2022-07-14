@@ -1,14 +1,14 @@
-<form [formGroup]="form" (ngSubmit)="addArticle()">
-<!--  <div class="picture">-->
-<!--    <p>PICTURE*</p>-->
-<!--    <div class="dashed">-->
-<!--      <h2 class="data-dash">-->
-<!--        <mat-icon>camera_alt</mat-icon>-->
-<!--        <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.-->
-<!--      </h2>-->
-<!--    </div>-->
-<!--  </div>-->
-  <app-uploader></app-uploader>
+<form [formGroup]="form" (ngSubmit)="updateArticle()">
+  <!--  <div class="picture">-->
+  <!--    <p>PICTURE*</p>-->
+  <!--    <div class="dashed">-->
+  <!--      <h2 class="data-dash">-->
+  <!--        <mat-icon>camera_alt</mat-icon>-->
+  <!--        <br> +Add picture or drop it right here <br> You can add next formats: png., jpg., jpeg., tif.-->
+  <!--      </h2>-->
+  <!--    </div>-->
+  <!--  </div>-->
+<!--  <app-uploader></app-uploader>-->
 
   <div class="container">
 
@@ -16,7 +16,7 @@
       <p>CATEGORY</p>
       <mat-form-field appearance="fill">
         <mat-label>Not Selected</mat-label>
-        <mat-select (selectionChange)="changeKindOfSport($event)">
+        <mat-select [(value)]="sportKind" (selectionChange)="changeKindOfSport($event)">
           <mat-option *ngFor="let category of sportKinds " [value]= "category">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -57,23 +57,23 @@
 
   <div class="alt">
     <p>ALT.*</p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput placeholder="Alternative text for picture" formControlName="alternativeText">
-      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="Alternative text for picture" formControlName="alternativeText">
+    </mat-form-field>
   </div>
 
   <div class="title">
     <p>ARTICLE HEADLINE*</p>
-      <mat-form-field class="example-full-width" appearance="fill" >
-        <input matInput placeholder="Name" formControlName="title">
-      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill" >
+      <input matInput placeholder="Name" formControlName="title">
+    </mat-form-field>
   </div>
 
   <div class="caption">
     <p>CAPTION*</p>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput placeholder="Write caption text here" formControlName="caption">
-      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="Write caption text here" formControlName="caption">
+    </mat-form-field>
   </div>
 
   <div class="content">
@@ -94,7 +94,7 @@
     </div>
 
     <div class="button-add">
-      <button mat-raised-button color="warn" type="submit">Add</button>
+      <button mat-raised-button color="warn" type="submit">Save</button>
     </div>
   </div>
 </form>

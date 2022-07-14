@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupLoginCommComponent } from './popup-login-comm.component';
+import { AdminArticleListComponent } from './admin-article-list.component';
 
-describe('PopupLoginCommComponent', () => {
-  let component: PopupLoginCommComponent;
-  let fixture: ComponentFixture<PopupLoginCommComponent>;
+describe('AdminArticleListComponent', () => {
+  let component: AdminArticleListComponent;
+  let fixture: ComponentFixture<AdminArticleListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupLoginCommComponent ]
+      declarations: [ AdminArticleListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupLoginCommComponent);
+    fixture = TestBed.createComponent(AdminArticleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

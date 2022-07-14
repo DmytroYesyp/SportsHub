@@ -5,6 +5,7 @@ export class ArticleContent {
   alternativeText: string;
   caption: string;
   image: string;
+  isPublished: boolean;
   leagueId: number;
   teamIds: number[] = [];
 }

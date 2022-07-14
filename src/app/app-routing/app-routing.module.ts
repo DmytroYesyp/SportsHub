@@ -25,6 +25,8 @@ import {VideoComponent} from "../video/video.component";
 import {SocialLoginComponent} from "../components/social-networks/social-login/social-login.component";
 import {TeamPageComponent} from "../team-page/team-page.component";
 import {LeaguePageComponent} from "../league-page/league-page.component";
+import {EditArticleComponent} from "../admin-article/edit-article/edit-article.component";
+import {AdminArticleListComponent} from "../admin-article/admin-article-list/admin-article-list.component";
 
 const routes: Routes = [
   {
@@ -54,6 +56,8 @@ const routes: Routes = [
       {path: 'admin_page', component: AdminPageComponent},
       {path: 'admin_categories', component: NavMenuItemsComponent},
       {path: 'article_add', component: AddArticleComponent},
+      {path: 'article_edit/:id', component: EditArticleComponent},
+      {path: 'admin_get_article/:sportKindId', component: AdminArticleListComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent},
       {path: 'admin_page/set-lang', component: SetLangComponent}

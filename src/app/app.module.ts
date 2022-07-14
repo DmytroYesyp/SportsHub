@@ -69,6 +69,9 @@ import { PopupDeleteCommComponent } from './pop-ups/popup-delete-comm/popup-dele
 import { PopupLoginCommComponent } from './pop-ups/popup-login-comm/popup-login-comm.component';
 import { MostPopularComponent } from './most-popular/most-popular.component';
 import { MostCommentedComponent } from './most-commented/most-commented.component';
+import { EditArticleComponent } from './admin-article/edit-article/edit-article.component';
+import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
+import { AdminMainArticleComponent } from './admin-article/admin-main-article/admin-main-article.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -127,6 +130,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PopupLoginCommComponent,
     MostPopularComponent,
     MostCommentedComponent,
+    EditArticleComponent,
+    AdminArticleListComponent,
+    AdminMainArticleComponent
   ],
 
   imports: [

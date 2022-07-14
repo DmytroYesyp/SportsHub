@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MostPopularComponent } from './most-popular.component';
+import { AdminMainArticleComponent } from './admin-main-article.component';
 
-describe('MostPopularComponent', () => {
-  let component: MostPopularComponent;
-  let fixture: ComponentFixture<MostPopularComponent>;
+describe('AdminMainArticleComponent', () => {
+  let component: AdminMainArticleComponent;
+  let fixture: ComponentFixture<AdminMainArticleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MostPopularComponent ]
+      declarations: [ AdminMainArticleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MostPopularComponent);
+    fixture = TestBed.createComponent(AdminMainArticleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
