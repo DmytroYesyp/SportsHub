@@ -14,16 +14,16 @@ public class FireBaseVideoEntity {
     private Long id;
     private String description;
     private String url;
-    private Boolean isVisable;
+    private Boolean isVisible;
 
 
     public FireBaseVideoEntity() {
     }
 
-    public FireBaseVideoEntity(String description, String url, Boolean isVisable) {
+    public FireBaseVideoEntity(String description, String url, Boolean isVisible) {
         this.description = description;
         this.url = url;
-        this.isVisable = isVisable;
+        this.isVisible = isVisible;
     }
 
 
@@ -51,11 +51,11 @@ public class FireBaseVideoEntity {
         this.url = url;
     }
 
-    public Boolean getVisable() {
-        return isVisable;
+    public Boolean getVisible() {
+        return isVisible;
     }
 
-    public void setVisable(Boolean visable) {
-        isVisable = visable;
+    public void setVisible(Boolean visible) {
+        isVisible = visible;
     }
 }
