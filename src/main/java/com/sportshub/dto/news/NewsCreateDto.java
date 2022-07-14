@@ -15,7 +15,11 @@ public class NewsCreateDto {
     private String description;
     private String text;
     private Instant publicationDate;
+    private String alternativeText;
+    private String caption;
     private String image;
+    private Boolean isPublished;
+    private Integer mainPageOrder;
     private Long leagueId;
     private Set<Long> kindsOfSportIds;
     private Set<Long> teamIds;
