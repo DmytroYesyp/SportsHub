@@ -54,6 +54,7 @@ import { NavMenuItemsComponent } from './category-menu/nav-menu-items/nav-menu-i
 import { AddArticleComponent } from './admin-article/add-article/add-article.component';
 import { EditArticleComponent } from './admin-article/edit-article/edit-article.component';
 import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
+import { AdminMainArticleComponent } from './admin-article/admin-main-article/admin-main-article.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -98,7 +99,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavMenuItemsComponent,
     AddArticleComponent,
     EditArticleComponent,
-    AdminArticleListComponent
+    AdminArticleListComponent,
+    AdminMainArticleComponent
   ],
 
   imports: [

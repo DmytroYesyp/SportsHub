@@ -10,7 +10,6 @@
 <body>
 
 
-
 <div class="header">
 
   <a href="/main" class="logo">
@@ -27,7 +26,7 @@
 <div class="right_header">
   <app-header-user-profile></app-header-user-profile>
 
-  <mat-expansion-panel  class = "language">
+  <mat-expansion-panel class="language">
     <mat-expansion-panel-header>
       <mat-panel-title>
         EN
@@ -49,26 +48,35 @@
   <hr>
   <div class="under_two">
     <a href="/main">Home</a>
-    <a class="txt1" href=""><main_kinds></main_kinds></a>
+    <a class="txt1" href="">
+      <main_kinds></main_kinds>
+    </a>
     <a href="/video">Video</a>
     <a href="/lifestle">Lifestyle</a>
   </div>
 </div>
 
 
-
 <div class="wrapper">
   <div class="sidebar">
-    <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Categories" href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Languages" href="/languages"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Footer" href="/footer"><i class="fa fa-edit" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Social Networks" href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true"
+                                          style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Categories" href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true"
+                                                      style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Languages" href="/languages"><i class="fa fa-globe" aria-hidden="true"
+                                              style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Footer" href="/footer"><i class="fa fa-edit" aria-hidden="true"
+                                        style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Social Networks" href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true"
+                                                          style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="Users" href="/users"><i class="fa fa-users" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
     <a title="IA" href="/info"><i class="fa fa-info" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Teams" href="/admin_team-page"><i class="fa fa-flag" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="News Partners" href="/news-partners"><i class="fa fa-briefcase" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
-    <a title="Advertising" href="/advertising"><i class="fa fa-dollar" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Teams" href="/admin_team-page"><i class="fa fa-flag" aria-hidden="true"
+                                                style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="News Partners" href="/news-partners"><i class="fa fa-briefcase" aria-hidden="true"
+                                                      style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Advertising" href="/advertising"><i class="fa fa-dollar" aria-hidden="true"
+                                                  style="font-size: 2vw;color: #b2b2b2;"></i></a>
 
   </div>
   <div id="generalSection">
@@ -84,456 +92,267 @@
         <hr class="mainArticleHr2">
       </div>
 
-      <div class="mainArticleField"> MAIN ARTICLE</div>
-
-
+      <div class="mainArticleField"> MAIN ARTICLES</div>
     </div>
 
-
-    <div id="firstRow">
-
-
-      <div class="RowCOl1">
-
-        <p style="color: gray; font-size: 12px">CATEGORY*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>category</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue" name="value">
-              <mat-option class="check" *ngFor="let value of values" [value]="value.value">
-                {{value.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-
-      </div>
-
-      <div class="RowCOl2">
-
-        <p style="color: gray; font-size: 12px">SUBCATEGORY*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue2" name="value2">
-              <mat-option class="check" *ngFor="let value2 of values" [value]="value2.value">
-                {{value2.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl3">
-
-
-        <p style="color: gray; font-size: 12px">TEAM</p>
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue3" name="value2">
-              <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-                {{value3.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl4">
-
-
-        <p style="color: gray; font-size: 12px">ARTICLE*</p>
-        <form>
-          <mat-form-field class="RowForm2" appearance="outline">
-
-            <mat-select [(ngModel)]="selectedValue4" name="value2">
-              <mat-option class="check" *ngFor="let value4 of values" [value]="value4.value">
-                {{value4.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div style="width: 2vw;padding-top:0.2vw; float: left;position:relative;">
-        <a style="color: red"> Delete</a>
-      </div>
-      <div style="" class="container">
-
-        <div style="padding-top: 0.2vw;float: left; width: 8.3vw">
-          <label style="padding-right: 0.7vw;">Show on the main page</label></div>
-        <input type="checkbox" class="toggle-button">
-      </div>
-
+    <div *ngFor="let article of getOrderedArticles(); index as i">
+      <app-admin-main-article
+        [sportKinds]="sportKinds"
+        [articles]="articles"
+        [article]="article"
+        [mainPageOrder]="i + 1"
+      ></app-admin-main-article>
     </div>
 
-    <hr style=" border:1px dashed #d8dde5;">
-
-
-    <div id="secondRow">
-
-
-      <div class="RowCOl1">
-
-        <p style="color: gray">CATEGORY*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>category</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue" name="value">
-              <mat-option class="check" *ngFor="let value of values" [value]="value.value">
-                {{value.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-
-      </div>
-
-      <div class="RowCOl2">
-
-        <p style="color: gray">subcategory*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue2" name="value2">
-              <mat-option class="check" *ngFor="let value2 of values" [value]="value2.value">
-                {{value2.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl3">
-
-
-        <p style="color: gray">subcategory*</p>
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue3" name="value2">
-              <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-                {{value3.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl4">
-
-
-        <p style="color: gray">subcategory*</p>
-        <form>
-          <mat-form-field class="RowForm2" appearance="outline">
-
-            <mat-select [(ngModel)]="selectedValue4" name="value2">
-              <mat-option class="check" *ngFor="let value4 of values" [value]="value4.value">
-                {{value4.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">
-        <a style="color: red"> Delete</a>
-      </div>
-      <div class="container">
-
-        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>
-        <input type="checkbox" class="toggle-button">
-      </div>
-
+    <div class="mainArticleHrBox">
+      <hr class="mainArticleHr">
     </div>
-
-    <hr style="position: relative; border:1px dashed #d8dde5;">
-
-
-    <div id="thirdRow">
-
-
-      <div class="RowCOl1">
-
-        <p style="color: gray">category*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>category</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue" name="value">
-              <mat-option class="check" *ngFor="let value of values" [value]="value.value">
-                {{value.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-
-      </div>
-
-      <div class="RowCOl2">
-
-        <p style="color: gray">subcategory*</p>
-
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue2" name="value2">
-              <mat-option class="check" *ngFor="let value2 of values" [value]="value2.value">
-                {{value2.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl3">
-
-
-        <p style="color: gray">subcategory*</p>
-        <form>
-          <mat-form-field class="RowForm" appearance="outline">
-
-            <!--          <mat-label>subcategory</mat-label>-->
-            <mat-select [(ngModel)]="selectedValue3" name="value2">
-              <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-                {{value3.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div class="RowCOl4">
-
-
-        <p style="color: gray">subcategory*</p>
-        <form>
-          <mat-form-field class="RowForm2" appearance="outline">
-
-            <mat-select [(ngModel)]="selectedValue4" name="value2">
-              <mat-option class="check" *ngFor="let value4 of values" [value]="value4.value">
-                {{value4.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">
-        <a style="color: red"> Delete</a>
-      </div>
-
-      <div style="width: 8vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">
-        <a style="color: red" href="/article_add"> +Add one more article</a>
-      </div>
-
-
-      <div class="container">
-
-        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>
-        <input type="checkbox" id="toggle-button" class="toggle-button">
-      </div>
-
+    <div class="mainArticleHrBox2">
+      <hr class="mainArticleHr2">
     </div>
+    <div class="mainArticleField"> BREAK DOWN</div>
+
+    <!--      <div style="width: 2vw;padding-top:0.2vw; float: left;position:relative;">-->
+    <!--        <a style="color: red"> Delete</a>-->
+    <!--      </div>-->
+    <!--      <div style="" class="container">-->
+
+    <!--        <div style="padding-top: 0.2vw;float: left; width: 8.3vw">-->
+    <!--          <label style="padding-right: 0.7vw;">Show on the main page</label></div>-->
+    <!--        <input type="checkbox" class="toggle-button">-->
+    <!--      </div>-->
+
+    <!--    </div>-->
+
+    <!--    <hr style=" border:1px dashed #d8dde5;">-->
 
 
-    <div class="boxArticle">
-      <div class="mainArticleHrBox">
-        <hr class="mainArticleHr">
-      </div>
-      <div class="mainArticleHrBox2">
-        <hr class="mainArticleHr2">
-      </div>
+    <!--    <div id="secondRow">-->
 
-      <div class="mainArticleField"> BREAK DOWN</div>
-      <div id="fourthRow">
+    <!--      <app-admin-main-article></app-admin-main-article>-->
 
+    <!--      <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">-->
+    <!--        <a style="color: red"> Delete</a>-->
+    <!--      </div>-->
+    <!--      <div class="container">-->
 
-        <div class="RowCOl1">
+    <!--        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>-->
+    <!--        <input type="checkbox" class="toggle-button">-->
+    <!--      </div>-->
 
-          <p style="color: gray">category*</p>
+    <!--    </div>-->
 
-          <form>
-            <mat-form-field class="RowForm" appearance="outline">
-
-              <!--          <mat-label>category</mat-label>-->
-              <mat-select [(ngModel)]="selectedValue" name="value">
-                <mat-option class="check" *ngFor="let value of values" [value]="value.value">
-                  {{value.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </form>
-
-        </div>
-
-        <div class="RowCOl2">
-
-          <p style="color: gray">subcategory*</p>
-
-          <form>
-            <mat-form-field class="RowForm" appearance="outline">
-
-              <!--          <mat-label>subcategory</mat-label>-->
-              <mat-select [(ngModel)]="selectedValue2" name="value2">
-                <mat-option class="check" *ngFor="let value2 of values" [value]="value2.value">
-                  {{value2.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </form>
-        </div>
-
-        <div class="RowCOl3">
+    <!--    <hr style="position: relative; border:1px dashed #d8dde5;">-->
 
 
-          <p style="color: gray">subcategory*</p>
-          <form>
-            <mat-form-field class="RowForm" appearance="outline">
+    <!--    <div id="thirdRow">-->
 
-              <!--          <mat-label>subcategory</mat-label>-->
-              <mat-select [(ngModel)]="selectedValue3" name="value2">
-                <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-                  {{value3.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </form>
-        </div>
+    <!--      <app-admin-main-article></app-admin-main-article>-->
 
-        <div style="width: 55vw" class="RowCOl4">
-          <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">
-            <a style="color: red"> Delete</a>
-          </div>
+    <!--      <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">-->
+    <!--        <a style="color: red"> Delete</a>-->
+    <!--      </div>-->
 
-          <div style="width: 10vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">
-            <a style="color: red" href=""> +Add one more brakedown</a>
-          </div>
+    <!--      <div style="width: 8vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">-->
+    <!--        <button style="color: red"> +Add one more main article</button>-->
+    <!--      </div>-->
+
+    <!--      <div style="width: 8vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">-->
+    <!--        <a style="color: red" href="/article_add"> +Add one more article</a>-->
+    <!--      </div>-->
 
 
-          <div class="container">
+    <!--      <div class="container">-->
 
-            <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>
-            <input type="checkbox" class="toggle-button">
-          </div>
-        </div>
+    <!--        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>-->
+    <!--        <input type="checkbox" id="toggle-button" class="toggle-button">-->
+    <!--      </div>-->
 
-
-      </div>
+    <!--    </div>-->
 
 
-    </div>
+    <!--    <div class="boxArticle">-->
+    <!--      <div class="mainArticleHrBox">-->
+    <!--        <hr class="mainArticleHr">-->
+    <!--      </div>-->
+    <!--      <div class="mainArticleHrBox2">-->
+    <!--        <hr class="mainArticleHr2">-->
+    <!--      </div>-->
+
+    <!--      <div class="mainArticleField"> BREAK DOWN</div>-->
+    <!--      <div id="fourthRow">-->
 
 
-    <div class="boxArticle">
-      <div class="mainArticleHrBox">
-        <hr class="mainArticleHr">
-      </div>
-      <div class="mainArticleHrBox2">
-        <hr class="mainArticleHr2">
-      </div>
+    <!--        <div class="RowCOl1">-->
 
-      <div class="mainArticleField"> BREAK DOWN</div>
-    </div>
+    <!--          <p style="color: gray">category*</p>-->
 
+    <!--          <form>-->
+    <!--            <mat-form-field class="RowForm" appearance="outline">-->
+    <!--              <mat-select [(ngModel)]="selectedValue" name="value">-->
+    <!--                <mat-option class="check" *ngFor="let value of values" [value]="value.value">-->
+    <!--                  {{value.viewValue}}-->
+    <!--                </mat-option>-->
+    <!--              </mat-select>-->
+    <!--            </mat-form-field>-->
+    <!--          </form>-->
 
-    <div class="photoBox">
+    <!--        </div>-->
 
-      <p style="color: gray">picture*</p>
-      <div style="  border:2px dotted #d8dde5; width: 55vw;height: 40vw;; background-color: #fafafa;">
+    <!--        <div class="RowCOl2">-->
 
-        <div style="text-align: center; font-size: 1vw">
-          <div
-            style="margin: auto; margin-top:17vw; border-radius: 50%; background-color: #d72130;height: 5vw;width: 5vw; text-align: center;">
-            <i class="fa fa-camera" aria-hidden="true" style="font-size: 2vw;color: white;padding: 1.5vw; "></i>
+    <!--          <p style="color: gray">subcategory*</p>-->
 
-          </div>
-          <a style="color: red">Add picture</a> or drop it here<br>
-          You can add next formats: png.jpg.jpeg.tif
-        </div>
+    <!--          <form>-->
+    <!--            <mat-form-field class="RowForm" appearance="outline">-->
 
+    <!--              &lt;!&ndash;          <mat-label>subcategory</mat-label>&ndash;&gt;-->
+    <!--              <mat-select [(ngModel)]="selectedValue2" name="value2">-->
+    <!--                <mat-option class="check" *ngFor="let value2 of values" [value]="value2.value">-->
+    <!--                  {{value2.viewValue}}-->
+    <!--                </mat-option>-->
+    <!--              </mat-select>-->
+    <!--            </mat-form-field>-->
+    <!--          </form>-->
+    <!--        </div>-->
 
-      </div>
-      <div style="margin-top: 1vw">
-        <p style="color: #9fa6b2">ALT.</p>
-        <input class="TextFields" type="text" name="fname" value="Some value"><br>
-      </div>
-      <div style="margin-top: 1vw">
-        <p style="color: #9fa6b2">PHOTO TITLE*</p>
-        <input class="TextFields" type="text" name="fname" value="Some value"><br>
-      </div>
-
-      <div style="margin-top: 1vw">
-        <p style="color: #9fa6b2">SHORT DESCRIPTION*</p>
-        <input class="TextFields" type="text" name="fname" value="Some value"><br>
-      </div>
-
-      <div style="margin-top: 1vw">
-        <p style="color: #9fa6b2">AUTHOR*</p>
-        <input class="TextFields" type="text" name="fname" value="Some value"><br>
-      </div>
-      <div style="padding-top: 10px" class="container">
-
-        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>
-        <input type="checkbox" class="toggle-button">
-      </div>
-    </div>
+    <!--        <div class="RowCOl3">-->
 
 
-    <div id="endRow">
+    <!--          <p style="color: gray">subcategory*</p>-->
+    <!--          <form>-->
+    <!--            <mat-form-field class="RowForm" appearance="outline">-->
 
-      <div>
-        <div style="float: left; height: 3vw; width: 23vw;background-color: #f8f8f8">
-          <p style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST POPULAR</Strong></p>
-          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
+    <!--              &lt;!&ndash;          <mat-label>subcategory</mat-label>&ndash;&gt;-->
+    <!--              <mat-select [(ngModel)]="selectedValue3" name="value2">-->
+    <!--                <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">-->
+    <!--                  {{value3.viewValue}}-->
+    <!--                </mat-option>-->
+    <!--              </mat-select>-->
+    <!--            </mat-form-field>-->
+    <!--          </form>-->
+    <!--        </div>-->
 
-            <div style="padding-top: 0.2vw;float: left; width: 2vw">
-              <label style="padding-right: 0.7vw;border-top:5vw;">Show</label></div>
-            <input type="checkbox" class="toggle-button">
-          </div>
-        </div>
-        <div style="float: right; height: 3vw; width: 23vw;background-color: #f8f8f8"><p
-          style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST COMMENTED</Strong></p>
-          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
+    <!--        <div style="width: 55vw" class="RowCOl4">-->
+    <!--          <div style="width: 2vw;padding-top:0.7vw;float: left;position:relative;">-->
+    <!--            <a style="color: red"> Delete</a>-->
+    <!--          </div>-->
 
-            <div style="padding-top: 0.2vw;float: left; width: 2vw">
-              <label style="padding-right: 0.7vw;border-top:5vw;">Hide</label></div>
-            <input type="checkbox" class="toggle-button">
-          </div>
-        </div>
-      </div>
+    <!--          <div style="width: 10vw;padding-left:2vw; padding-top:0.7vw;float: left;position:relative;">-->
+    <!--            <a style="color: red" href=""> +Add one more brakedown</a>-->
+    <!--          </div>-->
 
-      <div></div>
 
-    </div>
+    <!--          <div class="container">-->
 
-    <div style="margin-top: 9vw">
-      <p style="color: gray">FROM THE PERIOD*</p>
-      <form>
-        <mat-form-field class="RowForm" appearance="outline">
+    <!--            <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>-->
+    <!--            <input type="checkbox" class="toggle-button">-->
+    <!--          </div>-->
+    <!--        </div>-->
 
-          <!--          <mat-label>subcategory</mat-label>-->
-          <mat-select [(ngModel)]="selectedValue3" name="value2">
-            <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">
-              {{value3.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
-    </div>
+
+    <!--      </div>-->
+
+
+    <!--    </div>-->
+
+
+    <!--    <div class="boxArticle">-->
+    <!--      <div class="mainArticleHrBox">-->
+    <!--        <hr class="mainArticleHr">-->
+    <!--      </div>-->
+    <!--      <div class="mainArticleHrBox2">-->
+    <!--        <hr class="mainArticleHr2">-->
+    <!--      </div>-->
+
+    <!--      <div class="mainArticleField"> BREAK DOWN</div>-->
+    <!--    </div>-->
+
+
+    <!--    <div class="photoBox">-->
+
+    <!--      <p style="color: gray">picture*</p>-->
+    <!--      <div style="  border:2px dotted #d8dde5; width: 55vw;height: 40vw;; background-color: #fafafa;">-->
+
+    <!--        <div style="text-align: center; font-size: 1vw">-->
+    <!--          <div-->
+    <!--            style="margin: auto; margin-top:17vw; border-radius: 50%; background-color: #d72130;height: 5vw;width: 5vw; text-align: center;">-->
+    <!--            <i class="fa fa-camera" aria-hidden="true" style="font-size: 2vw;color: white;padding: 1.5vw; "></i>-->
+
+    <!--          </div>-->
+    <!--          <a style="color: red">Add picture</a> or drop it here<br>-->
+    <!--          You can add next formats: png.jpg.jpeg.tif-->
+    <!--        </div>-->
+
+
+    <!--      </div>-->
+    <!--      <div style="margin-top: 1vw">-->
+    <!--        <p style="color: #9fa6b2">ALT.</p>-->
+    <!--        <input class="TextFields" type="text" name="fname" value="Some value"><br>-->
+    <!--      </div>-->
+    <!--      <div style="margin-top: 1vw">-->
+    <!--        <p style="color: #9fa6b2">PHOTO TITLE*</p>-->
+    <!--        <input class="TextFields" type="text" name="fname" value="Some value"><br>-->
+    <!--      </div>-->
+
+    <!--      <div style="margin-top: 1vw">-->
+    <!--        <p style="color: #9fa6b2">SHORT DESCRIPTION*</p>-->
+    <!--        <input class="TextFields" type="text" name="fname" value="Some value"><br>-->
+    <!--      </div>-->
+
+    <!--      <div style="margin-top: 1vw">-->
+    <!--        <p style="color: #9fa6b2">AUTHOR*</p>-->
+    <!--        <input class="TextFields" type="text" name="fname" value="Some value"><br>-->
+    <!--      </div>-->
+    <!--      <div style="padding-top: 10px" class="container">-->
+
+    <!--        <label style="padding-right: 0.7vw;padding-top:2vw;">Show on the main page</label>-->
+    <!--        <input type="checkbox" class="toggle-button">-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+
+    <!--    <div id="endRow">-->
+
+    <!--      <div>-->
+    <!--        <div style="float: left; height: 3vw; width: 23vw;background-color: #f8f8f8">-->
+    <!--          <p style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST POPULAR</Strong></p>-->
+    <!--          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">-->
+
+    <!--            <div style="padding-top: 0.2vw;float: left; width: 2vw">-->
+    <!--              <label style="padding-right: 0.7vw;border-top:5vw;">Show</label></div>-->
+    <!--            <input type="checkbox" class="toggle-button">-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--        <div style="float: right; height: 3vw; width: 23vw;background-color: #f8f8f8"><p-->
+    <!--          style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST COMMENTED</Strong></p>-->
+    <!--          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">-->
+
+    <!--            <div style="padding-top: 0.2vw;float: left; width: 2vw">-->
+    <!--              <label style="padding-right: 0.7vw;border-top:5vw;">Hide</label></div>-->
+    <!--            <input type="checkbox" class="toggle-button">-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+
+    <!--      <div></div>-->
+
+    <!--    </div>-->
+
+    <!--    <div style="margin-top: 9vw">-->
+    <!--      <p style="color: gray">FROM THE PERIOD*</p>-->
+    <!--      <form>-->
+    <!--        <mat-form-field class="RowForm" appearance="outline">-->
+
+    <!--          &lt;!&ndash;          <mat-label>subcategory</mat-label>&ndash;&gt;-->
+    <!--          <mat-select [(ngModel)]="selectedValue3" name="value2">-->
+    <!--            <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">-->
+    <!--              {{value3.viewValue}}-->
+    <!--            </mat-option>-->
+    <!--          </mat-select>-->
+    <!--        </mat-form-field>-->
+    <!--      </form>-->
+    <!--    </div>-->
 
 
   </div>

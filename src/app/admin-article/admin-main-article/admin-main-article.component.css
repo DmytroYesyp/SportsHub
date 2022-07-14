@@ -1,0 +1,40 @@
+.section{
+  margin-top: 2vw;
+  height: 13vw;
+}
+.sport-kinds{
+  width: 16vw;
+  float: left;
+}
+.league{
+  width: 16vw;
+  margin-left: 19.5vw;
+  position: absolute;
+}
+.team{
+  width: 16vw;
+  float: right;
+}
+.article{
+  float: left;
+}
+.RowForm{
+  width: 16vw;
+  float: left;
+}
+.RowForm2{
+  width: 55vw;
+  float: left;
+}
+
+.container{
+  /*padding-top: 0.7vw;*/
+  float: right;
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1745px){
+  .section{
+    margin-top: 2vw;
+    height: 18vw;
+  }
+}

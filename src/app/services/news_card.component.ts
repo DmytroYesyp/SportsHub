@@ -19,7 +19,8 @@ export class NewsCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/news')
+    const params = {isPublished: true};
+    this.http.get('http://localhost:8080/news', {params})
       .subscribe(Response => {
         console.log(Response)
         this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 4), (<Array<any>>Response).length);

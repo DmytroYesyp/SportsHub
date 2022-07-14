@@ -3,8 +3,8 @@
   <div class="league">
     <mat-form-field appearance="fill">
       <mat-label>All Subcategories</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let league of leagues">{{league.name}}</mat-option>
+      <mat-select (selectionChange)="changeLeague($event)">
+        <mat-option *ngFor="let league of leagues" [value]="league">{{league.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -12,8 +12,8 @@
   <div class="team">
     <mat-form-field appearance="fill">
       <mat-label>All Teams</mat-label>
-      <mat-select multiple>
-        <mat-option *ngFor="let team of teams">{{team.name}}</mat-option>
+      <mat-select multiple (selectionChange)="changeTeam($event)">
+        <mat-option *ngFor="let team of teams" [value]="team">{{team.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -21,8 +21,10 @@
   <div class="all">
     <mat-form-field appearance="fill">
       <mat-label>All</mat-label>
-      <mat-select multiple>
-        <mat-option *ngFor="let team of teams">{{team.name}}</mat-option>
+      <mat-select (selectionChange)="changePublicationStatusFilter($event)">
+        <mat-option  value="{{0}}">All</mat-option>
+        <mat-option value="{{true}}">Published</mat-option>
+        <mat-option  value="{{false}}">Unpublished</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -39,15 +41,17 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Publish</button>
-      <button mat-menu-item >Edit</button>
-      <button mat-menu-item >Delete</button>
-      <button mat-menu-item [matMenuTriggerFor]="moveTo" >Move</button>
+      <button mat-menu-item (click)="updatePublicationStatus(article)">
+        {{article.isPublished ? 'UnPublish' : 'Publish'}}
+      </button>
+      <button mat-menu-item>Edit</button>
+      <button mat-menu-item (click)="removeArticle(article)">Delete</button>
+      <button mat-menu-item [matMenuTriggerFor]="moveTo">Move</button>
     </mat-menu>
     <mat-menu #moveTo="matMenu">
       <div *ngFor="let category of sportKinds">
         <button *ngIf="category !== activeSportKind" mat-menu-item
-             >{{category.name}}</button>
+        >{{category.name}}</button>
       </div>
     </mat-menu>
   </div>
