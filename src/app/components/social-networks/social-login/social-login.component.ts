@@ -35,7 +35,6 @@ export class SocialLoginComponent implements OnInit , OnChanges {
   allFollow : boolean;
 
   LogInFace : boolean;
-  LogInTwit : boolean;
   LogInGoogle : boolean;
   allLogIn : boolean;
 
@@ -92,10 +91,6 @@ export class SocialLoginComponent implements OnInit , OnChanges {
       for (var i =0 ; i< this.listLogIn.length;i++){
 
         switch (this.listLogIn[i].pictogram){
-          case 'fa fa-twitter':{
-            this.LogInTwit =(this.listLogIn[i].url == '1')
-            break;
-          }
           case 'fa fa-google':{
             this.LogInGoogle = (this.listLogIn[i].url == '1')
             break;
@@ -109,7 +104,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
       }
       this.allShare = this.shareTwit || this.shareFace
       this.allFollow = this.FollowFace || this.FollowTwit || this.FollowYoutube
-      this.allLogIn = this.LogInFace || this.LogInTwit  || this.LogInGoogle
+      this.allLogIn = this.LogInFace || this.LogInGoogle
     })
 
 
@@ -217,7 +212,6 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams2}).subscribe()
 
     this.LogInGoogle= TF == '1';
-    this.LogInTwit = TF == '1';
     this.LogInFace = TF == '1';
   }
   follow(str : string){
@@ -330,18 +324,6 @@ export class SocialLoginComponent implements OnInit , OnChanges {
 
         break;
       }
-      case 'twitter' :{
-        const cb = document.getElementById('TwitterLogin')as HTMLInputElement | null;
-        if (cb?.checked)
-          TF = '1';
-        else
-          TF = '0';
-
-        queryParams = queryParams.append("pic",'fa fa-twitter');
-        queryParams = queryParams.append("url",TF);
-        this.LogInTwit = TF == '1';
-        break;
-      }
       case 'google' :{
         const cb = document.getElementById('GoogleLogin')as HTMLInputElement | null;
         if (cb?.checked)
@@ -357,7 +339,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
 
     }
 
-    this.allLogIn = this.LogInFace || this.LogInTwit  || this.LogInGoogle
+    this.allLogIn = this.LogInFace || this.LogInGoogle
     this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
   }
 
