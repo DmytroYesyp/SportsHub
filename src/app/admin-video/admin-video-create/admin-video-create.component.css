@@ -397,3 +397,11 @@ main_kinds{
   background: #dedede;
   cursor: pointer;
 }
+
+
+.cont{
+  float: left;
+  margin-left: 35vw;
+  width: 30vw;
+  height: 20vw;
+}

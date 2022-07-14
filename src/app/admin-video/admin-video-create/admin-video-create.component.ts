@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {mainPage} from "../services/main-page.service";
-import {AuthService} from "../services/auth.service";
-import {AppComponent} from "../app.component";
-import {TranslateService} from "@ngx-translate/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpParams} from "@angular/common/http";
+import {mainPage} from "../../services/main-page.service";
+import {AuthService} from "../../services/auth.service";
+import {AppComponent} from "../../app.component";
+import {TranslateService} from "@ngx-translate/core";
+import {Video} from "../../services/video";
 
 @Component({
-  selector: 'app-video',
-  templateUrl: './video.component.html',
-  styleUrls: ['./video.component.css']
+  selector: 'app-admin-video-create',
+  templateUrl: './admin-video-create.component.html',
+  styleUrls: ['./admin-video-create.component.css']
 })
-export class VideoComponent implements OnInit {
+export class AdminVideoCreateComponent implements OnInit {
 
   isHovering: boolean;
   files: File[] = [];
   file: File;
-  new_file;
+  video: Video;
+  description: string;
 
   email: string;
 
@@ -32,15 +33,14 @@ export class VideoComponent implements OnInit {
   authenticated: boolean = false;
 
   form = new FormGroup({
-      title: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required])
     }
   );
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
               private app: AppComponent,
-              public translate: TranslateService) {
-  }
+              public translate: TranslateService) { }
 
   toggleHover(event: boolean) {
     this.isHovering = event;
@@ -133,15 +133,9 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  async onSubmit(){
-    const url = URL.createObjectURL(this.file)
-    console.log("Url" + url)
-    const blob = await (await fetch(url)).blob();
-    console.log("Blob" + blob)
-    this.form.disable()
-    this.new_file = new File([blob], this.form.value.title, {type: this.file.type})
-    console.log("File" + this.new_file)
-    console.log(this.new_file.name + this.new_file.type)
+  onSubmit(){
+    this.upload = true;
+    this.description = this.form.value.description;
   }
 
 }

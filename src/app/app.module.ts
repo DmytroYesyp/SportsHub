@@ -73,6 +73,7 @@ import { EditArticleComponent } from './admin-article/edit-article/edit-article.
 import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
 import { AdminMainArticleComponent } from './admin-article/admin-main-article/admin-main-article.component';
 import { AdminVideoComponent } from './admin-video/admin-video.component';
+import { AdminVideoCreateComponent } from './admin-video/admin-video-create/admin-video-create.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -134,7 +135,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditArticleComponent,
     AdminArticleListComponent,
     AdminMainArticleComponent,
-    AdminVideoComponent
+    AdminVideoComponent,
+    AdminVideoCreateComponent
   ],
 
   imports: [
