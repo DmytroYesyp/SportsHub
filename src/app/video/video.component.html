@@ -58,11 +58,11 @@
 <app-lang></app-lang>
 
 <div style="display: flex; justify-content: center;">
-<!--  <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="video/*">-->
+  <!--  <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="video/*">-->
   <button (click)="upload = true">Upload</button>
 
   <div *ngIf="upload">
-      <app-video-uploader [file]="new_file"></app-video-uploader>
+    <app-video-uploader [file]="new_file"></app-video-uploader>
   </div>
 </div>
 <!--<div>-->

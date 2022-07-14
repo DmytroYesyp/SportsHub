@@ -27,6 +27,7 @@ import {TeamPageComponent} from "../team-page/team-page.component";
 import {LeaguePageComponent} from "../league-page/league-page.component";
 import {EditArticleComponent} from "../admin-article/edit-article/edit-article.component";
 import {AdminArticleListComponent} from "../admin-article/admin-article-list/admin-article-list.component";
+import {AdminVideoComponent} from "../admin-video/admin-video.component";
 
 const routes: Routes = [
   {
@@ -60,7 +61,8 @@ const routes: Routes = [
       {path: 'admin_get_article/:sportKindId', component: AdminArticleListComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent},
-      {path: 'admin_page/set-lang', component: SetLangComponent}
+      {path: 'admin_page/set-lang', component: SetLangComponent},
+      {path: 'admin_video', component: AdminVideoComponent}
     ]
   }
 ];

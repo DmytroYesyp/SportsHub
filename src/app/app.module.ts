@@ -72,6 +72,7 @@ import { MostCommentedComponent } from './most-commented/most-commented.componen
 import { EditArticleComponent } from './admin-article/edit-article/edit-article.component';
 import { AdminArticleListComponent } from './admin-article/admin-article-list/admin-article-list.component';
 import { AdminMainArticleComponent } from './admin-article/admin-main-article/admin-main-article.component';
+import { AdminVideoComponent } from './admin-video/admin-video.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -132,7 +133,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MostCommentedComponent,
     EditArticleComponent,
     AdminArticleListComponent,
-    AdminMainArticleComponent
+    AdminMainArticleComponent,
+    AdminVideoComponent
   ],
 
   imports: [
