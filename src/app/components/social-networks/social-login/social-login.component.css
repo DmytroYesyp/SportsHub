@@ -415,6 +415,7 @@ main_kinds{
 .item{
   height: 3.3vw;
   width: 25vw;
+
   /*background-color: blue;*/
 }
 .itemInChange{
@@ -425,6 +426,7 @@ main_kinds{
 .itemInChange:hover{
   border: none;
   box-shadow: 1px 1px 10px lightgray;
+  margin-bottom: 2px;
 }
 .changeBox{
   overflow: visible;
@@ -442,3 +444,4 @@ main_kinds{
   text-decoration: underline;
   font-weight: bold;
 }
+
