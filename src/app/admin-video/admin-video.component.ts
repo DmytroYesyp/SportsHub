@@ -69,7 +69,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos`).subscribe(data => {
-      this.ent = data
+      this.ent = data;
     })
 
 
