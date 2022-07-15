@@ -75,6 +75,9 @@ export class AdminVideoComponent implements OnInit, OnChanges {
 
   }
 
+  func2(num : number){
+    this.checker = num;
+  }
 
 
 

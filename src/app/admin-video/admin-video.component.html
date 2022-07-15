@@ -56,7 +56,7 @@
   </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" >
 
   <div class="sidebar">
     <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true"
@@ -81,8 +81,6 @@
 
   </div>
 
-<<<<<<< HEAD
-
 
   <div id="video_box" >
 
@@ -92,7 +90,7 @@
 
     <div id="secondLayer">
       <form style="float: left">
-        <mat-form-field class="RowForm" appearance="outline">
+        <mat-form-field class="RowForm" appearance="outline" style="width: 14vw">
           <mat-select [(ngModel)]="selectedValue3" name="value2">
             <mat-option class="check" *ngFor="let value3 of vals" [value]="value3.value" (click)="func()">
               {{value3.viewValue}}
@@ -126,21 +124,31 @@
 
 
 
-    <div id="videosArea" >
+    <div id="videosArea">
 
-      <div class=videoItem *ngFor="let i of ent" >
-
-
-        <i class="dropdown" style="float: right;height: 6vw"><div class="leFaIcon"></div><div class="leFaIcon"></div><div class="leFaIcon"></div>
-
-          <div class="dropdown-content" style="right:0;">
-            <p>Hello World!</p>
-            <p>Hello World!</p>
-          </div>
-        </i>
+      <div class=videoItem (mouseover)="func2(i.id)" *ngFor="let i of ent" >
 
 
-        <div class="preview"></div>
+<!--        <i class="dropdown" style="float: right;height: 6vw"><div class="leFaIcon"></div><div class="leFaIcon"></div><div class="leFaIcon"></div>-->
+
+<!--          <div class="dropdown-content" style="right:0;">-->
+<!--            <p>Hello World!</p>-->
+<!--            <p>Hello World!</p>-->
+<!--          </div>-->
+<!--        </i>-->
+        <button style="margin-top: 1vw;float: right;margin-right: 1vw" *ngIf="checker == i.id" (click)="func2(i.id)" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu class="matMenu" #menu="matMenu">
+          <button class="matMenu" mat-menu-item>
+            <span *ngIf="i.visible">Unpublish</span><span *ngIf="!i.visible">Publish</span>
+          </button>
+          <button class="matMenu" mat-menu-item>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+
+        <div class="preview"><video [src]="i.url" height="172"></video></div>
         <div class="textField">{{i.description}}</div>
         <div class="un_published">
           <div *ngIf="i.visible" class="dot"></div>
