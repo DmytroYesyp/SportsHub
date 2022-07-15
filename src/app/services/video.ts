@@ -1,3 +1,3 @@
 export class Video{
-  constructor(public description: string, public is_visible: boolean, public url: string){}
+  constructor(public description: string, public visible: boolean, public url: string){}
 }

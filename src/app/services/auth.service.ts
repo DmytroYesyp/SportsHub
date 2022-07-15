@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {tap} from 'rxjs/operators'
 import {Team} from "../admin-team-page/admin-team-page.component";
+import {Video} from "./video";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class AuthService{
 
   register(user: User){
     return this.http.post('http://localhost:8080/api/users/registerUser', user)
+  }
+
+  addVideo(video: Video){
+    return this.http.post('http://localhost:8080/api/fireBaseVideo/addNewVideo', video)
   }
 
   forgot_password(param){
