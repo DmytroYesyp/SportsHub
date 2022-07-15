@@ -5,10 +5,9 @@ import com.sportshub.entity.FireBaseVideo.FireBaseVideoEntity;
 import com.sportshub.service.FireBaseVideo.impl.FireBaseVideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/fireBaseVideo/")
@@ -21,7 +20,14 @@ public class FireBaseVideoController {
     }
 
     @PostMapping(path = {"addNewVideo"})
-    public ResponseEntity<String> regNewUser(@RequestBody FireBaseVideoEntity fireBaseVideoEntity) {
+    public ResponseEntity<String> addNewVideo(@RequestBody FireBaseVideoEntity fireBaseVideoEntity) {
         return fireBaseVideoService.addNewVideo(fireBaseVideoEntity);
     }
+
+    @GetMapping(path = {"getVideos{params}" , "getVideos"})
+    public ResponseEntity<List<FireBaseVideoEntity>> getVideos(@RequestParam(required = false) Integer params){
+        return fireBaseVideoService.getVideo(params);
+    }
+
+
 }

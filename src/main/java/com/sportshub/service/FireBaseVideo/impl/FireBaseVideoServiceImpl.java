@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @Service
 public class FireBaseVideoServiceImpl implements FireBaseVideoService {
@@ -24,4 +25,20 @@ public class FireBaseVideoServiceImpl implements FireBaseVideoService {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/fireBaseVideo/addNewVideo").toUriString());
         return ResponseEntity.created(uri).build();
     }
+    @Override
+    public ResponseEntity<List<FireBaseVideoEntity>> getVideo(Integer param) {
+
+        if (param == null) {
+            return ResponseEntity.ok(fireBaseVideoRepository.findAll());
+        }
+
+        if (param == 1) {
+            return ResponseEntity.ok(fireBaseVideoRepository.IsVisible(true));
+        }
+        if (param == 0) {
+            return ResponseEntity.ok(fireBaseVideoRepository.IsVisible(false));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
