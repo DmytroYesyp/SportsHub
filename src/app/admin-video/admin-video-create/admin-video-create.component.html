@@ -38,13 +38,13 @@
 
 
 <div class="under_head">
-  <div class="under_one">
-    <div class="under_home">Home</div>
-    <div class="under_right">
-      <div class="right_save"><a href="/admin_video/create">+ Add new video</a></div>
-    </div>
-  </div>
-  <hr>
+<!--  <div class="under_one">-->
+<!--    <div class="under_home">Home</div>-->
+<!--    <div class="under_right">-->
+<!--      <div class="right_save"><a href="/admin_video/create">+ Add new video</a></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <hr>-->
   <div class="under_two">
     <a href="/main">Home</a>
     <a class="txt1" href="">
@@ -81,79 +81,56 @@
 
   </div>
 
-<<<<<<< HEAD
+  <div class="cont">
+    <div style="display: flex; justify-content: center;">
+      <!--  <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="video/*">-->
 
-
-  <div id="video_box" >
-
-    <div id="firstLayer">
-      <i style="font-size: 1.1vw;color: #87909f;float: right;padding: 1vw;margin-top: 0" class="fa fa-search active"></i>
+      <div *ngIf="upload">
+        <app-video-uploader [file]="file"></app-video-uploader>
+      </div>
     </div>
+    <!--<div>-->
+    <!--  <video src="https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/video%2F1657211364973_Evangelion.MP4?alt=media&token=1139fd17-d39b-4756-9926-d2db25975af0"></video>-->
+    <!--</div>-->
+    <input type='file' (change)="onSelectFile($event)" accept="video/*"/>
+    <button (click)="upload = true">Upload</button>
+    <video [src]="url" *ngIf="format==='video' && url" height="300" controls ></video> <br/>
+    <br/>
 
-    <div id="secondLayer">
-      <form style="float: left">
-        <mat-form-field class="RowForm" appearance="outline">
-          <mat-select [(ngModel)]="selectedValue3" name="value2">
-            <mat-option class="check" *ngFor="let value3 of vals" [value]="value3.value" (click)="func()">
-              {{value3.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
+    <div *ngIf="url">
 
-<!--      <form>-->
-<!--        <mat-form-field class="RowForm" appearance="outline">-->
-
-<!--          &lt;!&ndash;          <mat-label>subcategory</mat-label>&ndash;&gt;-->
-<!--          <mat-select [(ngModel)]="1" name="value2">-->
-<!--            <mat-option class="check" *ngFor="let value3 of values" [value]="value3.value">-->
-<!--              {{value3.viewValue}}-->
-<!--            </mat-option>-->
-<!--          </mat-select>-->
-<!--        </mat-form-field>-->
-<!--      </form>-->
+      <div class="container">
+        <div class="cont">
+          <form [formGroup]="form" (submit)="onSubmit()">
+              <div class="cont_txt">Enter video title</div>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Enter video description</mat-label>
+                <label>
+                  <input formControlName="description" matInput placeholder="some description" required>
+                </label>
+                <mat-error *ngIf="form.hasError('required','description')">Not valid</mat-error>
+              </mat-form-field>
 
 
-      <div style="margin-top: 0.8vw;float: right; margin-right: -3vw;" class="item">
-        <p style="width: 15vw; float: left; margin-top: 0.2vw;text-align: right; margin-right: 1vw">Allow to share videos:</p><p style="float: left;margin-top: 0.2vw;margin-right: 0.5vw">No</p>
-        <input  id="allSectionLogIn" style="float: left" type="checkbox" class="toggle-button" >
+            <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >Submit</button>
+
+          </form>
+        </div>
       </div>
 
-    </div>
-
-
-
-
-
-
-    <div id="videosArea" >
-
-      <div class=videoItem *ngFor="let i of ent" >
-
-
-        <i class="dropdown" style="float: right;width: 6vw;height: 6vw"><div class="leFaIcon"></div><div class="leFaIcon"></div><div class="leFaIcon"></div>
-
-          <div class="dropdown-content" style="right:0;">
-            <p>Hello World!</p>
-            <p>Hello World!</p>
-          </div>
-        </i>
-
-
-        <div class="preview"></div>
-        <div class="textField">{{i.description}}</div>
-        <div class="un_published">
-          <div *ngIf="i.visible" class="dot"></div>
-          <div *ngIf="!i.visible" class="dot2"></div>
-          {{isPublished(i.visible)}}
+      <div style="">
+        <h3>Video preview example:</h3>
+        <video [src]="url" *ngIf="format==='video' && url" height="150"></video> <br/>
+        <h6>{{name}}</h6>
+        <h6>Edited at {{time}}</h6>
       </div>
-
-
     </div>
-
   </div>
 
+
 </div>
-=======
->>>>>>> origin/test.client.merge
-</div>
+
+
+
+
+

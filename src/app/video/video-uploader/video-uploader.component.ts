@@ -5,6 +5,10 @@ import {Observable} from "rxjs";
 import {getStorage, ref, getDownloadURL} from "firebase/storage"
 import {AuthService} from "../../services/auth.service";
 import {listAll} from "@angular/fire/storage";
+import {AdminVideoCreateComponent} from "../../admin-video/admin-video-create/admin-video-create.component";
+import {User} from "../../services/user";
+import {HttpClient} from "@angular/common/http";
+import {Video} from "../../services/video";
 
 @Component({
   selector: 'app-video-uploader',
@@ -16,22 +20,31 @@ export class VideoUploaderComponent implements OnInit {
   initialImage: string = '';
   imageSrc: any = '';
   @Input() file: File;
+  video: Video;
 
 
 
-
-  url: string;
+  downloadUrl;
 
   task: AngularFireUploadTask;
 
   percentage: Observable<number>;
   snapshot: Observable<any>;
-  downloadURL;
 
-  constructor(private storage: AngularFireStorage) { }
+  constructor(private storage: AngularFireStorage,
+              private videoCreate: AdminVideoCreateComponent,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.saveVideo()
+  }
+
+  save(): void{
+    this.video.url = this.downloadUrl;
+    this.video.is_visible = false;
+    this.video.description = this.videoCreate.description
+
+    this.http.post('http://localhost:8080/api/fireBaseVideo/addNewVideo', this.video)
   }
 
   async saveVideo(){
@@ -45,10 +58,19 @@ export class VideoUploaderComponent implements OnInit {
     // The main task
     await this.storage.upload(path, this.file);
 
-    getDownloadURL(ref(storage, path)).then((url) =>{
-      this.url = url;
-      console.log(url)
-    })
+    this.downloadUrl = await getDownloadURL(ref(storage, path));
+
+    // await getDownloadURL(ref(storage, path)).then((url) =>{
+    //   this.downloadUrl = url;
+    //   console.log(url)
+    // })
+
+    await this.save();
+
+
+
+
+
     // Progress monitoring
     // @ts-ignore
     // this.percentage = this.task.percentageChanges();
