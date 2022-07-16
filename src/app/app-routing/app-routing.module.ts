@@ -21,10 +21,10 @@ import {NavMenuItemsComponent} from "../category-menu/nav-menu-items/nav-menu-it
 import {AddArticleComponent} from "../admin-article/add-article/add-article.component";
 import {EditArticleComponent} from "../admin-article/edit-article/edit-article.component";
 import {AdminArticleListComponent} from "../admin-article/admin-article-list/admin-article-list.component";
-import {SiteFooterComponent} from "../site-footer/site-footer.component";
 import {AboutComponent} from "../about/about.component";
 import {PrivacyPolicyComponent} from "../privacy-policy/privacy-policy.component";
 import {ContactUsComponent} from "../contact-us/contact-us.component";
+import {AdminFooterComponent} from "../admin-footer/admin-footer.component";
 
 const routes: Routes = [
   {
@@ -36,7 +36,6 @@ const routes: Routes = [
       {path: 'reset_password', component: ResetPasswordComponent},
       {path: 'main', component: MainPageComponent},
       {path: 'article/:newsId', component: ArticleComponent},
-      {path: 'site-footer', component: SiteFooterComponent},
       {path: 'about', component: AboutComponent},
       {path: 'privacy-policy', component: PrivacyPolicyComponent},
       {path: 'contact-us', component: ContactUsComponent}
@@ -56,7 +55,8 @@ const routes: Routes = [
       {path: 'admin_get_article/:sportKindId', component: AdminArticleListComponent},
       {path: 'article_editor', component: ArticleEditorComponent},
       {path: 'admin_team-page', component: AdminTeamPageComponent},
-      {path: 'admin_page/set-lang', component: SetLangComponent}
+      {path: 'admin_page/set-lang', component: SetLangComponent},
+      {path: 'admin-footer', component: AdminFooterComponent}
     ]
   }
 ];
