@@ -9,5 +9,9 @@ public interface FireBaseVideoService {
 
     ResponseEntity<String> addNewVideo(FireBaseVideoEntity fireBaseVideoEntity);
 
-    ResponseEntity<List<FireBaseVideoEntity>> getVideo(Integer params);
+    ResponseEntity<List<FireBaseVideoEntity>> getVideo(Integer praram);
+
+    ResponseEntity<String> deleteById(long id);
+
+    ResponseEntity<String> changeVisibility(long id, Boolean val);
 }

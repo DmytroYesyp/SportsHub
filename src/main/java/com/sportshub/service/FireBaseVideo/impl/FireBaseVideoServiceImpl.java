@@ -41,4 +41,20 @@ public class FireBaseVideoServiceImpl implements FireBaseVideoService {
         return ResponseEntity.notFound().build();
     }
 
+    @Override
+    public ResponseEntity<String> deleteById(long id){
+        fireBaseVideoRepository.deleteById(id);
+        return ResponseEntity.ok().body(null);
+    }
+
+    @Override
+    public ResponseEntity<String> changeVisibility(long id,Boolean val){
+
+        FireBaseVideoEntity ent = fireBaseVideoRepository.getById(id);
+
+        ent.setVisible(val);
+        fireBaseVideoRepository.save(ent);
+        return ResponseEntity.ok().body(null);
+    }
+
 }

@@ -30,4 +30,15 @@ public class FireBaseVideoController {
     }
 
 
+    @PatchMapping(path = {"changeVisibility{id}{val}"})
+    public ResponseEntity<String>changeVisibility(@RequestParam() long id,@RequestParam() Boolean val){
+        return fireBaseVideoService.changeVisibility(id,val);
+    }
+
+    @DeleteMapping(path = {"deleteById{id}"})
+    public ResponseEntity<String>deleteById(@RequestParam() long id){
+        return fireBaseVideoService.deleteById(id);
+    }
+
+
 }
