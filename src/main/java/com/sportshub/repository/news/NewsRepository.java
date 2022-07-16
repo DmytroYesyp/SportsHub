@@ -44,7 +44,8 @@ public interface NewsRepository extends CustomNewsRepository, JpaRepository<News
     List<NewsEntity> findPopular(@Param("limitDate") int limitDate, Pageable pageable);
 
     @Query(value = "select news.id, news.title, news.description,\n" +
-            "news.publication_date, news.image, news.league_id, news.text, news.views from\n" +
+            "news.publication_date, news.image, news.league_id, news.text, news.views,\n" +
+            "news.caption, news.alternative_text, news.is_published, news.main_page_order from\n" +
             "(select * from news \n" +
             "inner join (select news_id, count (*) as cnt from comments\n" +
             "group by news_id order by cnt desc)\n" +

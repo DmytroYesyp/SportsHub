@@ -72,10 +72,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**", "/v2/api-docs").permitAll();
         http.authorizeRequests().antMatchers(POST,"/api/users/registerUser").permitAll();
         http.authorizeRequests().antMatchers(POST,"/login","/main").permitAll();
+        http.authorizeRequests().antMatchers(DELETE,"/follows/{id}").permitAll();
         http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}","/api/socialLogIn/getAllLogIn", "/api/socialShare/**", "/api/socialFollow/getAllFollows",
                 "/language", "/comments", "/comments/news{id}", "/api/users/users{userId}", "/news/mostpop", "/teams/{id}",
                 "/comments/mostcomm", "/datelimits/{id}","/datelimits", "/likes", "/likes/count", "/likes/check",
-                "/dislikes", "/dislikes/count", "/dislikes/check").permitAll();
+                "/dislikes", "/dislikes/count", "/dislikes/check", "/follows").permitAll();
         http.authorizeRequests().antMatchers(PUT,"/news/{id}", "/datelimits/{id}").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
