@@ -9,5 +9,5 @@ public interface FireBaseVideoService {
 
     ResponseEntity<String> addNewVideo(FireBaseVideoEntity fireBaseVideoEntity);
 
-    ResponseEntity<List<FireBaseVideoEntity>> getVideo(Integer praram);
+    ResponseEntity<List<FireBaseVideoEntity>> getVideo(Integer params);
 }
