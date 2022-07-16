@@ -74,7 +74,11 @@ export class ArticleComponent implements OnInit {
           "publicationDate": this.list['publicationDate'],
           "image": this.list['image'],
           "leagueId": this.list['leagueId'],
-          "views": this.views
+          "views": this.views,
+          "alternativeText": this.list['alternativeText'],
+          "caption": this.list['caption'],
+          "isPublished": this.list['isPublished'],
+          "mainPageOrder": this.list['mainPageOrder']
         })
           .subscribe(() => {});
         this.teamIds = this.list['teamIds']
