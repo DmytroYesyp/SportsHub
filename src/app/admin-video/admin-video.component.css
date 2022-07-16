@@ -417,8 +417,8 @@ main_kinds{
 }
 
 #videosArea{
-  width: 60vw;
-  height: 50vw;
+  width: 61vw;
+  height: 51vw;
   overflow: auto;
 }
 .videoItem{
@@ -511,4 +511,8 @@ main_kinds{
   display: block;
 
   margin-top: 1vw;
+}
+.matMenu:hover{
+  background-color: #fbe7e8;
+  color: #d72130;
 }

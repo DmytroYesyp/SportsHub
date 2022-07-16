@@ -85,14 +85,18 @@
   <div id="video_box" >
 
     <div id="firstLayer">
-      <i style="font-size: 1.1vw;color: #87909f;float: right;padding: 1vw;margin-top: 0" class="fa fa-search active"></i>
+
+      <i (click)="glass = !glass" style="font-size: 1.1vw;color: #87909f;float: right;padding: 1vw;margin-top: 0;" class="fa fa-search active"></i>
+      <div *ngIf="glass" style="float: right;margin-right: 3vw;margin-top: 0.35vw;width: 5vw">
+        <input style="width: 7vw; " placeholder="Search..." class="TextFields" type="text"  [(ngModel)]="filterString"/>
+      </div>
     </div>
 
     <div id="secondLayer">
-      <form style="float: left">
-        <mat-form-field class="RowForm" appearance="outline" style="width: 14vw">
+      <form  style="float: left">
+        <mat-form-field class="RowForm" appearance="outline" >
           <mat-select [(ngModel)]="selectedValue3" name="value2">
-            <mat-option class="check" *ngFor="let value3 of vals" [value]="value3.value" (click)="func()">
+            <mat-option  class="check" *ngFor="let value3 of vals" [value]="value3.value" (click)="func()">
               {{value3.viewValue}}
             </mat-option>
           </mat-select>
@@ -126,7 +130,7 @@
 
     <div id="videosArea">
 
-      <div class=videoItem (mouseover)="func2(i.id)" *ngFor="let i of ent" >
+      <div class=videoItem (mouseover)="func2(i.id)" *ngFor="let i of ent|appFilter:filterString;let a = index" [attr.data-index]="a" >
 
 
 <!--        <i class="dropdown" style="float: right;height: 6vw"><div class="leFaIcon"></div><div class="leFaIcon"></div><div class="leFaIcon"></div>-->
@@ -137,13 +141,13 @@
 <!--          </div>-->
 <!--        </i>-->
         <button style="margin-top: 1vw;float: right;margin-right: 1vw" *ngIf="checker == i.id" (click)="func2(i.id)" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_horiz</mat-icon>
+          <mat-icon style="color:#c63638">more_horiz</mat-icon>
         </button>
         <mat-menu class="matMenu" #menu="matMenu">
-          <button class="matMenu" mat-menu-item>
+          <button class="matMenu" mat-menu-item (click)="setVisibility(i.id,!i.visible) ;i.visible =!i.visible">
             <span *ngIf="i.visible">Unpublish</span><span *ngIf="!i.visible">Publish</span>
           </button>
-          <button class="matMenu" mat-menu-item>
+          <button class="matMenu" mat-menu-item (click)="deleteById(i.id);ent.splice(ent.indexOf(i),1)">
             <span>Delete</span>
           </button>
         </mat-menu>

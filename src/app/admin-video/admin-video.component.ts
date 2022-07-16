@@ -1,6 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Team} from "../admin-team-page/admin-team-page.component";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 interface text {
   value: string;
@@ -15,10 +15,15 @@ interface text {
 
 
 export class AdminVideoComponent implements OnInit, OnChanges {
+
   show : Number;
   ent : videoEntity[];
   selectedValue3: string = 'text-1';
   checker : number = -1;
+  glass : boolean = false;
+
+
+  filterString: string = '';
 
   vals: text[] = [
     {value: 'text-1', viewValue: 'All'},
@@ -79,7 +84,21 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     this.checker = num;
   }
 
+  deleteById(id:number){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",id);
+    this.http.delete(`http://localhost:8080/api/fireBaseVideo/deleteById`,{params : queryParams}).subscribe()
 
+  }
+
+  setVisibility(id : number,rev : boolean){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",id);
+    queryParams = queryParams.append("val",rev);
+
+
+    this.http.patch(`http://localhost:8080/api/fireBaseVideo/changeVisibility`,null,{params : queryParams}).subscribe()
+  }
 
 }
 export class videoEntity{

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {videoEntity} from "./admin-video/admin-video.component";
 
 
 @Pipe({ name: 'appFilter' })
@@ -16,7 +17,12 @@ export class SearchFilterPipe implements PipeTransform {
     searchText = searchText.toLocaleLowerCase();
 
     return items.filter(it => {
-      return it.name.toString().toLocaleLowerCase().includes(searchText);
+
+      if (!!it.description)
+        return it.description.toString().toLocaleLowerCase().includes(searchText);
+      if (!!it.name)
+        return it.name.toString().toLocaleLowerCase().includes(searchText);
+
     });
   }
 }
