@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupDeleteCommComponent } from './popup-delete-comm.component';
+import { AdminFooterComponent } from './admin-footer.component';
 
-describe('PopupDeleteCommComponent', () => {
-  let component: PopupDeleteCommComponent;
-  let fixture: ComponentFixture<PopupDeleteCommComponent>;
+describe('AdminFooterComponent', () => {
+  let component: AdminFooterComponent;
+  let fixture: ComponentFixture<AdminFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupDeleteCommComponent ]
+      declarations: [ AdminFooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupDeleteCommComponent);
+    fixture = TestBed.createComponent(AdminFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

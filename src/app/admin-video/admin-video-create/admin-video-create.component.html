@@ -93,7 +93,6 @@
     <!--  <video src="https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/video%2F1657211364973_Evangelion.MP4?alt=media&token=1139fd17-d39b-4756-9926-d2db25975af0"></video>-->
     <!--</div>-->
     <input type='file' (change)="onSelectFile($event)" accept="video/*"/>
-    <button (click)="upload = true">Upload</button>
     <video [src]="url" *ngIf="format==='video' && url" height="300" controls ></video> <br/>
     <br/>
 
@@ -118,12 +117,12 @@
         </div>
       </div>
 
-      <div style="">
-        <h3>Video preview example:</h3>
-        <video [src]="url" *ngIf="format==='video' && url" height="150"></video> <br/>
-        <h6>{{name}}</h6>
-        <h6>Edited at {{time}}</h6>
-      </div>
+<!--      <div style="">-->
+<!--        <h3>Video preview example:</h3>-->
+<!--        <video [src]="url" *ngIf="format==='video' && url" height="150"></video> <br/>-->
+<!--        <h6>{{name}}</h6>-->
+<!--        <h6>Edited at {{time}}</h6>-->
+<!--      </div>-->
     </div>
   </div>
 

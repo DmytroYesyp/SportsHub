@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<title>Main</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+
+  <div class="search-container">
+    <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate}}" name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+
+  </div>
+
+  <div class="share-container">
+    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
+    <a href="https://facebook.com" class="fa fa-facebook"></a>
+    <a href="https://twitter.com" class="fa fa-twitter"></a>
+    <a href="https://google.com" class="fa fa-google"></a>
+  </div>
+
+</div>
+
+
+<div *ngIf="isAdmin">
+  <div class="switch_view">
+    <a href="/admin_page"><i class="fa fa-rotate-right" aria-hidden="true" style="font-size: 2vw;color: black;"></i></a>
+  </div>
+</div>
+
+
+
+<!--<div class="profile-container">-->
+<!--  <div class="profile_img"></div>-->
+<!--  <mat-expansion-panel  class = "profile">-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        {{firstName}} {{lastName}}-->
+<!--      </mat-panel-title>-->
+<!--    </mat-expansion-panel-header>-->
+<!--    <a href="/profile" class="txt1"> View profile</a><br>-->
+<!--    <a href="" class="txt1"> Change password</a><br>-->
+<!--    <a href="" class="txt1"> My surveys</a><br>-->
+<!--    <a href="" class="txt1"> My teamhub</a><br><br>-->
+<!--    <a href="/login" class="txt1" (click)="logOut()">Log out</a>-->
+<!--  </mat-expansion-panel>-->
+<!--</div>-->
+
+
+<div *ngIf="authenticated">
+  <app-header-user-profile></app-header-user-profile>
+</div>
+
+<div *ngIf="!authenticated">
+  <a href="/register" class="txt">{{'REG.SIGNUP'|translate}}</a>
+  <a href="/login" class="btn">
+    <div class="btn_txt">{{'REG.LOGIN'|translate}}</div>
+  </a>
+</div>
+
+
+<!--<mat-expansion-panel  class = "language">-->
+<!--  <mat-expansion-panel-header>-->
+<!--    <mat-panel-title>-->
+<!--      EN-->
+<!--    </mat-panel-title>-->
+<!--  </mat-expansion-panel-header>-->
+<!--  <a href="" class="txt1"> UA </a><br>-->
+<!--</mat-expansion-panel>-->
+
+<app-lang></app-lang>
+
+<div class="aboutSportsHub">
+  <a href="/main"><h3>Back to the main page</h3></a>
+  <div class="textAbout">
+    <h4>About Sports Hub</h4>
+    <p>
+      Sports Hub - is a network media resource that
+      consists of integrated web pages (both in terms of content and navigation) and specializes in news content and serves as media on the Internet. The news portal has almost all of these
+      characteristics of the news site, but is a much more complex (both structurally-compositionally and technologically) network resource, functional
+      the platform of which may consist of more than one site, have many ancillary services, online services, contain both own and borrowed content (text, image, audiovisual, interactive,
+      multimedia, etc.), adapt to personality-oriented user requests, automatically generate a variety of content samples, etc.
+      <br><br>
+      The main idea of ​​the news portal is to form a critical (maximally expanded) volume of information services and services in order to attract as large an audience as possible. So, the news portal for
+      is an online media resource that provides interactive news services that work within a single resource, serve as access points to news information and help to find it on the Internet.
+      <br><br>
+      The main idea of ​​the news portal is to form a critical (maximally expanded) volume of information services and services in order to attract as large an audience as possible. So, the news portal
+      for is an online media resource that provides interactive news services that work within a single resource, serve as access points to news information and help to find it on the Internet.
+    </p>
+  </div>
+</div>
+
+<div class="allFooter">
+
+  <div class="upperFooter">
+    <hr class="footerLine">
+
+    <div class="filledFooter">
+      <div class="companyInfo">
+        <h4 class="footerTitle">COMPANY INFO</h4>
+        <a href="/about"><h3>About Sports Hub</h3></a>
+        <a href=""><h3>News / In the Press</h3></a>
+        <a href=""><h3>Advertising / Sports Blogger Ad Network</h3></a>
+        <a href=""><h3>Events</h3></a>
+        <a href=""><h3>Contact Us</h3></a>
+      </div>
+      <div class="contributors">
+        <h4 class="footerTitle">CONTRIBUTORS</h4>
+        <a href=""><h3>Featured Writers Program</h3></a>
+        <a href=""><h3>Featured Team Writers Program</h3></a>
+        <a href=""><h3>Internship Program</h3></a>
+      </div>
+      <div class="newsletter">
+        <h4 class="footerTitle">NEWSLETTER</h4>
+        <label class="newsletterLabel">Sign up to receive the latest sports news</label>
+        <div class="subscribeField">
+          <form class="subscribeInputs">
+            <input class="subscribeTextField" type="text" placeholder="Your email address">
+            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
+          </form>
+          <button class="subscribeTextField2">Subscribe</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="">Copyright ©2019 Sports Hub</a>
+    <br>
+    <a href="/privacy-policy">Privacy / Terms</a>
+  </div>
+</div>
+
+</body>

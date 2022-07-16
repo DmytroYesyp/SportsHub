@@ -74,6 +74,11 @@ import { AdminArticleListComponent } from './admin-article/admin-article-list/ad
 import { AdminMainArticleComponent } from './admin-article/admin-main-article/admin-main-article.component';
 import { AdminVideoComponent } from './admin-video/admin-video.component';
 import { AdminVideoCreateComponent } from './admin-video/admin-video-create/admin-video-create.component';
+import { AboutComponent } from './about/about.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AdminFooterComponent } from './admin-footer/admin-footer.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -136,7 +141,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminArticleListComponent,
     AdminMainArticleComponent,
     AdminVideoComponent,
-    AdminVideoCreateComponent
+    AdminVideoCreateComponent,
+    AboutComponent,
+    PrivacyPolicyComponent,
+    ContactUsComponent,
+    AdminFooterComponent
   ],
 
   imports: [

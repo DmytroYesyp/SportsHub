@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminVideoComponent } from './admin-video.component';
+import { PrivacyPolicyComponent } from './privacy-policy.component';
 
-describe('AdminVideoComponent', () => {
-  let component: AdminVideoComponent;
-  let fixture: ComponentFixture<AdminVideoComponent>;
+describe('PrivacyPolicyComponent', () => {
+  let component: PrivacyPolicyComponent;
+  let fixture: ComponentFixture<PrivacyPolicyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminVideoComponent ]
+      declarations: [ PrivacyPolicyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminVideoComponent);
+    fixture = TestBed.createComponent(PrivacyPolicyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
