@@ -11,6 +11,7 @@
 
 <div class="header">
 
+
   <a href="/main" class="logo">
     <div class="logo_txt">Sports Hub</div>
   </a>
@@ -23,12 +24,7 @@
 
   </div>
 
-  <div class="share-container">
-    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
-    <a href="https://facebook.com" class="fa fa-facebook"></a>
-    <a href="https://twitter.com" class="fa fa-twitter"></a>
-    <a href="https://google.com" class="fa fa-google"></a>
-  </div>
+  <app-social-share></app-social-share>
 
 </div>
 
@@ -70,7 +66,7 @@
 
   <div class="block_right">
     <div class="block_1">
-      <div class="toptxt">{{league['name']}}</div>
+      <div class="toptxt">{{team['name']}}</div>
       <div class="photo">
         <img class="photo" src="{{article['image']}}">
       </div>
@@ -96,7 +92,6 @@
             <p >{{e['description']}}</p></div>
         </div>
       </a>
-
     </div>
   </a>
 

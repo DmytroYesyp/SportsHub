@@ -18,7 +18,7 @@ export class HeaderUserProfileComponent implements OnInit {
   profileUrl : string
 
   @Input() arr :string[] = ["View Profile","Change password","My surveys","My teamhub","Log out"]
-  @Input() arr2 :string[]  = ["/profile","","","","/login"]
+  @Input() arr2 :string[]  = ["/profile","","","/team_hub","/login"]
 
   firstName: any;
   lastName: any;

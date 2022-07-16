@@ -25,6 +25,7 @@ import {VideoComponent} from "../video/video.component";
 import {SocialLoginComponent} from "../components/social-networks/social-login/social-login.component";
 import {TeamPageComponent} from "../team-page/team-page.component";
 import {LeaguePageComponent} from "../league-page/league-page.component";
+import {TeamhubComponent} from "../teamhub/teamhub.component";
 import {EditArticleComponent} from "../admin-article/edit-article/edit-article.component";
 import {AdminArticleListComponent} from "../admin-article/admin-article-list/admin-article-list.component";
 import {AdminVideoComponent} from "../admin-video/admin-video.component";
@@ -45,7 +46,8 @@ const routes: Routes = [
       {path: 'video', component: VideoComponent},
       {path: 'admin_page/social-login', component: SocialLoginComponent},
       {path: 'team/:teamId', component: TeamPageComponent},
-      {path: 'league/:leagueId', component: LeaguePageComponent}
+      {path: 'league/:leagueId', component: LeaguePageComponent},
+      {path: 'team_hub', component: TeamhubComponent}
     ]
   },
   {

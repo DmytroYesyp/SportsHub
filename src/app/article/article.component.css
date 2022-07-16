@@ -240,6 +240,7 @@ input[type=text] {
 .line_more{
   height: 1px;
   background: #b2b2b2;
+  width: 900px;
 }
 .article{
   border: 1px #c7c7c7 solid;

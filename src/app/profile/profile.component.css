@@ -364,10 +364,13 @@ a:hover{
 
 
 #radio-one_{
-  width: 10vw;
+  width: 8vw;
 }
 #radio-two_{
-  width: 15vw;
+  width: 12vw;
+}
+#radio-three_{
+  width: 8vw;
 }
 .form {
 

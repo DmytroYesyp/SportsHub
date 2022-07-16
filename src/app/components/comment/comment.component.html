@@ -5,7 +5,7 @@
   <mat-expansion-panel class="sort">
     <mat-expansion-panel-header class="sort1">
       <mat-panel-title>
-        <b class="txt2">Sort by: {{sort}}</b>
+        <b class="txt2">Sort by: <div style="display: inline" *ngIf="!sort">newest first</div>{{sort}}</b>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <button class="sortbtn" (click)="setSort('newest first')">Newest first</button>

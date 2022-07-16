@@ -15,7 +15,6 @@ input[type=text] {
 @media (max-width: 1600px) {
   .search-container{
     margin-left: 20vw;
-
   }
 }
 .search-container button {

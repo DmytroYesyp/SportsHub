@@ -1,10 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {mainPage} from "../services/main-page.service";
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {AppComponent} from "../app.component";
-import {User} from "../services/user";
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +13,7 @@ export class ProfileComponent implements OnInit {
   isVisible: any = 0;
   isSelected: boolean = true;
   form: FormGroup
-  hide=true;
+  hide = true;
   form2: FormGroup
   imageAdd: boolean = false;
   profileUrl: string;
@@ -24,10 +22,8 @@ export class ProfileComponent implements OnInit {
 
 
   arr :string[] = ["My surveys","My teamhub","Log out"]
-  arr2 :string[]  = ["","","/register"]
-
+  arr2 :string[]  = ["","/team_hub", "/register"]
   email: string;
-
   user: Object;
   constructor(private auth:AuthService,
               private http:HttpClient,

@@ -54,6 +54,7 @@ input[type=text] {
   letter-spacing: 1.25893px;
   color: rgba(204, 211, 224, 0.301628);
   transform: rotate(90deg);
+  z-index: 0;
 }
 
 .back_txt2 {
@@ -102,7 +103,7 @@ input[type=text] {
   color: white;
   font-size: 12px;
   padding: 17px;
-  margin-bottom: 0;
+  float: bottom;
 }
 
 
@@ -195,16 +196,6 @@ input[type=text] {
   font-size: 18px;
 }
 
-.photo{
-  position: absolute;
-  width: 900px;
-  height: 460px;
-}
-::ng-deep .newstext{
-  width: 940px;
-  margin-top: 500px;
-  font-size: 16px;
-}
 
 .mcard_photo{
   width: 200px;
@@ -212,16 +203,25 @@ input[type=text] {
 }
 
 .mcards{
-  height: 450px;
   width: 900px;
   display: inline;
-  margin-bottom: 30px;
+  margin-left: 10px;
 }
 
 .mcard{
   height: 130px;
   width: 900px;
   padding: 10px;
+}
+
+.teamcard{
+  height: 130px;
+  width: 900px;
+  padding: 10px;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
+  margin-bottom: 30px;
+  color: #333333;
+  background: white;
 }
 
 .mcard_text{
@@ -264,4 +264,44 @@ input[type=text] {
 
 }
 
+.team_name{
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-size: 30px;
+  margin-top: -95px;
+  margin-left: 150px;
+}
+.team_name:hover{
+  cursor: pointer;
+}
 
+.unfollow{
+  float: right;
+  background: #D72130;
+  border: none;
+  text-decoration: none;
+  color: #EDEDED;
+  padding: 10px 20px 10px 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  margin: -10px -10px;
+}
+
+.unfollow:hover{
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.110932);
+  cursor: pointer;
+}
+
+.team_logo{
+  height: 130px;
+  width: 130px;
+  display: inline-block;
+}
+
+.following_txt{
+  margin-left: 151px;
+  margin-top: 10px;
+  color: #333333;
+  font-family: 'Open Sans', sans-serif;
+
+}

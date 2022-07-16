@@ -39,14 +39,7 @@
 </div>
 <app-header-user-profile [arr]="arr" [arr2]="arr2"></app-header-user-profile>
 
-<mat-expansion-panel class="language">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      EN
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <a href="" class="txt1"> UA </a><br>
-</mat-expansion-panel>
+<app-lang></app-lang>
 
 <div class="main">
   <div class="sidebar">
@@ -77,6 +70,10 @@
                [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-two" name="switch-one"
                value="second"/>
         <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">Change password</p></label>
+        <input  [value]="2"
+               [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-three" name="switch-one"
+               value="second"/>
+        <label id="radio-three_" for="radio-three"><p style="padding-top: 0.6vw">Team hub</p></label>
       </div>
 
       <div style="width: 10vw; margin-left: 8vw;" *ngIf="imageAdd && !isVisible">
@@ -161,6 +158,7 @@
 
 
       </div>
+        <div>Team hub</div>
       </form>
 
     </div>
