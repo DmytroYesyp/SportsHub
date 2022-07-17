@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FireBaseVideoServiceImpl implements FireBaseVideoService {
@@ -43,16 +44,35 @@ public class FireBaseVideoServiceImpl implements FireBaseVideoService {
 
     @Override
     public ResponseEntity<String> deleteById(long id){
+        if (fireBaseVideoRepository.findById(id).isEmpty())
+            return ResponseEntity.notFound().build();
+
         fireBaseVideoRepository.deleteById(id);
         return ResponseEntity.ok().body(null);
     }
 
     @Override
     public ResponseEntity<String> changeVisibility(long id,Boolean val){
+        if (fireBaseVideoRepository.findById(id).isEmpty())
+            return ResponseEntity.notFound().build();
 
         FireBaseVideoEntity ent = fireBaseVideoRepository.getById(id);
 
         ent.setVisible(val);
+        fireBaseVideoRepository.save(ent);
+        return ResponseEntity.ok().body(null);
+    }
+
+
+    public ResponseEntity<String> updateDescription(long id,String val){
+        if (fireBaseVideoRepository.findById(id).isEmpty())
+            return ResponseEntity.notFound().build();
+
+        FireBaseVideoEntity ent = fireBaseVideoRepository.getById(id);
+        if (Objects.equals(val, ent.getDescription()))
+            return ResponseEntity.ok().body(null);
+
+        ent.setDescription(val);
         fireBaseVideoRepository.save(ent);
         return ResponseEntity.ok().body(null);
     }
