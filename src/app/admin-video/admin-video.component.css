@@ -518,3 +518,49 @@ main_kinds{
   background-color: #fbe7e8;
   color: #d72130;
 }
+
+#video_view_box{
+  height: 70vw;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3vw;
+}
+.viewFirstLayer{
+  width: 60vw;
+  height: 3vw;
+}
+.viewVideoLayer{
+  height: 33.75vw;
+  width: 60vw;
+  background-color: black;
+}
+.editDeleteBackButtons{
+  background-color: white;
+  border : 1px solid #d72130;
+  font-size: 0.7vw;
+  color: #d72130;
+}
+
+.editDeleteBackButtons:hover{
+  background-color: #e02232;
+  border : none;
+  color: white;
+  transition: 0.4s;
+}
+.editDeleteBackButtons:focus{
+  background-color: #c80515;
+  border : none;
+  color: white;
+  transition: 0.4s;
+}
+.save-button {
+  color: white;
+  background: #D72130;
+  width: 30vw;
+}
+.save-button:hover:enabled {
+  color: #D72130;
+  background-color: white;
+  width: 30vw;
+}

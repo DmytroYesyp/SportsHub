@@ -22,7 +22,6 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   checker : number = -1;
   glass : boolean = false;
 
-
   filterString: string = '';
 
   vals: text[] = [
@@ -31,6 +30,31 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     {value: 'text-3', viewValue: 'Unpublished'},
   ];
 
+  checkerCurrentDesc : string;
+  currentDesc : string;
+  currentId : number;
+
+  videoString : string;
+  seeVideo : boolean = false;
+
+
+  updateDescription(){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id",this.currentId);
+    queryParams = queryParams.append("val",this.currentDesc);
+    this.checkerCurrentDesc = this.currentDesc;
+
+    // @ts-ignore
+    this.ent.find(i => i.id === this.currentId).description = this.currentDesc;//here is a problem
+
+    this.http.patch(`http://localhost:8080/api/fireBaseVideo/updateDescription`,null,{params : queryParams}).subscribe()
+  }
+
+
+  videoFunc(url:string){
+    this.videoString = url;
+    this.seeVideo = true;
+  }
 
   func(){
     if (this.selectedValue3 == 'text-1'){
@@ -77,6 +101,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
       this.ent = data;
     })
 
+    console.log(this.seeVideo)
 
   }
 

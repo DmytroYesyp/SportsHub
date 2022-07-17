@@ -82,7 +82,29 @@
   </div>
 
 
-  <div id="video_box" >
+  <div id="video_view_box" *ngIf="seeVideo">
+
+    <div class="viewFirstLayer">
+      <button (click)="seeVideo = false;videoString = '';" class="editDeleteBackButtons" style="float: left;height: 1vw;width: 3vw;margin : 1vw">Back</button>
+      <i style="color: #d72130;float: right;margin-top: 1.1vw" class="fa fa-eye" aria-hidden="true">Preview</i>
+    </div>
+    <div class="viewVideoLayer" style="display: flex;justify-content: center;">
+      <video [src]="ent[0].url" height="648" controls></video>
+  </div>
+    <div style="margin-top: 1vw" class="thirdLayer">
+      <div class="videoTitleLayer">
+        <p style="font-size: 0.7vw;color: #8f97a6">VIDEO TITLE*</p>
+        <div>
+          <input style="width: 54vw;float: left" class="TextFields" type="text" [(ngModel)]="currentDesc"/>
+          <button [disabled] = "currentDesc == checkerCurrentDesc" mat-raised-button type="submit" class="save-button" (click)="updateDescription()" style="width: 4vw;float: right;margin-top: 0.1vw">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--16 9 -->
+
+  <div id="video_box" *ngIf="!seeVideo">
 
     <div id="firstLayer">
 
@@ -152,7 +174,7 @@
           </button>
         </mat-menu>
 
-        <div class="preview"><video [src]="i.url" height="138"></video></div>
+        <div (click)="videoFunc(i.url);currentDesc = i.description;checkerCurrentDesc = i.description;currentId = i.id;" class="preview"><video [src]="i.url" height="138"></video></div>
         <div class="textField">{{i.description}}</div>
         <div class="un_published">
           <div *ngIf="i.visible" class="dot"></div>
