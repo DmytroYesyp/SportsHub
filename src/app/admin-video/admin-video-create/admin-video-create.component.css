@@ -1,3 +1,33 @@
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+
+  width: 10vw;
+  height: 5vh;
+  background: #D72130;
+  border: 1px solid #C63638;
+  display: inline-block;
+  cursor: pointer;
+
+}
+
+.custom-file-upload-txt{
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+  /* identical to box height, or 156% */
+
+  /*text-align: center;*/
+  padding-top: 10px;
+
+  color: #FFFFFF;
+}
+
+
 #generalSection{
 
   width: 55vw;
@@ -403,5 +433,12 @@ main_kinds{
   float: left;
   margin-left: 35vw;
   width: 30vw;
+  height: 20vw;
+}
+
+.cont1{
+  float: left;
+  margin-left: 25vw;
+  width: 45vw;
   height: 20vw;
 }

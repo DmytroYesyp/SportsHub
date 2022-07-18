@@ -4,7 +4,14 @@ import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {videoEntity} from "../admin-video/admin-video.component";
+import {Router} from "@angular/router";
+
+interface text {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-video',
@@ -14,9 +21,8 @@ import {HttpParams} from "@angular/common/http";
 export class VideoComponent implements OnInit {
 
   isHovering: boolean;
-  files: File[] = [];
-  file: File;
-  new_file;
+  path :string
+
 
   email: string;
 
@@ -31,19 +37,47 @@ export class VideoComponent implements OnInit {
 
   authenticated: boolean = false;
 
-  form = new FormGroup({
-      title: new FormControl('', [Validators.required])
-    }
-  );
+  show : Number;
+  ent : videoEntity[];
+  selectedValue3: string = 'text-1';
+  checker : number = -1;
+  glass : boolean = false;
+
+  filterString: string = '';
+
+  vals: text[] = [
+    {value: 'text-1', viewValue: 'All'},
+    {value: 'text-2', viewValue: 'Published'},
+    {value: 'text-3', viewValue: 'Unpublished'},
+  ];
+
+  checkerCurrentDesc : string;
+  currentDesc : string;
+  currentId : number;
+
+  videoString : string = "" ;
+  seeVideo : boolean = false;
+
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
               private app: AppComponent,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              private http: HttpClient,
+              private router: Router) {
   }
 
   toggleHover(event: boolean) {
     this.isHovering = event;
+  }
+
+  videoFunc(url:string){
+    this.videoString = url;
+    this.seeVideo = true;
+  }
+
+  videoBack(){
+    this.videoString = "";
   }
 
   getUserFromToken(){
@@ -85,12 +119,15 @@ export class VideoComponent implements OnInit {
     }else{
       this.auth.logout()
     }
-
     this.role = this.app.getUserFromToken()
     console.log(this.role)
     if(this.role=="admin"){
       this.isAdmin = true;
     }
+    this.path = this.router.url
+    this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
+      this.ent = data;
+    })
 
 
     // this.mainpage.getUserByEmail(this.getUserFromToken())
@@ -100,48 +137,14 @@ export class VideoComponent implements OnInit {
     // this.lastName = user.lastName;
   }
 
+  func2(num : number){
+    this.checker = num;
+  }
+
   logOut(){
     this.auth.logout()
   }
 
-  onDrop(files: FileList) {
-    for (let i = 0; i < files.length; i++) {
-      this.files.push(<File>files.item(i))
-      console.log(files)
-    }
-  }
-
-  url;
-  format;
-  name;
-  time;
-  onSelectFile(event) {
-    this.file = event.target.files && event.target.files[0];
-    if (this.file) {
-      this.time = new Date(this.file.lastModified);
-      this.name = this.file.name;
-      var reader = new FileReader();
-      reader.readAsDataURL(this.file);
-      if(this.file.type.indexOf('image')> -1){
-        this.format = 'image';
-      } else if(this.file.type.indexOf('video')> -1){
-        this.format = 'video';
-      }
-      reader.onload = (event) => {
-        this.url = (<FileReader>event.target).result;
-      }
-    }
-  }
-
-  async onSubmit(){
-    const url = URL.createObjectURL(this.file)
-    console.log("Url" + url)
-    const blob = await (await fetch(url)).blob();
-    console.log("Blob" + blob)
-    this.form.disable()
-    this.new_file = new File([blob], this.form.value.title, {type: this.file.type})
-    console.log("File" + this.new_file)
-    console.log(this.new_file.name + this.new_file.type)
-  }
 
 }
+

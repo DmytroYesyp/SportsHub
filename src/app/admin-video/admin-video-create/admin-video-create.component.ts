@@ -20,6 +20,7 @@ export class AdminVideoCreateComponent implements OnInit {
   description: string;
 
   email: string;
+  show: boolean = true;
 
   firstName: any;
   lastName: any;
@@ -116,6 +117,7 @@ export class AdminVideoCreateComponent implements OnInit {
   name;
   time;
   onSelectFile(event) {
+    this.show = false;
     this.file = event.target.files && event.target.files[0];
     if (this.file) {
       this.time = new Date(this.file.lastModified);

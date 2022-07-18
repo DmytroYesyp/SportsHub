@@ -50,7 +50,7 @@
     <a class="txt1" href="">
       <main_kinds></main_kinds>
     </a>
-    <a style="color: #d72130 " href="/main">Video</a>
+    <a style="color: #d72130 " href="/admin_video">Video</a>
     <a href="/lifestle">Lifestyle</a>
     <a href="/dealbook">Dealbook</a>
   </div>
@@ -81,7 +81,7 @@
 
   </div>
 
-  <div class="cont">
+  <div class="cont1">
     <div style="display: flex; justify-content: center;">
       <!--  <input class="file-input" type="file" (change)="onDrop($any($event).target.files)" accept="video/*">-->
 
@@ -92,16 +92,29 @@
     <!--<div>-->
     <!--  <video src="https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/video%2F1657211364973_Evangelion.MP4?alt=media&token=1139fd17-d39b-4756-9926-d2db25975af0"></video>-->
     <!--</div>-->
-    <input type='file' (change)="onSelectFile($event)" accept="video/*"/>
-    <video [src]="url" *ngIf="format==='video' && url" height="300" controls ></video> <br/>
+<!--    <input *ngIf="show" type='file' (change)="onSelectFile($event)" accept="video/*"/>-->
+
+
+
+    <label *ngIf="show" class="custom-file-upload">
+      <div class="custom-file-upload-txt">Upload Video</div>
+      <input type='file' (change)="onSelectFile($event)" accept="video/*"/>
+    </label>
+
+    <video [src]="url" *ngIf="format==='video' && url" height="360" controls ></video> <br/>
+
+
+
+
+
     <br/>
 
     <div *ngIf="url">
 
       <div class="container">
-        <div class="cont">
+        <div class="cont1">
           <form [formGroup]="form" (submit)="onSubmit()">
-              <div class="cont_txt">Enter video title</div>
+              <div class="cont_txt">Enter video description</div>
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Enter video description</mat-label>
                 <label>
@@ -111,7 +124,7 @@
               </mat-form-field>
 
 
-            <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >Submit</button>
+            <button mat-raised-button type="submit" class="save-button" style="width: 100%" [disabled]="form.invalid || form.disabled" >Submit</button>
 
           </form>
         </div>
