@@ -5,7 +5,7 @@ export class ArticleContent {
   alternativeText: string;
   caption: string;
   image: string;
-  isPublished: boolean;
+  isPublished: boolean = true;
   leagueId: number;
   teamIds: number[] = [];
 }

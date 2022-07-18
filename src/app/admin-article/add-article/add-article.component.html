@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="addArticle()">
+<form [formGroup]="form">
 <!--  <div class="picture">-->
 <!--    <p>PICTURE*</p>-->
 <!--    <div class="dashed">-->
@@ -8,7 +8,10 @@
 <!--      </h2>-->
 <!--    </div>-->
 <!--  </div>-->
-  <app-uploader></app-uploader>
+
+  <app-article-photo-uploader (childToParent)="childToParent($event)"></app-article-photo-uploader>
+
+
 
   <div class="container">
 
@@ -94,7 +97,7 @@
     </div>
 
     <div class="button-add">
-      <button mat-raised-button color="warn" type="submit">Add</button>
+      <button mat-raised-button color="warn" (click)="addArticle()">Add</button>
     </div>
   </div>
 </form>

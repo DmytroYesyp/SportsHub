@@ -80,6 +80,7 @@ import { AboutComponent } from './about/about.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
+import { ArticlePhotoUploaderComponent } from './admin-article/add-article/article-photo-uploader/article-photo-uploader.component'
 
 
 
@@ -149,7 +150,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AboutComponent,
     PrivacyPolicyComponent,
     ContactUsComponent,
-    AdminFooterComponent
+    AdminFooterComponent,
+    ArticlePhotoUploaderComponent
   ],
 
   imports: [
@@ -199,6 +201,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AuthService,
+    ArticlePhotoUploaderComponent,
     AppComponent,
     {
       provide: HTTP_INTERCEPTORS,

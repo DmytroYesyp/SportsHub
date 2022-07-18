@@ -1,0 +1,14 @@
+<div class="container1">
+  <ngp-image-picker
+    ($imageChanged)="onImageChanged($event)"
+    [_config]="config"
+    [_imageSrc]="initialImage"
+  ></ngp-image-picker>
+  <div *ngIf="snapshot | async as snap">
+    <div *ngIf="downloadURL as url"></div>
+  </div>
+
+  <button mat-raised-button class="save-button" (click)="savePhoto()" type="button" >Save</button>
+
+</div>
+

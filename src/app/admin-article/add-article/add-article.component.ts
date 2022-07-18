@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ToolbarService, LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
 import {ArticleContent} from "../../dto/article/article-content";
 import {FormBuilder, Validators} from '@angular/forms';
@@ -10,6 +10,7 @@ import {SportKindService} from "../../services/sport-kind.service";
 import {SportKind} from "../../dto/sport/kind/sport-kind";
 import {TeamService} from "../../services/team.service";
 import {Team} from "../../dto/team/team";
+import {ArticlePhotoUploaderComponent} from "./article-photo-uploader/article-photo-uploader.component";
 
 @Component({
   selector: 'app-add-article',
@@ -18,6 +19,8 @@ import {Team} from "../../dto/team/team";
   providers: [ToolbarService, LinkService, ImageService, HtmlEditorService]
 })
 export class AddArticleComponent implements OnInit {
+
+  @Input('childToMaster') URL: string;
 
   sportKinds: SportKind[] = [];
 
@@ -45,8 +48,13 @@ export class AddArticleComponent implements OnInit {
     private leagueService: LeagueService,
     private sportKindService: SportKindService,
     private teamService: TeamService,
-    private router: Router
+    private router: Router,
+    private uploader: ArticlePhotoUploaderComponent
   ) {
+  }
+
+  childToParent(url){
+    this.URL=url;
   }
 
   ngOnInit(): void {
@@ -68,6 +76,7 @@ export class AddArticleComponent implements OnInit {
 
     console.log(formValue.title);
     console.log(formValue.publicationDate);
+    console.log("URL: " + this.URL)
 
     const articleContent = new ArticleContent();
     articleContent.title = formValue.title;
@@ -75,7 +84,7 @@ export class AddArticleComponent implements OnInit {
     articleContent.publicationDate = formValue.publicationDate;
     articleContent.alternativeText = formValue.alternativeText;
     articleContent.caption = formValue.caption;
-    articleContent.image = formValue.image;
+    articleContent.image = this.URL;
     articleContent.leagueId = formValue.league.id;
     articleContent.teamIds = formValue.teams.map(team => team.id);
 

@@ -1,0 +1,13 @@
+.save-button {
+  /*color: white;*/
+  /*background: #D72130;*/
+  /*width: 100%;*/
+  color : white;
+  margin-top: 1vw;
+  height: 2vw;
+  width: 10vw;
+
+  border-radius: 0;
+  border: none;
+  background-color: #d72130;
+}
