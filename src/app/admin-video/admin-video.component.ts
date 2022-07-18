@@ -34,7 +34,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   currentDesc : string;
   currentId : number;
 
-  videoString : string;
+  videoString : string = "" ;
   seeVideo : boolean = false;
 
 
@@ -55,7 +55,9 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     this.videoString = url;
     this.seeVideo = true;
   }
-
+  videoBack(){
+    this.videoString = "";
+  }
   func(){
     if (this.selectedValue3 == 'text-1'){
       this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos`).subscribe(data => {

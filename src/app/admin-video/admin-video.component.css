@@ -103,7 +103,8 @@
 }
 .RowForm{
   width: 14vw;
-  float: left;
+  max-width: 14vw;
+
 }
 .RowForm2{
   width: 55vw;
@@ -563,4 +564,20 @@ main_kinds{
   color: #D72130;
   background-color: white;
   width: 30vw;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline{
+  width: 14vw;
+}
+::-webkit-scrollbar {
+  width: 0.3vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
 }
