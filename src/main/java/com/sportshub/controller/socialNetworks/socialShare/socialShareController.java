@@ -29,6 +29,14 @@ public class socialShareController {
         return socialNetworksService.editSharesByPic(pic,val);
     }
 
+    @PatchMapping(path = "setVideoShare{val}")
+    public ResponseEntity<String> setVideoShare(@RequestParam Boolean val) {
+        return socialNetworksService.setVideoShare(val);
+    }
+    @GetMapping(path = "getVideoShare{val}")
+    public ResponseEntity<Boolean> getVideoShare() {
+        return socialNetworksService.getVideoShare();
+    }
     @PostMapping(path = "addShares")
     public ResponseEntity<socialShare> addShares(@RequestBody socialShare share) {
         return socialNetworksService.addNewShare(share);

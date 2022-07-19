@@ -8,16 +8,24 @@ import com.sportshub.repository.socialNetworks.socialLogInRepository;
 import com.sportshub.repository.socialNetworks.socialShareRepository;
 import com.sportshub.service.socialNetworks.SocialNetworksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Properties;
 
 @Service
 public class SocialNetworksServiceImpl implements SocialNetworksService {
+
+
+
+
 
     private final socialFollowRepository followRepository;
     private final socialShareRepository shareRepository;
@@ -118,4 +126,44 @@ public class SocialNetworksServiceImpl implements SocialNetworksService {
         logInRepository.deleteById(id);
         return ResponseEntity.ok("deleted social login entity by id " + id);
     }
+
+
+    public ResponseEntity<String> setVideoShare(Boolean val){
+        try (OutputStream output = new FileOutputStream("src/main/resources/video.properties")) {
+            Properties prop = new Properties();
+
+            if (val){
+                prop.setProperty("video.sharing","1");
+            }else
+                prop.setProperty("video.sharing","0");
+
+
+            prop.store(output, null);
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        }
+
+        return ResponseEntity.ok().body(null);
+    }
+
+    public ResponseEntity<Boolean> getVideoShare(){
+        boolean info = false;
+
+        try (InputStream input = new FileInputStream("src/main/resources/video.properties")) {
+
+            Properties prop = new Properties();
+
+
+            prop.load(input);
+            info = Objects.equals(prop.getProperty("video.sharing"), "1");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return ResponseEntity.ok(info);
+    }
+
 }
