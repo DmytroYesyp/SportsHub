@@ -367,8 +367,8 @@ a:hover{
 
 .block3{
   width: 100%;
-  margin-top: 30px;
-  margin-left: 55px;
+  margin-top: auto;
+  margin-left: auto;
 }
 
 .block3Up{
@@ -377,8 +377,8 @@ a:hover{
 }
 
 .block3LeftArc{
-  width: 390px;
-  height: 300px;
+  width: 29vw;
+  height: 20.5vw;
   border: 1px solid #EDEDED;
 }
 
@@ -389,8 +389,8 @@ a:hover{
 }
 
 .block3LeftPhoto{
-  width: 390px;
-  height: 195px;
+  width: 29vw;
+  height: 14.5vw;
   z-index: auto;
 }
 
@@ -420,7 +420,7 @@ a:hover{
 }
 
 .block3RightArc{
-  width: 390px;
+  width: 430px;
   display: flex;
   border: 1px solid #EDEDED;
   margin-left: 35px;
@@ -578,10 +578,23 @@ a:hover{
 /*  width: 1200px;*/
 /*}*/
 
-.footerLine{
-  margin-top: 50px;
-  margin-left: 300px;
-  color: #d8d8d8;
+/*.footerLine{*/
+/*  margin-top: 50px;*/
+/*  margin-left: 300px;*/
+/*  color: #d8d8d8;*/
+/*}*/
+
+.footerLineUp{
+  padding-top: 2vw;
+}
+
+.footerLineBr{
+  margin-top: 1vw;
+  float: right;
+  width: 82.5vw;
+  height: 2px;
+  background-color: #d8dde5;
+  border: none;
 }
 
 .filledFooter{
@@ -589,7 +602,7 @@ a:hover{
 }
 
 .filledFooter{
-  margin-left: 300px;
+  margin-left: 16.5vw;
   margin-top: 50px;
 
 }
@@ -673,4 +686,50 @@ a:hover{
 .footer a{
   text-decoration: none;
   color: white;
+}
+
+.mainArticleField{
+
+  padding-top: 0.7vw;
+  padding-bottom: 0.7vw;
+  font-size: 1vw;
+  text-align: center;
+  margin-top: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #d8dde5;
+  border-radius: 25px;
+  width: 12vw;
+
+}
+
+.mainArticleHrBox{
+  margin-top: 1vw;
+  float: left;
+  width: 25vw;
+}
+#eye{
+  font-size: 0.9vw;
+}
+@media screen and (min-width: 1280px) and (max-width: 1745px){
+  #eye{
+    margin-top: -2vw;
+  }
+}
+.mainArticleHr{
+  height: 2px;
+  background-color: #d8dde5;
+  border: none;
+}
+.mainArticleHrBox2{
+  margin-top: 1vw;
+  float: right;
+  margin-right: 2vw;
+  width: 23vw;
+
+}
+.mainArticleHr2 {
+  height: 2px;
+  background-color: #d8dde5;
+  border: none;
 }
