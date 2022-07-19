@@ -303,5 +303,18 @@ input[type=text] {
   margin-top: 10px;
   color: #333333;
   font-family: 'Open Sans', sans-serif;
+}
+.unfollowed_txt{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}
+.unfollowed_txt a{
+  color: #D72130;
+}
 
+.unfollowed_txt2{
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 16px;
 }

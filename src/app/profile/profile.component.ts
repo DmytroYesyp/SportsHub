@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {AppComponent} from "../app.component";
+import {mainPage} from "../services/main-page.service";
 
 @Component({
   selector: 'app-profile',
@@ -15,22 +16,50 @@ export class ProfileComponent implements OnInit {
   form: FormGroup
   hide = true;
   form2: FormGroup
+  form3: FormGroup
   imageAdd: boolean = false;
   profileUrl: string;
-
   UserProfileUpload : string = 'UserProfileUpload';
+  teams: any = []
+  followedTeams: any = []
+  followedTeams2: any = []
 
 
   arr :string[] = ["My surveys","My teamhub","Log out"]
   arr2 :string[]  = ["","/team_hub", "/register"]
   email: string;
   user: Object;
+
+
+  searchText: string = '';
+  userId: any;
+
+
   constructor(private auth:AuthService,
               private http:HttpClient,
-              private app: AppComponent) {
+              private app: AppComponent,
+              private mainpage: mainPage) {
   }
 
-
+  getUserFromToken() {
+    const token = localStorage.getItem('auth-token')
+    if (!token)
+      return console.log("error");
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    const tmp = JSON.parse(jsonPayload);
+    this.mainpage.getUserByEmail(tmp.sub).subscribe(data => {
+      this.user = data
+      for (let [key, value] of Object.entries(this.user)) {
+        if (key == "id")
+          this.userId = value;
+      }
+    });
+    return this.userId
+  }
 
   Submit(){
     this.auth.updateUser(this.form.value)
@@ -58,15 +87,56 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
+  }
+
+  follow(id){
+    this.http.post('http://localhost:8080/follows', {"teamId": id,
+      "userId": this.userId
+    })
+      .subscribe(() => {
+        this.followedTeams2.push(id)
+      });
+  }
+
+  delete(teamId) {
+    this.http.delete('http://localhost:8080/follows/' + this.userId + '?teamId=' + teamId)
+      .subscribe(() => {
+        this.followedTeams2 = this.followedTeams2.filter(function(value, index, arr){
+          return value != teamId;
+        })
+      });
+  }
 
   ngOnInit(): void {
+    this.getUserFromToken()
     this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
+    this.http.get('http://localhost:8080/teams').subscribe(responseData =>{this.teams = responseData
+      console.log(this.teams)
+      this.http.get('http://localhost:8080/follows?userId=' + this.userId)
+        .subscribe((Response) => {
+          this.followedTeams = <Array<any>>Response
+          console.log(this.followedTeams)
+          for (let i = 0; i < this.followedTeams.length; i++){
+            this.followedTeams2.push(this.followedTeams[i]['teamId'])
+          }
+          console.log(this.followedTeams2)
+        });
+    })
+
     this.form = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required])
     })
 
     this.form2 = new FormGroup({
+      OldPassword: new FormControl('', [Validators.required]),
+      NewPassword: new FormControl('', [Validators.required]),
+      passwordConfirmation: new FormControl('', [Validators.required])
+    })
+
+    this.form3 = new FormGroup({
       OldPassword: new FormControl('', [Validators.required]),
       NewPassword: new FormControl('', [Validators.required]),
       passwordConfirmation: new FormControl('', [Validators.required])

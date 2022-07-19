@@ -44,7 +44,7 @@
   </div>
 
 
-    <div class="mcards">
+    <div class="mcards" *ngIf="teams.length != 0">
       <a *ngFor="let e of teams; index as i">
         <div class="teamcard">
           <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
@@ -63,8 +63,30 @@
         </div>
       </a>
     </div>
-</div>
 
+  <div class="mcards" *ngIf="teams.length==0">
+    <div class="unfollowed_txt">You have not followed any team yet. To follow your favourite teams go to
+      <a href="/profile">Profile</a> and click Team hub</div>
+    <div class="unfollowed_txt2">Team news based on your country: <b>{{country}}</b></div>
+    <a *ngFor="let e of teams3; index as i">
+      <div class="teamcard">
+        <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
+        <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
+        <div class="following_txt">Following</div>
+      </div>
+      <div style="margin-bottom: 80px">
+        <a [routerLink]="['/article', k['id']]" *ngFor="let k of news2[i];">
+          <div  class="mcard">
+            <img class="mcard_photo" src="{{k['image']}}" alt="photo news">
+            <div class="mcard_text"><b>{{ k['title'] }}</b>
+              <p >{{k['description']}}</p></div>
+          </div>
+        </a>
+      </div>
+    </a>
+  </div>
+
+</div>
 
 
 

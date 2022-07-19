@@ -80,7 +80,8 @@ import { AboutComponent } from './about/about.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
-import { ArticlePhotoUploaderComponent } from './admin-article/add-article/article-photo-uploader/article-photo-uploader.component'
+import { ArticlePhotoUploaderComponent } from './admin-article/add-article/article-photo-uploader/article-photo-uploader.component';
+import { SearchTeamFollowComponent } from './search-team-follow/search-team-follow.component';
 
 
 
@@ -151,7 +152,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PrivacyPolicyComponent,
     ContactUsComponent,
     AdminFooterComponent,
-    ArticlePhotoUploaderComponent
+    ArticlePhotoUploaderComponent,
+    SearchTeamFollowComponent,
+
   ],
 
   imports: [

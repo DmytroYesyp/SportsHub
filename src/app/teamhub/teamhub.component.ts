@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {mainPage} from "../services/main-page.service";
-import {concatMap, from, Observable} from "rxjs";
-import {PopupDeleteLangComponent} from "../pop-ups/popup-delete-lang/popup-delete-lang.component";
+import {concatMap, from, Observable, take} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupDeleteFollowComponent} from "../pop-ups/popup-delete-follow/popup-delete-follow.component";
+import {GeolocationService} from "@ng-web-apis/geolocation";
 
 @Component({
   selector: 'app-teamhub',
@@ -18,9 +18,19 @@ export class TeamhubComponent implements OnInit {
   userList: any;
   role: any;
   news: any =[];
+  news2: any =[];
   teams: any =[];
-
-  constructor(private http : HttpClient, private mainpage: mainPage, private dialogRef: MatDialog) { }
+  coords: any;
+  lat: any;
+  lng: any;
+  Http = new XMLHttpRequest();
+  country: any;
+  teams2: any = [];
+  teams3: any = [];
+  constructor(private http : HttpClient,
+              private mainpage: mainPage,
+              private dialogRef: MatDialog,
+              private readonly geolocation$: GeolocationService) { }
 
   ngOnInit(): void {
     this.getUserFromToken()
@@ -28,11 +38,10 @@ export class TeamhubComponent implements OnInit {
       .subscribe(() => {
         console.log(this.id)
 
-        this.http.get('http://localhost:8080/follows?userId='+this.id)
+        this.http.get('http://localhost:8080/follows?userId=' + this.id)
           .subscribe((Response) => {
             this.userList = Response
             console.log(this.userList)
-
             from(this.userList).pipe(
               concatMap(x=> {
                 return this.getTeams(x);
@@ -53,7 +62,70 @@ export class TeamhubComponent implements OnInit {
           });
       })
 
+    this.geolocation$.pipe(take(1)).subscribe(position => {
+      this.coords = position
+      this.lat = this.coords['coords']['latitude']
+      this.lng = this.coords['coords']['longitude']
+      this.http.get('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+ this.lat+
+        '&longitude='+this.lng+'&localityLanguage=en',
+        {headers: {
+          "Access-Control-Allow-Origin" : "*",
+            "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+          "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, " +
+            "Access-Control-Request-Method, Access-Control-Request-Headers"
+        }
+        })
+        .subscribe(data => {
+          this.country = data['countryName']
+          this.http.get('http://localhost:8080/teams')
+            .subscribe(responseData =>{
+              this.teams2 = responseData
+              for (let i = 0; i<this.teams2.length; i++){
+                if(this.teams2[i]['state']==this.country)
+                  this.teams3.push(this.teams2[i])
+              }
+              from(this.teams3).pipe(
+                concatMap(x=> {
+                  return this.getNews2(x);
+                })).subscribe(Response => {
+                this.news2.push(<Array<any>>Response);
+              });
+            })
+          })
+    });
   }
+
+  // getApi(bdcApi){
+  //   this.Http.open("GET", bdcApi);
+  //   this.Http.send();
+  //   this.Http.onreadystatechange = function () {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       console.log(JSON.parse(this.responseText));
+  //     }
+  //   };
+  // }
+  //
+  // getLocation() {
+  //   console.log("getLocation Called");
+  //   var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
+  //
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       bdcApi = bdcApi
+  //         + "?latitude=" + position.coords.latitude
+  //         + "&longitude=" + position.coords.longitude
+  //         + "&localityLanguage=en";
+  //       this.getApi(bdcApi)
+  //     },
+  //     (err) => { this.getApi(bdcApi); },
+  //     {
+  //       enableHighAccuracy: true,
+  //       timeout: 5000,
+  //       maximumAge: 0
+  //     });
+  // }
+
 
   getUserFromToken() {
     const token = localStorage.getItem('auth-token')
@@ -78,6 +150,9 @@ export class TeamhubComponent implements OnInit {
   private getNews(x): Observable<any>{
     return this.http.get('http://localhost:8080/news?limit=3&teamIds=' + x['teamId'])
   }
+  private getNews2(x): Observable<any>{
+    return this.http.get('http://localhost:8080/news?limit=3&teamIds=' + x['id'])
+  }
   private getTeams(x): Observable<any>{
     return this.http.get('http://localhost:8080/teams/' + x['teamId'])
   }
@@ -91,5 +166,4 @@ export class TeamhubComponent implements OnInit {
       }
     })
   }
-
 }

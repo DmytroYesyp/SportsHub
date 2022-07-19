@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@ng-web-apis/common": "^2.0.1",
+    "@ng-web-apis/geolocation": "^1.0.4",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@syncfusion/ej2-angular-richtexteditor": "^20.1.56",

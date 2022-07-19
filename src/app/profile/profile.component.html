@@ -158,7 +158,29 @@
 
 
       </div>
-        <div>Team hub</div>
+      </form>
+
+
+      <form [formGroup]="form3">
+        <div class="team_hub" *ngIf="isVisible==2">
+          <div class="search-head"><b>FOLLOW YOUR FAVOURITE TEAMS</b></div>
+          <app-search-team-follow (searchTextChanged)="onSearchTextEntered($event)"></app-search-team-follow>
+          <div *ngFor="let e of teams">
+            <div *ngIf="searchText === '' || e['name'].toLowerCase().includes(searchText)">
+              <div class="team_card">
+                <img alt="logo" src="{{e['image_url']}}" class="team_img">
+            <div class="content">
+              <div class="team_name">{{e['name']}}</div>
+                <div class="team_coach">Coach: {{e['coach']}}</div>
+                <button class="follow_team" id="follow_btn" (click)="follow(e['id'])" *ngIf="!followedTeams2.includes(e['id'])">
+                  Follow</button>
+            </div>
+                <div class="followed" id="follow_btn2" (click)="delete(e['id'])" *ngIf="followedTeams2.includes(e['id'])">
+                  Unfollow</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
 
     </div>

@@ -17,7 +17,7 @@
   <input type="text" class="input" placeholder="Write your comment..." id="myInput" (click)="checkLogin()">
   <button type="button" class="post_btn" (click)="post()" >Post</button>
   </div>
-  <a *ngIf="list.length==0" >There are no comments yet. Be first!</a>
+  <div *ngIf="list.length==0" class="no_comm">There are no comments yet. Be first!</div>
   <div class="com" *ngFor="let e of list; index as i">
     <img class="profile_img" [src]="getSrc(user2[i]['logo_url'])"/>
     <div class="txt_nick" ><b>{{user2[i]['firstName']}} {{user2[i]['lastName']}}</b>

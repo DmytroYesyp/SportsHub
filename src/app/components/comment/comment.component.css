@@ -141,8 +141,6 @@
 #active_dislike{
   color: #4b4b4b;
 }
-
-
 .line{
   height: 0.5px;
   background: #c2c2c2;
@@ -155,4 +153,8 @@
 .txt4{
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
+}
+.no_comm{
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 15px;
 }
