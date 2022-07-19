@@ -142,8 +142,8 @@
 
 
       <div style="margin-top: 0.8vw;float: right; margin-right: -3vw;" class="item">
-        <p style="width: 10vw; float: left; margin-top: 0.2vw;text-align: right; margin-right: 1vw">Allow to share videos:</p><p style="float: left;margin-top: 0.2vw;margin-right: 0.5vw">No</p>
-        <input  id="allSectionLogIn" style="float: left" type="checkbox" class="toggle-button" >
+        <p style="width: 10vw; float: left; margin-top: 0.2vw;text-align: right; margin-right: 1vw">Allow to share videos:</p><p *ngIf="followChecker" style="float: left;margin-top: 0.2vw;margin-right: 0.5vw">Yes</p><p *ngIf="!followChecker" style="float: left;margin-top: 0.2vw;margin-right: 0.5vw">No</p>
+        <input (click)="setVideoShare()" id="allowShare" style="float: left" type="checkbox" class="toggle-button" [checked] ="followChecker">
       </div>
 
     </div>

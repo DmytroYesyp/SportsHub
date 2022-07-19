@@ -1,6 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Team} from "../admin-team-page/admin-team-page.component";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
 
 interface text {
   value: string;
@@ -21,7 +22,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   selectedValue3: string = 'text-1';
   checker : number = -1;
   glass : boolean = false;
-
+  followChecker : boolean = true;
   filterString: string = '';
 
   vals: text[] = [
@@ -50,6 +51,21 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     this.http.patch(`http://localhost:8080/api/fireBaseVideo/updateDescription`,null,{params : queryParams}).subscribe()
   }
 
+
+  setVideoShare(){
+    let TF : string
+    const cb = document.getElementById('allowShare')as HTMLInputElement | null;
+    if (cb?.checked)
+      TF = '1';
+    else
+      TF = '0';
+    let queryParams = new HttpParams();
+
+    this.followChecker = TF == "1"
+
+    queryParams = queryParams.append("val",TF);
+    this.http.patch(`http://localhost:8080/api/socialShare/setVideoShare`,null,{params : queryParams}).subscribe()
+  }
 
   videoFunc(url:string){
     this.videoString = url;
@@ -103,8 +119,9 @@ export class AdminVideoComponent implements OnInit, OnChanges {
       this.ent = data;
     })
 
-    console.log(this.seeVideo)
-
+    this.http.get<boolean>(`http://localhost:8080/api/socialShare/getVideoShare`).subscribe(data => {
+      this.followChecker = data
+    });
   }
 
   func2(num : number){
