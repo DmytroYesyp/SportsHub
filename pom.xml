@@ -154,9 +154,7 @@
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${mapstruct.version}</version>
                         </path>
-                    </annotationProcessorPaths>
-                    <source>15</source>
-                    <target>15</target>
+                    </annotationProcessorPaths><source>17</source><target>17</target>
                 </configuration>
             </plugin>
         </plugins>
