@@ -38,7 +38,7 @@
           <label>
             <input formControlName="email" matInput placeholder="pat@example.com" required>
           </label>
-          <mat-error *ngIf="form.hasError('required','email')">Not valid</mat-error>
+          <mat-error *ngIf="form.hasError('required','email')">{{'LOGIN.EMAILERROR' | translate}}</mat-error>
         </mat-form-field>
       </div>
 
@@ -55,7 +55,7 @@
         <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-<!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+        <mat-error *ngIf="form.hasError('required','password')">{{'LOGIN.PASSERROR' | translate}}</mat-error>
       </mat-form-field>
 
       <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >{{ 'LOGIN.LOGIN' | translate}}</button>

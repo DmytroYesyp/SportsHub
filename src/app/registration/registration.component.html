@@ -84,7 +84,7 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>{{ 'REG.ENTFNAME' | translate}}</mat-label>
             <input matInput type="text" id="firstName" placeholder="Levi" formControlName="firstName">
-            <mat-error *ngIf="form.hasError('required','firstName')">First Name can't be empty</mat-error>
+            <mat-error *ngIf="form.hasError('required','firstName')">{{'REG.FNAMEERROR' | translate}}</mat-error>
           </mat-form-field>
         </div>
         <div class="column">
@@ -92,7 +92,7 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>{{ 'REG.ENTLNAME' | translate}}</mat-label>
             <input type="text" matInput placeholder="Ackerman" formControlName="lastName">
-            <mat-error *ngIf="form.hasError('required','lastName')">Last Name can't be empty</mat-error>
+            <mat-error *ngIf="form.hasError('required','lastName')">{{'REG.LNAMEERROR' | translate}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -110,7 +110,7 @@
           <label>
             <input formControlName="email" matInput placeholder="pat@example.com" required>
           </label>
-          <mat-error *ngIf="form.hasError('required','email')">Must be email (@)</mat-error>
+          <mat-error *ngIf="form.hasError('required','email')">{{'LOGIN.EMAILERROR' | translate}}</mat-error>
         </mat-form-field>
 
 
@@ -127,7 +127,7 @@
         <button  mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <!--        <mat-error *ngIf="form.hasError('required','password')">Must be 8 digits at least</mat-error>-->
+                <mat-error *ngIf="form.hasError('required','password')">{{'REG.PASSERROR' | translate}}</mat-error>
       </mat-form-field>
 
       <button mat-raised-button type="submit" class="save-button" [disabled]="form.invalid || form.disabled" >{{ 'REG.SIGNUP' | translate}}</button>
