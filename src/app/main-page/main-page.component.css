@@ -382,7 +382,7 @@ a:hover{
 
 .block3LeftArc{
   width: 29vw;
-  height: 20.5vw;
+  height: 19.9vw;
   border: 1px solid #EDEDED;
 }
 
@@ -740,8 +740,7 @@ a:hover{
   border: none;
 }
 ::-webkit-scrollbar {
-  width: 0.1vw;
-  height: 0.5vw;
+  height: 0.4vw;
   border-radius: 50%;
 }
 
