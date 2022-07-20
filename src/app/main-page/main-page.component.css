@@ -273,12 +273,17 @@ a:hover{
   width: 940px;
   margin-top: 260px;
   text-decoration: none;
+  overflow: auto;
 }
 ::ng-deep .card{
-  width: 200px;
-  height: 300px;
+  min-width: 200px;
+  min-height: 300px;
+  max-width: 200px;
+  max-height: 300px;
   padding: 10px;
   text-decoration: none;
+  display: block;
+  margin-right: 24px;
 }
 
 ::ng-deep .card_photo{
@@ -730,4 +735,18 @@ a:hover{
   height: 2px;
   background-color: #d8dde5;
   border: none;
+}
+::-webkit-scrollbar {
+  width: 0.1vw;
+  height: 0.5vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
 }
