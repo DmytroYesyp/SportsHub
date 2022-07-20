@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy{
               private socialAuthService: SocialAuthService,
               private http: HttpClient
   ) {
-    this.configure()
   }
 
   private configure() {
@@ -90,6 +89,23 @@ export class LoginComponent implements OnInit, OnDestroy{
     )
   }
 
+  sendUser2(){
+    this.params = {
+      'email' : this.claims.email,
+      'password' : 'supersecret'
+    }
+    return this.auth.login(this.params).subscribe(
+      ()=> {
+        console.log('Login success')
+        this.router.navigate(['/main'])
+      },
+      error =>{
+        console.log("Error happened")
+        this.router.navigate(['/login'])
+      }
+    )
+  }
+
 
 
 
@@ -99,6 +115,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.http.get<socialFollow[]>(`http://localhost:8080/api/socialLogIn/getAllLogIn`).subscribe(data => {
       this.list = data
     })
+    this.configure()
     this.socialAuthService.authState.subscribe((user) => {
       this.fbUser = user;
       console.log(this.fbUser);

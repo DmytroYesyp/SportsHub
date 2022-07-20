@@ -28,6 +28,8 @@
     "TERMS": "Terms"
   },
   "LOGIN": {
+    "PASSERROR": "Must be 8 digits at least",
+    "EMAILERROR": "Must be email (somemail@mail.com)",
     "FGTPASS": "Forgot password?",
     "TITLE": "Log in to Sports Hub",
     "EMAIL": "Email",
@@ -41,6 +43,9 @@
     "LOGIN": "Log in"
   },
   "REG": {
+    "PASSERROR": "Must be 8 digits at least. One character uppercase and one lowercase",
+    "FNAMEERROR": "First Name can't be empty",
+    "LNAMEERROR": "Last Name can't be empty",
     "TITLE" : "Create account",
     "TITLE2" : "Or use your email for registration:",
     "FNAME": "First name",
