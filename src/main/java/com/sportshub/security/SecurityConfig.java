@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(GET,"/news", "/sport-kinds", "/news/{id}", "/leagues/{id}","/api/socialLogIn/getAllLogIn", "/api/socialShare/**", "/api/socialFollow/getAllFollows",
                 "/language", "/comments", "/comments/news{id}", "/api/users/users{userId}", "/news/mostpop", "/teams/{id}",
                 "/comments/mostcomm", "/datelimits/{id}","/datelimits", "/likes", "/likes/count", "/likes/check",
-                "/dislikes", "/dislikes/count", "/dislikes/check", "/follows").permitAll();
+                "/dislikes", "/dislikes/count", "/dislikes/check", "/follows", "/api/fireBaseVideo/getVideos", "/api/fireBaseVideo/getVideos{params}").permitAll();
         http.authorizeRequests().antMatchers(PUT,"/news/{id}", "/datelimits/{id}").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthFilter);
