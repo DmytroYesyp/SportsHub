@@ -97,16 +97,15 @@
   </div>
 
 
-  <div class="block_right">
+  <div class="block_right" *ngIf="li">
     <div class="block_1">
-      <div class="photo">
-        <div class="photo_button"><b>Kind of sport</b></div>
-      </div>
+      <img class="photo" src="{{li[0]['image']}}">
+        <div class="photo_button"><b>{{league['name']}}</b></div>
       <div class="side_bloke">
-        <p>{{ 'BODY.DATE' | translate}} / 20.09.2019</p>
-        <span class="side_bloke_p1"><b>London Games return in 2019</b></span>
+        <p>{{ 'BODY.DATE' | translate}} / {{getDate()}}</p>
+        <span class="side_bloke_p1"><b>{{li[0]['title']}}</b></span>
         <br>
-        <span class="side_bloke_p2"><b>Register to receive the latest <br> news on ticket sales for the fou <br> NFL London games in 2019!</b></span>
+        <span class="side_bloke_p2"><b>{{li[0]['description']}}</b></span>
         <a href="" class="side_bloke_button"><b class="">{{ 'BODY.MORE' | translate}}</b></a>
       </div>
     </div>

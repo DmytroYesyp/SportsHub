@@ -19,11 +19,11 @@ export class MainPageComponent implements OnInit {
   firstName: any;
   lastName: any;
   isAdmin: boolean = false;
-
+  li: Object;
   role: string;
-
+  date:string;
   user: Object;
-
+  league: any;
   authenticated: boolean = false;
 
   constructor(private mainpage: mainPage,
@@ -68,6 +68,16 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.http.get('http://localhost:8080/news')
+      .subscribe(Response => {
+        this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 1), (<Array<any>>Response).length);
+        this.http.get('http://localhost:8080/leagues/' + this.li[0]['leagueId'])
+          .subscribe(Response => {
+            this.league = Response;
+
+          });
+      });
+
     if(this.auth.isAuthenticated()){
       this.authenticated = true
     }else{
@@ -91,5 +101,9 @@ export class MainPageComponent implements OnInit {
 
   logOut(){
     this.auth.logout()
+  }
+
+  getDate(){
+    return this.li[0]['publicationDate'].substring(0,10) + ' ' + this.li[0]['publicationDate'].substring(11,19)
   }
 }

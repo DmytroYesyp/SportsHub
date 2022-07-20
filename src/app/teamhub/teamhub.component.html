@@ -72,7 +72,7 @@
       <div class="teamcard">
         <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
         <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
-        <div class="following_txt">Following</div>
+        <div class="following_txt">Search this team in <a href="/profile" style="color: #D72130">Profile</a> to follow</div>
       </div>
       <div style="margin-bottom: 80px">
         <a [routerLink]="['/article', k['id']]" *ngFor="let k of news2[i];">

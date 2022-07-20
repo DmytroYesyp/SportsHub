@@ -245,23 +245,21 @@ a:hover{
   position: absolute;
   width: 900px;
   height: 460px;
-  background: url(src/assets/img/main-photo-article.png);
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: 1;
 }
 .photo_button {
+  position: absolute;
   background: #2f2f2f;
-  width: 100px;
+  width: auto;
   text-align: center;
-  top: 0;
-  left: 0;
   font-size: 15px;
   font-style: normal;
   padding: 10px;
   text-decoration: none;
   color: white;
-  z-index: 2;
+  z-index: 3;
 }
 
 .block_2{

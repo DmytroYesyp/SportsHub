@@ -24,7 +24,7 @@ export class NewsCardComponent implements OnInit {
     this.http.get('http://localhost:8080/news', {params})
       .subscribe(Response => {
         console.log(Response)
-        this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 4), (<Array<any>>Response).length);
+        this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 5), (<Array<any>>Response).length - 1);
         console.log(this.li);
       });
   }}
