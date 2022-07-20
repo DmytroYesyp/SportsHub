@@ -244,7 +244,7 @@ a:hover{
 .photo{
   position: absolute;
   width: 900px;
-  height: 460px;
+  height: 500px;
   background-size: 100%;
   background-repeat: no-repeat;
   z-index: 1;
@@ -271,7 +271,7 @@ a:hover{
   display: flex;
   justify-content: space-between;
   width: 940px;
-  margin-top: 260px;
+  margin-top: 270px;
   text-decoration: none;
   overflow: auto;
 }
@@ -284,6 +284,7 @@ a:hover{
   text-decoration: none;
   display: block;
   margin-right: 24px;
+  margin-bottom: 20px;
 }
 
 ::ng-deep .card_photo{
@@ -426,7 +427,7 @@ a:hover{
   width: 430px;
   display: flex;
   border: 1px solid #EDEDED;
-  margin-left: 35px;
+  margin-left: 20px;
 }
 
 
@@ -462,16 +463,18 @@ a:hover{
   width: 100%;
   display: flex;
   margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .block4{
   width: 100%;
   margin-top: 30px;
-  margin-left: 55px;
+  margin-bottom: 40px;
 }
 
 .block4Img{
-  width: 815px;
+  width: 900px;
+  margin-top: -20px;
 }
 
 .block4Gradient h4{
@@ -560,7 +563,7 @@ a:hover{
 }
 
 .block5Right{
-  margin-left: 35px;
+  margin-left: 30px;
 }
 
 .block5Line{
@@ -709,7 +712,7 @@ a:hover{
 .mainArticleHrBox{
   margin-top: 1vw;
   float: left;
-  width: 25vw;
+  width: 24.2vw;
 }
 #eye{
   font-size: 0.9vw;
@@ -728,7 +731,7 @@ a:hover{
   margin-top: 1vw;
   float: right;
   margin-right: 2vw;
-  width: 23vw;
+  width: 22.2vw;
 
 }
 .mainArticleHr2 {

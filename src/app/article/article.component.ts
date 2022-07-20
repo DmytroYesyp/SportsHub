@@ -73,6 +73,7 @@ export class ArticleComponent implements OnInit {
           "description": this.list['description'],
           "publicationDate": this.list['publicationDate'],
           "image": this.list['image'],
+          "text": this.list['text'],
           "leagueId": this.list['leagueId'],
           "views": this.views,
           "alternativeText": this.list['alternativeText'],

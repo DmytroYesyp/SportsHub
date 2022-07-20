@@ -220,7 +220,7 @@ input[type=text] {
   /*z-index: 1;*/
 }
 ::ng-deep .newstext{
-  width: 940px;
+  width: 900px;
   margin-top: 500px;
   font-size: 16px;
 }
