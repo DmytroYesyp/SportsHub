@@ -17,12 +17,6 @@ public interface CommentRepository extends CustomCommentRepository, JpaRepositor
     List<CommentEntity> findAllComments(@Param("id") Long id, Pageable pageable);
 
     @Modifying
-    @Query("""
-            UPDATE CommentEntity SET 
-                text = :#{#entity.text},
-                isEdited = :#{#entity.isEdited}
-            WHERE id = :id
-            """)
     int update(@Param("id") Long id, @Param("entity") CommentEntity entity);
 
     @Modifying
