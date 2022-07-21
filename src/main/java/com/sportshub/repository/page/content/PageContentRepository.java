@@ -8,5 +8,15 @@ import org.springframework.data.repository.query.Param;
 
 public interface PageContentRepository extends JpaRepository<PageContentEntity, Long> {
     @Modifying
+    @Query("""
+            UPDATE PageContentEntity SET
+                title = :#{#entity.title},
+                headline =:#{#entity.headline},
+                text =:#{#entity.text},
+                address =:#{#entity.address},
+                tel =:#{#entity.tel},
+                email =:#{#entity.email}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") PageContentEntity entity);
 }

@@ -14,6 +14,12 @@ public interface FollowsRepository extends JpaRepository<FollowsEntity, Long> {
     List<FollowsEntity> findAllFollows(@Param("userId") Long userId);
 
     @Modifying
+    @Query("""
+            UPDATE FollowsEntity SET
+                teamId = :#{#entity.teamId},
+                userId = :#{#entity.userId}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") FollowsEntity entity);
 
     @Modifying

@@ -11,6 +11,21 @@ import java.util.List;
 
 public interface NewsRepository extends CustomNewsRepository, JpaRepository<NewsEntity, Long> {
     @Modifying
+    @Query("""
+            UPDATE NewsEntity SET
+                title = :#{#entity.title},
+                description = :#{#entity.description},
+                text=:#{#entity.text},
+                publicationDate = :#{#entity.publicationDate},
+                alternativeText =:#{#entity.alternativeText},
+                caption =:#{#entity.caption},
+                image = :#{#entity.image},
+                isPublished = :#{#entity.isPublished},
+                mainPageOrder = :#{#entity.mainPageOrder},
+                league.id = :#{#entity.league.id},
+                views = :#{#entity.views}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") NewsEntity entity);
 
     @Modifying

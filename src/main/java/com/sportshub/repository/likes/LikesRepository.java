@@ -14,6 +14,12 @@ public interface LikesRepository extends JpaRepository<LikesEntity, Long> {
     List<LikesEntity> findAllLikes();
 
     @Modifying
+    @Query("""
+            UPDATE LikesEntity SET
+                commentId = :#{#entity.commentId},
+                userId = :#{#entity.userId}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") LikesEntity entity);
 
     @Modifying

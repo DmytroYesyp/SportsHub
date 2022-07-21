@@ -15,6 +15,12 @@ public interface SurveyRepository extends JpaRepository<SurveyEntity, Long> {
     List<SurveyEntity> findAllSurveys(Pageable pageable);
 
     @Modifying
+    @Query("""
+            UPDATE SurveyEntity SET 
+                topic = :#{#entity.topic},
+                text = :#{#entity.text}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") SurveyEntity entity);
 
     @Modifying

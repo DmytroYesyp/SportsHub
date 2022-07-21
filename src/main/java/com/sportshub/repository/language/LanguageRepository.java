@@ -15,6 +15,11 @@ public interface LanguageRepository extends JpaRepository<LanguageEntity, Long> 
     List<LanguageEntity> findAllLanguages();
 
     @Modifying
+    @Query("""
+            UPDATE LanguageEntity SET
+                hidden = :#{#entity.hidden}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") LanguageEntity entity);
 
     @Modifying

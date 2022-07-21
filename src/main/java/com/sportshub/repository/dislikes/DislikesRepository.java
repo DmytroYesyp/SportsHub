@@ -14,6 +14,12 @@ public interface DislikesRepository extends JpaRepository<DislikesEntity, Long> 
     List<DislikesEntity> findAllDislikes();
 
     @Modifying
+    @Query("""
+            UPDATE DislikesEntity SET 
+                commentId = :#{#entity.commentId},
+                userId = :#{#entity.userId}
+            WHERE id = :id
+            """)
     int update(@Param("id") Long id, @Param("entity") DislikesEntity entity);
 
     @Modifying
