@@ -15,15 +15,6 @@ public interface TeamRepository extends JpaRepository<TeamEntity, Long> {
     List<TeamEntity> findAllTeams(Pageable pageable);
 
     @Modifying
-    @Query("""
-            UPDATE TeamEntity SET 
-                name = :#{#entity.name},
-                league = :#{#entity.league},
-                coach =:#{#entity.coach},
-                image_url =:#{#entity.image_url},
-                state =:#{#entity.state}
-            WHERE id = :id
-            """)
     int update(@Param("id") Long id, @Param("entity") TeamEntity entity);
 
     @Modifying
