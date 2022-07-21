@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="comments"  *ngIf="user2.length==count">
   <div class="top">
-  <div class="txt"><b>COMMENTS (<a *ngIf="list.length==0">0</a><a *ngIf="count">{{count}}</a>)</b></div>
+  <div class="txt"><b>{{'COMS' | translate}} (<a *ngIf="list.length==0">0</a><a *ngIf="count">{{count}}</a>)</b></div>
   <mat-expansion-panel class="sort">
     <mat-expansion-panel-header class="sort1">
       <mat-panel-title>
-        <b class="txt2">Sort by: <div style="display: inline" *ngIf="!sort">newest first</div>{{sort}}</b>
+        <b class="txt2">{{'SORTBY' | translate}}<div style="display: inline" *ngIf="!sort"> newest first</div>{{sort}}</b>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <button class="sortbtn" (click)="setSort('newest first')">Newest first</button>
@@ -14,19 +14,19 @@
   </div>
   <div class="head">
     <img class="profile_img" id="img1" [src]="photoUrl">
-  <input type="text" class="input" placeholder="Write your comment..." id="myInput" (click)="checkLogin()">
-  <button type="button" class="post_btn" (click)="post()" >Post</button>
+  <input type="text" class="input" placeholder="{{'COMSPLACEHLD' | translate}}" id="myInput" (click)="checkLogin()">
+  <button type="button" class="post_btn" (click)="post()" >{{'POST' | translate}}</button>
   </div>
-  <div *ngIf="list.length==0" class="no_comm">There are no comments yet. Be first!</div>
+  <div *ngIf="list.length==0" class="no_comm">{{'NOCOMM' | translate}}</div>
   <div class="com" *ngFor="let e of list; index as i">
     <img class="profile_img" [src]="getSrc(user2[i]['logo_url'])"/>
     <div class="txt_nick" ><b>{{user2[i]['firstName']}} {{user2[i]['lastName']}}</b>
     <div class="txt1">{{getDate(i)}}
-      <a class="txt1" *ngIf="e['edited']"> (edited)</a></div>
+      <a class="txt1" *ngIf="e['edited']"> ({{'EDITED' | translate}})</a></div>
     </div>
     <div class="txt3">{{e['text']}}<div class="line"></div>
-    <button class="delete" (click)="openDialog(e['id'])" *ngIf="id == user2[i]['id'] || isAdmin"><b>Delete</b></button>
-    <button class="delete" (click)="showEdit(i)" *ngIf="id == user2[i]['id']"><b>Edit</b></button>
+    <button class="delete" (click)="openDialog(e['id'])" *ngIf="id == user2[i]['id'] || isAdmin"><b>{{'DELETE' | translate}}</b></button>
+    <button class="delete" (click)="showEdit(i)" *ngIf="id == user2[i]['id']"><b>{{'EDIT' | translate}}</b></button>
       <div class="ld_buttons"><div  *ngIf="likes">
       <button class="fa fa-thumbs-up" (click)="like(e['id'], i)" id="active_like" *ngIf="isLiked[i]"><a class="txt4"> {{likes[i]}} </a></button>
       <button class="fa fa-thumbs-up" (click)="like(e['id'], i)" id="nonactive_like" *ngIf="!isLiked[i]"><a class="txt4"> {{likes[i]}} </a></button>
@@ -37,7 +37,7 @@
       </div></div>
     <div [id]="i" style="display: none">
     <input type="text" class="input2" [id]="i + 'comm'" [value]="e['text']">
-    <button class="post_btn" (click)="editComment(e['id'], i)">Confirm</button>
+    <button class="post_btn" (click)="editComment(e['id'], i)">{{'CONFIRM' | translate}}</button>
     </div>
     </div>
   </div>

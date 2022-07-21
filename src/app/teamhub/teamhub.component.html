@@ -48,9 +48,9 @@
       <a *ngFor="let e of teams; index as i">
         <div class="teamcard">
           <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
-        <button class="unfollow" (click)="openDialog(e['id'], id, e['name'])"><b>Unfollow</b></button>
+        <button class="unfollow" (click)="openDialog(e['id'], id, e['name'])"><b>{{'TEAMHUB.UNFOLLOW' | translate}}</b></button>
         <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
-          <div class="following_txt">Following</div>
+          <div class="following_txt">{{'TEAMHUB.FOLLOWING' | translate}}</div>
         </div>
         <div style="margin-bottom: 80px">
         <a [routerLink]="['/article', k['id']]" *ngFor="let k of news[i];">
@@ -65,14 +65,16 @@
     </div>
 
   <div class="mcards" *ngIf="teams.length==0">
-    <div class="unfollowed_txt">You have not followed any team yet. To follow your favourite teams go to
-      <a href="/profile">Profile</a> and click Team hub</div>
-    <div class="unfollowed_txt2">Team news based on your country: <b>{{country}}</b></div>
+    <div *ngIf="!country" class="fa fa-arrow-up"></div>
+    <div class="unfollowed_txt">{{'TEAMHUB.NOFOLLOW' | translate}}
+      <a href="/profile">{{'TEAMHUB.PROFILE' | translate}}</a> {{'TEAMHUB.NOFOLLOW2' | translate}}</div>
+    <div class="unfollowed_txt2" *ngIf="country" >{{'TEAMHUB.GEONEWS' | translate}}: <b>{{country}}</b></div>
+    <div class="unfollowed_txt2" *ngIf="!country">{{'TEAMHUB.ALLOWGEO' | translate}} <b>"{{'TEAMHUB.ALLOWGEO2' | translate}}"</b> {{'TEAMHUB.ALLOWGEO3' | translate}}</div>
     <a *ngFor="let e of teams3; index as i">
       <div class="teamcard">
         <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
         <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
-        <div class="following_txt">Search this team in <a href="/profile" style="color: #D72130">Profile</a> to follow</div>
+        <div class="following_txt">{{'TEAMHUB.TEAMFOLLOW' | translate}} <a href="/profile" style="color: #D72130">{{'TEAMHUB.PROFILE' | translate}}</a> {{'TEAMHUB.TEAMFOLLOW2' | translate}}</div>
       </div>
       <div style="margin-bottom: 80px">
         <a [routerLink]="['/article', k['id']]" *ngFor="let k of news2[i];">

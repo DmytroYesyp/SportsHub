@@ -318,3 +318,10 @@ input[type=text] {
   margin-bottom: 5px;
   font-size: 16px;
 }
+.fa-arrow-up{
+  position: absolute;
+  font-size: 50px;
+  margin-left: -20px;
+  margin-top: -60px;
+  color: #4d4d4d;
+}

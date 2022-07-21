@@ -444,21 +444,16 @@ a:hover{
   border: none;
   font-family: 'Open Sans', sans-serif;
   display: block;
-  width: 74px;
+  text-align: center;
+  width: 100px;
   height: 30px;
 }
 
-.followed{
-  float: right;
-  padding: 5px 10px 5px 10px;
-  margin-top: -35px;
-  margin-right: 10px;
+#follow_btn2{
   background: #969696;
-  color: white;
-  border: none;
-  font-family: 'Open Sans', sans-serif;
+
 }
-.followed:hover{
+#follow_btn2:hover{
   cursor: pointer;
   background: #858585;
   transition: all 400ms ease

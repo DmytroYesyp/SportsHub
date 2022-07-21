@@ -63,5 +63,43 @@
     "SUBMIT": "Submit",
     "CHECK": "Check your email",
     "DESCR": "If there's Sports Hub account linked to this email address, we'll send over instructions to reset your password. You will receive the mail within a minute"
+  },
+  "VIEWS": "Views",
+  "MOREART": "MORE ARTICLES",
+  "MOSTCOMM": "MOST COMMENTED",
+  "MOSTPOP": "MOST POPULAR",
+  "COMS": "COMMENTS",
+  "COMSPLACEHLD": "Write your comment...",
+  "NOCOMM": "There are no comments yet. Be first!",
+  "SORTBY": "Sort by:",
+  "POST": "POST",
+  "DELETE": "Delete",
+  "EDIT": "Edit",
+  "CONFIRM": "Confirm",
+  "EDITED": "Edited",
+  "POPUPS": {
+    "DELCOMM": "Are you sure you want to delete this comment?",
+    "YES": "Yes",
+    "CANCEL": "Cancel",
+    "DELFOLLOW": "Are you sure you want to unfollow",
+    "DELLANG": "Are you sure you want to delete",
+    "DELLANG2": "language",
+    "LOGINCOMM": "To leave a comment please log in/sign up SportsHub",
+    "LOGINCOMM2": "To like or dislike a comment please log in/sign up SportsHub"
+  },
+  "TEAMHUB": {
+    "FOLLOW": "FOLLOW YOUR FAVOURITE TEAMS",
+    "COACH": "Coach",
+    "FOLLOWING": "Following",
+    "UNFOLLOW": "Unfollow",
+    "NOFOLLOW": "You have not followed any team yet. To follow your favourite teams go to",
+    "PROFILE": "Profile",
+    "NOFOLLOW2": "and click Team hub",
+    "GEONEWS": "Team news based on your country",
+    "TEAMFOLLOW": "Search this team in",
+    "TEAMFOLLOW2": "to follow",
+    "ALLOWGEO": "Click",
+    "ALLOWGEO2": "Allow",
+    "ALLOWGEO3": "and we will show you news based on your geolocation!"
   }
 }

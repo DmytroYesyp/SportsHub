@@ -2,8 +2,8 @@
 <div class="buttons">
   <div class="fa fa-trash"></div>
 </div>
-<h3>Are you sure you want to unfollow "{{name}}" ?</h3>
+<h3>{{ 'POPUPS.DELFOLLOW' | translate }} "{{name}}" ?</h3>
 <div class="buttons">
-<button class="delete" (click)="delete(teamId, userId)"><b>Yes</b></button>
-<button class="cancel" (click)="close()"><b>Cancel</b></button>
+<button class="delete" (click)="delete(teamId, userId)"><b>{{ 'POPUPS.YES' | translate }}</b></button>
+<button class="cancel" (click)="close()"><b>{{ 'POPUPS.CANCEL' | translate }}</b></button>
 </div>
