@@ -15,11 +15,6 @@ public interface SportKindRepository extends JpaRepository<SportKindEntity, Long
     List<SportKindEntity> findAllSportKinds(Pageable pageable);
 
     @Modifying
-    @Query("""
-            UPDATE SportKindEntity SET 
-                name = :#{#entity.name}
-            WHERE id = :id
-            """)
     int update(@Param("id") Long id, @Param("entity") SportKindEntity entity);
 
     @Modifying

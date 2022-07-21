@@ -15,12 +15,6 @@ public interface LeagueRepository extends JpaRepository<LeagueEntity, Long> {
     List<LeagueEntity> findAllLeagues(Pageable pageable);
 
     @Modifying
-    @Query("""
-            UPDATE LeagueEntity SET 
-                name = :#{#entity.name},
-                sportKind = :#{#entity.sportKind}
-            WHERE id = :id
-            """)
     int update(@Param("id") Long id, @Param("entity") LeagueEntity entity);
 
     @Modifying

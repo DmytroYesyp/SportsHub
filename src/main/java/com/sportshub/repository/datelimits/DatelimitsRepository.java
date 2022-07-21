@@ -14,11 +14,6 @@ public interface DatelimitsRepository extends JpaRepository<DatelimitsEntity, Lo
     List<DatelimitsEntity> findAllDatelimits();
 
     @Modifying
-    @Query("""
-            UPDATE DatelimitsEntity SET 
-                datelim = :#{#entity.datelim}
-            WHERE id = :id
-            """)
     int update(@Param("id") Long id, @Param("entity") DatelimitsEntity entity);
 
     @Modifying
