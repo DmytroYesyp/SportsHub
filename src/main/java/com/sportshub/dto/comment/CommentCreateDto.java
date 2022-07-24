@@ -12,4 +12,5 @@ public class CommentCreateDto {
     private Long newsId;
     private Instant publicationDate;
     private boolean isEdited;
+    private Long commId;
 }

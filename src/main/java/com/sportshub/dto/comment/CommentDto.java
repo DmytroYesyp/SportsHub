@@ -11,4 +11,5 @@ public class CommentDto {
     private Long newsId;
     private Instant publicationDate;
     private boolean isEdited;
+    private Long commId;
 }
