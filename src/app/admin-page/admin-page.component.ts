@@ -49,7 +49,7 @@ export class AdminPageComponent implements OnInit {
 
   isPublished = true;
 
-
+//Dima
   newsletterPublished: any = []
 
   constructor(private http : HttpClient,
@@ -88,6 +88,7 @@ export class AdminPageComponent implements OnInit {
       .subscribe((Response) => {
         this.newsletterPublished[1] = Response['datelim'] != 0
       })
+    //----
   }
 
   getOrderedArticles(): Article[] {
@@ -147,6 +148,7 @@ export class AdminPageComponent implements OnInit {
       })
   }
 
+  //Dima
  newsletterPublish(id, i){
     if (this.newsletterPublished[i]){
       this.http.put('http://localhost:8080/datelimits/' + id, {"datelim": 0})
@@ -161,6 +163,7 @@ export class AdminPageComponent implements OnInit {
         });
     }
   }
+  //--
 
 }
 
