@@ -45,6 +45,7 @@
 <app-lang></app-lang>
 
 <div class="main">
+
   <div class="back_txt2">{{team['name']}}</div>
   <div class="back_txt">{{ 'BODY.BACKTXT2' | translate}}</div>
   <div class="sidebar">
@@ -66,7 +67,6 @@
 
   <div class="block_right">
     <div class="block_1">
-      <div class="toptxt">{{team['name']}}</div>
       <div class="photo">
         <img class="photo" src="{{article['image']}}">
       </div>
@@ -82,18 +82,22 @@
 
 
   </div>
-  <a class="newstext">
-
-    <div class="mcards">
-      <a [routerLink]="['/article', e['id']]" *ngFor="let e of list;">
+  <div class="newstext">
+    <div class="block" *ngIf="team">
+          <img src="{{team['image_url']}}}" style="width: 200px; height: 200px; margin-bottom: 30px;">
+    <div class="toptxt"><b>{{team['name']}}</b>
+    <div class="team_info" style="margin-top: 20px">Country: <b>{{team['state']}}</b>
+      <div class="team_info">Coach: <b>{{team['coach']}}</b></div></div>
+    </div>
+    </div>
+    <div class="mcards" [routerLink]="['/article', e['id']]" *ngFor="let e of list;">
         <div  class="mcard">
           <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
           <div class="mcard_text"><b>{{ e['title'] }}</b>
             <p >{{e['description']}}</p></div>
         </div>
-      </a>
     </div>
-  </a>
+  </div>
 
 
 </div>

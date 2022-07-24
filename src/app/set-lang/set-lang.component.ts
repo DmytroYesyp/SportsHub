@@ -12,6 +12,7 @@ export class SetLangComponent implements OnInit {
 
   isShown: boolean = false; // hidden by default
   list: any;
+  booList: any = [];
 
 
   constructor(private http: HttpClient, private dialogRef: MatDialog) {
@@ -21,8 +22,12 @@ export class SetLangComponent implements OnInit {
     this.http.get('http://localhost:8080/language')
       .subscribe(Response => {
         this.list = (<Array<any>>Response);
-        console.log(this.list)
+        this.list.forEach(el=>{
+          this.booList.push(el['hidden'])
+        })
+        console.log(this.booList)
       });
+
   }
 
   openDialog(id, name){
@@ -34,20 +39,20 @@ export class SetLangComponent implements OnInit {
     })
   }
 
-
-  hide(id) {
-    this.http.put('http://localhost:8080/language/' + id, {"hidden": "true"})
-      .subscribe(() => {
-        localStorage.removeItem('lang')
-        window.location.reload()
-      });
-  }
-
-  show(id) {
-    this.http.put('http://localhost:8080/language/' + id, {"hidden": "false"})
-      .subscribe(()=> {
-        window.location.reload()
-      });
+  show_hide(langId, i){
+    if (this.booList[i]){
+      this.http.put('http://localhost:8080/language/' + langId, {"hidden": "false"})
+        .subscribe(()=> {
+          this.booList[i] = false
+        });
+    }
+    else {
+      this.http.put('http://localhost:8080/language/' + langId, {"hidden": "true"})
+        .subscribe(() => {
+          localStorage.removeItem('lang')
+          this.booList[i] = true
+        });
+    }
   }
 }
 

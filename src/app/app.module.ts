@@ -82,6 +82,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { ArticlePhotoUploaderComponent } from './admin-article/add-article/article-photo-uploader/article-photo-uploader.component';
 import { SearchTeamFollowComponent } from './search-team-follow/search-team-follow.component';
+import { PopupNewsletterComponent } from './pop-ups/popup-newsletter/popup-newsletter.component';
+import { PopupNewsletterSuccessComponent } from './pop-ups/popup-newsletter-success/popup-newsletter-success.component';
 
 
 
@@ -154,6 +156,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminFooterComponent,
     ArticlePhotoUploaderComponent,
     SearchTeamFollowComponent,
+    PopupNewsletterComponent,
+    PopupNewsletterSuccessComponent,
 
   ],
 

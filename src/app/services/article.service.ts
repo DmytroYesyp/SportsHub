@@ -9,10 +9,25 @@ import {Article} from "../dto/article/article";
   providedIn: 'root'
 })
 export class ArticleService {
+  emailArr: any = []
+  arr: any = []
+  link: any
 
   constructor(private http: HttpClient) {}
 
   public createArticle(article: ArticleContent): Observable<Article> {
+    this.http.get(`${HOST_URL}/newsletter?leagueId=` + article.leagueId)
+      .subscribe(Response => {
+        this.arr = <Array<any>>Response
+        this.arr.forEach(el => {
+        this.emailArr.push(el['mail'])
+          this.link = `http://localhost:4200/league/` + article.leagueId
+        })
+        this.emailArr.forEach(email => {
+          this.http.post(`${HOST_URL}/send_newsletter?email=` + email + '&link=' + this.link, {}).subscribe(() =>{
+          })
+        })
+      })
     return this.http.post<Article>(`${HOST_URL}/news`, article);
   }
 

@@ -166,13 +166,19 @@ export class CommentComponent implements OnInit {
     return this.list[i]['publicationDate'].substring(0,10) + ' ' + this.list[i]['publicationDate'].substring(11,16)
   }
 
-  showEdit(id) {
+  showEdit(id, id2) {
     let x = document.getElementById(id);
+    let x2 = document.getElementById(id2);
     if (x!=null) {
       if (x.style.display === "block") {
         x.style.display = "none";
       } else {
         x.style.display = "block";
+      }
+    }
+    if (x2!=null) {
+      if (x2.style.display === "block") {
+        x2.style.display = "none";
       }
     }
   }
@@ -188,6 +194,22 @@ export class CommentComponent implements OnInit {
         });
     }
   }
+
+  addComment(commId, id) {
+    this.val = (<HTMLInputElement>document.getElementById(id+'comm2')).value;
+    if (this.val!='') {
+      this.http.post('http://localhost:8080/comments', {"text": this.val,
+        "newsId": this.newsId,
+        "userId": this.id,
+        "publicationDate": new Date(),
+        "isEdited": false,
+        "commId": commId})
+        .subscribe(() => {
+          window.location.reload()
+        });
+    }
+  }
+
 
   checkLogin() {
     if (this.id == null){

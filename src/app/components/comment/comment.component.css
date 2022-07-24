@@ -141,6 +141,12 @@
 #active_dislike{
   color: #4b4b4b;
 }
+#active_like2{
+  color: #4b4b4b;
+}
+#active_dislike2{
+  color: #4b4b4b;
+}
 .line{
   height: 0.5px;
   background: #c2c2c2;

@@ -216,12 +216,15 @@ input[type=text] {
   width: 900px;
   display: inline;
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .mcard{
   height: 130px;
   width: 900px;
   padding: 10px;
+  margin-left: -10px;
+
 }
 
 .mcard_text{
@@ -237,10 +240,17 @@ input[type=text] {
 }
 
 .toptxt{
-  position: absolute;
-  margin-top: -20px;
-  z-index: 3;
-  color: #D72130;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-size: 30px;
+  color: #333333;
+  margin-top: -190px;
+  margin-left: 220px;
+  width: 500px;
+}
+.team_info{
+  margin-top: 10px;
+  font-size: 20px
 }
 
 
@@ -263,5 +273,8 @@ input[type=text] {
   color: #D72130;
 
 }
-
+.block{
+  width: 200px;
+  margin-bottom: 110px;
+}
 
