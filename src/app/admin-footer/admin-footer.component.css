@@ -83,7 +83,7 @@
 
 .wrapper{
   display: flex;
-  background-color: #f2f2f2;
+  /*background-color: #f2f2f2;*/
 }
 .sidebar{
   width: 100px;
@@ -199,6 +199,17 @@ main_kinds{
   height: 2vw;
 }
 
+.middleRight {
+  position: absolute;
+  width: 35vw;
+  height: 30vw;
+  /*background: #eeeeee;*/
+  overflow : visible;
+  display: flex;
+  margin-left: 55vw;
+  margin-top: 9.5vw;
+}
+
 .switch-field {
   width: 25vw;
   overflow : visible;
@@ -300,15 +311,13 @@ main_kinds{
 
 
 .showDiv10 {
-  width: 25vw;
-  background-color: green;
-  padding-left: 10vw;
+  width: 35vw;
+  background: #eeeeee;
 }
 
 .showDiv11 {
-  width: 25vw;
-  background-color: green;
-  padding-left: 10vw;
+  width: 35vw;
+  background: #eeeeee;
 }
 
 .hideDiv {
@@ -325,29 +334,30 @@ main_kinds{
 
 
 .buttonField {
-  width: 25vw;
+  width: 450px;
   overflow : visible;
   display: flex;
   flex-direction: column;
   margin-bottom: 36px;
 }
 
-.buttonField input {
-  position: absolute !important;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
-  overflow: hidden;
-}
+/*.buttonField input {*/
+/*  position: absolute !important;*/
+/*  clip: rect(0, 0, 0, 0);*/
+/*  height: 1px;*/
+/*  width: 1px;*/
+/*  border: 0;*/
+/*  overflow: hidden;*/
+/*}*/
 
 .buttonField label {
   background-color: white;
   color: rgba(0, 0, 0, 0.6);
   font-size: 14px;
   line-height: 1;
-  text-align: center;
-
+  text-align: left;
+  padding: 10px 10px 10px 20px;
+  font-size: 16px;
   margin-right: -1px;
   /*border: 1px solid rgba(0, 0, 0, 0.2);*/
   /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);*/
@@ -370,3 +380,98 @@ main_kinds{
   color: #d72130;
 }
 
+.inputSwitch{
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+  display: flex;
+  margin-top: 30px;
+}
+
+/*.inputSwitch input:checked + label {*/
+/*  border: none;*/
+/*  background-color: white;*/
+/*  box-shadow: 1px 1px 5px 5px #dbdada;*/
+/*  z-index: 2;*/
+/*  color: #d72130;*/
+/*}*/
+
+
+.langlist{
+  width: 600px;
+}
+.langel{
+  height: 20px;
+  font-size: 16px;
+  border: solid #dedede 1px;
+  margin: -1px;
+  padding: 10px 10px 10px 20px;
+}
+
+.langel2{
+  height: 20px;
+  width: 450px;
+  font-size: 14px;
+  background: #dedede;
+  margin: -1px;
+  padding: 10px 10px 10px 20px;
+}
+.sh_h{
+  float: right;
+  font-size: 14px;
+  margin-right: 12px;
+}
+
+
+.toggle-button::after {
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 0.17vw;
+
+  width: 0.65vw;
+  height: 0.65vw;
+  background-color: #d4d9e2;
+  border-radius: 50%;
+
+  transform: translateX(0);
+}
+
+.toggle-button:checked::after {
+  transform: translateX(calc(100% + 3px));
+  background-color: #c80515;
+}
+.toggle-button:checked {
+  background-color: white;
+}
+.toggle-button {
+  transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  display: inline-block;
+  width: 2vw;
+  height: 1vw;
+  padding-top: 1vw;
+  vertical-align: top;
+  background: #ffffff;
+  border: 1px solid #bbc1e1;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  float: right;
+  position: relative;
+}
+
+.topMidRight {
+  background: #dedede;
+  font-size: 14px;
+  font-weight: bold;
+  width: 33vw;
+  padding: 10px 10px 10px 20px;
+}

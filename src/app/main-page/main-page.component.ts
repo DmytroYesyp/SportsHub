@@ -30,6 +30,11 @@ export class MainPageComponent implements OnInit {
   league: any;
   authenticated: boolean = false;
   newsletterPublished: any = []
+  companyInfoPublished: any = []
+  contributorsPublished: any = []
+
+  // news: any = []
+  // globalSearchText: string = '';
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
@@ -99,6 +104,12 @@ export class MainPageComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
+    //
+    // this.http.get('http://localhost:8080/news')
+    //   .subscribe(responseData =>{this.news = responseData
+    //     console.log(this.news)
+    // });
+
     this.http.get('http://localhost:8080/datelimits')
       .subscribe(Response => {
         this.dateLimits = <Array<any>>Response
@@ -112,6 +123,50 @@ export class MainPageComponent implements OnInit {
       .subscribe((Response) => {
         this.newsletterPublished[1] = Response['datelim'] != 0
       })
+
+
+    this.http.get('http://localhost:8080/datelimits/6')
+      .subscribe((Response) => {
+        this.companyInfoPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/7')
+      .subscribe((Response) => {
+        this.companyInfoPublished[1] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/8')
+      .subscribe((Response) => {
+        this.companyInfoPublished[2] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/9')
+      .subscribe((Response) => {
+        this.companyInfoPublished[3] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/10')
+      .subscribe((Response) => {
+        this.companyInfoPublished[4] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/11')
+      .subscribe((Response) => {
+        this.companyInfoPublished[5] = Response['datelim'] != 0
+      })
+
+
+    this.http.get('http://localhost:8080/datelimits/12')
+      .subscribe((Response) => {
+        this.contributorsPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/13')
+      .subscribe((Response) => {
+        this.contributorsPublished[1] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/14')
+      .subscribe((Response) => {
+        this.contributorsPublished[2] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/15')
+      .subscribe((Response) => {
+        this.contributorsPublished[3] = Response['datelim'] != 0
+      })
   }
 
   logOut(){
@@ -121,6 +176,10 @@ export class MainPageComponent implements OnInit {
   getDate(){
     return this.li[0]['publicationDate'].substring(0,10) + ' ' + this.li[0]['publicationDate'].substring(11,19)
   }
+
+  // onGlobalSearchTextEntered(searchValue: string){
+  //   this.globalSearchText = searchValue;
+  // }
 
   openDialog(){
     if (this.authenticated) {

@@ -87,9 +87,28 @@
     <h4 class="mainContactUsTitle">How can we help you?</h4>
     <div class="inputContactUs">
       <div class="leftInputContactUs">
-        <form class="leftFromInput">
-          <input class="subscribeTextField" type="text" placeholder="Your email address">
-        </form>
+<!--        <form class="leftFromInput">-->
+<!--          <input class="subscribeTextField" type="text" placeholder="Your email address">-->
+<!--        </form>-->
+
+        <div class="ourContacts">
+          <h4 style="font-size: 20px; font-weight: bold; color: black">Our contacts</h4>
+          <h3>ADDRESS</h3>
+          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+            <p *ngIf="e['id']==3" [innerHTML]="e['text']"></p>
+          </a>
+          <br>
+          <h3>NUMBER</h3>
+          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+            <p *ngIf="e['id']==4" [innerHTML]="e['text']"></p>
+          </a>
+          <br>
+          <h3>EMAIL</h3>
+          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+            <p *ngIf="e['id']==5" [innerHTML]="e['text']"></p>
+          </a>
+        </div>
+
       </div>
     </div>
   </div>

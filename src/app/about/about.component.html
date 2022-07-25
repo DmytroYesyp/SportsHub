@@ -85,19 +85,10 @@
   <a href="/main"><h3>Back to the main page</h3></a>
   <div class="textAbout">
     <h4>About Sports Hub</h4>
-    <p>
-      Sports Hub - is a network media resource that
-      consists of integrated web pages (both in terms of content and navigation) and specializes in news content and serves as media on the Internet. The news portal has almost all of these
-      characteristics of the news site, but is a much more complex (both structurally-compositionally and technologically) network resource, functional
-      the platform of which may consist of more than one site, have many ancillary services, online services, contain both own and borrowed content (text, image, audiovisual, interactive,
-      multimedia, etc.), adapt to personality-oriented user requests, automatically generate a variety of content samples, etc.
-      <br><br>
-      The main idea of ​​the news portal is to form a critical (maximally expanded) volume of information services and services in order to attract as large an audience as possible. So, the news portal for
-      is an online media resource that provides interactive news services that work within a single resource, serve as access points to news information and help to find it on the Internet.
-      <br><br>
-      The main idea of ​​the news portal is to form a critical (maximally expanded) volume of information services and services in order to attract as large an audience as possible. So, the news portal
-      for is an online media resource that provides interactive news services that work within a single resource, serve as access points to news information and help to find it on the Internet.
-    </p>
+
+    <a [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; index as i">
+      <p *ngIf="e['id']==1" [innerHTML]="e['text']"></p>
+    </a>
   </div>
 </div>
 

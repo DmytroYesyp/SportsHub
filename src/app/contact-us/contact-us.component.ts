@@ -3,6 +3,7 @@ import {mainPage} from "../services/main-page.service";
 import {AuthService} from "../services/auth.service";
 import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-contact-us',
@@ -19,7 +20,9 @@ export class ContactUsComponent implements OnInit {
   isAdmin: boolean = false;
   authenticated: boolean = false;
 
-  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent, public translate: TranslateService) { }
+  list: any[];
+
+  constructor(private mainpage: mainPage, private auth: AuthService, private app: AppComponent, public translate: TranslateService, private http: HttpClient) { }
 
   getUserFromToken(){
 
@@ -62,6 +65,13 @@ export class ContactUsComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
+
+    this.http.get('http://localhost:8080/page-content')
+      .subscribe(Response => {
+        this.list=(<Array<any>>Response);
+        console.log(this.list)
+      })
+
 
   }
 
