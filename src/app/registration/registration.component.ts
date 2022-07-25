@@ -11,6 +11,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 import {googleRegisterConfig} from "../auth-config";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
+import {environment} from "../../environments/environment";
 
 
 @Component({
@@ -75,7 +76,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
       'password' : 'supersecret'
     }
     // localStorage.setItem('user', this.user.email)
-    this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
+    this.http.post(environment.URL + 'api/users/registerUser', this.user).subscribe(
       ()=> {
         console.log('Register success')
         this.router.navigate(['/main'])
@@ -97,7 +98,7 @@ export class RegistrationComponent implements OnInit, OnDestroy{
       'password' : 'supersecret'
     }
     // localStorage.setItem('user', this.user.email)
-    this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
+    this.http.post(environment.URL + 'api/users/registerUser', this.user).subscribe(
       ()=> {
         console.log('Register success')
         this.router.navigate(['/login'])

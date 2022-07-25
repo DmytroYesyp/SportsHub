@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {tap} from 'rxjs/operators'
 import {Team} from "../admin-team-page/admin-team-page.component";
 import {Video} from "./video";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +18,19 @@ export class AuthService{
   constructor(private http: HttpClient) {}
 
   register(user: User){
-    return this.http.post('http://localhost:8080/api/users/registerUser', user)
+    return this.http.post(environment.URL +'api/users/registerUser', user)
   }
 
   addVideo(video: Video){
-    return this.http.post('http://localhost:8080/api/fireBaseVideo/addNewVideo', video)
+    return this.http.post(environment.URL + 'api/fireBaseVideo/addNewVideo', video)
   }
 
   forgot_password(param){
-    return this.http.post('http://localhost:8080/forgot_password', null, {params:param})
+    return this.http.post(environment.URL + 'forgot_password', null, {params:param})
   }
 
   reset_password(params){
-    return this.http.post('http://localhost:8080/reset_password', null, {params:params})
+    return this.http.post(environment.URL + 'reset_password', null, {params:params})
   }
 
   parse() {
@@ -42,11 +43,11 @@ export class AuthService{
 
 
   updateTeam(teamId:number,team: Team){
-    return this.http.put('http://localhost:8080/teams/' + teamId, team).subscribe()
+    return this.http.put(environment.URL + 'teams/' + teamId, team).subscribe()
   }
 
   saveUserImage(formData: FormData){
-    return this.http.put('http://localhost:8080/api/pictures/updateUserImage', formData).subscribe()
+    return this.http.put(environment.URL + 'api/pictures/updateUserImage', formData).subscribe()
   }
 
   saveTeamImage(formData: FormData, teamId:number){
@@ -54,7 +55,7 @@ export class AuthService{
     queryParams = queryParams.append("teamId",teamId);
 
 
-    return this.http.put('http://localhost:8080/api/pictures/updateTeamImage', formData,{params: queryParams}).subscribe()
+    return this.http.put(environment.URL + 'api/pictures/updateTeamImage', formData,{params: queryParams}).subscribe()
   }
 
 
@@ -64,7 +65,7 @@ export class AuthService{
     queryParams = queryParams.append("email",email);
 
     let token = this.getToken();
-    return this.http.get('http://localhost:8080/api/users/getUserByEmail', {params: queryParams})
+    return this.http.get(environment.URL + 'api/users/getUserByEmail', {params: queryParams})
   }
 
   updateUser(body:User){
@@ -87,7 +88,7 @@ export class AuthService{
           if (key == "id")
             id = value;
         }
-        var PathUrl = 'http://localhost:8080/api/users/users?userId=' + id
+        var PathUrl = environment.URL + 'api/users/users?userId=' + id
 
 
         return this.http.put(PathUrl, body).subscribe()
@@ -97,7 +98,7 @@ export class AuthService{
 
 
   login(params): Observable<{token:string}> {
-    return this.http.post<{token: string}>('http://localhost:8080/login', null, {params: params})
+    return this.http.post<{token: string}>(environment.URL +'login', null, {params: params})
       .pipe(
         tap(
           ({token}) =>{

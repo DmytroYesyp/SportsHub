@@ -1,8 +1,10 @@
 import { AuthConfig } from "angular-oauth2-oidc";
+import {environment} from "../environments/environment";
+
 
 export const authConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
-  redirectUri: 'http://localhost:4200/oauth',
+  redirectUri: environment.CLIENT_URL + 'oauth',
   clientId: '524872866401-tpkkalp5ucs0pe3t0k3q1i47o7p0tsss.apps.googleusercontent.com',
   scope: 'openid profile email',
   clearHashAfterLogin: false,
@@ -11,7 +13,7 @@ export const authConfig: AuthConfig = {
 
 export const googleRegisterConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
-  redirectUri: 'http://localhost:4200/google_register',
+  redirectUri: environment.CLIENT_URL +'google_register',
   clientId: '524872866401-tpkkalp5ucs0pe3t0k3q1i47o7p0tsss.apps.googleusercontent.com',
   scope: 'openid profile email',
   clearHashAfterLogin: false,
@@ -21,7 +23,7 @@ export const googleRegisterConfig: AuthConfig = {
 
 export const googleLoginConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
-  redirectUri: 'http://localhost:4200/google_login',
+  redirectUri: environment.CLIENT_URL +'google_login',
   clientId: '524872866401-tpkkalp5ucs0pe3t0k3q1i47o7p0tsss.apps.googleusercontent.com',
   scope: 'openid profile email',
   clearHashAfterLogin: false,

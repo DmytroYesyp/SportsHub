@@ -2,6 +2,7 @@ import {Component,Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
 import {Router} from '@angular/router';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -41,20 +42,20 @@ export class ArticleComponent implements OnInit {
     }
     this.path = this.router.url
     this.Id = this.getId()
-    this.http.get('http://localhost:8080/news/' + this.Id)
+    this.http.get(environment.URL + 'news/' + this.Id)
       .subscribe(Response => {
         this.list=(<Array<any>>Response);
         console.log(this.list);
         this.leagueId = this.getLeagueId();
         this.kindsOfSportId = this.getKindsOfSportId();
-        this.http.get('http://localhost:8080/leagues/' + this.leagueId)
+        this.http.get(environment.URL + 'leagues/' + this.leagueId)
           .subscribe(Response => {
             this.leagueList=(<Array<any>>Response);
             console.log(this.leagueList);
           });
         this.date = this.getDate();
         console.log(this.date)
-        this.http.get('http://localhost:8080/news?kindsOfSportIds=' + this.kindsOfSportId)
+        this.http.get(environment.URL + 'news?kindsOfSportIds=' + this.kindsOfSportId)
           .subscribe(Response => {
             this.moreList = (<Array<any>>Response);
             for (let i = 0; i < this.moreList.length; i++){
@@ -68,7 +69,7 @@ export class ArticleComponent implements OnInit {
             console.log(window.location)
           });
         this.views = this.list['views'] + 1
-        this.http.put('http://localhost:8080/news/' + this.Id, {
+        this.http.put(environment.URL + 'news/' + this.Id, {
           "title": this.list['title'],
           "description": this.list['description'],
           "publicationDate": this.list['publicationDate'],
@@ -84,7 +85,7 @@ export class ArticleComponent implements OnInit {
           .subscribe(() => {});
         this.teamIds = this.list['teamIds']
         for (let i = 0; i<this.teamIds.length; i++){
-          this.http.get('http://localhost:8080/teams/' + this.teamIds[i])
+          this.http.get(environment.URL + 'teams/' + this.teamIds[i])
             .subscribe(Response => {
               this.teamList.push(<Array<any>>Response);
             });

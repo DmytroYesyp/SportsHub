@@ -5,6 +5,7 @@ import {trustedHTMLFromString} from "@angular/material/icon/trusted-types";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {strict} from "assert";
+import {environment} from "../../environments/environment";
 
 
 @Component({
@@ -38,7 +39,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
   }
 
   toggleDelete(teamId: number) {
-    this.http.delete(`http://localhost:8080/teams/` + teamId).subscribe()
+    this.http.delete(environment.URL + `teams/` + teamId).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
@@ -66,7 +67,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
     this.form.value.image_url = "User.png";
 
-    this.http.post(`http://localhost:8080/teams`, this.form.value).subscribe()
+    this.http.post(environment.URL + `teams`, this.form.value).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 500)
@@ -98,7 +99,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.http.get<Team[]>(`http://localhost:8080/teams`).subscribe(data => {
+    this.http.get<Team[]>(environment.URL + `teams`).subscribe(data => {
       this.list = data
     })
 
@@ -115,7 +116,7 @@ export class AdminTeamPageComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    this.http.get<Team[]>(`http://localhost:8080/teams`).subscribe(data => {
+    this.http.get<Team[]>(environment.URL + `teams`).subscribe(data => {
       this.list = data
     })
 

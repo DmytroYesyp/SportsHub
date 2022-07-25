@@ -10,6 +10,7 @@ import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {OAuthService} from "angular-oauth2-oidc";
 import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
+import {environment} from "../../environments/environment";
 
 
 
@@ -112,7 +113,7 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.auth.logout()
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialLogIn/getAllLogIn`).subscribe(data => {
+    this.http.get<socialFollow[]>(environment.URL + `api/socialLogIn/getAllLogIn`).subscribe(data => {
       this.list = data
     })
     this.configure()

@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AppComponent} from "../../../app.component";
 import {Clipboard} from '@angular/cdk/clipboard';
 import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-social-share',
@@ -27,7 +28,7 @@ export class SocialShaeComponent implements OnInit {
               private socialAuthService: SocialAuthService
   ) {
   }
-  prefix : string = "http://localhost:4200"
+  prefix : string = environment.CLIENT_URL
   @Input() path :string = "/main"
 
 
@@ -37,7 +38,7 @@ export class SocialShaeComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.http.delete(`http://localhost:8080/api/socialShare/deleteShares?Id=` + id).subscribe()
+    this.http.delete(environment.URL + `api/socialShare/deleteShares?Id=` + id).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
@@ -55,7 +56,7 @@ export class SocialShaeComponent implements OnInit {
 
   OnSubmit() {
 
-    this.http.post(`http://localhost:8080/api/socialShare/addShares`, this.form.value).subscribe()
+    this.http.post(environment.URL + `api/socialShare/addShares`, this.form.value).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
@@ -103,7 +104,7 @@ export class SocialShaeComponent implements OnInit {
       this.fbUser = user;
     });
 
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialShare/getAllShares`).subscribe(data => {
+    this.http.get<socialFollow[]>(environment.URL + `api/socialShare/getAllShares`).subscribe(data => {
       this.list = data
     })
     this.form = new FormGroup({

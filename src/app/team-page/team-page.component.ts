@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-team-page',
@@ -24,7 +25,7 @@ export class TeamPageComponent implements OnInit {
     }
 
     let Id = this.getId()
-    this.http.get('http://localhost:8080/news?teamIds=' + Id)
+    this.http.get(environment.URL + 'news?teamIds=' + Id)
       .subscribe(Response => {
         this.list=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 10), (<Array<any>>Response).length);
         this.article = this.list.pop();
@@ -33,12 +34,12 @@ export class TeamPageComponent implements OnInit {
         this.date = this.getDate();
         console.log(this.date)
         this.leagueId = this.getLeagueId();
-        this.http.get('http://localhost:8080/leagues/' + this.leagueId)
+        this.http.get(environment.URL + 'leagues/' + this.leagueId)
           .subscribe(Response => {
             this.league=(<Array<any>>Response);
             console.log(this.league);
           });
-        this.http.get('http://localhost:8080/teams/' + Id)
+        this.http.get(environment.URL + 'teams/' + Id)
           .subscribe(Response => {
             this.team = (<Array<any>>Response);
             console.log(this.team);

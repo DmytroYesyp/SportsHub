@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppComponent} from "../../../app.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {socialFollow} from "../social-share/social-shae.component";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-social-follow',
@@ -18,7 +19,7 @@ export class SocialFollowComponent implements OnInit {
 
   constructor(private http: HttpClient,private app: AppComponent) { }
   delete(id: number) {
-    this.http.delete(`http://localhost:8080/api/socialFollow/deleteFollows?Id=` + id).subscribe()
+    this.http.delete(environment.URL + `api/socialFollow/deleteFollows?Id=` + id).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
@@ -26,7 +27,7 @@ export class SocialFollowComponent implements OnInit {
 
   OnSubmit() {
 
-    this.http.post(`http://localhost:8080/api/socialFollow/addFollows`, this.form.value).subscribe()
+    this.http.post(environment.URL + `api/socialFollow/addFollows`, this.form.value).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
@@ -37,7 +38,7 @@ export class SocialFollowComponent implements OnInit {
   }
   list: socialMore[];
   ngOnInit(): void {
-    this.http.get<socialMore[]>(`http://localhost:8080/api/socialFollow/getAllFollows`).subscribe(data => {
+    this.http.get<socialMore[]>(environment.URL + `api/socialFollow/getAllFollows`).subscribe(data => {
       this.list = data
     })
 

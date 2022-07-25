@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observer} from "rxjs";
 import {AuthService} from "./auth.service";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class mainPage implements OnInit {
 
     console.log('Testting get by email'+'http://localhost:8080/api/users/getUserByEmail' + ' an email ' + email)
 
-    return this.http.get('http://localhost:8080/api/users/getUserByEmail', {params: queryParams})
+    return this.http.get(environment.URL + 'api/users/getUserByEmail', {params: queryParams})
   }
 
   ngOnInit(): void {

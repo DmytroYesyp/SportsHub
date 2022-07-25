@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {AppComponent} from "../app.component";
 import {mainPage} from "../services/main-page.service";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-profile',
@@ -78,7 +79,7 @@ export class ProfileComponent implements OnInit {
     //   "&NewPassword="+this.form2.value.NewPassword+
     //   "&passwordConfirmation="+this.form2.value.passwordConfirmation
 
-    return this.http.patch('http://localhost:8080/api/users/checkPass',null,{params:queryParams}).subscribe(() =>{
+    return this.http.patch(environment.URL + 'api/users/checkPass',null,{params:queryParams}).subscribe(() =>{
       this.app.openSnackBar("Password changed successfully","OK")
     },error => {
       this.app.openSnackBar("Old password is not correct","OK")
@@ -92,7 +93,7 @@ export class ProfileComponent implements OnInit {
   }
 
   follow(id){
-    this.http.post('http://localhost:8080/follows', {"teamId": id,
+    this.http.post(environment.URL + 'follows', {"teamId": id,
       "userId": this.userId
     })
       .subscribe(() => {
@@ -101,7 +102,7 @@ export class ProfileComponent implements OnInit {
   }
 
   delete(teamId) {
-    this.http.delete('http://localhost:8080/follows/' + this.userId + '?teamId=' + teamId)
+    this.http.delete(environment.URL + 'follows/' + this.userId + '?teamId=' + teamId)
       .subscribe(() => {
         this.followedTeams2 = this.followedTeams2.filter(function(value, index, arr){
           return value != teamId;
@@ -111,10 +112,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserFromToken()
-    this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
-    this.http.get('http://localhost:8080/teams').subscribe(responseData =>{this.teams = responseData
+    this.http.get(environment.URL + 'api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData})
+    this.http.get(environment.URL + 'teams').subscribe(responseData =>{this.teams = responseData
       console.log(this.teams)
-      this.http.get('http://localhost:8080/follows?userId=' + this.userId)
+      this.http.get(environment.URL + 'follows?userId=' + this.userId)
         .subscribe((Response) => {
           this.followedTeams = <Array<any>>Response
           console.log(this.followedTeams)

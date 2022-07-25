@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-most-popular',
@@ -13,11 +14,11 @@ export class MostPopularComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/datelimits/1')
+    this.http.get(environment.URL + 'datelimits/1')
       .subscribe(Response => {
         this.dateLimit = Response['datelim'];
 
-        this.http.get('http://localhost:8080/news/mostpop?limitDate=' + this.dateLimit)
+        this.http.get(environment.URL + 'news/mostpop?limitDate=' + this.dateLimit)
           .subscribe(Response => {
             this.list = <Array<any>>Response;
             console.log(this.list)

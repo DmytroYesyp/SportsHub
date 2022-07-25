@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-prod": "ng serve --configuration production",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -33,6 +34,7 @@
     "angular-oauth2-oidc-jwks": "^13.0.1",
     "angular-social-login": "^0.0.1",
     "cropperjs": "^1.5.12",
+    "dotenv": "^16.0.1",
     "file-drop-element": "^1.0.1",
     "firebase": "9.7.0",
     "google-auth-library": "^8.0.2",

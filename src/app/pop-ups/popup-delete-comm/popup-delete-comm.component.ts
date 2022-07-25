@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-popup-delete-comm',
@@ -18,7 +19,7 @@ export class PopupDeleteCommComponent implements OnInit {
   }
 
   delete(id) {
-    this.http.delete('http://localhost:8080/comments/' + id)
+    this.http.delete(environment.URL + 'comments/' + id)
       .subscribe(() => {
         window.location.reload()
       });

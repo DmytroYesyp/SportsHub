@@ -9,6 +9,7 @@ import {PopupDeleteFollowComponent} from "../pop-ups/popup-delete-follow/popup-d
 import {MatDialog} from "@angular/material/dialog";
 import {PopupNewsletterComponent} from "../pop-ups/popup-newsletter/popup-newsletter.component";
 import {PopupLoginCommComponent} from "../pop-ups/popup-login-comm/popup-login-comm.component";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-main-page',
@@ -74,10 +75,10 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/news')
+    this.http.get(environment.URL + 'news')
       .subscribe(Response => {
         this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 1), (<Array<any>>Response).length);
-        this.http.get('http://localhost:8080/leagues/' + this.li[0]['leagueId'])
+        this.http.get(environment.URL + 'leagues/' + this.li[0]['leagueId'])
           .subscribe(Response => {
             this.league = Response;
 
@@ -99,16 +100,16 @@ export class MainPageComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
-    this.http.get('http://localhost:8080/datelimits')
+    this.http.get(environment.URL + 'datelimits')
       .subscribe(Response => {
         this.dateLimits = <Array<any>>Response
       });
 
-    this.http.get('http://localhost:8080/datelimits/4')
+    this.http.get(environment.URL + 'datelimits/4')
       .subscribe((Response) => {
         this.newsletterPublished[0] = Response['datelim'] != 0
       })
-    this.http.get('http://localhost:8080/datelimits/5')
+    this.http.get(environment.URL + 'datelimits/5')
       .subscribe((Response) => {
         this.newsletterPublished[1] = Response['datelim'] != 0
       })

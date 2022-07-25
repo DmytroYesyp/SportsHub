@@ -2,6 +2,7 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Team} from "../admin-team-page/admin-team-page.component";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
+import {environment} from "../../environments/environment";
 
 interface text {
   value: string;
@@ -48,7 +49,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     // @ts-ignore
     this.ent.find(i => i.id === this.currentId).description = this.currentDesc;//here is a problem
 
-    this.http.patch(`http://localhost:8080/api/fireBaseVideo/updateDescription`,null,{params : queryParams}).subscribe()
+    this.http.patch(environment.URL + `api/fireBaseVideo/updateDescription`,null,{params : queryParams}).subscribe()
   }
 
 
@@ -64,7 +65,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     this.followChecker = TF == "1"
 
     queryParams = queryParams.append("val",TF);
-    this.http.patch(`http://localhost:8080/api/socialShare/setVideoShare`,null,{params : queryParams}).subscribe()
+    this.http.patch(environment.URL + `api/socialShare/setVideoShare`,null,{params : queryParams}).subscribe()
   }
 
   videoFunc(url:string){
@@ -76,19 +77,19 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   }
   func(){
     if (this.selectedValue3 == 'text-1'){
-      this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos`).subscribe(data => {
+      this.http.get<videoEntity[]>(environment.URL +`api/fireBaseVideo/getVideos`).subscribe(data => {
         this.ent = data
       })
     }
 
     if (this.selectedValue3 == 'text-2'){
-      this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
+      this.http.get<videoEntity[]>(environment.URL + `api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
         this.ent = data
       })
     }
 
     if (this.selectedValue3 == 'text-3'){
-      this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos?params=0`).subscribe(data => {
+      this.http.get<videoEntity[]>(environment.URL +`api/fireBaseVideo/getVideos?params=0`).subscribe(data => {
         this.ent = data
       })
     }
@@ -115,11 +116,11 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     }
 
   ngOnInit(): void {
-    this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos`).subscribe(data => {
+    this.http.get<videoEntity[]>(environment.URL + `api/fireBaseVideo/getVideos`).subscribe(data => {
       this.ent = data;
     })
 
-    this.http.get<boolean>(`http://localhost:8080/api/socialShare/getVideoShare`).subscribe(data => {
+    this.http.get<boolean>(environment.URL + `api/socialShare/getVideoShare`).subscribe(data => {
       this.followChecker = data
     });
   }
@@ -131,7 +132,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   deleteById(id:number){
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id",id);
-    this.http.delete(`http://localhost:8080/api/fireBaseVideo/deleteById`,{params : queryParams}).subscribe()
+    this.http.delete(environment.URL + `api/fireBaseVideo/deleteById`,{params : queryParams}).subscribe()
 
   }
 
@@ -141,7 +142,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
     queryParams = queryParams.append("val",rev);
 
 
-    this.http.patch(`http://localhost:8080/api/fireBaseVideo/changeVisibility`,null,{params : queryParams}).subscribe()
+    this.http.patch(environment.URL + `api/fireBaseVideo/changeVisibility`,null,{params : queryParams}).subscribe()
   }
 
 }

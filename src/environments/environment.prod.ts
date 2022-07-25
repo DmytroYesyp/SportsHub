@@ -10,5 +10,7 @@ export const environment = {
     messagingSenderId: '524872866401',
     measurementId: 'G-HK6SH6ZJ3J',
   },
-  production: true
+  production: true,
+  URL: "https://sportshub2022.herokuapp.com/",
+  CLIENT_URL: "https://sportshub-623db.web.app/"
 };

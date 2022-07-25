@@ -10,6 +10,7 @@ import {ArticleService} from "../services/article.service";
 import {forkJoin} from "rxjs";
 import {Article} from "../dto/article/article";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 interface text {
   value: string;
@@ -65,7 +66,7 @@ export class AdminPageComponent implements OnInit {
       this.articles = articles as Article[];
       this.sportKinds = sportKinds as SportKind[];
     })
-    this.http.get('http://localhost:8080/datelimits')
+    this.http.get( environment.URL + 'http://localhost:8080/datelimits')
       .subscribe((Response) => {
         this.dateLimitList = <Array<any>>Response
         if (this.dateLimitList[0]['datelim']>this.dateLimitList[1]['datelim']) {

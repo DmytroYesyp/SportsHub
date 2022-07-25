@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupDeleteLangComponent} from "../pop-ups/popup-delete-lang/popup-delete-lang.component";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-set-lang',
@@ -19,7 +20,7 @@ export class SetLangComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/language')
+    this.http.get(environment.URL + 'language')
       .subscribe(Response => {
         this.list = (<Array<any>>Response);
         this.list.forEach(el=>{
@@ -41,13 +42,13 @@ export class SetLangComponent implements OnInit {
 
   show_hide(langId, i){
     if (this.booList[i]){
-      this.http.put('http://localhost:8080/language/' + langId, {"hidden": "false"})
+      this.http.put(environment.URL + 'language/' + langId, {"hidden": "false"})
         .subscribe(()=> {
           this.booList[i] = false
         });
     }
     else {
-      this.http.put('http://localhost:8080/language/' + langId, {"hidden": "true"})
+      this.http.put(environment.URL + 'language/' + langId, {"hidden": "true"})
         .subscribe(() => {
           localStorage.removeItem('lang')
           this.booList[i] = true

@@ -1,6 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../services/auth.service";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class LeaguePageComponent implements OnInit {
       this.authenticated = true
     }
     let Id = this.getId()
-    this.http.get('http://localhost:8080/news?leagueIds=' + Id)
+    this.http.get(environment.URL + 'news?leagueIds=' + Id)
       .subscribe(Response => {
         this.list=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 10), (<Array<any>>Response).length);
         this.article = this.list.pop();
@@ -35,7 +36,7 @@ export class LeaguePageComponent implements OnInit {
         this.date = this.getDate();
         console.log(this.date)
         this.leagueId = this.getLeagueId();
-        this.http.get('http://localhost:8080/leagues/' + this.leagueId)
+        this.http.get(environment.URL + 'leagues/' + this.leagueId)
           .subscribe(Response => {
             this.league=(<Array<any>>Response);
             console.log(this.league);

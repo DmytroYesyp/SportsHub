@@ -1,5 +1,6 @@
 import {Component, Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class NewsCardComponent implements OnInit {
 
   ngOnInit(): void {
     const params = {isPublished: true};
-    this.http.get('http://localhost:8080/news', {params})
+    this.http.get(environment.URL + 'news', {params})
       .subscribe(Response => {
         console.log(Response)
         this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 11), (<Array<any>>Response).length - 1);

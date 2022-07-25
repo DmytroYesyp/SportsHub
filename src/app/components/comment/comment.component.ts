@@ -6,6 +6,7 @@ import {PopupDeleteCommComponent} from "../../pop-ups/popup-delete-comm/popup-de
 import {PopupLoginCommComponent} from "../../pop-ups/popup-login-comm/popup-login-comm.component";
 import {AppComponent} from "../../app.component";
 import {concatMap, from, Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-comment',
@@ -40,7 +41,7 @@ export class CommentComponent implements OnInit {
   ngOnInit(): void {
     this.getUserFromToken()
     this.newsId = this.getId()
-    this.http.get('http://localhost:8080/comments/news' + this.newsId)
+    this.http.get(environment.URL + 'comments/news' + this.newsId)
       .subscribe(Response => {
         this.listOld = <Array<any>>Response
         this.listNew = this.reverseArr(this.listOld);
@@ -98,7 +99,7 @@ export class CommentComponent implements OnInit {
           this.isAdmin = true;
         }
         this.photoUrl = 'assets/img/User.png'
-        this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'})
+        this.http.get(environment.URL + 'api/pictures/getUserProfileImage',{responseType : 'text'})
           .subscribe(responseData =>{this.photoUrl = responseData})
       });
   }
@@ -107,7 +108,7 @@ export class CommentComponent implements OnInit {
     this.val = (<HTMLInputElement>document.getElementById("myInput")).value;
     console.log(this.val)
     if (this.val!='') {
-      this.http.post('http://localhost:8080/comments', {"text": this.val,
+      this.http.post(environment.URL + 'comments', {"text": this.val,
       "newsId": this.newsId,
       "userId": this.id,
       "publicationDate": new Date(),
@@ -119,7 +120,7 @@ export class CommentComponent implements OnInit {
   }
 
   delete(id) {
-    this.http.delete('http://localhost:8080/comments/' + id)
+    this.http.delete(environment.URL + 'comments/' + id)
       .subscribe(() => {
         window.location.reload()
       });
@@ -187,7 +188,7 @@ export class CommentComponent implements OnInit {
     this.val = (<HTMLInputElement>document.getElementById(comId+'comm')).value;
     console.log(this.val)
     if (this.val!='') {
-      this.http.put('http://localhost:8080/comments/' + id, {"text": this.val,
+      this.http.put(environment.URL + 'comments/' + id, {"text": this.val,
       "edited": true})
         .subscribe(() => {
           window.location.reload()
@@ -198,7 +199,7 @@ export class CommentComponent implements OnInit {
   addComment(commId, id) {
     this.val = (<HTMLInputElement>document.getElementById(id+'comm2')).value;
     if (this.val!='') {
-      this.http.post('http://localhost:8080/comments', {"text": this.val,
+      this.http.post(environment.URL + 'comments', {"text": this.val,
         "newsId": this.newsId,
         "userId": this.id,
         "publicationDate": new Date(),
@@ -259,13 +260,13 @@ export class CommentComponent implements OnInit {
   like(id, likeId){
     if (this.id != null)
         if (!this.isLiked[likeId]){
-          this.http.post('http://localhost:8080/likes', {"commentId": id,
+          this.http.post(environment.URL + 'likes', {"commentId": id,
             "userId": this.id})
             .subscribe(() => {
             });
           this.likes[likeId]++
           this.isLiked[likeId] = true
-          this.http.delete('http://localhost:8080/dislikes/' + id + '?userId=' + this.id)
+          this.http.delete(environment.URL + 'dislikes/' + id + '?userId=' + this.id)
             .subscribe(() => {
             });
           if (this.isDisliked[likeId])
@@ -273,7 +274,7 @@ export class CommentComponent implements OnInit {
           this.isDisliked[likeId] = false
         }
         else{
-          this.http.delete('http://localhost:8080/likes/' + id + '?userId=' + this.id)
+          this.http.delete(environment.URL + 'likes/' + id + '?userId=' + this.id)
             .subscribe(() => {
             });
           this.likes[likeId]--
@@ -291,13 +292,13 @@ export class CommentComponent implements OnInit {
   dislike(id, dislikeId){
     if (this.id != null)
       if (!this.isDisliked[dislikeId]){
-        this.http.post('http://localhost:8080/dislikes', {"commentId": id,
+        this.http.post(environment.URL + 'dislikes', {"commentId": id,
           "userId": this.id})
           .subscribe(() => {
           });
         this.dislikes[dislikeId]++
         this.isDisliked[dislikeId] = true
-        this.http.delete('http://localhost:8080/likes/' + id + '?userId=' + this.id)
+        this.http.delete(environment.URL + 'likes/' + id + '?userId=' + this.id)
           .subscribe(() => {
           });
         if (this.isLiked[dislikeId])
@@ -305,7 +306,7 @@ export class CommentComponent implements OnInit {
         this.isLiked[dislikeId] = false
       }
       else{
-        this.http.delete('http://localhost:8080/dislikes/' + id + '?userId=' + this.id)
+        this.http.delete(environment.URL + 'dislikes/' + id + '?userId=' + this.id)
           .subscribe(() => {
           });
         this.dislikes[dislikeId]--
@@ -321,18 +322,18 @@ export class CommentComponent implements OnInit {
   }
 
   private getInfo(x): Observable<any>{
-    return this.http.get('http://localhost:8080/likes/count?commId=' + x);
+    return this.http.get(environment.URL + 'likes/count?commId=' + x);
   }
   private getInfo2(x): Observable<any>{
-    return this.http.get('http://localhost:8080/likes/check?commId=' + x + '&userId=' + this.id)
+    return this.http.get(environment.URL + 'likes/check?commId=' + x + '&userId=' + this.id)
   }
   private getInfo3(x): Observable<any>{
-    return this.http.get('http://localhost:8080/dislikes/count?commId=' + x);
+    return this.http.get(environment.URL + 'dislikes/count?commId=' + x);
   }
   private getInfo4(x): Observable<any>{
-    return this.http.get('http://localhost:8080/dislikes/check?commId=' + x + '&userId=' + this.id)
+    return this.http.get(environment.URL + 'dislikes/check?commId=' + x + '&userId=' + this.id)
   }
   private getInfoUsers(x): Observable<any>{
-    return this.http.get('http://localhost:8080/api/users/users?userId=' + x)
+    return this.http.get(environment.URL + 'api/users/users?userId=' + x)
   }
 }

@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-popup-delete-lang',
@@ -20,7 +21,7 @@ export class PopupDeleteLangComponent implements OnInit {
   }
 
   delete(id) {
-    this.http.delete('http://localhost:8080/language/' + id)
+    this.http.delete(environment.URL + 'language/' + id)
       .subscribe(Response => {
         localStorage.removeItem('lang')
         window.location.reload()
