@@ -174,20 +174,6 @@ main_kinds{
   margin-right: 60px;
 }
 
-.wrapper{
-  display: flex;
-  background-color: #f2f2f2;
-}
-
-.middleRight {
-  position: absolute;
-  width: 30vw;
-  height: 30vw;
-  background-color: #0c5460;
-  margin-left: 40vw;
-  margin-top: 5vw;
-}
-
 #middleForm{
   float: left;
   margin-left: 10vw;
@@ -295,17 +281,14 @@ main_kinds{
 
 
 .showDiv {
-  margin-top: 5vw;
   width: 25vw;
 }
 
 .showDiv2 {
-  margin-top: 5vw;
   width: 25vw;
 }
 
 .showDiv3 {
-  margin-top: 5vw;
   width: 25vw;
 }
 
@@ -353,7 +336,6 @@ main_kinds{
 .buttonField label {
   background-color: white;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
   line-height: 1;
   text-align: left;
   padding: 10px 10px 10px 20px;
