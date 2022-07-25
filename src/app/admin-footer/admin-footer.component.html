@@ -72,45 +72,58 @@
   <div id="middleForm">
     <div id="TopContainerInMiddle">
       <div class="switch-field">
-        <input [value]="0"
+        <input class="inputSwitch" [value]="0"
                [(ngModel)]="isVisible" [checked]="isSelected" type="radio" id="radio-one" name="switch-one"
                value="first" checked/>
         <label id="radio-one_" for="radio-one"><p style="padding-top: 0.6vw">COMPANY INFO</p></label>
-        <input  [value]="1"
+        <input  class="inputSwitch" [value]="1"
                 [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-two" name="switch-one"
                 value="second" checked/>
         <label id="radio-two_" for="radio-two"><p style="padding-top: 0.6vw">CONTRIBUTORS</p></label>
-        <input  [value]="2"
+        <input  class="inputSwitch" [value]="2"
                 [(ngModel)]="isVisible" [checked]="isSelected"  type="radio" id="radio-three" name="switch-one"
                 value="third"/>
         <label id="radio-three_" for="radio-three"><p style="padding-top: 0.6vw">NEWSLETTER</p></label>
       </div>
 
-
+      <b><div class="langel2">Footer menu names<div class="sh_h">Show/Hide</div> </div></b>
 
         <div class="showDiv" *ngIf="isVisible == 0">
 
           <div class="buttonField" style="margin-top: 1vw">
-            <input [value]="10"
+            <input class="inputSwitch" [value]="10"
                    [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-eleven" name="switch-two"
                    value="eleventh"/>
-            <label id="radio-eleven_" for="radio-eleven"><p style="padding-top: 0.6vw">About SportsHub</p></label>
-            <input [value]="11"
+            <label id="radio-eleven_" for="radio-eleven">
+              <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[1]" (click)="companyInfoPublish(7, 1)" style="margin-right: 30px">
+              <p style="padding-top: 0.6vw">About SportsHub</p></label>
+            <input class="inputSwitch" [value]="11"
                    [(ngModel)]="isVisibleBelow" [checked]="isSelectedBelow" type="radio" id="radio-twelve" name="switch-two"
                    value="twelfth"/>
-            <label id="radio-twelve_" for="radio-twelve"><p style="padding-top: 0.6vw">News / In the Press</p></label>
-            <input [value]="12"
-                   [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-thirteen" name="switch-two"
+            <label id="radio-twelve_" for="radio-twelve">
+              <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[2]" (click)="companyInfoPublish(8, 2)" style="margin-right: 30px">
+              <p style="padding-top: 0.6vw">News / In the Press</p></label>
+            <input class="inputSwitch" [value]="12"
+                   class="inputSwitch" [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-thirteen" name="switch-two"
                    value="thirteenth"/>
-            <label id="radio-thirteen_" for="radio-thirteen"><p style="padding-top: 0.6vw">Adverising / Sports Blogger Ad Network</p></label>
-            <input [value]="13"
+            <label id="radio-thirteen_" for="radio-thirteen">
+              <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[3]" (click)="companyInfoPublish(9, 3)" style="margin-right: 30px">
+              <p style="padding-top: 0.6vw">Adverising / Sports Blogger Ad Network</p></label>
+            <input class="inputSwitch" [value]="13"
                    [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-fourteen" name="switch-two"
                    value="fourteenth"/>
-            <label id="radio-fourteen_" for="radio-fourteen"><p style="padding-top: 0.6vw">Events</p></label>
-            <input [value]="14"
+            <label id="radio-fourteen_" for="radio-fourteen">
+              <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[4]" (click)="companyInfoPublish(10, 4)" style="margin-right: 30px">
+              <p style="padding-top: 0.6vw">Events</p></label>
+            <input class="inputSwitch" [value]="14"
                    [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-fifteen" name="switch-two"
                    value="fifteenth"/>
-            <label id="radio-fifteen_" for="radio-fifteen"><p style="padding-top: 0.6vw">Contact Us</p></label>
+            <label id="radio-fifteen_" for="radio-fifteen">
+              <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[5]" (click)="companyInfoPublish(11, 5)" style="margin-right: 30px">
+              <p style="padding-top: 0.6vw">Contact Us</p></label>
+
+            <div style="font-size: 16px; margin-top: 10px;">Show section</div>
+            <input  type="checkbox" class="toggle-button" [checked]="companyInfoPublished[0]" (click)="companyInfoPublish(6, 0)" style="float: start; margin-left: 120px; margin-top: -20px">
           </div>
 
         </div>
@@ -118,38 +131,46 @@
 
       <div class="showDiv2" *ngIf="isVisible == 1">
         <div class="buttonField" style="margin-top: 1vw">
-          <input [value]="15"
+          <input class="inputSwitch" [value]="15"
                  [(ngModel)]="isVisibleBelow" [checked]="isVisibleBelow" type="radio" id="radio-sixteen" name="switch-two"
                  value="sixteenth"/>
-          <label id="radio-sixteen_" for="radio-sixteen"><p style="padding-top: 0.6vw">Featured Writers Program</p></label>
-          <input [value]="16"
+          <label id="radio-sixteen_" for="radio-sixteen">
+            <input  type="checkbox" class="toggle-button" [checked]="contributorsPublished[1]" (click)="contributorsPublish(13, 1)" style="margin-right: 30px">
+            <p style="padding-top: 0.6vw">Featured Writers Program</p></label>
+          <input class="inputSwitch" [value]="16"
                  [(ngModel)]="isVisibleBelow" [checked]="isSelectedBelow" type="radio" id="radio-seventeen" name="switch-two"
                  value="seventeenth"/>
-          <label id="radio-seventeen_" for="radio-seventeen"><p style="padding-top: 0.6vw">Featured Team Writers Program</p></label>
-          <input [value]="17"
+          <label id="radio-seventeen_" for="radio-seventeen">
+            <input  type="checkbox" class="toggle-button" [checked]="contributorsPublished[2]" (click)="contributorsPublish(14, 2)" style="margin-right: 30px">
+            <p style="padding-top: 0.6vw">Featured Team Writers Program</p></label>
+          <input class="inputSwitch" [value]="17"
                  [(ngModel)]="isVisibleBelow" [checked]="isSelectedBelow" type="radio" id="radio-eighteen" name="switch-two"
                  value="eighteenth"/>
-          <label id="radio-eighteen_" for="radio-eighteen"><p style="padding-top: 0.6vw">Internship Program</p></label>
+          <label id="radio-eighteen_" for="radio-eighteen">
+            <input  type="checkbox" class="toggle-button" [checked]="contributorsPublished[3]" (click)="contributorsPublish(15, 3)" style="margin-right: 30px">
+            <p style="padding-top: 0.6vw">Internship Program</p></label>
+
+          <div style="font-size: 16px; margin-top: 10px;">Show section</div>
+          <input  type="checkbox" class="toggle-button" [checked]="contributorsPublished[0]" (click)="contributorsPublish(12, 0)"  style="float: start; margin-left: 120px; margin-top: -20px">
+
 
         </div>
       </div>
 
       <div class="showDiv3" *ngIf="isVisible == 2">
         <div class="buttonField" style="margin-top: 1vw">
-          <input [value]="18"
+          <input class="inputSwitch" [value]="18"
                  [(ngModel)]="isVisibleBelow" [checked]="isSelectedBelow" type="radio" id="radio-nineteen" name="switch-two"
                  value="nineteenth"/>
-         <label id="radio-nineteen_" for="radio-nineteen"><p style="padding-top: 0.6vw">Sign up to receive latest sports news</p></label>
-        </div>
-      </div>
+          <label id="radio-nineteen_" for="radio-nineteen">
+            <input  type="checkbox" class="toggle-button" [checked]="newsletterPublished[0]" (click)="newsletterPublish(4, 0)" style="margin-right: 30px">
+            <p style="padding-top: 0.6vw">Sign up to receive the latest sports news</p>
+          </label>
 
-      <div class="middleRight">
-        <div class="showDiv10" *ngIf="isVisibleBelow == 10">
-          <p>ASBDBSDAASDK</p>
-        </div>
 
-        <div class="showDiv11" *ngIf="isVisibleBelow == 11">
-          <p>ASBDBSDadsdsasdasasdASDDSaAASDK</p>
+          <div style="font-size: 16px; margin-top: 10px;">Show section</div>
+          <input type="checkbox" class="toggle-button" [checked]="newsletterPublished[1]" (click)="newsletterPublish(5, 1)" style="float: start; margin-left: 120px; margin-top: -20px">
+
         </div>
       </div>
 
@@ -157,6 +178,28 @@
     </div>
 
   </div>
+
+<!--  <div class="middleRight">-->
+<!--    <div class="showDiv10" *ngIf="isVisibleBelow == 10">-->
+<!--      <div class="topMidRight">ABOUT SPORTS HUB</div>-->
+<!--      <div style="margin-top: 1vw" *ngFor="let e of list; index as i">-->
+<!--        <input formControlName="text" type="text" class="inputRight" *ngIf="e['id']==1" [value]="e['text']">-->
+<!--        <button class="buttonRight" (click)="updatePageText(e['1'])"></button>-->
+<!--      </div>-->
+
+<!--      <a [ngClass]="1==1?'text':'text'"*ngFor="let e of list; index as i">-->
+<!--        <p *ngIf="e['id']==1">{{e['id']}}</p>-->
+<!--      </a>-->
+
+<!--    </div>-->
+
+<!--    <div class="showDiv11" *ngIf="isVisibleBelow == 11">-->
+<!--      <div class="topMidRight">NEWS / IN THE PRESS</div>-->
+<!--      <a [ngClass]="1==1?'text':'text'"*ngFor="let e of list; index as i">-->
+<!--        <p *ngIf="e['id']==2">{{e['text']}}</p>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
 
 </div>
 

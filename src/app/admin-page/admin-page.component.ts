@@ -66,7 +66,7 @@ export class AdminPageComponent implements OnInit {
       this.articles = articles as Article[];
       this.sportKinds = sportKinds as SportKind[];
     })
-    this.http.get( environment.URL + 'http://localhost:8080/datelimits')
+    this.http.get( environment.URL + 'datelimits')
       .subscribe((Response) => {
         this.dateLimitList = <Array<any>>Response
         if (this.dateLimitList[0]['datelim']>this.dateLimitList[1]['datelim']) {
@@ -81,11 +81,11 @@ export class AdminPageComponent implements OnInit {
       });
 
     //Dima
-    this.http.get('http://localhost:8080/datelimits/4')
+    this.http.get(environment.URL +'datelimits/4')
       .subscribe((Response) => {
         this.newsletterPublished[0] = Response['datelim'] != 0
       })
-    this.http.get('http://localhost:8080/datelimits/5')
+    this.http.get(environment.URL +'datelimits/5')
       .subscribe((Response) => {
         this.newsletterPublished[1] = Response['datelim'] != 0
       })
@@ -98,7 +98,7 @@ export class AdminPageComponent implements OnInit {
 
 
   changeDateLimit(a){
-    this.http.get('http://localhost:8080/datelimits')
+    this.http.get(environment.URL +'datelimits')
       .subscribe((Response) => {
         this.dateLimitList = <Array<any>>Response
         if (this.dateLimitList[0]['datelim']>this.dateLimitList[1]['datelim']) {
@@ -110,7 +110,7 @@ export class AdminPageComponent implements OnInit {
 
         for(let i = 0; i<3; i++) {
           if (this.dateLimitList[i]['datelim'] != 0) {
-            this.http.put('http://localhost:8080/datelimits/' + (i+1), {
+            this.http.put(environment.URL +'datelimits/' + (i+1), {
               "datelim": a,
             })
               .subscribe(() => {
@@ -124,7 +124,7 @@ export class AdminPageComponent implements OnInit {
 
 
   show_hide_most(id){
-    this.http.get('http://localhost:8080/datelimits')
+    this.http.get(environment.URL +'datelimits')
       .subscribe((Response) => {
         this.dateLimitList = <Array<any>>Response
         if (this.dateLimitList[0]['datelim']>this.dateLimitList[1]['datelim']) {
@@ -134,13 +134,13 @@ export class AdminPageComponent implements OnInit {
           this.dateLimit = this.dateLimitList[1]['datelim']
         }
     if (this.booList[id-1]){
-      this.http.put('http://localhost:8080/datelimits/' + id, {"datelim": 0})
+      this.http.put(environment.URL +'datelimits/' + id, {"datelim": 0})
         .subscribe(()=> {
           this.booList[id-1] = false
         });
     }
     else {
-      this.http.put('http://localhost:8080/datelimits/' + id, {"datelim": this.dateLimitList[2]['datelim']})
+      this.http.put(environment.URL +'datelimits/' + id, {"datelim": this.dateLimitList[2]['datelim']})
         .subscribe(() => {
           this.booList[id - 1] = true
         });
@@ -152,13 +152,13 @@ export class AdminPageComponent implements OnInit {
   //Dima
  newsletterPublish(id, i){
     if (this.newsletterPublished[i]){
-      this.http.put('http://localhost:8080/datelimits/' + id, {"datelim": 0})
+      this.http.put(environment.URL +'datelimits/' + id, {"datelim": 0})
         .subscribe(() => {
           this.newsletterPublished[i] = false
         });
     }
     else{
-      this.http.put('http://localhost:8080/datelimits/' + id, {"datelim": 1})
+      this.http.put(environment.URL +'datelimits/' + id, {"datelim": 1})
         .subscribe(() => {
           this.newsletterPublished[i] = true
         });

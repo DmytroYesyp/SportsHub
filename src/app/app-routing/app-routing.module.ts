@@ -30,6 +30,9 @@ import {EditArticleComponent} from "../admin-article/edit-article/edit-article.c
 import {AdminArticleListComponent} from "../admin-article/admin-article-list/admin-article-list.component";
 import {AdminVideoComponent} from "../admin-video/admin-video.component";
 import {AdminVideoCreateComponent} from "../admin-video/admin-video-create/admin-video-create.component";
+import {AdminFooterComponent} from "../admin-footer/admin-footer.component";
+import {AboutComponent} from "../about/about.component";
+import {ContactUsComponent} from "../contact-us/contact-us.component";
 import {AdminDealbookComponent} from "../admin-article/admin-dealbook/admin-dealbook.component";
 import {AdminLifestyleComponent} from "../admin-article/admin-lifestyle/admin-lifestyle.component";
 import {DealbookComponent} from "../dealbook/dealbook.component";
@@ -52,6 +55,8 @@ const routes: Routes = [
       {path: 'team/:teamId', component: TeamPageComponent},
       {path: 'league/:leagueId', component: LeaguePageComponent},
       {path: 'team_hub', component: TeamhubComponent},
+      {path: 'about', component: AboutComponent},
+      {path: 'contact-us', component: ContactUsComponent},
       {path: 'dealbook', component: DealbookComponent},
       {path: 'lifestyle', component: LifestyleComponent}
 
@@ -74,6 +79,7 @@ const routes: Routes = [
       {path: 'admin_page/set-lang', component: SetLangComponent},
       {path: 'admin_video', component: AdminVideoComponent},
       {path: 'admin_video/create', component: AdminVideoCreateComponent},
+      {path: 'admin_footer', component: AdminFooterComponent},
       {path: 'admin_dealbook', component: AdminDealbookComponent},
       {path: 'admin_lifestyle', component: AdminLifestyleComponent}
     ]
