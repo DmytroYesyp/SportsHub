@@ -29,12 +29,16 @@ export class SocialShaeComponent implements OnInit {
   ) {
   }
   prefix : string = environment.CLIENT_URL
-  @Input() path :string = "/main"
+  @Input() path :string = "main"
 
 
 
   openning(input : string){
     window.open(input + this.dat,'name','width=600,height=400')
+  }
+
+  openning2(input : string){
+    window.open(input + this.dat + "&display=popup&ref=plugin&src=share_button",'name','width=600,height=400')
   }
 
   delete(id: number) {

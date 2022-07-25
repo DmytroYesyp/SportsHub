@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 
 })
 export class AppComponent implements OnInit{
-  title = 'client';
+  title = 'sportshub';
   expTime;
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AppComponent} from "../../app.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-header-user-profile',
@@ -71,7 +72,7 @@ export class HeaderUserProfileComponent implements OnInit {
       this.router.navigate(['/login'])
     }else{
       // @ts-ignore
-      this.http.get('http://localhost:8080/api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
+      this.http.get(environment.URL + 'api/pictures/getUserProfileImage',{responseType : 'text'}).subscribe(responseData =>{this.profileUrl = responseData},
         error => {
           console.warn(error)
           window.location.reload();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-lang',
@@ -12,7 +13,7 @@ export class LangComponent implements OnInit {
   constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8080/language')
+    this.http.get(environment.URL + 'language')
       .subscribe(Response => {
         this.list = (<Array<any>>Response);
         console.log(this.list)
