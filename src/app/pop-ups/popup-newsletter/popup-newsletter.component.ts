@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
 import {mainPage} from "../../services/main-page.service";
 import {PopupNewsletterSuccessComponent} from "../popup-newsletter-success/popup-newsletter-success.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-popup-newsletter',
@@ -25,14 +26,14 @@ export class PopupNewsletterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserFromToken()
-    this.http.get('http://localhost:8080/leagues/')
+    this.http.get(environment.URL + 'leagues/')
       .subscribe(Response => {
         this.list = <Array<any>>Response
       })
   }
 
   post(id, name) {
-    this.http.post('http://localhost:8080/newsletter', {"leagueId": id,
+    this.http.post(environment.URL + 'newsletter', {"leagueId": id,
       "userId": this.id,
       "mail": this.email
     })
