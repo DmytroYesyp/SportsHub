@@ -6,6 +6,7 @@ import {socialFollow} from "../social-share/social-shae.component";
 import {unwatchFile} from "fs";
 import {share} from "rxjs";
 import {getBoolean} from "@angular/fire/remote-config";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-social-login',
@@ -41,13 +42,13 @@ export class SocialLoginComponent implements OnInit , OnChanges {
   constructor(private http: HttpClient,private app: AppComponent) { }
 
   ngOnInit(): void {
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialLogIn/getAllLogIn`).subscribe(data => {
+    this.http.get<socialFollow[]>(environment.URL + `api/socialLogIn/getAllLogIn`).subscribe(data => {
       this.list = data
     })
 
 
 
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialShare/getAllShares`).subscribe(data => {
+    this.http.get<socialFollow[]>(environment.URL + `api/socialShare/getAllShares`).subscribe(data => {
       this.shareList = data
       for (var i =0 ; i< this.shareList.length;i++){
         if(this.shareList[i].pictogram == 'fb-share-button fa fa-facebook')
@@ -57,7 +58,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
       }
     })
 
-    this.http.get<socialMore[]>(`http://localhost:8080/api/socialFollow/getAllFollows`).subscribe(data => {
+    this.http.get<socialMore[]>(environment.URL + `api/socialFollow/getAllFollows`).subscribe(data => {
       this.listFollow = data
 
       for (var i =0 ; i< this.listFollow.length;i++){
@@ -84,7 +85,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     })
 
 
-    this.http.get<socialFollow[]>(`http://localhost:8080/api/socialLogIn/getAllLogIn`).subscribe(data => {
+    this.http.get<socialFollow[]>(environment.URL + `api/socialLogIn/getAllLogIn`).subscribe(data => {
       this.listLogIn = data
 
 
@@ -143,11 +144,11 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     queryParams = queryParams.append("pic",'twitter-share-button fa fa-twitter');
     queryParams = queryParams.append("val",TF);
 
-    this.http.put('http://localhost:8080/api/socialShare/editSharesByPic',null,{params : queryParams}).subscribe()
+    this.http.put(environment.URL + 'api/socialShare/editSharesByPic',null,{params : queryParams}).subscribe()
     queryParams1 = queryParams1.append("pic",'fb-share-button fa fa-facebook');
     queryParams1 = queryParams1.append("val",TF);
 
-    this.http.put('http://localhost:8080/api/socialShare/editSharesByPic',null,{params : queryParams1}).subscribe()
+    this.http.put(environment.URL + 'api/socialShare/editSharesByPic',null,{params : queryParams1}).subscribe()
 
 
     this.shareTwit = TF == '1';
@@ -167,21 +168,21 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     queryParams = queryParams.append("isVisible",TF);
     queryParams = queryParams.append("url","");
 
-    this.http.put('http://localhost:8080/api/socialFollow/editFollowsByPic',null,{params : queryParams}).subscribe()
+    this.http.put(environment.URL + 'api/socialFollow/editFollowsByPic',null,{params : queryParams}).subscribe()
 
     let queryParams1 = new HttpParams();
     queryParams1 = queryParams1.append("pic",'fa fa-twitter');
     queryParams1 = queryParams1.append("isVisible",TF);
     queryParams1 = queryParams1.append("url","");
 
-    this.http.put('http://localhost:8080/api/socialFollow/editFollowsByPic',null,{params : queryParams1}).subscribe()
+    this.http.put(environment.URL + 'api/socialFollow/editFollowsByPic',null,{params : queryParams1}).subscribe()
 
     let queryParams2 = new HttpParams();
     queryParams2 = queryParams2.append("pic",'fa fa-youtube');
     queryParams2 = queryParams2.append("isVisible",TF);
     queryParams2 = queryParams2.append("url","");
 
-    this.http.put('http://localhost:8080/api/socialFollow/editFollowsByPic',null,{params : queryParams2}).subscribe()
+    this.http.put(environment.URL + 'api/socialFollow/editFollowsByPic',null,{params : queryParams2}).subscribe()
 
     this.FollowFace = TF == '1';
     this.FollowTwit = TF == '1';
@@ -199,17 +200,17 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pic",'fa fa-facebook');
     queryParams = queryParams.append("url",TF);
-    this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
+    this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
 
     let queryParams1 = new HttpParams();
     queryParams1 = queryParams1.append("pic",'fa fa-twitter');
     queryParams1 = queryParams1.append("url",TF);
-    this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams1}).subscribe()
+    this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams1}).subscribe()
 
     let queryParams2 = new HttpParams();
     queryParams2 = queryParams2.append("pic",'fa fa-google');
     queryParams2 = queryParams2.append("url",TF);
-    this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams2}).subscribe()
+    this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams2}).subscribe()
 
     this.LogInGoogle= TF == '1';
     this.LogInFace = TF == '1';
@@ -265,7 +266,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
 
     this.allFollow = this.FollowTwit || this.FollowFace || this.FollowYoutube
 
-    this.http.put('http://localhost:8080/api/socialFollow/editFollowsByPic',null,{params : queryParams}).subscribe()
+    this.http.put(environment.URL + 'api/socialFollow/editFollowsByPic',null,{params : queryParams}).subscribe()
   }
 
   shared(str : string){
@@ -285,7 +286,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
 
       this.shareTwit = TF == '1'
 
-      this.http.put('http://localhost:8080/api/socialShare/editSharesByPic',null,{params : queryParams}).subscribe()
+      this.http.put(environment.URL + 'api/socialShare/editSharesByPic',null,{params : queryParams}).subscribe()
     }
     if (str == 'facebook'){
       const cb1 = document.getElementById('FacebookShared')as HTMLInputElement | null;
@@ -298,7 +299,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
       queryParams1 = queryParams1.append("pic",'fb-share-button fa fa-facebook');
       queryParams1 = queryParams1.append("val",TF1);
       this.shareFace = TF1 == '1'
-      this.http.put('http://localhost:8080/api/socialShare/editSharesByPic',null,{params : queryParams1}).subscribe()
+      this.http.put(environment.URL + 'api/socialShare/editSharesByPic',null,{params : queryParams1}).subscribe()
 
     }
 
@@ -340,11 +341,11 @@ export class SocialLoginComponent implements OnInit , OnChanges {
     }
 
     this.allLogIn = this.LogInFace || this.LogInGoogle
-    this.http.put('http://localhost:8080/api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
+    this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
   }
 
   delete(id: number) {
-    this.http.delete(`http://localhost:8080/api/socialLogIn/deleteLogIn?Id=` + id).subscribe()
+    this.http.delete(environment.URL + `api/socialLogIn/deleteLogIn?Id=` + id).subscribe()
     setTimeout(function () {
       window.location.reload()
     }, 250)
