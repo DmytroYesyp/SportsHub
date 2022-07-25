@@ -82,6 +82,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { ArticlePhotoUploaderComponent } from './admin-article/add-article/article-photo-uploader/article-photo-uploader.component';
 import { SearchTeamFollowComponent } from './search-team-follow/search-team-follow.component';
+import { AdminLifestyleComponent } from './admin-article/admin-lifestyle/admin-lifestyle.component';
+import { AdminDealbookComponent } from './admin-article/admin-dealbook/admin-dealbook.component';
+import { LifestyleComponent } from './lifestyle/lifestyle.component';
+import { DealbookComponent } from './dealbook/dealbook.component';
 
 
 
@@ -154,6 +158,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminFooterComponent,
     ArticlePhotoUploaderComponent,
     SearchTeamFollowComponent,
+    AdminLifestyleComponent,
+    AdminDealbookComponent,
+    LifestyleComponent,
+    DealbookComponent,
 
   ],
 

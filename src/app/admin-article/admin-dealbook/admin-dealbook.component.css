@@ -1,0 +1,45 @@
+.filter-criteria {
+  display: flex;
+}
+
+.league {
+  margin: 10px;
+  padding: 15px;
+}
+
+.team {
+  margin: 10px;
+  padding: 15px;
+}
+
+.all {
+  margin: 10px;
+  padding: 15px;
+}
+
+.item-article img {
+  margin: 10px;
+  padding: 15px;
+  width: 15%;
+  height: 15%;
+}
+
+.item-article {
+  display: flex;
+}
+
+.article-decr {
+  margin: 10px;
+  padding: 15px;
+}
+
+.article-decr p {
+  width: 500px;
+}
+
+.mat-icon-points {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  transform: translateY(-50%);
+}
