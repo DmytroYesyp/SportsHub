@@ -4,10 +4,6 @@ import lombok.Data;
 
 @Data
 public class PageContentUpdateDto {
-    private String title;
-    private String headline;
+    private Long id;
     private String text;
-    private String address;
-    private String tel;
-    private String email;
 }
