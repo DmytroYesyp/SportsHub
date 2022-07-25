@@ -5,6 +5,7 @@ import {concatMap, from, Observable, take} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupDeleteFollowComponent} from "../pop-ups/popup-delete-follow/popup-delete-follow.component";
 import {GeolocationService} from "@ng-web-apis/geolocation";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-teamhub',
@@ -34,11 +35,11 @@ export class TeamhubComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserFromToken()
-    this.http.get('http://localhost:8080/follows?userId=0')
+    this.http.get(environment.URL + 'follows?userId=0')
       .subscribe(() => {
         console.log(this.id)
 
-        this.http.get('http://localhost:8080/follows?userId=' + this.id)
+        this.http.get(environment.URL + 'follows?userId=' + this.id)
           .subscribe((Response) => {
             this.userList = Response
             console.log(this.userList)
@@ -78,7 +79,7 @@ export class TeamhubComponent implements OnInit {
         })
         .subscribe(data => {
           this.country = data['countryName']
-          this.http.get('http://localhost:8080/teams')
+          this.http.get(environment.URL + 'teams')
             .subscribe(responseData =>{
               this.teams2 = responseData
               for (let i = 0; i<this.teams2.length; i++){
@@ -148,13 +149,13 @@ export class TeamhubComponent implements OnInit {
   }
 
   private getNews(x): Observable<any>{
-    return this.http.get('http://localhost:8080/news?limit=3&teamIds=' + x['teamId'])
+    return this.http.get(environment.URL + 'news?limit=3&teamIds=' + x['teamId'])
   }
   private getNews2(x): Observable<any>{
-    return this.http.get('http://localhost:8080/news?limit=3&teamIds=' + x['id'])
+    return this.http.get(environment.URL + 'news?limit=3&teamIds=' + x['id'])
   }
   private getTeams(x): Observable<any>{
-    return this.http.get('http://localhost:8080/teams/' + x['teamId'])
+    return this.http.get(environment.URL + 'teams/' + x['teamId'])
   }
 
   openDialog(teamId, userId, name){
