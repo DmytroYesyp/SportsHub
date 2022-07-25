@@ -61,6 +61,22 @@ public class ResetPasswordController {
         mailSender.send(message);
     }
 
+    @PostMapping("/send_newsletter")
+    public void sendEmail2(@RequestParam String email, @RequestParam String link)
+            throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+        helper.setFrom("sportshub.help@gmail.com", "SportsHub");
+        helper.setTo(email);
+        String subject = "New article about your favourite league!";
+        String content = "<p>Hello,</p>"
+                + "<p>Check our site for new article about your favourite league</p>"
+                + "<p>Click the link: " + link + "</p>";
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        mailSender.send(message);
+    }
+
     @PostMapping("/reset_password")
     public  ResponseEntity<String> processResetPassword(@RequestParam String reset_token, String newPassword, String confirmPassword) {
         if (confirmPassword.equals(newPassword)) {

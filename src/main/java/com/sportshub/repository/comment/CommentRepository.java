@@ -26,6 +26,6 @@ public interface CommentRepository extends CustomCommentRepository, JpaRepositor
     int update(@Param("id") Long id, @Param("entity") CommentEntity entity);
 
     @Modifying
-    @Query("DELETE FROM CommentEntity WHERE id = :id")
+    @Query("DELETE FROM CommentEntity WHERE id = :id or commId = :id")
     int removeById(@Param("id") Long id);
 }
