@@ -101,5 +101,6 @@
     "ALLOWGEO": "Click",
     "ALLOWGEO2": "Allow",
     "ALLOWGEO3": "and we will show you news based on your geolocation!"
-  }
+  },
+  "COMMENT": "Comment"
 }
