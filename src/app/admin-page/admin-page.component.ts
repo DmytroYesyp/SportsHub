@@ -50,8 +50,6 @@ export class AdminPageComponent implements OnInit {
 
   isPublished = true;
 
-//Dima
-  newsletterPublished: any = []
 
   constructor(private http : HttpClient,
               private leagueService: LeagueService,
@@ -80,16 +78,6 @@ export class AdminPageComponent implements OnInit {
         this.booList[1] = this.dateLimitList[1]['datelim'] != 0;
       });
 
-    //Dima
-    this.http.get(environment.URL +'datelimits/4')
-      .subscribe((Response) => {
-        this.newsletterPublished[0] = Response['datelim'] != 0
-      })
-    this.http.get(environment.URL +'datelimits/5')
-      .subscribe((Response) => {
-        this.newsletterPublished[1] = Response['datelim'] != 0
-      })
-    //----
   }
 
   getOrderedArticles(): Article[] {
@@ -149,22 +137,6 @@ export class AdminPageComponent implements OnInit {
       })
   }
 
-  //Dima
- newsletterPublish(id, i){
-    if (this.newsletterPublished[i]){
-      this.http.put(environment.URL +'datelimits/' + id, {"datelim": 0})
-        .subscribe(() => {
-          this.newsletterPublished[i] = false
-        });
-    }
-    else{
-      this.http.put(environment.URL +'datelimits/' + id, {"datelim": 1})
-        .subscribe(() => {
-          this.newsletterPublished[i] = true
-        });
-    }
-  }
-  //--
 
 }
 

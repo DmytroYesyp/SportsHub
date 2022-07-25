@@ -37,6 +37,7 @@ import {AdminDealbookComponent} from "../admin-article/admin-dealbook/admin-deal
 import {AdminLifestyleComponent} from "../admin-article/admin-lifestyle/admin-lifestyle.component";
 import {DealbookComponent} from "../dealbook/dealbook.component";
 import {LifestyleComponent} from "../lifestyle/lifestyle.component";
+import {PrivacyPolicyComponent} from "../privacy-policy/privacy-policy.component";
 
 const routes: Routes = [
   {
@@ -58,7 +59,8 @@ const routes: Routes = [
       {path: 'about', component: AboutComponent},
       {path: 'contact-us', component: ContactUsComponent},
       {path: 'dealbook', component: DealbookComponent},
-      {path: 'lifestyle', component: LifestyleComponent}
+      {path: 'lifestyle', component: LifestyleComponent},
+      {path: 'privacy-policy', component: PrivacyPolicyComponent}
 
     ]
   },
