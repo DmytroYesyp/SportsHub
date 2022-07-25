@@ -34,67 +34,69 @@ export class TeamhubComponent implements OnInit {
               private readonly geolocation$: GeolocationService) { }
 
   ngOnInit(): void {
-    this.getUserFromToken()
-    this.http.get(environment.URL + 'follows?userId=0')
-      .subscribe(() => {
-        console.log(this.id)
+    this.getUserFromToken().subscribe(()=>{
+      this.http.get(environment.URL + 'follows?userId=0')
+        .subscribe(() => {
+          console.log(this.id)
 
-        this.http.get(environment.URL + 'follows?userId=' + this.id)
-          .subscribe((Response) => {
-            this.userList = Response
-            console.log(this.userList)
-            from(this.userList).pipe(
-              concatMap(x=> {
-                return this.getTeams(x);
-              })).subscribe(Response => {
-              this.teams.push(<Array<any>>Response);
-            });
-            console.log(this.teams)
-
-
-            from(this.userList).pipe(
-              concatMap(x=> {
-                return this.getNews(x);
-              })).subscribe(Response => {
-              this.news.push(<Array<any>>Response);
-            });
-            console.log(this.news)
-
-          });
-      })
-
-    this.geolocation$.pipe(take(1)).subscribe(position => {
-      this.coords = position
-      this.lat = this.coords['coords']['latitude']
-      this.lng = this.coords['coords']['longitude']
-      this.http.get('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+ this.lat+
-        '&longitude='+this.lng+'&localityLanguage=en',
-        {headers: {
-          "Access-Control-Allow-Origin" : "*",
-            "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
-          "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, " +
-            "Access-Control-Request-Method, Access-Control-Request-Headers"
-        }
-        })
-        .subscribe(data => {
-          this.country = data['countryName']
-          this.http.get(environment.URL + 'teams')
-            .subscribe(responseData =>{
-              this.teams2 = responseData
-              for (let i = 0; i<this.teams2.length; i++){
-                if(this.teams2[i]['state']==this.country)
-                  this.teams3.push(this.teams2[i])
-              }
-              from(this.teams3).pipe(
+          this.http.get(environment.URL + 'follows?userId=' + this.id)
+            .subscribe((Response) => {
+              this.userList = Response
+              console.log(this.userList)
+              from(this.userList).pipe(
                 concatMap(x=> {
-                  return this.getNews2(x);
+                  return this.getTeams(x);
                 })).subscribe(Response => {
-                this.news2.push(<Array<any>>Response);
+                this.teams.push(<Array<any>>Response);
               });
-            })
+              console.log(this.teams)
+
+
+              from(this.userList).pipe(
+                concatMap(x=> {
+                  return this.getNews(x);
+                })).subscribe(Response => {
+                this.news.push(<Array<any>>Response);
+              });
+              console.log(this.news)
+
+            });
+        })
+
+      this.geolocation$.pipe(take(1)).subscribe(position => {
+        this.coords = position
+        this.lat = this.coords['coords']['latitude']
+        this.lng = this.coords['coords']['longitude']
+        this.http.get('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+ this.lat+
+          '&longitude='+this.lng+'&localityLanguage=en',
+          {headers: {
+              "Access-Control-Allow-Origin" : "*",
+              "Access-Control-Allow-Credentials": "true",
+              "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+              "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, " +
+                "Access-Control-Request-Method, Access-Control-Request-Headers"
+            }
           })
-    });
+          .subscribe(data => {
+            this.country = data['countryName']
+            this.http.get(environment.URL + 'teams')
+              .subscribe(responseData =>{
+                this.teams2 = responseData
+                for (let i = 0; i<this.teams2.length; i++){
+                  if(this.teams2[i]['state']==this.country)
+                    this.teams3.push(this.teams2[i])
+                }
+                from(this.teams3).pipe(
+                  concatMap(x=> {
+                    return this.getNews2(x);
+                  })).subscribe(Response => {
+                  this.news2.push(<Array<any>>Response);
+                });
+              })
+          })
+      });
+    })
+
   }
 
   // getApi(bdcApi){
