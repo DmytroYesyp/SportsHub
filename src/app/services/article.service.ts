@@ -17,16 +17,24 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   public createArticle(article: ArticleContent): Observable<Article> {
+    // this.http.get(`${HOST_URL}newsletter?leagueId=` + article.leagueId)
+    //   .subscribe(Response => {
+    //     this.arr = <Array<any>>Response
+    //     this.arr.forEach(el => {
+    //     this.emailArr.push(el['mail'])
+    //       this.link = environment.CLIENT_URL + `league/` + article.leagueId
+    //     })
+    //     this.emailArr.forEach(email => {
+    //       this.http.post(`${HOST_URL}send_newsletter?email=` + email + '&link=' + this.link, {}).subscribe(() =>{
+    //       })
+    //     })
+    //   })
     this.http.get(`${HOST_URL}newsletter?leagueId=` + article.leagueId)
       .subscribe(Response => {
         this.arr = <Array<any>>Response
+        this.link = environment.CLIENT_URL + `league/` + article.leagueId
         this.arr.forEach(el => {
-        this.emailArr.push(el['mail'])
-          this.link = environment.CLIENT_URL + `league/` + article.leagueId
-        })
-        this.emailArr.forEach(email => {
-          this.http.post(`${HOST_URL}send_newsletter?email=` + email + '&link=' + this.link, {}).subscribe(() =>{
-          })
+          this.http.post(`${HOST_URL}send_newsletter?email=` + el['mail'] + '&link=' + this.link, {}).subscribe(() =>{})
         })
       })
     return this.http.post<Article>(`${HOST_URL}news`, article);
