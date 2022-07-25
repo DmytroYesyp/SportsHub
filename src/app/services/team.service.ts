@@ -13,18 +13,18 @@ export class TeamService {
   constructor(private http: HttpClient) {}
 
   public createTeam(team: TeamContent):Observable<Team> {
-    return this.http.post<Team>(`${HOST_URL}/teams`, team);
+    return this.http.post<Team>(`${HOST_URL}teams`, team);
   }
 
   public getTeams():Observable<Team[]> {
-    return this.http.get<Team[]>(`${HOST_URL}/teams`)
+    return this.http.get<Team[]>(`${HOST_URL}teams`)
   }
 
   public updateTeam(id: number, team: TeamContent):Observable<void> {
-    return this.http.put<void>(`${HOST_URL}/teams/${id}`, team);
+    return this.http.put<void>(`${HOST_URL}teams/${id}`, team);
   }
 
   public deleteTeame(id: number):Observable<void> {
-    return this.http.delete<void>(`${HOST_URL}/teams/${id}`);
+    return this.http.delete<void>(`${HOST_URL}teams/${id}`);
   }
 }
