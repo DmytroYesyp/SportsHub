@@ -157,6 +157,14 @@ export class AdminFooterComponent implements OnInit {
         this.contributorsPublished[3] = Response['datelim'] != 0
       })
 
+    this.http.get(environment.URL +'datelimits/4')
+      .subscribe((Response) => {
+        this.newsletterPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/5')
+      .subscribe((Response) => {
+        this.newsletterPublished[1] = Response['datelim'] != 0})
+
   }
 
 
