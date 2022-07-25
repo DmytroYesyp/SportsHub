@@ -157,14 +157,6 @@ export class AdminFooterComponent implements OnInit {
         this.contributorsPublished[3] = Response['datelim'] != 0
       })
 
-    this.http.get(environment.URL +'datelimits/4')
-      .subscribe((Response) => {
-        this.newsletterPublished[0] = Response['datelim'] != 0
-      })
-    this.http.get(environment.URL +'datelimits/5')
-      .subscribe((Response) => {
-        this.newsletterPublished[1] = Response['datelim'] != 0})
-
   }
 
 
@@ -193,13 +185,13 @@ export class AdminFooterComponent implements OnInit {
 
   newsletterPublish(id, i){
     if (this.newsletterPublished[i]){
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 0})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 0})
         .subscribe(() => {
           this.newsletterPublished[i] = false
         });
     }
     else{
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 1})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 1})
         .subscribe(() => {
           this.newsletterPublished[i] = true
         });
@@ -208,13 +200,13 @@ export class AdminFooterComponent implements OnInit {
 
   companyInfoPublish(id, i){
     if (this.companyInfoPublished[i]){
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 0})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 0})
         .subscribe(() => {
           this.companyInfoPublished[i] = false
         });
     }
     else{
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 1})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 1})
         .subscribe(() => {
           this.companyInfoPublished[i] = true
         });
@@ -223,13 +215,13 @@ export class AdminFooterComponent implements OnInit {
 
   contributorsPublish(id, i){
     if (this.contributorsPublished[i]){
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 0})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 0})
         .subscribe(() => {
           this.contributorsPublished[i] = false
         });
     }
     else{
-      this.http.put(environment.URL + `datelimits` + id, {"datelim": 1})
+      this.http.put(environment.URL + `datelimits/` + id, {"datelim": 1})
         .subscribe(() => {
           this.contributorsPublished[i] = true
         });
