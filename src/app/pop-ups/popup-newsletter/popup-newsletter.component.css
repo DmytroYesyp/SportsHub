@@ -1,0 +1,6 @@
+.element:hover{
+  cursor: pointer;
+  background: #EDEDED;
+  transition: all 400ms ease
+
+}

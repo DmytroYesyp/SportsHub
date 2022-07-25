@@ -5,6 +5,10 @@ import {AppComponent} from "../app.component";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {PopupDeleteFollowComponent} from "../pop-ups/popup-delete-follow/popup-delete-follow.component";
+import {MatDialog} from "@angular/material/dialog";
+import {PopupNewsletterComponent} from "../pop-ups/popup-newsletter/popup-newsletter.component";
+import {PopupLoginCommComponent} from "../pop-ups/popup-login-comm/popup-login-comm.component";
 
 @Component({
   selector: 'app-main-page',
@@ -25,9 +29,11 @@ export class MainPageComponent implements OnInit {
   user: Object;
   league: any;
   authenticated: boolean = false;
+  newsletterPublished: any = []
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
+              private dialogRef: MatDialog,
               private app: AppComponent,
               public translate: TranslateService,
               private router: Router,
@@ -97,6 +103,15 @@ export class MainPageComponent implements OnInit {
       .subscribe(Response => {
         this.dateLimits = <Array<any>>Response
       });
+
+    this.http.get('http://localhost:8080/datelimits/4')
+      .subscribe((Response) => {
+        this.newsletterPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get('http://localhost:8080/datelimits/5')
+      .subscribe((Response) => {
+        this.newsletterPublished[1] = Response['datelim'] != 0
+      })
   }
 
   logOut(){
@@ -105,5 +120,30 @@ export class MainPageComponent implements OnInit {
 
   getDate(){
     return this.li[0]['publicationDate'].substring(0,10) + ' ' + this.li[0]['publicationDate'].substring(11,19)
+  }
+
+  openDialog(){
+    if (this.authenticated) {
+      let val = (<HTMLInputElement>document.getElementById('email')).value
+      let val2 = document.getElementById('email')
+      if (val) {
+        this.dialogRef.open(PopupNewsletterComponent, {
+          data: {
+            email: val
+          }
+        })
+      } else {
+        if (val2)
+          val2.style.border = '1px solid #D72130'
+      }
+    }
+    else{
+        this.dialogRef.open(PopupLoginCommComponent, {
+          data: {
+            id: 2,
+          },
+          'height': '155px'
+        })
+    }
   }
 }

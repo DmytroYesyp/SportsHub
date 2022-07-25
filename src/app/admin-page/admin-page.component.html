@@ -266,6 +266,27 @@
 
 
     <div style="margin-top: 9vw">
+
+
+      <div>
+        <div style="float: left; height: 3vw; width: 25vw;background-color: #f8f8f8;">
+          <p style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST POPULAR</Strong></p>
+          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
+            <div *ngIf="dateLimitList">
+              <input type="checkbox" class="toggle-button" [checked]="booList[0]" (click)="show_hide_most(1)">
+            </div>
+          </div>
+        </div>
+        <div style="float: right; height: 3vw; width: 25vw;background-color: #f8f8f8"><p
+          style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST COMMENTED</Strong></p>
+          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
+            <div *ngIf="dateLimitList">
+              <input type="checkbox" class="toggle-button" [checked]="booList[1]" (click)="show_hide_most(2)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
       <p style="color: gray">FROM THE PERIOD* (<b>{{dateLimit}}</b> days)</p>
       <form>
         <mat-form-field class="RowForm" appearance="outline">
@@ -278,31 +299,25 @@
           </mat-select>
         </mat-form-field>
       </form>
-
-      <div>
-        <div style="float: left; height: 3vw; width: 23vw;background-color: #f8f8f8">
-          <p style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST POPULAR</Strong></p>
-          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
-            <div *ngIf="dateLimitList">
-              <button class="hide" *ngIf="dateLimitList[0]['datelim']!=0" (click)="hide(1)">Hide</button>
-              <button class="show" *ngIf="dateLimitList[0]['datelim']==0" (click)="show(1)">Show</button>
-            </div>
-          </div>
-        </div>
-        <div style="float: right; height: 3vw; width: 23vw;background-color: #f8f8f8"><p
-          style="float: left; padding-top: 1vw; padding-left: 1vw"><Strong>MOST COMMENTED</Strong></p>
-          <div style="padding-top: 0.8vw;padding-right: 1vw" class="container">
-            <div *ngIf="dateLimitList">
-              <button class="hide" *ngIf="dateLimitList[1]['datelim']!=0" (click)="hide(2)">Hide</button>
-              <button class="show" *ngIf="dateLimitList[1]['datelim']==0" (click)="show(2)">Show</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
 
-  </div>
+
+<!--Dima-->
+    <div style="margin-top: 100px">
+      <div class="langlist">
+        <b><div class="langel2">Footer menu names<div class="sh_h">Show/Hide</div> </div></b>
+        <div class="langel"> Sign up to receive the latest sports news
+          <input  type="checkbox" class="toggle-button" [checked]="newsletterPublished[0]" (click)="newsletterPublish(4, 0)">
+        </div>
+        <div style="font-size: 16px; margin-top: 10px;">Show section</div>
+        <input type="checkbox" class="toggle-button" [checked]="newsletterPublished[1]" (click)="newsletterPublish(5, 1)" style="float: start; margin-right: 450px; margin-top: -20px">
+      </div>
+    </div>
+    <!------->
+
+
+</div>
 </div>
 
 </body>

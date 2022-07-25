@@ -398,3 +398,29 @@ main_kinds{
   background: #dedede;
   cursor: pointer;
 }
+
+
+
+.langlist{
+  width: 600px;
+}
+.langel{
+  height: 20px;
+  font-size: 16px;
+  border: solid #dedede 1px;
+  margin: -1px;
+  padding: 10px 10px 10px 20px;
+}
+
+.langel2{
+  height: 20px;
+  font-size: 14px;
+  background: #dedede;
+  margin: -1px;
+  padding: 10px 10px 10px 20px;
+}
+.sh_h{
+  float: right;
+  font-size: 14px;
+  margin-right: 12px;
+}

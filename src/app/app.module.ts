@@ -86,7 +86,8 @@ import { AdminLifestyleComponent } from './admin-article/admin-lifestyle/admin-l
 import { AdminDealbookComponent } from './admin-article/admin-dealbook/admin-dealbook.component';
 import { LifestyleComponent } from './lifestyle/lifestyle.component';
 import { DealbookComponent } from './dealbook/dealbook.component';
-
+import { PopupNewsletterComponent } from './pop-ups/popup-newsletter/popup-newsletter.component';
+import { PopupNewsletterSuccessComponent } from './pop-ups/popup-newsletter-success/popup-newsletter-success.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -162,7 +163,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminDealbookComponent,
     LifestyleComponent,
     DealbookComponent,
-
+    PopupNewsletterComponent,
+    PopupNewsletterSuccessComponent
   ],
 
   imports: [

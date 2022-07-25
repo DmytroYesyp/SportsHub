@@ -287,15 +287,15 @@
         <a href=""><h3>Featured Team Writers Program</h3></a>
         <a href=""><h3>Internship Program</h3></a>
       </div>
-      <div class="newsletter">
+      <div class="newsletter" *ngIf="newsletterPublished[1]">
         <h4 class="footerTitle">NEWSLETTER</h4>
-        <label class="newsletterLabel">Sign up to receive the latest sports news</label>
+        <label class="newsletterLabel" *ngIf="newsletterPublished[0]">Sign up to receive the latest sports news</label>
         <div class="subscribeField">
           <form class="subscribeInputs">
-            <input class="subscribeTextField" type="text" placeholder="Your email address">
+            <input class="subscribeTextField" type="text" placeholder="Your email address" id="email">
             <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
           </form>
-          <button class="subscribeTextField2">Subscribe</button>
+          <button class="subscribeTextField2" (click)="openDialog()">Subscribe</button>
 
         </div>
       </div>

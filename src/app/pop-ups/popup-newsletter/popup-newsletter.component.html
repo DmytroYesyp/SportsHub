@@ -1,0 +1,4 @@
+<h3>Choose the league: </h3>
+<div *ngFor="let e of list">
+  <div class="element" (click)="post(e['id'], e['name'])"><b>{{e['name']}}</b></div>
+</div>

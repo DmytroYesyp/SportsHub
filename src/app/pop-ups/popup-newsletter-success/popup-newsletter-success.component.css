@@ -1,0 +1,30 @@
+.cancel{
+  background: none;
+  border: none;
+  height: 35px;
+  font-size: 14px;
+  color: white;
+  background: #D72130;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.cancel:hover{
+  background: #af1b27;
+  transition: all 400ms ease
+}
+.delete{
+  background: none;
+  border: none;
+  height: 35px;
+  font-size: 14px;
+  color: #8d8d8d;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.delete:hover{
+  background: #EDEDED;
+  transition: all 400ms ease;
+}
+

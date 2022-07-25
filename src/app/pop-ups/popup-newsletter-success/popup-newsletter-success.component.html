@@ -1,0 +1,14 @@
+<div *ngIf="unsubscribed == false">
+<div style="text-align: center; width: 400px">
+  <h3>You have subscribed to <b>{{league}}</b> news. From now on you will receive letters about this league!</h3>
+</div>
+<div style="text-align: center">
+  <button class="delete" (click)="delete()">Unsubscribe</button>
+  <button class="cancel" (click)="close()">Ok, got it</button>
+</div>
+</div>
+
+<div *ngIf="unsubscribed == true" style="text-align: center">
+  <h3>You have unsubscribed from <b>{{league}}</b>.</h3>
+  <button class="delete" (click)="close()">Close</button>
+</div>

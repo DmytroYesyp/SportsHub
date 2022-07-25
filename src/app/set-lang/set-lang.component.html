@@ -66,10 +66,9 @@
   </div>
   <div class="langlist">
     <b><div class="langel2">Languages<div class="sh_h">Show/Hide</div> </div></b>
-<div  *ngFor="let e of list;" class="langel"> {{e['name']}}
+<div  *ngFor="let e of list; index as i" class="langel"> {{e['name']}}
   <button class="fa fa-trash" *ngIf="e['locale']!='en'" (click)="openDialog(e['id'], e['name'])"></button>
-  <button class="hide" *ngIf="e['hidden']==false" (click)="hide(e['id'])">Hide</button>
-  <button class="show" *ngIf="e['hidden']==true" (click)="show(e['id'])">Show</button>
+  <input  id="FacebookShared" type="checkbox" class="toggle-button" [checked]="!booList[i]" (click)="show_hide(e['id'], i)">
 
 </div>
   </div>
