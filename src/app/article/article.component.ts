@@ -40,7 +40,7 @@ export class ArticleComponent implements OnInit {
     if(this.auth.isAuthenticated()){
       this.authenticated = true
     }
-    this.path = this.router.url
+    this.path = this.router.url.substring(1)
     this.Id = this.getId()
     this.http.get(environment.URL + 'news/' + this.Id)
       .subscribe(Response => {

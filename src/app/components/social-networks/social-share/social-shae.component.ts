@@ -29,7 +29,7 @@ export class SocialShaeComponent implements OnInit {
   ) {
   }
   prefix : string = environment.CLIENT_URL
-  @Input() path :string = "/main"
+  @Input() path :string = "main"
 
 
 
