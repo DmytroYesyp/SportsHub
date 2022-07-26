@@ -265,51 +265,6 @@
   </div>
 </div>
 
-<div class="allFooter">
-
-  <div class="upperFooter">
-    <div class="footerLineUp">
-        <hr class="footerLineBr">
-    </div>
-
-    <div class="filledFooter">
-      <div class="companyInfo" *ngIf="companyInfoPublished[0]">
-        <h4 class="footerTitle">COMPANY INFO</h4>
-        <a href="/about"><h3 *ngIf="companyInfoPublished[1]">About Sports Hub</h3></a>
-        <a href=""><h3 *ngIf="companyInfoPublished[2]">News / In the Press</h3></a>
-        <a href=""><h3 *ngIf="companyInfoPublished[3]">Advertising / Sports Blogger Ad Network</h3></a>
-        <a href=""><h3 *ngIf="companyInfoPublished[4]">Events</h3></a>
-        <a href="/contact-us"><h3 *ngIf="companyInfoPublished[5]">Contact Us</h3></a>
-      </div>
-      <div class="contributors" *ngIf="contributorsPublished[0]">
-        <h4 class="footerTitle">CONTRIBUTORS</h4>
-        <a href=""><h3 *ngIf="contributorsPublished[1]">Featured Writers Program</h3></a>
-        <a href=""><h3 *ngIf="contributorsPublished[2]">Featured Team Writers Program</h3></a>
-        <a href=""><h3 *ngIf="contributorsPublished[3]">Internship Program</h3></a>
-      </div>
-      <div class="newsletter" *ngIf="newsletterPublished[1]">
-        <h4 class="footerTitle">NEWSLETTER</h4>
-        <label class="newsletterLabel" *ngIf="newsletterPublished[0]">Sign up to receive the latest sports news</label>
-        <div class="subscribeField">
-          <form class="subscribeInputs">
-            <input class="subscribeTextField" type="text" placeholder="Your email address" id="email">
-            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
-          </form>
-          <button class="subscribeTextField2" (click)="openDialog()">Subscribe</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <a href="">Copyright ©2019 Sports Hub</a>
-    <br>
-    <a href="/privacy-policy">Privacy / Terms</a>
-  </div>
-</div>
-
-
-
+<app-site-footer></app-site-footer>
 
 </body>

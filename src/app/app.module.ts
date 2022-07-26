@@ -88,6 +88,7 @@ import { LifestyleComponent } from './lifestyle/lifestyle.component';
 import { DealbookComponent } from './dealbook/dealbook.component';
 import { PopupNewsletterComponent } from './pop-ups/popup-newsletter/popup-newsletter.component';
 import { PopupNewsletterSuccessComponent } from './pop-ups/popup-newsletter-success/popup-newsletter-success.component';
+import { SiteFooterComponent } from './components/site-footer/site-footer.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -164,7 +165,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LifestyleComponent,
     DealbookComponent,
     PopupNewsletterComponent,
-    PopupNewsletterSuccessComponent
+    PopupNewsletterSuccessComponent,
+    SiteFooterComponent
   ],
 
   imports: [
