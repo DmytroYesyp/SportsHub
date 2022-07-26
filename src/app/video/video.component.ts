@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {videoEntity} from "../admin-video/admin-video.component";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 interface text {
   value: string;
@@ -125,7 +126,7 @@ export class VideoComponent implements OnInit {
       this.isAdmin = true;
     }
     this.path = this.router.url.substring(1)
-    this.http.get<videoEntity[]>(`http://localhost:8080/api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
+    this.http.get<videoEntity[]>(environment.URL + `api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
       this.ent = data;
     })
 

@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-popup-delete-follow',
@@ -27,7 +28,7 @@ export class PopupDeleteFollowComponent implements OnInit {
   }
 
   delete(teamId, userId) {
-    this.http.delete('http://localhost:8080/follows/' + userId + '?teamId=' + teamId)
+    this.http.delete(environment.URL + 'follows/' + userId + '?teamId=' + teamId)
       .subscribe(() => {
         window.location.reload()
       });

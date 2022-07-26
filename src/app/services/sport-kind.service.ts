@@ -13,18 +13,18 @@ export class SportKindService {
   constructor(private http: HttpClient) {}
 
   public createSportKind(sportKind: SportKindContent):Observable<SportKind> {
-    return this.http.post<SportKind>(`${HOST_URL}/sport-kinds`, sportKind);
+    return this.http.post<SportKind>(`${HOST_URL}sport-kinds`, sportKind);
   }
 
   public getSportKinds():Observable<SportKind[]> {
-    return this.http.get<SportKind[]>(`${HOST_URL}/sport-kinds`)
+    return this.http.get<SportKind[]>(`${HOST_URL}sport-kinds`)
   }
 
   public updateSportKind(id: number, sportKind: SportKindContent):Observable<void> {
-    return this.http.put<void>(`${HOST_URL}/sport-kinds/${id}`, sportKind);
+    return this.http.put<void>(`${HOST_URL}sport-kinds/${id}`, sportKind);
   }
 
   public deleteSportKind(id: number):Observable<void> {
-    return this.http.delete<void>(`${HOST_URL}/sport-kinds/${id}`);
+    return this.http.delete<void>(`${HOST_URL}sport-kinds/${id}`);
   }
 }

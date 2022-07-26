@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../../../services/user";
 // import {authConfig} from "../../../auth-config";
 import {Router} from "@angular/router";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-oauth',
@@ -48,7 +49,7 @@ export class GoogleRegisterComponent implements OnInit{
       'logo_url' : 'User.png',
       'password' : 'supersecret'
     }
-    return this.http.post('http://localhost:8080/api/users/registerUser', this.user).subscribe(
+    return this.http.post(environment.URL + 'api/users/registerUser', this.user).subscribe(
       ()=> {
         console.log('Register success')
         this.router.navigate(['/login'])

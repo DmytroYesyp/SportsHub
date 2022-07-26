@@ -31,6 +31,11 @@ export class MainPageComponent implements OnInit {
   league: any;
   authenticated: boolean = false;
   newsletterPublished: any = []
+  companyInfoPublished: any = []
+  contributorsPublished: any = []
+
+  // news: any = []
+  // globalSearchText: string = '';
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
@@ -112,6 +117,50 @@ export class MainPageComponent implements OnInit {
     this.http.get(environment.URL + 'datelimits/5')
       .subscribe((Response) => {
         this.newsletterPublished[1] = Response['datelim'] != 0
+      })
+
+
+    this.http.get( environment.URL +'datelimits/6')
+      .subscribe((Response) => {
+        this.companyInfoPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/7')
+      .subscribe((Response) => {
+        this.companyInfoPublished[1] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL + 'datelimits/8')
+      .subscribe((Response) => {
+        this.companyInfoPublished[2] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/9')
+      .subscribe((Response) => {
+        this.companyInfoPublished[3] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/10')
+      .subscribe((Response) => {
+        this.companyInfoPublished[4] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL + 'datelimits/11')
+      .subscribe((Response) => {
+        this.companyInfoPublished[5] = Response['datelim'] != 0
+      })
+
+
+    this.http.get(environment.URL + 'datelimits/12')
+      .subscribe((Response) => {
+        this.contributorsPublished[0] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/13')
+      .subscribe((Response) => {
+        this.contributorsPublished[1] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL +'datelimits/14')
+      .subscribe((Response) => {
+        this.contributorsPublished[2] = Response['datelim'] != 0
+      })
+    this.http.get(environment.URL + 'datelimits/15')
+      .subscribe((Response) => {
+        this.contributorsPublished[3] = Response['datelim'] != 0
       })
   }
 

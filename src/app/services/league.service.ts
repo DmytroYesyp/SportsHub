@@ -13,18 +13,18 @@ export class LeagueService {
   constructor(private http: HttpClient) {}
 
   public createLeague(league: LeagueContent):Observable<League> {
-    return this.http.post<League>(`${HOST_URL}/leagues`, league);
+    return this.http.post<League>(`${HOST_URL}leagues`, league);
   }
 
   public getLeagues():Observable<League[]> {
-    return this.http.get<League[]>(`${HOST_URL}/leagues`)
+    return this.http.get<League[]>(`${HOST_URL}leagues`)
   }
 
   public updateLeague(id: number, league: LeagueContent):Observable<void> {
-    return this.http.put<void>(`${HOST_URL}/leagues/${id}`, league);
+    return this.http.put<void>(`${HOST_URL}leagues/${id}`, league);
   }
 
   public deleteLeague(id: number):Observable<void> {
-    return this.http.delete<void>(`${HOST_URL}/leagues/${id}`);
+    return this.http.delete<void>(`${HOST_URL}leagues/${id}`);
   }
 }

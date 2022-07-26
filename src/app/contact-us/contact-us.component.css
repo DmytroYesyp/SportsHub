@@ -693,3 +693,9 @@ input[type=text] {
   height: 30px;
   border: 1px solid #b2b2b2;
 }
+
+.ourContacts h3{
+  font-size: 12px;
+  margin-bottom: 0px;
+  color: grey;
+}
