@@ -47,7 +47,7 @@
     <div class="mcards" *ngIf="teams.length != 0">
       <a *ngFor="let e of teams; index as i">
         <div class="teamcard">
-          <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
+          <img src="{{getImage(e['image_url'])}}" class="team_logo" alt="team logo">
         <button class="unfollow" (click)="openDialog(e['id'], id, e['name'])"><b>{{'TEAMHUB.UNFOLLOW' | translate}}</b></button>
         <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
           <div class="following_txt">{{'TEAMHUB.FOLLOWING' | translate}}</div>
@@ -72,7 +72,7 @@
     <div class="unfollowed_txt2" *ngIf="!country">{{'TEAMHUB.ALLOWGEO' | translate}} <b>"{{'TEAMHUB.ALLOWGEO2' | translate}}"</b> {{'TEAMHUB.ALLOWGEO3' | translate}}</div>
     <a *ngFor="let e of teams3; index as i">
       <div class="teamcard">
-        <img src="{{e['image_url']}}" class="team_logo" alt="team logo">
+        <img src="{{getImage(e['image_url'])}}" class="team_logo" alt="team logo">
         <div class="team_name" [routerLink]="['/team', e['id']]"><b>{{e['name']}}</b></div>
         <div class="following_txt">{{'TEAMHUB.TEAMFOLLOW' | translate}} <a href="/profile" style="color: #D72130">{{'TEAMHUB.PROFILE' | translate}}</a> {{'TEAMHUB.TEAMFOLLOW2' | translate}}</div>
       </div>

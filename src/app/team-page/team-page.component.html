@@ -84,7 +84,7 @@
   </div>
   <div class="newstext">
     <div class="block" *ngIf="team">
-          <img src="{{team['image_url']}}}" style="width: 200px; height: 200px; margin-bottom: 30px;">
+          <img src="{{getImage(team['image_url'])}}" style="width: 200px; height: 200px; margin-bottom: 30px;">
     <div class="toptxt"><b>{{team['name']}}</b>
     <div class="team_info" style="margin-top: 20px">Country: <b>{{team['state']}}</b>
       <div class="team_info">Coach: <b>{{team['coach']}}</b></div></div>

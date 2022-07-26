@@ -168,7 +168,7 @@
           <div *ngFor="let e of teams">
             <div *ngIf="searchText === '' || e['name'].toLowerCase().includes(searchText)">
               <div class="team_card">
-                <img alt="logo" src="{{e['image_url']}}" class="team_img">
+                <img alt="logo" src="{{getImage(e['image_url'])}}" class="team_img">
             <div class="content">
               <div class="team_name">{{e['name']}}</div>
                 <div class="team_coach">{{'TEAMHUB.COACH' | translate}}: {{e['coach']}}</div>

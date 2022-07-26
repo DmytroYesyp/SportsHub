@@ -47,7 +47,10 @@ export class TeamPageComponent implements OnInit {
       });
 
   }
-
+  getImage(path: string): string {
+    let base : string = "https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2F";
+    return base + path + "?alt=media";
+  }
   getId(){
     let baseUrl = (window.location).href;
     return baseUrl.substring(baseUrl.lastIndexOf('/') + 1)

@@ -130,6 +130,12 @@ export class TeamhubComponent implements OnInit {
   // }
 
 
+
+  getImage(path: string): string {
+    let base : string = "https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2F";
+    return base + path + "?alt=media";
+  }
+
   getUserFromToken() {
     const token = localStorage.getItem('auth-token')
     if (!token)
