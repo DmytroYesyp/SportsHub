@@ -1,0 +1,131 @@
+.footerLineUp{
+  padding-top: 2vw;
+}
+
+.footerLineBr{
+  margin-top: 1vw;
+  float: right;
+  width: 82.5vw;
+  height: 2px;
+  background-color: #d8dde5;
+  border: none;
+}
+
+.filledFooter{
+  display: flex;
+}
+
+.filledFooter{
+  margin-left: 16.5vw;
+  margin-top: 50px;
+
+}
+
+.filledFooter a{
+  text-decoration: none;
+}
+
+.companyInfo h3{
+  font-size: 12px;
+  color: #7F7B7B;
+  margin-bottom: 14px;
+}
+
+.footerTitle{
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+.contributors{
+  margin-left: 120px;
+}
+
+.contributors h3{
+  font-size: 12px;
+  color: #7F7B7B;
+  margin-bottom: 14px;
+}
+
+.footerTitle{
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+.newsletter{
+  margin-left: 120px;
+}
+
+.footerTitle{
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+.newsletterLabel{
+  color: #7F7B7B;
+  font-size: 14px;
+}
+
+.subscribeField{
+  display: flex;
+}
+
+
+.subscribeInputs input{
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.subscribeInputs input[type="text"]{
+  width: 190px;
+  height: 30px;
+  border: 1px solid #b2b2b2;
+}
+
+.subscribeTextField2{
+  width: 100px;
+  height: 34px;
+  background-color: #D72130;
+  color: #FFF5F5;
+  border: none;
+  margin-top: 10px;
+}
+
+
+.subscribeTextField2:hover{
+  background: #ad1a23;
+  color: white;
+  transition: all 1s ease
+}
+
+
+.footer{
+  position: absolute;
+  float: bottom;
+  width: 99%;
+  height: 40px;
+  text-align: right;
+  background: #D72130;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-right: 1%;
+}
+
+.footer p{
+  color: white;
+  font-size: 12px;
+}
+
+.footer a{
+  text-decoration: none;
+  color: white;
+}

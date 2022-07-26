@@ -19,7 +19,8 @@ export class AppComponent implements OnInit{
 
   constructor(private auth: AuthService,
               private snackBar: MatSnackBar,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              private router: Router) {
 
     let lang = translate.getBrowserLang()
     if (lang != null) {
@@ -57,6 +58,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    if(this.isExpired()){
+      this.router.navigate(['/login'])
+    }
     const potentialToken = localStorage.getItem('auth-token')
     if(potentialToken!==null){
       this.auth.setToken(potentialToken)

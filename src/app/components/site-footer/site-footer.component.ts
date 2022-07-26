@@ -1,26 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {mainPage} from "../services/main-page.service";
-import {AuthService} from "../services/auth.service";
-import {AppComponent} from "../app.component";
+import { Component, OnInit } from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {PopupNewsletterComponent} from "../../pop-ups/popup-newsletter/popup-newsletter.component";
+import {PopupLoginCommComponent} from "../../pop-ups/popup-login-comm/popup-login-comm.component";
+import {MatDialog} from "@angular/material/dialog";
+import {mainPage} from "../../services/main-page.service";
+import {AuthService} from "../../services/auth.service";
+import {AppComponent} from "../../app.component";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {PopupDeleteFollowComponent} from "../pop-ups/popup-delete-follow/popup-delete-follow.component";
-import {MatDialog} from "@angular/material/dialog";
-import {PopupNewsletterComponent} from "../pop-ups/popup-newsletter/popup-newsletter.component";
-import {PopupLoginCommComponent} from "../pop-ups/popup-login-comm/popup-login-comm.component";
-import {environment} from "../../environments/environment";
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-site-footer',
+  templateUrl: './site-footer.component.html',
+  styleUrls: ['./site-footer.component.css']
 })
-export class MainPageComponent implements OnInit {
-
+export class SiteFooterComponent implements OnInit {
 
   email: string;
-  dateLimits: any;
   firstName: any;
   lastName: any;
   isAdmin: boolean = false;
@@ -30,12 +27,10 @@ export class MainPageComponent implements OnInit {
   user: Object;
   league: any;
   authenticated: boolean = false;
+
   newsletterPublished: any = []
   companyInfoPublished: any = []
   contributorsPublished: any = []
-
-  // news: any = []
-  // globalSearchText: string = '';
 
   constructor(private mainpage: mainPage,
               private auth: AuthService,
@@ -43,8 +38,8 @@ export class MainPageComponent implements OnInit {
               private app: AppComponent,
               public translate: TranslateService,
               private router: Router,
-              private http: HttpClient) {
-  }
+              private http: HttpClient) { }
+
 
   getUserFromToken(){
 
@@ -74,10 +69,7 @@ export class MainPageComponent implements OnInit {
     return tmp;
   }
 
-
   search: String = "";
-  foods: any;
-
 
   ngOnInit(): void {
     this.http.get(environment.URL + 'news')
@@ -96,6 +88,7 @@ export class MainPageComponent implements OnInit {
       this.auth.logout()
     }
     if(this.app.isExpired()){
+      localStorage.removeItem('auth-token')
       this.router.navigate(['/login'])
     }
 
@@ -104,10 +97,6 @@ export class MainPageComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
-    this.http.get(environment.URL + 'datelimits')
-      .subscribe(Response => {
-        this.dateLimits = <Array<any>>Response
-      });
 
     this.http.get(environment.URL + 'datelimits/4')
       .subscribe((Response) => {
@@ -187,12 +176,13 @@ export class MainPageComponent implements OnInit {
       }
     }
     else{
-        this.dialogRef.open(PopupLoginCommComponent, {
-          data: {
-            id: 2,
-          },
-          'height': '155px'
-        })
+      this.dialogRef.open(PopupLoginCommComponent, {
+        data: {
+          id: 2,
+        },
+        'height': '155px'
+      })
     }
   }
+
 }
