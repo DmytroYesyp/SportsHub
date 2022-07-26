@@ -362,7 +362,7 @@ hr{
 .switch_view{
   position: absolute;
   right: 460px;
-  top: -12px;
+  top: 3vh;
 }
 
 main_kinds{

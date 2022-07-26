@@ -96,7 +96,6 @@ export class MainPageComponent implements OnInit {
       this.auth.logout()
     }
     if(this.app.isExpired()){
-      localStorage.removeItem('auth-token')
       this.router.navigate(['/login'])
     }
 
