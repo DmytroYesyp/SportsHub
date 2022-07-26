@@ -34,12 +34,12 @@ export class TeamhubComponent implements OnInit {
               private readonly geolocation$: GeolocationService) { }
 
   ngOnInit(): void {
-    this.getUserFromToken().subscribe(()=>{
+    this.getUserFromToken().subscribe((userId)=>{
       this.http.get(environment.URL + 'follows?userId=0')
         .subscribe(() => {
           console.log(this.id)
 
-          this.http.get(environment.URL + 'follows?userId=' + this.id)
+          this.http.get(environment.URL + 'follows?userId=' + userId)
             .subscribe((Response) => {
               this.userList = Response
               console.log(this.userList)
