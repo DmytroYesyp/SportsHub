@@ -53,20 +53,7 @@ export class AdminVideoComponent implements OnInit, OnChanges {
   }
 
 
-  setVideoShare(){
-    let TF : string
-    const cb = document.getElementById('allowShare')as HTMLInputElement | null;
-    if (cb?.checked)
-      TF = '1';
-    else
-      TF = '0';
-    let queryParams = new HttpParams();
 
-    this.followChecker = TF == "1"
-
-    queryParams = queryParams.append("val",TF);
-    this.http.patch(environment.URL + `api/socialShare/setVideoShare`,null,{params : queryParams}).subscribe()
-  }
 
   videoFunc(url:string){
     this.videoString = url;

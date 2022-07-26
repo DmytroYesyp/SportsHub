@@ -11,11 +11,72 @@
 
 
 <body>
+<div class="header">
+
+  <a href="/main" class="logo">
+    <div class="logo_txt">Sports Hub</div>
+  </a>
+  <div class="line"></div>
+
+</div>
+
+<div class="switch_view">
+  <a href="/main"><i class="fa fa-rotate-right" aria-hidden="true" style="font-size: 2vw;color: black;"></i></a>
+</div>
+
+<div class="right_header">
+  <app-header-user-profile></app-header-user-profile>
+  <app-lang></app-lang>
+  <!--  <mat-expansion-panel  class = "language">-->
+  <!--    <mat-expansion-panel-header>-->
+  <!--      <mat-panel-title>-->
+  <!--        EN-->
+  <!--      </mat-panel-title>-->
+  <!--    </mat-expansion-panel-header>-->
+  <!--    <a href="" class="txt1"> UA </a><br>-->
+  <!--  </mat-expansion-panel>-->
+</div>
+
+
+<div class="under_head">
+  <div class="under_one">
+    <div style="padding-bottom: 1vw" class="under_home">Teams</div>
+
+  </div>
+  <hr>
+  <div class="under_two">
+    <a href="/main">Home</a>
+    <a class="txt1" href=""><main_kinds></main_kinds></a>
+    <a href="admin_get_article/1">Sport kinds</a>
+    <a href="/admin_video">Video</a>
+    <a href="/admin_lifestyle">Lifestyle</a>
+    <a href="/admin_dealbook">Dealbook</a>
+  </div>
+</div>
+
+
+
+<div class="wrapper">
+  <div class="sidebar">
+    <a title="Surveys" href="/surveys"><i class="fa fa-comment-o" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Categories" href="/admin_categories"><i class="fa fa-list-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a href="/admin_page/set-lang"><i class="fa fa-globe" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Footer" href="/admin_footer"><i class="fa fa-edit" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Social Networks" href="/social-networks"><i class="fa fa-mail-forward" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Users" href="/users"><i class="fa fa-users" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="IA" href="/info"><i class="fa fa-info" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Teams" href="/admin_team-page"><i class="fa fa-flag" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="News Partners" href="/news-partners"><i class="fa fa-briefcase" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Advertising" href="/advertising"><i class="fa fa-dollar" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+    <a title="Share buttons menu" href="admin_page/social-login"><i class="fa fa-share-alt" aria-hidden="true" style="font-size: 2vw;color: #b2b2b2;"></i></a>
+
+
+  </div>
 
 
 <div class="mainBox">
   <div style="height: 2vw">
-    <input placeholder="Search..." class="TextFields" *ngIf="!isVisible && !createTeam" type="text"  [(ngModel)]="filterString"/>
+    <input style="width: 30.9vw" placeholder="Search..." class="TextFields" *ngIf="!isVisible && !createTeam" type="text"  [(ngModel)]="filterString"/>
   </div>
   <div *ngIf="isVisible" class="editField">
 
@@ -41,20 +102,20 @@
         </div>
       </div>
       <form class="forms" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 1vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team name</p>
-          <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
         </div>
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 1vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team coach</p>
-          <input type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
         </div>
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 1vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team state</p>
-          <input type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
         </div>
         <button mat-raised-button type="submit"
-                style="color : white; margin-top: 2vw; height: 2vw;width: 25vw;border-radius: 0;border: none;background-color: #d72130">
+                style="color : white;margin-left: 3.3vw; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
           UPDATE TEAM
         </button>
 
@@ -83,20 +144,20 @@
 
     <div class="editFieldInput">
       <form style="margin-top: 13vw" class="forms" [formGroup]="form" (ngSubmit)="onSubmit2()">
-        <div style="margin-top: 10vw">
+        <div style="margin-top: 10vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team name</p>
-          <input matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" matInput formControlName="name" class="TextFields" type="text" name="fname"><br>
         </div>
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 1vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team coach</p>
-          <input type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" type="text" matInput formControlName="coach" class="TextFields" type="text" name="fname"><br>
         </div>
-        <div style="margin-top: 1vw">
+        <div style="margin-top: 1vw;margin-left: 3.3vw">
           <p style="color: #9fa6b2">Team state</p>
-          <input type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
+          <input style="width: 24vw" type="text" matInput formControlName="state" class="TextFields" type="text" name="fname"><br>
         </div>
         <button mat-raised-button type="submit" [disabled]="form.invalid"
-                style="color : white; margin-top: 2vw; height: 2vw;width: 25vw;border-radius: 0;border: none;background-color: #d72130">
+                style="color : white;margin-left: 3.3vw; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
           CREATE TEAM
         </button>
 
@@ -123,7 +184,7 @@
 
       <img class="teamLogo" [src]="getImage(team.image_url)">
 
-      <p style="width: 15vw" class=teamName>{{team.name}}</p>
+      <p style="width: 23vw;height: 1vw" class=teamName>{{team.name}}</p>
 
       <button class="editDeleteBackButtons" style="float: right;height: 1vw;width: 3vw;margin-top: 0.5vw;margin-right: 0.5vw; font-size: 0.7vw"
               (click)="toggleShow(team.id,i)">Edit
@@ -144,6 +205,6 @@
 
 
 </div>
-
+</div>
 
 </body>
