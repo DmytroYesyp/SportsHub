@@ -269,6 +269,7 @@
   margin-left: 100px;
   width: 95%;
   display: flex;
+  overflow: auto;
 }
 .under_two a{
   margin-top: 17px;
@@ -423,4 +424,17 @@ main_kinds{
   float: right;
   font-size: 14px;
   margin-right: 12px;
+}
+::-webkit-scrollbar {
+  height: 0.4vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
 }

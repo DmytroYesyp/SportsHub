@@ -104,7 +104,10 @@ input[type=text] {
   padding-bottom: 17px;
   padding-right: 1%;
 }
-
+.footer p{
+  color: white;
+  font-size: 12px;
+}
 
 .main{
   display: flex;
