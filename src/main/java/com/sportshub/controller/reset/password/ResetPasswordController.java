@@ -5,6 +5,7 @@ import com.sportshub.entity.user.User;
 import com.sportshub.service.user.impl.UsersServiceImpl;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,17 +21,24 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ResetPasswordController {
     @Autowired
+    Environment environment;
+
+    @Autowired
     private JavaMailSender mailSender;
 
     @Autowired
     private UsersServiceImpl userService;
+
+    public String getUrl(){
+        return environment.getProperty("CLIENT_URL");
+    }
 
     @PostMapping("/forgot_password")
     public ResponseEntity<?> processForgotPassword(@RequestParam String email) {
         String token = RandomString.make(30);
         try {
             userService.updateResetPasswordToken(token, email);
-            String resetPasswordLink = "http://localhost:4200/reset_password?token=" + token;
+            String resetPasswordLink = getUrl() + "reset_password?token=" + token;
             sendEmail(email, resetPasswordLink);
         } catch (UnsupportedEncodingException | MessagingException e) {
 

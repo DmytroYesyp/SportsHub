@@ -44,6 +44,7 @@ class SportsHubApplicationTests {
 				.andDo(print())
 				.andExpect(status().isCreated());
 		assertThat(userRepository.findUserByEmail("testingMail@mail.com")).isNotEmpty();
+		userRepository.deleteById(userRepository.findUserByEmail("testingMail@mail.com").orElseThrow().getId());
 
 	}
 
@@ -51,6 +52,16 @@ class SportsHubApplicationTests {
 
 	@Test
 	void getUserById() throws Exception {
+
+		this.mockMvc.perform(post("http://localhost:8080/api/users/registerUser")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content("{\n" +
+								"    \"firstName\" : \"Dmytro\",\n" +
+								"    \"lastName\" : \"Yesyp\",\n" +
+								"    \"email\" : \"testingMail@mail.com\",\n" +
+								"    \"password\" : \"12345678\"\n" +
+								"}"))
+				.andDo(print());
 
 		assertThat(userRepository.findUserByEmail("testingMail@mail.com")).isNotEmpty();
 
@@ -62,12 +73,23 @@ class SportsHubApplicationTests {
 				.andDo(print()).andExpect(result -> assertEquals("{\"id\":"+u.getId()+",\"firstName\":\"Dmytro\",\"lastName\":\"Yesyp\",\"password\":\""+u.getPassword()+"\",\"logo_url\":\"User.png\",\"email\":\""+u.getEmail()+"\"}",
 						result.getResponse().getContentAsString()));
 
+		userRepository.deleteById(userRepository.findUserByEmail("testingMail@mail.com").orElseThrow().getId());
+
 	}
 
 
 	@Test
 	void getUserByEmail() throws Exception {
 
+		this.mockMvc.perform(post("http://localhost:8080/api/users/registerUser")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content("{\n" +
+								"    \"firstName\" : \"Dmytro\",\n" +
+								"    \"lastName\" : \"Yesyp\",\n" +
+								"    \"email\" : \"testingMail@mail.com\",\n" +
+								"    \"password\" : \"12345678\"\n" +
+								"}"))
+				.andDo(print());
 
 		final String[] token = new String[1];
 
@@ -85,10 +107,21 @@ class SportsHubApplicationTests {
 				.andExpect(status().isOk())
 				.andDo(print()).andExpect(result -> assertEquals("{\"id\":"+u.getId()+",\"firstName\":\"Dmytro\",\"lastName\":\"Yesyp\",\"password\":\""+u.getPassword()+"\",\"logo_url\":\"User.png\",\"email\":\""+u.getEmail()+"\"}",
 						result.getResponse().getContentAsString()));
+		userRepository.deleteById(userRepository.findUserByEmail("testingMail@mail.com").orElseThrow().getId());
 	}
 
 	@Test
 	void putInUser() throws Exception {
+
+		this.mockMvc.perform(post("http://localhost:8080/api/users/registerUser")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content("{\n" +
+								"    \"firstName\" : \"Dmytro\",\n" +
+								"    \"lastName\" : \"Yesyp\",\n" +
+								"    \"email\" : \"testingMail@mail.com\",\n" +
+								"    \"password\" : \"12345678\"\n" +
+								"}"))
+				.andDo(print());
 
 		final String[] token = new String[1];
 		assertThat(userRepository.findUserByEmail("testingMail@mail.com")).isNotEmpty();
@@ -107,11 +140,21 @@ class SportsHubApplicationTests {
 				.andExpect(status().isCreated());
 		u = userRepository.findUserByEmail("testingMail@mail.com").orElseThrow();
 		assertEquals("DmytroTestYesypTest",u.getFirstName() + u.getLastName());
-
+		userRepository.deleteById(userRepository.findUserByEmail("testingMail@mail.com").orElseThrow().getId());
 	}
 
 	@Test
 	void deleteUser() throws Exception {
+
+		this.mockMvc.perform(post("http://localhost:8080/api/users/registerUser")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content("{\n" +
+								"    \"firstName\" : \"Dmytro\",\n" +
+								"    \"lastName\" : \"Yesyp\",\n" +
+								"    \"email\" : \"testingMail@mail.com\",\n" +
+								"    \"password\" : \"12345678\"\n" +
+								"}"))
+				.andDo(print());
 
 		final String[] token = new String[1];
 		assertThat(userRepository.findUserByEmail("testingMail@mail.com")).isNotEmpty();
