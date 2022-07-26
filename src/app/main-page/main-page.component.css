@@ -275,7 +275,7 @@ a:hover{
 }
 ::ng-deep .card{
   min-width: 200px;
-  max-height: 300px;
+  max-height: 340px;
   padding: 10px;
   text-decoration: none;
   display: block;
