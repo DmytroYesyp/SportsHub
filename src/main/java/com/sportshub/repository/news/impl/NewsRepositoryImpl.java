@@ -100,12 +100,11 @@ public class NewsRepositoryImpl implements CustomNewsRepository {
             predicates.add(criteriaBuilder.or(leagueIdPredicates));
         }
 
-        Set<Long> sportKindIds = newsSearchFilters.getSportKindIds();
-        if (sportKindIds != null && !sportKindIds.isEmpty()) {
-            Join<NewsEntity, LeagueEntity> leagueJoin = queryRoot.join("league", JoinType.LEFT);
-            Predicate[] sportKindIdPredicates = sportKindIds.stream().map(sportKindId -> criteriaBuilder.equal(leagueJoin.get("sportKind"), sportKindId))
+        Set<Long> kindsOfSportIds = newsSearchFilters.getKindsOfSportIds();
+        if (kindsOfSportIds != null && !kindsOfSportIds.isEmpty()) {
+            Predicate[] kindsOfSportIdPredicates = kindsOfSportIds.stream().map(kindsOfSportId -> criteriaBuilder.isMember(kindsOfSportId, queryRoot.get("kindsOfSportIds")))
                     .toArray(Predicate[]::new);
-            predicates.add(criteriaBuilder.or(sportKindIdPredicates));
+            predicates.add(criteriaBuilder.or(kindsOfSportIdPredicates));
         }
 
         Set<Long> teamIds = newsSearchFilters.getTeamIds();
