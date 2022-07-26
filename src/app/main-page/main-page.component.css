@@ -72,9 +72,8 @@ input[type=text] {
   letter-spacing: 1.25893px;
   color: rgba(204, 211, 224, 0.301628);
   transform: rotate(90deg);
-
-
 }
+
 .back_txt2 {
   position: absolute;
   width: 254px;
@@ -269,22 +268,20 @@ a:hover{
 ::ng-deep .cards{
   margin-left: -8px;
   display: flex;
-  justify-content: space-between;
   width: 910px;
   margin-top: 270px;
-  text-decoration: none;
+  /*text-decoration: none;*/
   overflow: auto;
 }
 ::ng-deep .card{
   min-width: 200px;
-  min-height: 300px;
-  max-width: 200px;
   max-height: 300px;
   padding: 10px;
   text-decoration: none;
   display: block;
   margin-right: 24px;
   margin-bottom: 20px;
+  overflow: auto;
 }
 
 ::ng-deep .card_photo{
@@ -740,8 +737,9 @@ a:hover{
   background-color: #d8dde5;
   border: none;
 }
-::-webkit-scrollbar {
-  height: 0.4vw;
+::-webkit-scrollbar{
+  height: 0.3vw;
+  width: 0.2vw;
   border-radius: 50%;
 }
 
