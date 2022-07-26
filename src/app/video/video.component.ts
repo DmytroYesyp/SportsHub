@@ -125,7 +125,7 @@ export class VideoComponent implements OnInit {
     if(this.role=="admin"){
       this.isAdmin = true;
     }
-    this.path = this.router.url
+    this.path = this.router.url.substring(1)
     this.http.get<videoEntity[]>(environment.URL + `api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
       this.ent = data;
     })
