@@ -204,7 +204,7 @@ input[type=text] {
   /*width: 50vw;*/
   /*height: 50vh;*/
   width: 900px;
-  height: 460px;
+  height: 500px;
   /*background: url(src/assets/img/article.png);*/
   /*background-size: 100%;*/
   /*background-repeat: no-repeat;*/
@@ -212,7 +212,7 @@ input[type=text] {
 }
 ::ng-deep .newstext{
   width: 900px;
-  margin-top: 500px;
+  margin-top: 540px;
   font-size: 16px;
 }
 
@@ -319,7 +319,7 @@ input[type=text] {
   /* identical to box height, or 127% */
 
 .views{
-  margin-top: 460px;
+  margin-top: 500px;
   color: #D72130;
 
 }
