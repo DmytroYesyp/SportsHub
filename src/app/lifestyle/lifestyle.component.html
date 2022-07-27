@@ -39,7 +39,7 @@
 
 <div class="dealbook">
   <div class="admin-article-list">
-    <div class="item-article" *ngFor="let article of articles">
+    <div class="item-article"[routerLink]="['/article', article['id']]" *ngFor="let article of articles">
       <img src="{{article.image}}">
       <div class="article-decr">
         <h3>{{article.title}}</h3>
