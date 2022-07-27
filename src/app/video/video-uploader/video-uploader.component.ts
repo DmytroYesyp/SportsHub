@@ -10,6 +10,8 @@ import {User} from "../../services/user";
 import {HttpClient} from "@angular/common/http";
 import {Video} from "../../services/video";
 import {Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
+import {ProgressSpinnerMode} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-video-uploader',
@@ -34,21 +36,25 @@ export class VideoUploaderComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL: string;
 
+  success: boolean = false;
+  loading: boolean = false;
+
+  mode: ProgressSpinnerMode = 'determinate';
+
   constructor(private storage: AngularFireStorage,
               private videoCreate: AdminVideoCreateComponent,
               private http: HttpClient,
               private auth: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private app: AppComponent) { }
 
   ngOnInit(): void {
     this.saveVideo()
-    // this.sendVideo();
   }
 
 
   async saveVideo() {
-    // The storage path
-    const path = `video/${Date.now()}_${this.file.name}`;
+    this.loading=true;
     const storage = getStorage();
     const videoRef = ref(storage, `video/${Date.now()}_${this.file.name}`)
 
@@ -56,8 +62,6 @@ export class VideoUploaderComponent implements OnInit {
 
     uploadTask.on('state_changed',
       (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
         switch (snapshot.state) {
@@ -70,11 +74,8 @@ export class VideoUploaderComponent implements OnInit {
         }
       },
       (error) => {
-        // Handle unsuccessful uploads
       },
       () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           this.downloadUrl = downloadURL;
           this.url = this.downloadUrl;
@@ -96,8 +97,14 @@ export class VideoUploaderComponent implements OnInit {
     }
     this.auth.addVideo(this.video).subscribe(
       ()=> {
+        this.loading=false;
+        this.success = true;
         console.log('Add video success')
-        this.router.navigate(['/admin_video'])
+        this.app.openSnackBar("Video uploaded", "Ok")
+      }, error => {
+        this.loading=false;
+        this.app.openSnackBar("Video upload failed", "Try again")
+        console.warn(error)
       }
     )
   }

@@ -63,25 +63,8 @@ export class UploaderComponent implements OnInit {
         this.auth.saveUserImage(formData);
         break;
       }
-
-
     }
 
-
-    // const path = `image/${Date.now()}_${this.file.name}`;
-    // const ref = this.storage.ref(path);
-    // this.task = this.storage.upload(path, this.file);
-    //
-    // this.snapshot   = this.task.snapshotChanges().pipe(
-    //   tap(),
-    //   finalize( async() =>  {
-    //     this.downloadURL = await ref.getDownloadURL().toPromise();
-    //     this.url = this.downloadURL;
-    //     console.log(this.url);
-    //   }),
-    // );
-
-    this.saveImage()
   }
 
   async onImageChanged(dataUri) {
@@ -91,8 +74,4 @@ export class UploaderComponent implements OnInit {
     console.log(this.imageSrc)
   }
 
-  saveImage(){
-
-
-  }
 }
