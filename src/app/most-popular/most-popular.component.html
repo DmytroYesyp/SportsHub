@@ -4,7 +4,7 @@
   <div class="article" [routerLink]="['/article', e['id']]" *ngFor="let e of list">
     <img class="img" [src]="e['image']">
     <div class="title"><b>{{e['title']}}</b></div>
-    <div class="descr">{{e['description']}}</div>
+    <div class="descr"><p [innerHTML]="e.description">{{e.description}}</p></div>
   </div>
   </div>
 </div>

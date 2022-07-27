@@ -57,7 +57,7 @@
           <div  class="mcard">
             <img class="mcard_photo" src="{{k['image']}}" alt="photo news">
             <div class="mcard_text"><b>{{ k['title'] }}</b>
-              <p >{{k['description']}}</p></div>
+              <p [innerHTML]="k.description">{{k.description}}</p></div>
           </div>
         </a>
         </div>
@@ -81,7 +81,7 @@
           <div  class="mcard">
             <img class="mcard_photo" src="{{k['image']}}" alt="photo news">
             <div class="mcard_text"><b>{{ k['title'] }}</b>
-              <p >{{k['description']}}</p></div>
+              <p [innerHTML]="k.description">{{k.description}}</p></div>
           </div>
         </a>
       </div>
