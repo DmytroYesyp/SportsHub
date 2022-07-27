@@ -6,7 +6,6 @@
               (click)="clickCategory(category)">{{category.name}}
         <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Hide</button>
         <button mat-menu-item (click)="deleteCategory(category)">Delete</button>
         <button mat-menu-item (click)="openModalEditCat(category)">Edit</button>
       </mat-menu>
@@ -22,7 +21,6 @@
           <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
         <mat-menu #menu="matMenu">
           <button *ngIf="sportKinds.length > 1" mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
-          <button mat-menu-item>Hide</button>
           <button mat-menu-item (click)="deleteSubCategory(subCategory)">Delete</button>
           <button mat-menu-item (click)="openModalEditSubCat(subCategory)">Edit</button>
         </mat-menu>
@@ -45,7 +43,6 @@
           <mat-icon class="mat-icon-points" [matMenuTriggerFor]="menu">more_vert</mat-icon></button>
         <mat-menu #menu="matMenu">
           <button *ngIf="sportKinds.length > 1" mat-menu-item [matMenuTriggerFor]="moveTo">Move to</button>
-          <button mat-menu-item>Hide</button>
           <button mat-menu-item (click)="deleteTeam(team)">Delete</button>
           <button mat-menu-item (click)="openModalEditTeam(team)">Edit</button>
         </mat-menu>

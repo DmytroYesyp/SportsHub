@@ -44,7 +44,7 @@
       <button mat-menu-item (click)="updatePublicationStatus(article)">
         {{article.isPublished ? 'UnPublish' : 'Publish'}}
       </button>
-      <button mat-menu-item>Edit</button>
+      <button mat-menu-item [routerLink]="['/article_edit', article.id]">Edit</button>
       <button mat-menu-item (click)="removeArticle(article)">Delete</button>
     </mat-menu>
     <mat-menu #moveTo="matMenu">
