@@ -104,7 +104,7 @@ input[type=text] {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   color: #b2b2b2;
-  font-size: 14px;
+  font-size: 1vw;
   margin-top: 1vw;
   text-decoration: none;
 
@@ -181,7 +181,7 @@ a:hover{
   color: #b2b2b2;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 1vw;
 }
 
 
