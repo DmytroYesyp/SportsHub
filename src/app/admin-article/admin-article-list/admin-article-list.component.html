@@ -96,9 +96,9 @@
 
   </div>
     <div class="admin-article-list">
-      <div class="item-article" [routerLink]="['/article', article['id']]" *ngFor="let article of articles">
+      <div class="item-article" *ngFor="let article of articles">
         <img src="{{article.image}}">
-        <div class="article-decr">
+        <div class="article-decr" [routerLink]="['/article', article['id']]">
           <h3>{{article.title}}</h3>
           <p [innerHTML]="article.description">{{article.description}}</p>
         </div>
