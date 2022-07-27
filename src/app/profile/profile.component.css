@@ -478,3 +478,12 @@ a:hover{
 .content{
   margin-top: -45px;
 }
+.txt1{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: #b2b2b2;
+  font-size: 1vw;
+  margin-top: 1vw;
+  text-decoration: none;
+
+}
