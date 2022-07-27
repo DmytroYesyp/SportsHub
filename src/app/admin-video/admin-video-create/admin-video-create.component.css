@@ -296,7 +296,7 @@ input[type="file"] {
 }
 
 .under_two{
-  margin-left: 100px;
+  margin-left: 2vw;
   width: 95%;
   display: flex;
   overflow: auto;
