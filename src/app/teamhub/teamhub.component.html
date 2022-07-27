@@ -64,7 +64,7 @@
       </a>
     </div>
 
-  <div class="mcards" *ngIf="teams.length==0">
+  <div class="mcards" *ngIf="teams.length==0 && isReady">
     <div *ngIf="!country" class="fa fa-arrow-up"></div>
     <div class="unfollowed_txt">{{'TEAMHUB.NOFOLLOW' | translate}}
       <a href="/profile">{{'TEAMHUB.PROFILE' | translate}}</a> {{'TEAMHUB.NOFOLLOW2' | translate}}</div>

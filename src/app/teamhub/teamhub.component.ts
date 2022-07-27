@@ -28,6 +28,7 @@ export class TeamhubComponent implements OnInit {
   country: any;
   teams2: any = [];
   teams3: any = [];
+  isReady: boolean = false
   constructor(private http : HttpClient,
               private mainpage: mainPage,
               private dialogRef: MatDialog,
@@ -50,6 +51,7 @@ export class TeamhubComponent implements OnInit {
                 this.teams.push(<Array<any>>Response);
               });
               console.log(this.teams)
+              this.isReady = true
 
 
               from(this.userList).pipe(
