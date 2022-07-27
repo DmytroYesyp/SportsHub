@@ -34,6 +34,7 @@ export class MainPageComponent implements OnInit {
   companyInfoPublished: any = []
   contributorsPublished: any = []
   lis:any = [];
+  id: any;
 
 
   // news: any = []
@@ -69,10 +70,11 @@ export class MainPageComponent implements OnInit {
           this.firstName = value;
         if (key == "lastName")
           this.lastName = value
+        if (key == "id")
+          localStorage.setItem('userId', value)
       }
 
     });
-    //console.log(this.firstName , this.lastName);
     return tmp;
   }
 
@@ -82,6 +84,7 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getUserFromToken()
     this.http.get(environment.URL + 'news')
       .subscribe(Response => {
         this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 1), (<Array<any>>Response).length);

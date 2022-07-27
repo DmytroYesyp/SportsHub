@@ -227,8 +227,16 @@ input[type=text] {
 .mcard_text{
   float: right;
   width: 680px;
-  font-size: 14px;
+  font-size: 18px;
   color: #333333;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.mcard p{
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: auto;
 }
 
 .mcard:hover{
