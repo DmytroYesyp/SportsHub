@@ -33,6 +33,9 @@ export class MainPageComponent implements OnInit {
   newsletterPublished: any = []
   companyInfoPublished: any = []
   contributorsPublished: any = []
+  lis:any = [];
+  id: any;
+
 
   // news: any = []
   // globalSearchText: string = '';
@@ -67,10 +70,11 @@ export class MainPageComponent implements OnInit {
           this.firstName = value;
         if (key == "lastName")
           this.lastName = value
+        if (key == "id")
+          localStorage.setItem('userId', value)
       }
 
     });
-    //console.log(this.firstName , this.lastName);
     return tmp;
   }
 
@@ -80,6 +84,7 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getUserFromToken()
     this.http.get(environment.URL + 'news')
       .subscribe(Response => {
         this.li=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 1), (<Array<any>>Response).length);
@@ -161,6 +166,13 @@ export class MainPageComponent implements OnInit {
       .subscribe((Response) => {
         this.contributorsPublished[3] = Response['datelim'] != 0
       })
+    const params = {isPublished: true};
+    this.http.get(environment.URL + 'news', {params})
+      .subscribe(Response => {
+        console.log(Response)
+        this.lis=(<Array<any>>Response).slice(Math.max(0, (<Array<any>>Response).length - 11), (<Array<any>>Response).length - 1);
+        console.log(this.lis);
+      });
   }
 
   logOut(){

@@ -34,6 +34,7 @@ export class AddArticleComponent implements OnInit {
   form = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [Validators.required]],
+    text: [''],
     publicationDate: [new Date(), [Validators.required]],
     alternativeText: ['', [Validators.required]],
     caption: ['', [Validators.required]],
@@ -81,6 +82,7 @@ export class AddArticleComponent implements OnInit {
     const articleContent = new ArticleContent();
     articleContent.title = formValue.title;
     articleContent.description = formValue.description;
+    articleContent.text = formValue.text;
     articleContent.publicationDate = formValue.publicationDate;
     articleContent.alternativeText = formValue.alternativeText;
     articleContent.caption = formValue.caption;

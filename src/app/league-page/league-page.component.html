@@ -73,7 +73,7 @@
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
         <span class="side_bloke_p1"><b> {{article['title']}}</b></span>
         <br>
-        <span class="side_bloke_p2"><b>{{article['description']}}</b></span>
+        <span class="side_bloke_p2"><b><p [innerHTML]="article.description">{{article.description}}</p></b></span>
         <a [routerLink]="['/article', article['id']]" class="side_bloke_button"><b class="">{{ 'BODY.MORE' | translate}}</b></a>
       </div>
     </div>
@@ -88,7 +88,7 @@
         <div  class="mcard">
           <img class="mcard_photo" src="{{e['image']}}" alt="photo news">
           <div class="mcard_text"><b>{{ e['title'] }}</b>
-            <p >{{e['description']}}</p></div>
+            <p [innerHTML]="e.description">{{e.description}}</p></div>
         </div>
       </a>
 

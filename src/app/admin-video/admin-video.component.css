@@ -267,9 +267,10 @@
 }
 
 .under_two{
-  margin-left: 100px;
+  margin-left: 2vw;
   width: 95%;
   display: flex;
+  overflow: auto;
 }
 .under_two a{
   margin-top: 17px;
@@ -568,8 +569,16 @@ main_kinds{
 .mat-form-field-appearance-outline .mat-form-field-outline{
   width: 14vw;
 }
+
+
+
 ::-webkit-scrollbar {
   width: 0.3vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+  height: 0.3vw;
   border-radius: 50%;
 }
 
