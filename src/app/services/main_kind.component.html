@@ -1,1 +1,1 @@
-<p style="font-size: " *ngFor="let e of li;">{{ e['name'] }}</p>
+<p [routerLink]="['/admin_get_article', e['id']]" *ngFor="let e of li;">{{ e['name'] }}</p>
