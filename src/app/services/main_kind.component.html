@@ -1,32 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;500;700&family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-<style>
-  .txt1{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    color: #b2b2b2;
-    font-size: 1vw;
-    margin-top: 1vw;
-    text-decoration: none;
-
-  }
-  .txt1:hover{
-    color: #D72130;
-    transition: all 1s ease;
-  }
-</style>
-<div class="txt1" *ngFor="let e of li;"><a class="txt1">{{ e['name'] }}</a><br></div>
-</body>
-</html>
+<p *ngFor="let e of li;">{{ e['name'] }}</p>
 
 
