@@ -84,7 +84,7 @@
   </div>
   <div class="newstext">
     <div class="block" *ngIf="team">
-          <img src="{{team['image_url']}}}" style="width: 200px; height: 200px; margin-bottom: 30px;">
+          <img src="{{getImage(team['image_url'])}}" style="width: 200px; height: 200px; margin-bottom: 30px;">
     <div class="toptxt"><b>{{team['name']}}</b>
     <div class="team_info" style="margin-top: 20px">Country: <b>{{team['state']}}</b>
       <div class="team_info">Coach: <b>{{team['coach']}}</b></div></div>
@@ -106,7 +106,7 @@
 
 
 <br><br><br>
-<div class="footer">
-  <div>Copyright ©2022 Sports Hub<br>{{ 'FOOTER.PRIVACY' | translate}} / {{ 'FOOTER.TERMS' | translate}}</div>
-</div>
+
+<app-site-footer></app-site-footer>
+
 </body>

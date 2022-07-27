@@ -67,6 +67,12 @@ export class ProfileComponent implements OnInit {
     setTimeout(function (){window.location.reload()},500)
   }
 
+
+  getImage(path: string): string {
+    let base : string = "https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2F";
+    return base + path + "?alt=media";
+  }
+
   Submit2(){
 
     let queryParams = new HttpParams();

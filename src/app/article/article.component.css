@@ -104,7 +104,10 @@ input[type=text] {
   padding-bottom: 17px;
   padding-right: 1%;
 }
-
+.footer p{
+  color: white;
+  font-size: 12px;
+}
 
 .main{
   display: flex;
@@ -236,6 +239,7 @@ input[type=text] {
   height: 115px;
   width: 430px;
   display: block;
+  overflow: auto;
 ;
 }
 
@@ -318,4 +322,18 @@ input[type=text] {
   margin-top: 460px;
   color: #D72130;
 
+}
+
+::-webkit-scrollbar {
+  width: 0.2vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
 }

@@ -51,10 +51,7 @@
     <div class="sidebar_icon">
       <span class="txt1">Follow</span>
       <div class="sidebar_follow">
-        <a href="https://twitter.com" class="fa fa-twitter"></a>
-        <a href="https://google.com" class="fa fa-google"></a><br>
-        <a href="https://youtube.com" class="fa fa-youtube"></a>
-        <a href="https://facebook.com" class="fa fa-facebook"></a>
+        <app-social-follow></app-social-follow>
       </div>
     </div>
 
@@ -168,7 +165,7 @@
           <div *ngFor="let e of teams">
             <div *ngIf="searchText === '' || e['name'].toLowerCase().includes(searchText)">
               <div class="team_card">
-                <img alt="logo" src="{{e['image_url']}}" class="team_img">
+                <img alt="logo" src="{{getImage(e['image_url'])}}" class="team_img">
             <div class="content">
               <div class="team_name">{{e['name']}}</div>
                 <div class="team_coach">{{'TEAMHUB.COACH' | translate}}: {{e['coach']}}</div>

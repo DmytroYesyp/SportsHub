@@ -34,12 +34,12 @@ export class TeamhubComponent implements OnInit {
               private readonly geolocation$: GeolocationService) { }
 
   ngOnInit(): void {
-    this.getUserFromToken().subscribe((userId)=>{
+    this.id = localStorage.getItem('userId')
+      this.getUserFromToken()
       this.http.get(environment.URL + 'follows?userId=0')
         .subscribe(() => {
           console.log(this.id)
-
-          this.http.get(environment.URL + 'follows?userId=' + userId)
+          this.http.get(environment.URL + 'follows?userId=' + this.id)
             .subscribe((Response) => {
               this.userList = Response
               console.log(this.userList)
@@ -95,40 +95,17 @@ export class TeamhubComponent implements OnInit {
               })
           })
       });
-    })
+
+
 
   }
 
-  // getApi(bdcApi){
-  //   this.Http.open("GET", bdcApi);
-  //   this.Http.send();
-  //   this.Http.onreadystatechange = function () {
-  //     if (this.readyState == 4 && this.status == 200) {
-  //       console.log(JSON.parse(this.responseText));
-  //     }
-  //   };
-  // }
-  //
-  // getLocation() {
-  //   console.log("getLocation Called");
-  //   var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
-  //
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       bdcApi = bdcApi
-  //         + "?latitude=" + position.coords.latitude
-  //         + "&longitude=" + position.coords.longitude
-  //         + "&localityLanguage=en";
-  //       this.getApi(bdcApi)
-  //     },
-  //     (err) => { this.getApi(bdcApi); },
-  //     {
-  //       enableHighAccuracy: true,
-  //       timeout: 5000,
-  //       maximumAge: 0
-  //     });
-  // }
 
+
+  getImage(path: string): string {
+    let base : string = "https://firebasestorage.googleapis.com/v0/b/sportshub-623db.appspot.com/o/image%2F";
+    return base + path + "?alt=media";
+  }
 
   getUserFromToken() {
     const token = localStorage.getItem('auth-token')
