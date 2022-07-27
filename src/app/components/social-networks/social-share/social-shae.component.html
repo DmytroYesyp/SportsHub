@@ -9,7 +9,7 @@
     <a *ngIf="l.pictogram == twt && l.url == '1'" target="_blank" rel="noopener noreferrer"  class="twitter-share-button fa fa-twitter" (click)="openning('https://twitter.com/intent/tweet?text=See%20more%20on%20SportsHub%3A%0A')"></a>
 <!--    /sharer/sharer.php?kid_directed_site=0&sdk=joey&u=http%3A%2F%2Flocalhost%3A4200%2Fmain&display=popup&ref=plugin&src=share_button-->
 <!--    <a *ngIf="l.pictogram == faceb && l.url == '1'" rel="noopener noreferrer" target="_blank" style="height: 10px;width: 10px" class="fa fa-facebook fb-xfbml-parse-ignore" (click)="openning2('https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=')"></a>-->
-    <a *ngIf="l.pictogram == faceb && l.url == '1'" rel="noopener noreferrer" target="_blank" style="height: 10px;width: 10px" class="fa fa-facebook fb-xfbml-parse-ignore" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsportshub-623db.web.app%2F'+this.path+'&amp;src=sdkpreparse','name','width=600,height=400')"></a>
+    <a data-href="https://sportshub-623db.web.app/main" *ngIf="l.pictogram == faceb && l.url == '1'" rel="noopener noreferrer" target="_blank" style="height: 10px;width: 10px" class="fa fa-facebook fb-xfbml-parse-ignore" (click)="openning2('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsportshub-623db.web.app%2F')"></a>
 
 <!--    <div *ngIf="l.pictogram == faceb" class="fb-share-button" data-href="http://localhost:4200/main" data-layout="button_count" data-size="small"><a style="height: 20px;width: 20px;background-color: red" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore fa fa-facebook"></a></div>-->
 
