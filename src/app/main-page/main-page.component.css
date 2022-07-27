@@ -103,9 +103,12 @@ input[type=text] {
 
 .txt1{
   font-family: 'Open Sans', sans-serif;
-  color: #919191;
-  font-size: 16px;
+  font-weight: bold;
+  color: #b2b2b2;
+  font-size: 14px;
+  margin-top: 1vw;
   text-decoration: none;
+
 }
 
 a:hover{
@@ -751,4 +754,10 @@ a:hover{
 ::-webkit-scrollbar-thumb {
   background: #c4c4c4;
   border-radius: 10px;
+}
+.leftMenuText{
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.7vw;
 }
