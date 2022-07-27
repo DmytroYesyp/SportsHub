@@ -299,6 +299,7 @@ input[type="file"] {
   margin-left: 100px;
   width: 95%;
   display: flex;
+  overflow: auto;
 }
 .under_two a{
   margin-top: 17px;
@@ -441,4 +442,18 @@ main_kinds{
   margin-left: 25vw;
   width: 45vw;
   height: 20vw;
+}
+
+::-webkit-scrollbar {
+  height: 0.3vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
 }

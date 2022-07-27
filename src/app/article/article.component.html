@@ -76,7 +76,7 @@
         <p>{{ 'BODY.DATE' | translate}} / {{ date}}</p>
         <span class="side_bloke_p1"><b> {{list['title']}}</b></span>
         <br>
-        <span class="side_bloke_p2"><b>{{list['description']}}</b></span>
+        <span class="side_bloke_p2" [innerHTML]="list['description']"><b>{{list['description']}}</b></span>
         <a href="" class="share_btn">{{'HEADER.SHARE' | translate}} <i class="fa fa-share"></i></a>
       </div>
     </div>
@@ -94,7 +94,7 @@
   <div class="article" [routerLink]="['/article', e['id']]" *ngFor="let e of moreList;" (click)="reloadCurrentPage(e['id'])" >
       <img class="img" [src]="e['image']">
       <div class="title"><b>{{e['title']}}</b></div>
-      <div class="descr">{{e['description']}}</div>
+      <div class="descr" [innerHTML]="e['description']">{{e['description']}}</div>
   </div>
 
 </div>
