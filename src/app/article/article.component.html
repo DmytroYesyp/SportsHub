@@ -84,7 +84,7 @@
 
 
   </div>
-  <a class="newstext">{{list['text']}}<br><br><br>
+  <a class="newstext"><p [innerHTML]="list['text']">{{list['text']}}</p><br><br><br>
     <app-comment></app-comment><br><br><br><br>
     <div class="line_more"></div>
     <div class="more"><b>{{'MOREART' | translate}}</b></div><br><br>
