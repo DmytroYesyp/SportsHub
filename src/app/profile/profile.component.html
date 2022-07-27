@@ -94,14 +94,14 @@
 
           <div style="margin-top: 1vw">
             <p style="color: #9fa6b2">First name</p>
-            <input id="firstName"  formControlName="firstName" class="TextFields" type="text" name="fname" ><br>
+            <input id="firstName" formControlName="firstName" class="TextFields" type="text" name="fname" ><br>
           </div>
           <div style="margin-top: 1vw">
             <p style="color: #9fa6b2">Last name</p>
-            <input type="text" matInput  formControlName="lastName" class="TextFields" type="text" name="fname" ><br>
+            <input style="height: 2.05vw;width: 24vw" type="text" matInput  formControlName="lastName" class="TextFields" type="text" name="fname" ><br>
           </div>
           <button mat-raised-button type="submit"
-            style="color : white; margin-top: 2vw; font-size: 0.9vw; height: 2vw;width: 25.2vw;line-height: 0;border-radius: 0;border: none;background-color: #d72130">
+            style="color : white; margin-top: 2vw; font-size: 0.9vw; height: 2vw;width: 25.3vw;line-height: 0;border-radius: 0;border: none;background-color: #d72130">
             UPDATE PROFILE
           </button>
 
@@ -113,7 +113,7 @@
       <div class="showDiv2" *ngIf="isVisible == 1">
         <div style="margin-top: 1vw">
           <p style="color: #9fa6b2">OLD PASSWORD</p>
-          <input formControlName="OldPassword" class="TextFields" type="text" name="fname" value="Some value"><br>
+          <input style="height: 2.5vw" formControlName="OldPassword" class="TextFields" type="text" name="fname" value="Some value"><br>
         </div>
         <a class="aLink" href="/forgot_password">{{'LOGIN.FGTPASS' | translate}}</a>
 
@@ -149,7 +149,7 @@
           </mat-form-field>
         </div>
         <button mat-raised-button type="submit"
-          style="color : white; margin-top: 2vw; height: 2vw;width: 25.2vw;border-radius: 0;border: none;background-color: #d72130">
+          style="color : white; margin-top: 2vw; height: 2vw;width: 25.3vw;border-radius: 0;border: none;background-color: #d72130">
           CHANGE PASSWORD
         </button>
 
