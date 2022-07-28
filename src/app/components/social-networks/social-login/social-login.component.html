@@ -19,7 +19,7 @@
 
 </div>
 
-<div class="switch_view">
+<div style="margin-top: 2vw;width: auto;margin-right: 0.5vw" class="switch_view">
   <a href="/main">
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M17 34C26.3888 34 34 26.3888 34 17C34 7.61116 26.3888 0 17 0C7.61116 0 0 7.61116 0 17C0 26.3888 7.61116 34 17 34Z" fill="#D72130"/>
@@ -96,37 +96,37 @@
 
   <div *ngIf="checker == 0" class="changeBox" style="height: 6.66vw; width: 25vw">
 
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Facebook</p>
       <input (click)="shared('facebook')" id="FacebookShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareFace"></div>
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Twitter</p>
       <input (click)="shared('twitter')" id="TwitterShared" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="shareTwit" ></div>
     <div style="margin-top: 0.3vw;float: left" class="item">
-      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <p style="width: auto;float: left;margin-top: 0.2vw">Show all section</p>
       <input (click)="allSecShare()" id="allSectionShare" style="float: left" type="checkbox" class="toggle-button" [checked] ="allShare">
     </div>
   </div>
 
   <div *ngIf="checker == 1" class="changeBox" style="height: 6.66vw; width: 25vw">
 
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Facebook</p>
       <input (click)="follow('facebook')" id="FacebookFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowFace"></div>
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Twitter</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Twitter</p>
       <input (click)="follow('twitter')" id="TwitterFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowTwit"></div>
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">YouTube</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">YouTube</p>
       <input (click)="follow('youtube')" id="YouTubeFollow" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="FollowYoutube"></div>
     <div style="margin-top: 0.3vw;float: left" class="item">
-      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <p style="width: auto;float: left;margin-top: 0.2vw">Show all section</p>
       <input (click)="allSecFollow()" id="allSectionFollow" style="float: left" type="checkbox" class="toggle-button" [checked] ="allFollow">
     </div>
   </div>
   <div *ngIf="checker == 2" class="changeBox" style="height: 6.66vw; width: 25vw">
 
-    <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Facebook</p>
+    <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Facebook</p>
       <input (click)="logIn('facebook')" id="FacebookLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInFace"></div>
-   <div class="itemInChange"><p style="margin-top: 1.3vw;margin-left: 1vw;float: left">Google</p>
+   <div class="itemInChange"><p style="margin-top: 1.2vw;margin-left: 1vw;float: left">Google</p>
       <input (click)="logIn('google')" id="GoogleLogin" style="float: right; margin-right: 1vw; margin-top: 1vw" type="checkbox" class="toggle-button" [checked]="LogInGoogle"></div>
     <div style="margin-top: 0.3vw;float: left" class="item">
-      <p style="width: 6vw;float: left;margin-top: 0.2vw">Show all section</p>
+      <p style="width: auto;float: left;margin-top: 0.2vw">Show all section</p>
       <input (click)="allSecLogIn()" id="allSectionLogIn" style="float: left" type="checkbox" class="toggle-button" [checked] ="allLogIn">
     </div>
   </div>

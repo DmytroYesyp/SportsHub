@@ -37,6 +37,11 @@ export class SocialShaeComponent implements OnInit {
     window.open(input + this.dat,'name','width=600,height=400')
   }
 
+  // console.log('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsportshub-623db.web.app%2F'+ this.path + '&amp;src=sdkpreparse')
+  openning2(input : string){
+    window.open(input + this.path + '&amp;src=sdkpreparse','name','width=600,height=400')
+  }
+
 
   delete(id: number) {
     this.http.delete(environment.URL + `api/socialShare/deleteShares?Id=` + id).subscribe()

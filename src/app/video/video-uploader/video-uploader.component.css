@@ -1,0 +1,29 @@
+
+.custom-file-upload {
+
+  width: 14vw;
+  height: 5vh;
+  background: #D72130;
+  border: 1px solid #C63638;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  /*text-align: center;*/
+
+}
+
+.custom-file-upload-txt{
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+  text-decoration: none;
+  /*text-align: center;*/
+  /* identical to box height, or 156% */
+
+  /*text-align: center;*/
+  /*padding-top: 10px;*/
+
+  color: #FFFFFF;
+}

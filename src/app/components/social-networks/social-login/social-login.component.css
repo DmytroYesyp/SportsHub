@@ -167,6 +167,7 @@
   width: 2vw;
   height: 1vw;
   padding-top: 1vw;
+  margin-left: 0.8vw;
   vertical-align: top;
   background: #ffffff;
   border: 1px solid #bbc1e1;
@@ -289,8 +290,9 @@
 
 .under_two{
   margin-left: 100px;
-  width: 95%;
+  width: 93%;
   display: flex;
+  overflow: auto;
 }
 .under_two a{
   margin-top: 17px;
@@ -445,3 +447,21 @@ main_kinds{
   font-weight: bold;
 }
 
+::-webkit-scrollbar {
+  width: 0.3vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+  height: 0.3vw;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
+}

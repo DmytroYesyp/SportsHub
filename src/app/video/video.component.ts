@@ -105,7 +105,6 @@ export class VideoComponent implements OnInit {
       }
 
     });
-    //console.log(this.firstName , this.lastName);
     return tmp;
   }
 
@@ -129,13 +128,6 @@ export class VideoComponent implements OnInit {
     this.http.get<videoEntity[]>(environment.URL + `api/fireBaseVideo/getVideos?params=1`).subscribe(data => {
       this.ent = data;
     })
-
-
-    // this.mainpage.getUserByEmail(this.getUserFromToken())
-
-
-    // this.firstName = user.firstName;
-    // this.lastName = user.lastName;
   }
 
   func2(num : number){
