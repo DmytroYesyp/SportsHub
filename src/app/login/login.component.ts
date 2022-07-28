@@ -9,8 +9,9 @@ import {googleLoginConfig} from "../auth-config";
 import {JwksValidationHandler} from "angular-oauth2-oidc-jwks";
 import {OAuthService} from "angular-oauth2-oidc";
 import {FacebookLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
-import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
 import {environment} from "../../environments/environment";
+import {socialFollow} from "../components/social-networks/social-share/social-shae.component";
+import * as stream from "stream";
 
 
 
@@ -24,9 +25,13 @@ export class LoginComponent implements OnInit, OnDestroy{
   params: any;
   fbUser: SocialUser;
   // @Input() formError = 'Error';
+  list: socialFollow[];
   hide=true;
   // email: string
   // password: string
+
+  facebook : string = "fa fa-facebook";
+  google : string = "fa fa-google";
 
   // form: FormGroup;
   aSub: Subscription
@@ -36,7 +41,19 @@ export class LoginComponent implements OnInit, OnDestroy{
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     }
   );
-  list: socialFollow[];
+
+
+  OnOffFace(ent : socialFollow){
+    if (ent.pictogram == this.facebook)
+      return ent.url =='1';
+  return false
+  }
+  OnOffGoogle(ent : socialFollow){
+    if (ent.pictogram == this.google)
+      return ent.url =='1';
+    return false
+
+  }
   constructor(private auth: AuthService,
               private router: Router,
               private route: ActivatedRoute,
@@ -174,8 +191,5 @@ export class LoginComponent implements OnInit, OnDestroy{
       this.aSub.unsubscribe()
     }
   }
-
-
-
 
 }

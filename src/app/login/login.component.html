@@ -25,10 +25,12 @@
 
 <div class="container">
   <h1>{{ 'LOGIN.TITLE' | translate}}</h1>
-  <a (click)="facebookInit()" class="fa fa-facebook" *ngIf="list[0].url == '1'"></a>
-  <a (click)="submit()"  class="fa fa-google" *ngIf="list[1].url == '1'"></a>
-
-
+<div style="width: 10vw;height: 3vw">
+  <div *ngFor="let i of list" id="socialsBox">
+  <a style="float: left" *ngIf="i.pictogram == facebook && i.url == '1'" (click)="facebookInit()" class="fa fa-facebook"></a>
+  <a style="float: left" *ngIf="i.pictogram == google && i.url == '1'" (click)="submit()" class="fa fa-google"></a>
+  </div>
+</div>
   <div class="cont">
     <form [formGroup]="form" (change)="onFormChange()" (submit)="onSubmit()">
       <div class="email-input">

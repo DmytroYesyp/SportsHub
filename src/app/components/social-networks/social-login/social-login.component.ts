@@ -322,8 +322,7 @@ export class SocialLoginComponent implements OnInit , OnChanges {
         queryParams = queryParams.append("url",TF);
 
         this.LogInFace = TF == '1';
-        this.allLogIn = this.LogInFace || this.LogInGoogle
-        this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
+
         break;
       }
       case 'google' :{
@@ -336,14 +335,13 @@ export class SocialLoginComponent implements OnInit , OnChanges {
         queryParams = queryParams.append("pic",'fa fa-google');
         queryParams = queryParams.append("url",TF);
         this.LogInGoogle = TF == '1';
-        this.allLogIn = this.LogInFace || this.LogInGoogle
-        this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
         break;
       }
 
     }
 
-
+    this.allLogIn = this.LogInFace || this.LogInGoogle
+    this.http.put(environment.URL + 'api/socialLogIn/editLogInByPic',null,{params : queryParams}).subscribe()
   }
 
   delete(id: number) {
