@@ -23,12 +23,13 @@
 
   </div>
 
-  <div class="share-container">
-    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>
-    <a href="https://facebook.com" class="fa fa-facebook"></a>
-    <a href="https://twitter.com" class="fa fa-twitter"></a>
-    <a href="https://google.com" class="fa fa-google"></a>
-  </div>
+<!--  <div class="share-container">-->
+<!--    <div class="txt1">{{ 'HEADER.SHARE' | translate}}</div>-->
+<!--    <a href="https://facebook.com" class="fa fa-facebook"></a>-->
+<!--    <a href="https://twitter.com" class="fa fa-twitter"></a>-->
+<!--    <a href="https://google.com" class="fa fa-google"></a>-->
+<!--  </div>-->
+  <app-social-share></app-social-share>
 
 </div>
 
@@ -46,24 +47,6 @@
 </div>
 
 
-
-<!--<div class="profile-container">-->
-<!--  <div class="profile_img"></div>-->
-<!--  <mat-expansion-panel  class = "profile">-->
-<!--    <mat-expansion-panel-header>-->
-<!--      <mat-panel-title>-->
-<!--        {{firstName}} {{lastName}}-->
-<!--      </mat-panel-title>-->
-<!--    </mat-expansion-panel-header>-->
-<!--    <a href="/profile" class="txt1"> View profile</a><br>-->
-<!--    <a href="" class="txt1"> Change password</a><br>-->
-<!--    <a href="" class="txt1"> My surveys</a><br>-->
-<!--    <a href="" class="txt1"> My teamhub</a><br><br>-->
-<!--    <a href="/login" class="txt1" (click)="logOut()">Log out</a>-->
-<!--  </mat-expansion-panel>-->
-<!--</div>-->
-
-
 <div *ngIf="authenticated">
   <app-header-user-profile></app-header-user-profile>
 </div>
@@ -76,46 +59,76 @@
 </div>
 
 
-<!--<mat-expansion-panel  class = "language">-->
-<!--  <mat-expansion-panel-header>-->
-<!--    <mat-panel-title>-->
-<!--      EN-->
-<!--    </mat-panel-title>-->
-<!--  </mat-expansion-panel-header>-->
-<!--  <a href="" class="txt1"> UA </a><br>-->
-<!--</mat-expansion-panel>-->
-
 <app-lang></app-lang>
 
 <div class="contactUs">
-  <a href="/main"><h3 class="buttonToMain">Back to the main page</h3></a>
+  <div class="buttonToMain">
+    <a href="/main"><h3>Back to the main page</h3></a>
+  </div>
   <div class="mainContactUs">
     <h4 class="mainContactUsTitle">How can we help you?</h4> <br> <br>
     <div class="inputContactUs">
+      <div class="rightInputContactUs">
+        <label class="yourNameLabel">WHAT WE NEED TO KNOW</label>
+        <div class="subscribeField">
+          <form class="yourMessage">
+            <input class="yourMessageText" type="text" placeholder="Write us a message">
+            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
+          </form>
+
+        </div>
+      </div>
       <div class="leftInputContactUs">
-<!--        <form class="leftFromInput">-->
-<!--          <input class="subscribeTextField" type="text" placeholder="Your email address">-->
-<!--        </form>-->
+
+        <label class="yourNameLabel">YOUR NAME</label>
+        <div class="subscribeField">
+          <form class="yourName">
+            <input class="yourNameText" type="text" placeholder="How should we call you?">
+            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
+          </form>
+
+        </div>
+
+        <label class="yourNameLabel">EMAIL</label>
+        <div class="subscribeField">
+          <form class="yourName">
+            <input class="yourNameText" type="text" placeholder="We'll get back to you within several hours or sooner">
+            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
+          </form>
+
+        </div>
+
+        <label class="yourNameLabel">PHONE NUMBER</label>
+        <div class="subscribeField">
+          <form class="yourName">
+            <input class="yourNameText" type="text" placeholder="What is your phone number?">
+            <!--            <input class="subscribeTextField2" type="submit" value="Subscribe">-->
+          </form>
+
+        </div>
+
 
         <div class="ourContacts">
-          <h4 style="font-size: 20px; font-weight: bold; color: black">Our contacts</h4>
+          <h4 style="font-size: 18px; font-weight: bold; color: black">Our contacts</h4>
           <h3>ADDRESS</h3>
-          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+          <a style="white-space: nowrap; font-weight: bold" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
             <p *ngIf="e['id']==3" [innerHTML]="e['text']"></p>
           </a>
           <br>
           <h3>NUMBER</h3>
-          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+          <a style="white-space: nowrap; font-weight: bold" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
             <p *ngIf="e['id']==4" [innerHTML]="e['text']"></p>
           </a>
           <br>
           <h3>EMAIL</h3>
-          <a style="white-space: nowrap;" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
+          <a style="white-space: nowrap;  font-weight: bold" [ngClass]="1==1?'text1':'text1'"*ngFor="let e of list; let i = index">
             <p *ngIf="e['id']==5" [innerHTML]="e['text']"></p>
           </a>
         </div>
 
       </div>
+
+
     </div>
   </div>
 </div>

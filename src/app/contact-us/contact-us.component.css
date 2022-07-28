@@ -625,8 +625,8 @@ input[type=text] {
 }
 
 .subscribeInputs input[type="text"]{
-  width: 190px;
-  height: 30px;
+  width: 400px;
+  height: 50px;
   border: 1px solid #b2b2b2;
 }
 
@@ -659,7 +659,7 @@ input[type=text] {
   color: white;
 }
 
-.buttonToMain{
+.buttonToMain h3{
   font-size: 12px;
   color: red;
   margin-left: 200px;
@@ -698,4 +698,65 @@ input[type=text] {
   font-size: 12px;
   margin-bottom: 0px;
   color: grey;
+}
+
+.yourName input{
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.yourName input[type="text"]{
+  width: 450px;
+  height: 40px;
+  border: 1px solid #b2b2b2;
+}
+
+.subscribeField{
+  display: flex;
+}
+
+.yourNameLabel{
+  color: #7F7B7B;
+  font-size: 14px;
+}
+
+.yourName input[type="text"]::placeholder{
+  text-align: left;
+  padding-left: 10px;
+  opacity: .5;
+}
+
+.rightInputContactUs{
+  position: absolute;
+  margin-left: 500px;
+
+}
+
+.yourMessage input{
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.yourMessage input[type="text"]{
+  width: 450px;
+  height: 230px;
+  border: 1px solid #b2b2b2;
+}
+
+.yourMessageLabel{
+  color: #7F7B7B;
+  font-size: 14px;
+}
+
+.yourMessage input[type="text"]::placeholder{
+  position: absolute;
+  text-align: left;
+  padding-left: 10px;
+  opacity: .5;
+  float: top;
+  top: 15px;
 }
