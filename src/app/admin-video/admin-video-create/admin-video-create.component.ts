@@ -78,7 +78,7 @@ export class AdminVideoCreateComponent implements OnInit {
 
   search: String = "";
   foods: any;
-
+  hide: boolean = false;
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated()){
@@ -138,6 +138,7 @@ export class AdminVideoCreateComponent implements OnInit {
   onSubmit(){
     this.upload = true;
     this.description = this.form.value.description;
+    this.hide = true;
   }
 
 }

@@ -16,8 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
 
 
   hide=true;
-  // email: string
-  // password: string
+
 
   form: FormGroup;
   aSub: Subscription
@@ -43,9 +42,6 @@ export class ForgotPasswordComponent implements OnInit {
 
 
   onSubmit(){
-    // let body = new URLSearchParams();
-    // body.set('email', this.form.value.email);
-    // body.set('password', this.form.value.password);
     this.loading=true;
 
 
@@ -53,10 +49,6 @@ export class ForgotPasswordComponent implements OnInit {
 
     let param = new HttpParams({fromObject:{email:this.form.value.email}})
 
-    //let body = `email=${this.form.value.email}&password=${this.form.value.password}`;
-
-
-    // alert(params)
 
 
     this.aSub = this.auth.forgot_password(param).subscribe(
