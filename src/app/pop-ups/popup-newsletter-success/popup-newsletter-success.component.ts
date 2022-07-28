@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-popup-newsletter-success',
@@ -29,7 +30,7 @@ export class PopupNewsletterSuccessComponent implements OnInit {
   }
 
   delete(){
-    this.http.delete('http://localhost:8080/newsletter/' + this.userId + '?leagueId=' + this.leagueId)
+    this.http.delete(environment.URL + 'newsletter/' + this.userId + '?leagueId=' + this.leagueId)
       .subscribe(() => {
         this.unsubscribed = true
       });
