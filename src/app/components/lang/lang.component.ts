@@ -16,12 +16,6 @@ export class LangComponent implements OnInit {
     this.http.get(environment.URL + 'language')
       .subscribe(Response => {
         this.list = (<Array<any>>Response);
-        console.log(this.list)
-        for (let i = 0; i < this.list.length; i++) {
-          if (this.list[i]['hidden'] == true) {
-            this.list.splice(i, 1)
-          }
-        }
       });
   }
 

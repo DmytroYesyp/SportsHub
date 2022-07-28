@@ -5,5 +5,7 @@
       <i class="fa fa-globe"></i>
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <button  *ngFor="let e of list;" class="txt1"  (click)="changeLang(e['locale'])" > {{e['name']}} </button><br>
+  <div  *ngFor="let e of list;">
+  <button *ngIf="!e['hidden']" class="txt1"  (click)="changeLang(e['locale'])">{{e['name']}}</button>
+  </div>
 </mat-expansion-panel>
